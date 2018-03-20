@@ -1,0 +1,42 @@
+<dom-module id = 'my-app'>
+    <template>
+        <style>
+         paper-input {
+            max-width: 300px;
+         }
+      </style>
+
+        <paper-input label="total" type="number">
+            <div prefix>$</div>
+        </paper-input>
+        <paper-input label="username" id="inputWithButton">
+            <iron-icon icon="mail" prefix></iron-icon>
+            <div suffix>@email.com</div>
+            <paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear">
+            </paper-icon-button>
+        </paper-input>
+
+
+
+        <div>Paper-Input Example {{who}}</div>
+        <paper-input label = "User Name" value="{{who::change}}">
+            <iron-icon icon="mail" prefix></iron-icon>
+        </paper-input>
+
+        <paper-input label = "Password">
+            <iron-icon icon="mail" prefix></iron-icon>
+        </paper-input>
+    </template>
+
+    <script>
+      Polymer ({
+         is: 'my-app', ready: function() {
+            this.async(function() {
+
+            });
+         }, properties: {
+            who: { type: String, value: "0" }
+         }
+      });
+   </script>
+</dom-module>
