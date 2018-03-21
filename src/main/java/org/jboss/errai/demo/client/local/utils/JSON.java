@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.client.local;
+package org.jboss.errai.demo.client.local.utils;
 
 import jsinterop.annotations.JsType;
 

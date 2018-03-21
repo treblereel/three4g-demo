@@ -2,12 +2,8 @@ package org.jboss.errai.demo.client.local.examples.camera;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.Event;
-import elemental2.dom.EventListener;
-import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLIFrameElement;
 import elemental2.dom.KeyboardEvent;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -27,9 +23,7 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,9 +51,9 @@ public class WebGlCamera extends Attachable {
 
         scene = new Scene();
 
-        camera = new PerspectiveCamera(50, new Float(0.5 * aspect), 1, 10000);
+        camera = new PerspectiveCamera(50, 0.5f * aspect, 1, 10000);
         camera.position.z = 2500;
-        cameraPerspective = new PerspectiveCamera(50, new Float(0.5 * aspect), 150, 1000);
+        cameraPerspective = new PerspectiveCamera(50, 0.5f * aspect, 150, 1000);
         cameraPerspectiveHelper = new CameraHelper(cameraPerspective);
         scene.add(cameraPerspectiveHelper);
 
@@ -161,12 +155,12 @@ public class WebGlCamera extends Attachable {
             aspect = new Float(getWidth() / getHeight());
 
             webGLRenderer.setSize(getWidth(), getHeight());
-            camera.aspect = new Float(0.5 * aspect);
+            camera.aspect = 0.5f * aspect;
             camera.updateProjectionMatrix();
-            cameraPerspective.aspect = new Float(0.5 * aspect);
+            cameraPerspective.aspect = 0.5f * aspect;
             cameraPerspective.updateProjectionMatrix();
-            cameraOrtho.left = (float) (-0.5 * frustumSize * (getWidth()/getHeight()) / 2);
-            cameraOrtho.right = (float)(0.5 * frustumSize * (getWidth()/getHeight()) / 2);
+            cameraOrtho.left =  (float) (-0.5f * frustumSize * (getWidth()/getHeight()) / 2);
+            cameraOrtho.right = (float) ( 0.5f * frustumSize * (getWidth()/getHeight()) / 2);
             cameraOrtho.top = frustumSize / 2;
             cameraOrtho.bottom = -frustumSize / 2;
             cameraOrtho.updateProjectionMatrix();

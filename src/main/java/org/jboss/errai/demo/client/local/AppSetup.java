@@ -24,6 +24,7 @@ import elemental2.dom.HTMLUListElement;
 import elemental2.dom.Node;
 import org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.jboss.errai.demo.client.local.examples.camera.WebGlCamera;
+import org.jboss.errai.demo.client.local.examples.camera.WebglCameraArray;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic;
@@ -58,6 +59,9 @@ public class AppSetup {
     private MenuDemo menuDemo;
 
     @Inject
+    private WebglCameraArray webglCameraArray;
+
+    @Inject
     private WebglGeometryCube webglGeometryCube;
 
     @Inject
@@ -80,6 +84,7 @@ public class AppSetup {
 
     @PostConstruct
     public void init() {
+        addListElement("WebGl Camera Array", webglCameraArray);
         addListElement("WebGl Animation scene", webglAnimationScene);
         addListElement("WebGl Geometry Cube", webglGeometryCube);
         addListElement("WebGl Geometry Dynamic", webglGeometryDynamic);

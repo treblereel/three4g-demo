@@ -1,8 +1,6 @@
 package org.jboss.errai.demo.client.local.examples.gui;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLIFrameElement;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.Click;
 import org.jboss.errai.demo.client.local.gui.GUIVR;
@@ -37,7 +35,7 @@ public class MenuDemo extends Attachable {
         webGLRenderer = new WebGLRenderer(params);
         setupWebGLRenderer(webGLRenderer);
         webGLRenderer.setClearColor(0xeebbbb);
-        camera = new PerspectiveCamera(70, aspect, (float)(0.1), 15);
+        camera = new PerspectiveCamera(70, aspect, 0.1f, 15);
         camera.position.set(0, 0, 1.0f);
         scene = new Scene();
 

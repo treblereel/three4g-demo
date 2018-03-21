@@ -1,14 +1,10 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLIFrameElement;
-import elemental2.dom.Window;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
