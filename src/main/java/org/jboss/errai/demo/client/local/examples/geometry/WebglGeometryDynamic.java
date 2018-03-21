@@ -1,16 +1,12 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLIFrameElement;
-import elemental2.dom.Window;
 import org.jboss.errai.demo.client.api.FirstPersonControls;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.Constants;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
@@ -26,7 +22,6 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import static elemental2.dom.DomGlobal.document;
@@ -65,7 +60,7 @@ public class WebglGeometryDynamic extends Attachable {
 
         scene = new Scene();
         scene.background = new Color(0xaaccff);
-        scene.fog = new FogExp2(new Color(0xaaccff), new Float(0.0007));
+        scene.fog = new FogExp2(new Color(0xaaccff), 0.0007f);
 
         geometry = new PlaneGeometry(20000, 20000, worldWidth - 1, worldDepth - 1);
         geometry.rotateX(new Float(-Math.PI / 2));

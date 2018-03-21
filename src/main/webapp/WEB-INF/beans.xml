@@ -11,7 +11,7 @@
     <exclude name = "org.jboss.errai.demo.client.local.gui.Dropdown" />
     <exclude name = "org.jboss.errai.demo.client.local.gui.Group" />
     <exclude name = "org.jboss.errai.demo.client.local.gui.Slider" />
-    <exclude name = "org.jboss.errai.demo.client.local.JSON" />
+    <exclude name = "org.jboss.errai.demo.client.local.utils.JSON" />
     <exclude name = "org.jboss.errai.demo.client.local.AppSetup" />
     <exclude name = "org.jboss.errai.demo.client.local.Attachable" />
     <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQuery" />
@@ -21,6 +21,7 @@
     <exclude name = "org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson$1" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebGlCamera" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebglCameraArray" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.gui.MenuDemo" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.gui.Utils" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.gui.Record" />
@@ -32,7 +33,6 @@
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene$1" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene$1$1" />
     <exclude name = "org.jboss.errai.demo.client.local.ViewSrcButton" />
-    <exclude name = "org.jboss.errai.demo.client.local.IsDisabled" />
     <exclude name = "org.jboss.errai.demo.client.local.Click" />
     <!-- End of Errai exclusions -->
   </scan>

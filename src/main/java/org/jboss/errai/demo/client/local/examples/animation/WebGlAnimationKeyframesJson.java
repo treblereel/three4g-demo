@@ -1,12 +1,7 @@
 package org.jboss.errai.demo.client.local.examples.animation;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLElement;
-import elemental2.dom.HTMLIFrameElement;
-import elemental2.dom.XMLHttpRequest;
 import jsinterop.base.Js;
 import jsinterop.base.JsArrayLike;
 import jsinterop.base.JsPropertyMap;
@@ -22,9 +17,7 @@ import org.treblereel.gwt.three4g.helpers.GridHelper;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.ObjectLoader;
-import org.treblereel.gwt.three4g.loaders.OnErrorCallback;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
-import org.treblereel.gwt.three4g.loaders.OnProgressCallback;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
@@ -68,12 +61,12 @@ public class WebGlAnimationKeyframesJson extends Attachable {
         scene = new Scene();
 
         GridHelper grid = new GridHelper(20, 20, new Color(0x888888), new Color(0x888888));
-        grid.position.set(0, (float) -1.1, 0);
+        grid.position.set(0, -1.1f, 0);
         scene.add(grid);
 
         camera = new PerspectiveCamera(40, aspect, 1, 100);
-        camera.position.set((float) -5.00, (float) 3.43, (float) 11.31);
-        camera.lookAt(new Vector3((float) -1.22, (float) 2.18, (float) 4.58));
+        camera.position.set( -5.00f, 3.43f, 11.31f);
+        camera.lookAt(new Vector3(-1.22f, 2.18f, 4.58f));
         scene.add(new AmbientLight(0x404040));
 
         PointLight pointLight = new PointLight(0xffffff, 1);
@@ -122,7 +115,4 @@ public class WebGlAnimationKeyframesJson extends Attachable {
             }
         });
     }
-
-
-
 }
