@@ -97,7 +97,6 @@ public class WebGlAnimationKeyframesJson extends Attachable {
     }
 
     public void doAttachScene() {
-        //init();
         document.body.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
@@ -105,25 +104,7 @@ public class WebGlAnimationKeyframesJson extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-
-        info.show().setHrefToInfo("http://threejs.or").setTextContentToInfo("three.js").setTextToDesc(" webgl - animation - keyframes - json");
-
-/*        HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
-        container.id = "info";
-        HTMLAnchorElement info = (HTMLAnchorElement) DomGlobal.document.createElement("a");
-        container.appendChild(info);
-
-        info.href = "http://threejs.org";
-        info.target= "_blank";
-        info.rel = "noopener";
-        info.textContent = "three.js";
-
-        HTMLElement text = (HTMLElement) DomGlobal.document.createElement("span");
-        text.textContent = " webgl - animation - keyframes - json";
-        container.appendChild(text);
-        document.body.appendChild(container);*/
-
-
+        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setTextToDesc(" webgl - animation - keyframes - json");
     }
 
     private void render() {

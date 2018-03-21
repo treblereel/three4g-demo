@@ -117,7 +117,6 @@ public class AppSetup {
             info.hide();
             page.attach();
 
-
         });
         root.appendChild(elm);
     }

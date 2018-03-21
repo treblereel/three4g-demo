@@ -6,7 +6,7 @@
 
     <groupId>org.treblereel.gwt.three4g</groupId>
     <artifactId>three4g-demo</artifactId>
-    <version>4.1.2</version>
+    <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>THREE4G:DEMO</name>
 

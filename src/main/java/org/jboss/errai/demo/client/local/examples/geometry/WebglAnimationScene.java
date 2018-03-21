@@ -121,7 +121,8 @@ public class WebglAnimationScene extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-
+        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" webgl - scene animation - <a href=\"https://clara.io/view/96106133-2e99-40cf-8abd-64defd153e61\">Three Gears Scene</a> courtesy of David Sarno\n" +
+                "\t\t<br><br>camera orbit/zoom/pan with left/middle/right mouse button");
     }
 
     private void render() {
