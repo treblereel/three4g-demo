@@ -124,7 +124,7 @@ public class WebglGeometryDynamic extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-
+        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - dynamic geometry demo - webgl<br />(left click: forward, right click: backward)");
     }
 
 }

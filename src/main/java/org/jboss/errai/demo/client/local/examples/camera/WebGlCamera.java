@@ -129,10 +129,6 @@ public class WebGlCamera extends Attachable {
         webGLRendererParameters.antialias = true;
         webGLRenderer = new WebGLRenderer(webGLRendererParameters);
         //webGLRenderer.setPixelRatio( window.devicePixelRatio );
-
-/*        webGLRenderer.setSize(getWidth(), getHeight());
-        webGLRenderer.domElement.style.position = "relative";
-        webGLRenderer.domElement.id = "viewer";*/
         setupWebGLRenderer(webGLRenderer);
         webGLRenderer.autoClear = false;
 
@@ -186,6 +182,8 @@ public class WebGlCamera extends Attachable {
 
     @Override
     protected void doAttachInfo() {
+        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml("- cameras<br/>\n" +
+                "\t\t<b>O</b> orthographic <b>P</b> perspective");
 
     }
 

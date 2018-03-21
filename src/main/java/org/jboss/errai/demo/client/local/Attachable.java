@@ -20,6 +20,9 @@ public abstract class Attachable {
     Logger logger;
 
     @Inject
+    protected ViewSrcButton viewSrcButton;
+
+    @Inject
     protected InfoDiv info;
 
     protected Window window = DomGlobal.window;
@@ -37,6 +40,11 @@ public abstract class Attachable {
     public void attach() {
         doAttachScene();
         doAttachInfo();
+        doAttachLink();
+    }
+
+    private void doAttachLink() {
+        viewSrcButton.setLink(getClass().getCanonicalName());
     }
 
     private void clearContainer(HTMLIFrameElement container) {
@@ -59,10 +67,7 @@ public abstract class Attachable {
             camera.aspect = new Float(getWidth() / getHeight());
             camera.updateProjectionMatrix();
             webGLRenderer.setSize(getWidth(), getHeight());
-        } else {
-            logger.warn(" do nothing");
         }
-
     }
 
     public void setupWebGLRenderer(WebGLRenderer webGLRenderer) {

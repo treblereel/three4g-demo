@@ -55,6 +55,11 @@ public class InfoDiv {
         return this;
     }
 
+    public InfoDiv setInnetHtml(String innerHTML){
+        text.innerHTML = innerHTML;
+        return this;
+    }
+
     public InfoDiv addElement(HTMLElement elm){
         container.appendChild(elm);
         return this;

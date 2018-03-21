@@ -4,6 +4,7 @@
   <scan>
     <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
     <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryElement" />
+    <exclude name = "org.jboss.errai.demo.client.local.LinkDiv" />
     <exclude name = "org.jboss.errai.demo.client.local.gui.GUIVR" />
     <exclude name = "org.jboss.errai.demo.client.local.gui.OnChangeEvent" />
     <exclude name = "org.jboss.errai.demo.client.local.gui.Button" />
@@ -30,6 +31,7 @@
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene$1" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene$1$1" />
+    <exclude name = "org.jboss.errai.demo.client.local.ViewSrcButton" />
     <exclude name = "org.jboss.errai.demo.client.local.IsDisabled" />
     <exclude name = "org.jboss.errai.demo.client.local.Click" />
     <!-- End of Errai exclusions -->
