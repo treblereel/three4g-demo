@@ -1,12 +1,11 @@
 package org.jboss.errai.demo.client.local;
 
-import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
 import org.slf4j.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import static elemental2.dom.DomGlobal.document;
@@ -15,7 +14,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/21/18.
  */
-@Dependent
+@ApplicationScoped
 public class ViewSrcButton {
 
     private HTMLDivElement container = (HTMLDivElement) document.createElement("div");
