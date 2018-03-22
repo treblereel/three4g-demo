@@ -3,37 +3,36 @@
 
   <scan>
     <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
-    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryElement" />
-    <exclude name = "org.jboss.errai.demo.client.local.LinkDiv" />
-    <exclude name = "org.jboss.errai.demo.client.local.gui.GUIVR" />
-    <exclude name = "org.jboss.errai.demo.client.local.gui.OnChangeEvent" />
-    <exclude name = "org.jboss.errai.demo.client.local.gui.Button" />
-    <exclude name = "org.jboss.errai.demo.client.local.gui.Dropdown" />
-    <exclude name = "org.jboss.errai.demo.client.local.gui.Group" />
-    <exclude name = "org.jboss.errai.demo.client.local.gui.Slider" />
-    <exclude name = "org.jboss.errai.demo.client.local.utils.JSON" />
-    <exclude name = "org.jboss.errai.demo.client.local.AppSetup" />
-    <exclude name = "org.jboss.errai.demo.client.local.Attachable" />
-    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQuery" />
-    <exclude name = "org.jboss.errai.demo.client.local.InfoDiv" />
-    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryArray" />
-    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson$1" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebGlCamera" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebglCameraArray" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.gui.MenuDemo" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.gui.Utils" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.gui.Record" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle$StyleWebglAnimationScene" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene$1" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene$1$1" />
-    <exclude name = "org.jboss.errai.demo.client.local.ViewSrcButton" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.gui.Utils" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.gui.Record" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.gui.MenuDemo" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebglCameraArray" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebGlCamera" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson$1" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryArray" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQuery" />
+    <exclude name = "org.jboss.errai.demo.client.local.InfoDiv" />
+    <exclude name = "org.jboss.errai.demo.client.local.utils.JSON" />
+    <exclude name = "org.jboss.errai.demo.client.local.gui.Dropdown" />
+    <exclude name = "org.jboss.errai.demo.client.local.gui.GUIVR" />
+    <exclude name = "org.jboss.errai.demo.client.local.gui.Button" />
+    <exclude name = "org.jboss.errai.demo.client.local.gui.Slider" />
+    <exclude name = "org.jboss.errai.demo.client.local.gui.OnChangeEvent" />
+    <exclude name = "org.jboss.errai.demo.client.local.gui.Group" />
+    <exclude name = "org.jboss.errai.demo.client.local.Attachable" />
     <exclude name = "org.jboss.errai.demo.client.local.Click" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryElement" />
+    <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer" />
+    <exclude name = "org.jboss.errai.demo.client.local.AppSetup" />
+    <exclude name = "org.jboss.errai.demo.client.local.ViewSrcButton" />
     <!-- End of Errai exclusions -->
   </scan>
 </beans>

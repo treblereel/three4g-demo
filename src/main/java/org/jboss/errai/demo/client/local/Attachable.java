@@ -5,6 +5,7 @@ import elemental2.dom.HTMLIFrameElement;
 import elemental2.dom.Window;
 import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
+import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
@@ -29,6 +30,7 @@ public abstract class Attachable {
     protected WebGLRenderer webGLRenderer;
     protected Scene scene;
     protected PerspectiveCamera camera;
+    protected Mesh mesh;
 
     protected float aspect = new Float((getWidth() / getHeight()));
 
@@ -63,7 +65,7 @@ public abstract class Attachable {
 
     //TODO
     public void onWindowResize() {
-        if (webGLRenderer.domElement.parentNode != null) {
+        if (webGLRenderer.domElement.parentNode != null && camera != null) {
             camera.aspect = new Float(getWidth() / getHeight());
             camera.updateProjectionMatrix();
             webGLRenderer.setSize(getWidth(), getHeight());

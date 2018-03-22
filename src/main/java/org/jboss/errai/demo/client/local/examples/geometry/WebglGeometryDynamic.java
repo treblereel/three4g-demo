@@ -1,12 +1,9 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.HTMLDivElement;
 import org.jboss.errai.demo.client.api.FirstPersonControls;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
-import org.jboss.errai.ui.shared.api.annotations.DataField;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.treblereel.gwt.three4g.Constants;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
@@ -22,7 +19,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
+import javax.enterprise.context.ApplicationScoped;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -30,21 +27,17 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/8/18.
  */
-@Templated(value = "webglGeometryDynamic.html#container1")
+@ApplicationScoped
 public class WebglGeometryDynamic extends Attachable {
 
-    @Inject
-    @DataField
-    HTMLDivElement root, container1;
 
-    Mesh mesh;
-    FirstPersonControls controls;
-    PlaneGeometry geometry;
+    private FirstPersonControls controls;
+    private PlaneGeometry geometry;
 
     int worldWidth = 128;
     int worldDepth = 128;
 
-    Clock clock = new Clock();
+    private Clock clock = new Clock();
 
 
     @PostConstruct

@@ -1,17 +1,12 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLDivElement;
-import elemental2.dom.Window;
 import jsinterop.base.Js;
 import jsinterop.base.JsArrayLike;
 import jsinterop.base.JsPropertyMap;
 import org.jboss.errai.demo.client.api.OrbitControls;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
-import org.jboss.errai.ui.shared.api.annotations.DataField;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -30,7 +25,7 @@ import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
+import javax.enterprise.context.ApplicationScoped;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -38,20 +33,14 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/9/18.
  */
-@Templated(value = "webglAnimationScene.html#container1")
+@ApplicationScoped
 public class WebglAnimationScene extends Attachable {
 
-    @Inject
-    @DataField
-    HTMLDivElement root, container1;
+    private OrbitControls controls;
+    private AnimationMixer mixer;
+    private AnimationClip animationClip;
 
-    OrbitControls controls;
-    AnimationMixer mixer;
-    AnimationClip animationClip;
-
-    Clock clock = new Clock();
-
-    Window window = DomGlobal.window;
+    private Clock clock = new Clock();
 
     final static String URL = "json/scene-animation.json";
 
@@ -106,14 +95,18 @@ public class WebglAnimationScene extends Attachable {
                 animationClip = array.getAt(0);
                 mixer = new AnimationMixer(scene);
                 mixer.clipAction(animationClip).play();
+                doAttachScene();
+                window.addEventListener("resize", evt -> onWindowResize(), false);
 
             }
         }, (e) -> new IllegalArgumentException(e.responseText), () -> new IllegalArgumentException("OnErrorCallback"));
 
-        window.addEventListener("resize", evt -> onWindowResize(), false);
     }
 
     public void doAttachScene() {
+        if(mixer == null){
+            return;
+        }
         document.body.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
