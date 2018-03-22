@@ -84,13 +84,14 @@ public class AppSetup {
 
     @PostConstruct
     public void init() {
-        addListElement("WebGl Camera Array", webglCameraArray);
-        addListElement("WebGl Animation scene", webglAnimationScene);
-        addListElement("WebGl Geometry Cube", webglGeometryCube);
-        addListElement("WebGl Geometry Dynamic", webglGeometryDynamic);
+
+        addListElement("animation / keyframes / json", webGlAnimationKeyframesJson);
+        addListElement("animation / scene", webglAnimationScene);
+        addListElement("camera", webGlCamera);
+        addListElement("camera / array", webglCameraArray);
+        addListElement("geometry / cube", webglGeometryCube);
+        addListElement("geometry / dynamic", webglGeometryDynamic);
         addListElement("MenuDemo", menuDemo);
-        addListElement("WebGl Animation Keyframes Json", webGlAnimationKeyframesJson);
-        addListElement("WebGl Camera", webGlCamera);
 
         document.body.appendChild(root);
 

@@ -1,10 +1,7 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.HTMLDivElement;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.jboss.errai.ui.shared.api.annotations.DataField;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
@@ -16,7 +13,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
+import javax.enterprise.context.ApplicationScoped;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -24,14 +21,8 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/7/18.
  */
-@Templated(value = "webglGeometryCube.html#root")
+@ApplicationScoped
 public class WebglGeometryCube extends Attachable {
-
-    @Inject
-    @DataField
-    HTMLDivElement root;
-
-    Mesh mesh;
 
     @PostConstruct
     public void init() {
@@ -68,7 +59,6 @@ public class WebglGeometryCube extends Attachable {
     protected void doAttachInfo() {
 
     }
-
 
     private void animate() {
 
