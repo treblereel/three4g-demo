@@ -4,6 +4,8 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import org.jboss.errai.demo.client.api.FirstPersonControls;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
+import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
+import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.treblereel.gwt.three4g.Constants;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
@@ -27,6 +29,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/8/18.
  */
+@LoadAsync
 @ApplicationScoped
 public class WebglGeometryDynamic extends Attachable {
 
@@ -42,6 +45,7 @@ public class WebglGeometryDynamic extends Attachable {
 
     @PostConstruct
     public void init() {
+        loadJavaScript(JavascriptTextResource.IMPL.getFirstPersonControls().getText());
         GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
 
         camera = new PerspectiveCamera(60, aspect, 1, 20000);

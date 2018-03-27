@@ -29,6 +29,7 @@ public class InfoDiv {
     @PostConstruct
     public void init(){
         container.id = "info";
+        container.style.display = "none";
         container.appendChild(info);
 
         info.href = "http://threejs.org";

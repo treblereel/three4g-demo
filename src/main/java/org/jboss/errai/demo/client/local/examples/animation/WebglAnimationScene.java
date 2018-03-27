@@ -1,4 +1,4 @@
-package org.jboss.errai.demo.client.local.examples.geometry;
+package org.jboss.errai.demo.client.local.examples.animation;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import jsinterop.base.Js;
@@ -7,6 +7,8 @@ import jsinterop.base.JsPropertyMap;
 import org.jboss.errai.demo.client.api.OrbitControls;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
+import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
+import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -33,6 +35,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/9/18.
  */
+@LoadAsync
 @ApplicationScoped
 public class WebglAnimationScene extends Attachable {
 
@@ -46,6 +49,9 @@ public class WebglAnimationScene extends Attachable {
 
     @PostConstruct
     public void init() {
+
+        loadJavaScript(JavascriptTextResource.IMPL.getOrbitControls().getText());
+
         GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
 
         WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
