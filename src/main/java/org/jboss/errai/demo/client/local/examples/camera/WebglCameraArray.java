@@ -2,6 +2,7 @@ package org.jboss.errai.demo.client.local.examples.camera;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.jboss.errai.demo.client.local.Attachable;
+import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.ArrayCamera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
@@ -30,6 +31,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/21/18.
  */
+@LoadAsync
 @ApplicationScoped
 public class WebglCameraArray extends Attachable {
 

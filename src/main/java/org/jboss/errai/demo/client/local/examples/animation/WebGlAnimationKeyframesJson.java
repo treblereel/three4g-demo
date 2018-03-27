@@ -7,6 +7,7 @@ import jsinterop.base.JsArrayLike;
 import jsinterop.base.JsPropertyMap;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
+import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
@@ -26,6 +27,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
 import static elemental2.dom.DomGlobal.document;
@@ -34,6 +36,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/16/18.
  */
+@LoadAsync
 @ApplicationScoped
 public class WebGlAnimationKeyframesJson extends Attachable {
 

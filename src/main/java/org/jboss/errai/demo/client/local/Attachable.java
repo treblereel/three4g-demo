@@ -1,5 +1,6 @@
 package org.jboss.errai.demo.client.local;
 
+import com.google.gwt.core.client.ScriptInjector;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLIFrameElement;
 import elemental2.dom.Window;
@@ -75,6 +76,11 @@ public abstract class Attachable {
     public void setupWebGLRenderer(WebGLRenderer webGLRenderer) {
         webGLRenderer.domElement.id = "viewer";
         webGLRenderer.setSize(getWidth(), getHeight());
+    }
+
+    protected void loadJavaScript(String script) {
+        ScriptInjector.fromString(script).setWindow(ScriptInjector.TOP_WINDOW).inject();
+
     }
 
 }

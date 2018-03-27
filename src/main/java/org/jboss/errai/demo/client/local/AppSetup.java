@@ -25,11 +25,11 @@ import elemental2.dom.Node;
 import org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.jboss.errai.demo.client.local.examples.camera.WebGlCamera;
 import org.jboss.errai.demo.client.local.examples.camera.WebglCameraArray;
-import org.jboss.errai.demo.client.local.examples.geometry.WebglAnimationScene;
+import org.jboss.errai.demo.client.local.examples.animation.WebglAnimationScene;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic;
-import org.jboss.errai.demo.client.local.examples.gui.MenuDemo;
 import org.jboss.errai.ioc.client.api.EntryPoint;
+import org.jboss.errai.ioc.client.container.IOC;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.slf4j.Logger;
@@ -38,6 +38,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import static elemental2.dom.DomGlobal.document;
+import static org.treblereel.gwt.three4g.Three.loadThreeJS;
 
 
 @EntryPoint
@@ -56,75 +57,65 @@ public class AppSetup {
     private HTMLUListElement list;
 
     @Inject
-    private MenuDemo menuDemo;
-
-    @Inject
-    private WebglCameraArray webglCameraArray;
-
-    @Inject
-    private WebglGeometryCube webglGeometryCube;
-
-    @Inject
-    private WebglGeometryDynamic webglGeometryDynamic;
-
-    @Inject
-    private WebglAnimationScene webglAnimationScene;
-
-    @Inject
-    private WebGlAnimationKeyframesJson webGlAnimationKeyframesJson;
-
-    @Inject
-    private WebGlCamera webGlCamera;
-
-    @Inject
     JQueryProducer.JQuery $;
 
     @Inject
     protected InfoDiv info;
 
+    public AppSetup() {
+        loadThreeJS(); // only needs by errai
+    }
+
     @PostConstruct
     public void init() {
 
-        addListElement("animation / keyframes / json", webGlAnimationKeyframesJson);
-        addListElement("animation / scene", webglAnimationScene);
-        addListElement("camera", webGlCamera);
-        addListElement("camera / array", webglCameraArray);
-        addListElement("geometry / cube", webglGeometryCube);
-        addListElement("geometry / dynamic", webglGeometryDynamic);
-        addListElement("MenuDemo", menuDemo);
+        //addListElement("animation / cloth", WebglAnimationCloth.class);
+        addListElement("animation / keyframes / json", WebGlAnimationKeyframesJson.class);
+        addListElement("animation / scene", WebglAnimationScene.class);
+        addListElement("camera", WebGlCamera.class);
+        addListElement("camera / array", WebglCameraArray.class);
+        addListElement("geometry / cube", WebglGeometryCube.class);
+        addListElement("geometry / dynamic", WebglGeometryDynamic.class);
+        //addListElement("MenuDemo", menuDemo);
 
         document.body.appendChild(root);
 
     }
 
-    private void addListElement(String name, Attachable page) {
+    private void addListElement(String name, Class clazz) {
         HTMLAnchorElement elm = (HTMLAnchorElement) DomGlobal.document.createElement("a");
         elm.textContent = name;
         elm.classList.add("link");
         elm.addEventListener("click", evt -> {
-            for (int i = 0; i < root.childNodes.length; i++) {
-                Node node = root.childNodes.item(i);
-                if (node.nodeType == Node.ELEMENT_NODE) {
-                    HTMLElement element = ((HTMLElement) node);
-                    if (element.classList.contains("selected")) {
-                        element.classList.remove("selected");
-                    }
-                }
-            }
-            elm.classList.add("selected");
-            for (int i = 0; i < document.body.childNodes.length; i++) {
-                if (document.body.childNodes.item(i).nodeType == Node.ELEMENT_NODE) {
-                    HTMLElement element = ((HTMLElement) document.body.childNodes.item(i));
-                    if (element.tagName.toLowerCase().equals("canvas")) {
-                        element.remove();
-                    }
-                }
-            }
-            info.hide();
-            page.attach();
-
+            IOC.getAsyncBeanManager().lookupBean(clazz).getInstance(o -> {
+                clearAndSetSelected(elm);
+                ((Attachable)o).attach();
+            });
         });
         root.appendChild(elm);
+    }
+
+    private void clearAndSetSelected(HTMLAnchorElement elm) {
+        for (int i = 0; i < root.childNodes.length; i++) {
+            Node node = root.childNodes.item(i);
+            if (node.nodeType == Node.ELEMENT_NODE) {
+                HTMLElement element = ((HTMLElement) node);
+                if (element.classList.contains("selected")) {
+                    element.classList.remove("selected");
+                }
+            }
+        }
+        elm.classList.add("selected");
+        for (int i = 0; i < document.body.childNodes.length; i++) {
+            if (document.body.childNodes.item(i).nodeType == Node.ELEMENT_NODE) {
+                HTMLElement element = ((HTMLElement) document.body.childNodes.item(i));
+                if (element.tagName.toLowerCase().equals("canvas")) {
+                    element.remove();
+                }
+            }
+        }
+
+        info.hide();
     }
 
 }

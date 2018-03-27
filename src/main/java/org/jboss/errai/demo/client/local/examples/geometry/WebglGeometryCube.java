@@ -2,6 +2,7 @@ package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.jboss.errai.demo.client.local.Attachable;
+import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
@@ -21,6 +22,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/7/18.
  */
+@LoadAsync
 @ApplicationScoped
 public class WebglGeometryCube extends Attachable {
 

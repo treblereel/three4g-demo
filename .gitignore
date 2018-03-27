@@ -1,5 +1,6 @@
 *.class
 .idea/
+three4g-demo.iml
 gwt-three.iml
 
 # Package Files #

@@ -4,6 +4,7 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.Event;
 import elemental2.dom.KeyboardEvent;
 import org.jboss.errai.demo.client.local.Attachable;
+import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -34,6 +35,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/18/18.
  */
+@LoadAsync
 @ApplicationScoped
 public class WebGlCamera extends Attachable {
 

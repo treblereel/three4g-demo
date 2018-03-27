@@ -10,14 +10,6 @@
      <meta name="mobile-web-app-capable" content="yes">
      <meta name="apple-mobile-web-app-capable" content="yes">
      <link rel="stylesheet" href="<%=contextPath%>/css/application.css">
-
-     <script type="text/javascript" src="<%=contextPath%>/js/three.js"></script>
-     <script type="text/javascript" src="<%=contextPath%>/js/FirstPersonControls.js"></script>
-     <script type="text/javascript" src="<%=contextPath%>/js/OrbitControls.js"></script>
-
-     <script type="text/javascript" src="<%=contextPath%>/js//datguivr.js"></script>
-     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
-
      <script type="text/javascript" src="<%=contextPath%>/app/app.nocache.js"></script>
 </head>
 
