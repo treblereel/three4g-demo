@@ -19,5 +19,15 @@ public interface JavascriptTextResource extends ClientBundle {
     @Source("js/OrbitControls.js")
     TextResource getOrbitControls();
 
+    @Source("js/CurveExtras.js")
+    TextResource getCurveExtras();
 
+    @Source("js/ParametricGeometries.js")
+    TextResource getParametricGeometries();
+
+    @Source("js/GPUComputationRenderer.js")
+    TextResource getGPUComputationRenderer();
+
+    @Source("js/birdGeometry.js")
+    TextResource getBirdGeometry();
 }

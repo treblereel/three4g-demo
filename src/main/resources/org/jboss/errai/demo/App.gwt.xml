@@ -11,6 +11,10 @@
   <inherits name="org.jboss.errai.ui.UI"/>
   <inherits name="org.treblereel.gwt.Three"/>
 
+  <inherits name="org.treblereel.gwt.GUI"/>
+
+
+
   <set-property name="gwt.logging.enabled" value="TRUE"/>
 
   <!-- Uncomment the line below to enable all logging statements (default level is "INFO"). -->

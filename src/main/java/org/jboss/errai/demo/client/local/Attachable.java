@@ -4,18 +4,22 @@ import com.google.gwt.core.client.ScriptInjector;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLIFrameElement;
 import elemental2.dom.Window;
+import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/13/18.
  */
+@LoadAsync
+@ApplicationScoped
 public abstract class Attachable {
 
     @Inject
