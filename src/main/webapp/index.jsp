@@ -10,7 +10,12 @@
      <meta name="mobile-web-app-capable" content="yes">
      <meta name="apple-mobile-web-app-capable" content="yes">
      <link rel="stylesheet" href="<%=contextPath%>/css/application.css">
+     <link rel="stylesheet" href="<%=contextPath%>/css/dat.gui.css">
+
+
      <script type="text/javascript" src="<%=contextPath%>/app/app.nocache.js"></script>
+
+     <script type="text/javascript" src="<%=contextPath%>/js/aframe-master.js"></script>
 </head>
 
 <body>

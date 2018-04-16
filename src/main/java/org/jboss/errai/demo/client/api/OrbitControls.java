@@ -16,6 +16,7 @@ public class OrbitControls extends EventDispatcher {
     public Number maxPolarAngle;
     public Number minDistance;
     public Number maxDistance;
+    public boolean enableZoom;
 
     @JsConstructor
     public OrbitControls(Camera camera){
@@ -26,5 +27,7 @@ public class OrbitControls extends EventDispatcher {
     public OrbitControls(Camera camera, HTMLElement domElement){
 
     }
+
+    public native void update();
 
 }
