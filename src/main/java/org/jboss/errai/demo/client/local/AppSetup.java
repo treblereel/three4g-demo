@@ -16,52 +16,35 @@
 
 package org.jboss.errai.demo.client.local;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import elemental2.core.Function;
-import elemental2.dom.Document;
+import static elemental2.dom.DomGlobal.document;
+import static org.treblereel.gwt.datgui4g.DatGUIEntryPoint.loadDatGUIJS;
+import static org.treblereel.gwt.three4g.Three.loadThreeJS;
+
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.HTMLUListElement;
 import elemental2.dom.Node;
-import jsinterop.base.Js;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import org.jboss.errai.demo.client.local.examples.aframe.AframeTest;
 import org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.jboss.errai.demo.client.local.examples.animation.WebglAnimationScene;
 import org.jboss.errai.demo.client.local.examples.camera.WebGlCamera;
 import org.jboss.errai.demo.client.local.examples.camera.WebglCameraArray;
-import org.jboss.errai.demo.client.local.examples.geometry.ParametricGeometryExample;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic;
 import org.jboss.errai.demo.client.local.examples.gpgpu.WebglGpgpuBirds;
-import org.jboss.errai.demo.client.local.examples.gui.Utils;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.ioc.client.container.IOC;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.slf4j.Logger;
-import org.treblereel.gwt.datgui4g.BooleanController;
 import org.treblereel.gwt.datgui4g.GUI;
-import org.treblereel.gwt.datgui4g.GUIProperty;
-import org.treblereel.gwt.datgui4g.NumberControllerBox;
-import org.treblereel.gwt.datgui4g.NumberControllerSlider;
-import org.treblereel.gwt.datgui4g.OnChange;
-import org.treblereel.gwt.datgui4g.OnClick;
-import org.treblereel.gwt.datgui4g.OnFinishChange;
-import org.treblereel.gwt.datgui4g.OptionController;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static elemental2.dom.DomGlobal.document;
 //import static org.treblereel.gwt.datgui4g.DatGUIEntryPoint.loadDatGUIJS;
-import static org.treblereel.gwt.datgui4g.DatGUIEntryPoint.loadDatGUIJS;
-import static org.treblereel.gwt.three4g.Three.loadThreeJS;
 
 
 @EntryPoint
@@ -82,8 +65,8 @@ public class AppSetup {
     @Inject
     JQueryProducer.JQuery $;
 
-    @Inject
-    protected InfoDiv info;
+//    @Inject
+//    protected InfoDiv info;
 
     GUI gui;
 
@@ -97,19 +80,19 @@ public class AppSetup {
     @PostConstruct
     public void init() {
 
-        Function result = document.registerElement("a-frame", new Document.RegisterElementOptionsType() {
-            @Override
-            public String getExtends() {
-                return "HTMLElement";
-            }
-
-            @Override
-            public void setExtends(String extends_) {
-
-            }
-        });
-
-        logger.warn("RESULT " + result.name + " " + result.displayName + " " + result.getClass().getSimpleName());
+//        Function result = document.registerElement("a-frame", new Document.RegisterElementOptionsType() {
+//            @Override
+//            public String getExtends() {
+//                return "HTMLElement";
+//            }
+//
+//            @Override
+//            public void setExtends(String extends_) {
+//
+//            }
+//        });
+//
+//        logger.warn("RESULT " + result.name + " " + result.displayName + " " + result.getClass().getSimpleName());
 
 
         //addListElement("animation / cloth", WebglAnimationCloth.class);
@@ -239,7 +222,7 @@ public class AppSetup {
             }
         }
 
-        info.hide();
+//        info.hide();
     }
 
 }

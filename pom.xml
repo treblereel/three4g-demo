@@ -47,6 +47,12 @@
                 <artifactId>gwt-dev</artifactId>
                 <version>${gwt.version}</version>
             </dependency>
+            <dependency><!-- needs to be removed, but now have problems. For some reason 1.0.0-beta-1 of
+            elemental2-dom is used when gwt-three is imported as a dependency. Used dependency:tree to find it out -->
+                <groupId>com.google.elemental2</groupId>
+                <artifactId>elemental2-dom</artifactId>
+                <version>1.0.0-RC1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -99,6 +105,12 @@
             <groupId>org.treblereel</groupId>
             <artifactId>gwt-three</artifactId>
             <version>0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.bdshadow</groupId>
+            <artifactId>aframevr4j</artifactId>
+            <version>-SNAPSHOT</version>
         </dependency>
 
 <!--        <dependency>

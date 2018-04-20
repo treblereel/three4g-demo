@@ -14,8 +14,6 @@
 
 
      <script type="text/javascript" src="<%=contextPath%>/app/app.nocache.js"></script>
-
-     <script type="text/javascript" src="<%=contextPath%>/js/aframe-master.js"></script>
 </head>
 
 <body>
