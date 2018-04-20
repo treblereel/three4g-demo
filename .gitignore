@@ -10,6 +10,9 @@ gwt-three.iml
 # gwt caches and compiled units #
 war/gwt_bree/
 gwt-unitCache/
+.errai
+app.nocache.js
+clear.cache.gif
 
 # boilerplate generated classes #
 .apt_generated/

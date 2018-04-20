@@ -25,71 +25,20 @@ public class AframeTest extends Attachable {
     @Inject
     Logger logger;
 
-
-    @Inject
-    AframeBox box;
-
-    @Inject
-    AframeSphere sphere;
-
-    @Inject
-    AframeScene scene;
-
-    @Inject
-    AframeCylinder cylinder;
-
-    @Inject
-    AframePlane plane;
-
-    @Inject
-    AframeSky sky;
-
     @PostConstruct
     public void init() {
 
+        org.bdshadow.gwt.aframevr.AframeScene scene = new org.bdshadow.gwt.aframevr.AframeScene(root);
+        org.bdshadow.gwt.aframevr.AframeBox box = new org.bdshadow.gwt.aframevr.AframeBox();
 
         scene.setWidth(400);
         scene.setHeight(400);
 
-        root.offsetWidth = 400;
-
+        box.setColor("#bc2929");
         box.setPosition("-1 0.5 -3");
         box.setRotation("0 45 0");
 
-        sphere.setRadius(1.25);
-        sphere.setPosition("0 1.25 -5");
-        sphere.setColor("#EF2D5E");
-
-        cylinder.setRadius(0.5);
-        cylinder.setPosition("1 0.75 -3");
-        cylinder.setColor("#FFC65D");
-        cylinder.setHeight(1.5);
-
-        plane.setRotation("-90 0 0");
-        plane.setPosition("0 0 -4");
-        plane.setColor("#7BC8A4");
-        plane.setHeight(4);
-        plane.setWidth(4);
-
-        sky.setColor("#ECECEC");
-
-        root.appendChild(scene);
         scene.appendChild(box);
-        scene.appendChild(sphere);
-        scene.appendChild(cylinder);
-        scene.appendChild(plane);
-
-
-
-
-        logger.warn("BOX IS: " + box.getColor() + " | " + box.getAttribute("placeholder"));
-
-
-        logger.warn("check: " + box.object3D.name);
-
-
-        box.setColor("#bc2929");
-
     }
 
     @Override
