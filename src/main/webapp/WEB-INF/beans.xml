@@ -31,6 +31,7 @@
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.custom.ParametricGeometriesTorusKnotGeometry" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglGeometriesParametric" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.ThreeJsFogExample" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.ParametricGeometryExample$1" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.ParametricGeometryExample$2" />
@@ -38,10 +39,8 @@
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.ParametricGeometryExample" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle$StyleWebglAnimationScene" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.aframe.AframeFogExample" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.aframe.ThreeJsFogExample" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.aframe.css.AframeCssClientBundle$StyleWebglAnimationScene" />
-    <exclude name = "org.jboss.errai.demo.client.local.examples.aframe.css.AframeCssClientBundle" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.aframe.PureAframeFogExample" />
+    <exclude name = "org.jboss.errai.demo.client.local.examples.aframe.AframeThreejsFogExample" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebGlCamera" />
     <exclude name = "org.jboss.errai.demo.client.local.examples.camera.WebglCameraArray" />
     <exclude name = "org.jboss.errai.demo.client.local.InfoDiv" />

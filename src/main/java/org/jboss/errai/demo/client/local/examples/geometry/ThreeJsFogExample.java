@@ -1,10 +1,11 @@
-package org.jboss.errai.demo.client.local.examples.aframe;
+package org.jboss.errai.demo.client.local.examples.geometry;
 
 import static elemental2.dom.DomGlobal.document;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.Float32Array;
 import elemental2.core.JsObject;
+import elemental2.core.ObjectPropertyDescriptor;
 import elemental2.core.Uint8Array;
 import elemental2.core.Uint8ClampedArray;
 import elemental2.dom.CanvasRenderingContext2D;
@@ -16,7 +17,7 @@ import jsinterop.base.Js;
 import org.jboss.errai.demo.client.api.FirstPersonControls;
 import org.jboss.errai.demo.client.api.ImprovedNoise;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.jboss.errai.demo.client.local.examples.aframe.css.AframeCssClientBundle;
+import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
 import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.treblereel.gwt.three4g.Constants;
@@ -55,7 +56,7 @@ public class ThreeJsFogExample extends Attachable {
     loadJavaScript(JavascriptTextResource.IMPL.getImprovedNoise().getText());
     loadJavaScript(JavascriptTextResource.IMPL.getFirstPersonControls().getText());
 
-    AframeCssClientBundle.IMPL.fogAnimationScene().ensureInjected();
+    GeometryCssClientBundle.IMPL.fogAnimationScene().ensureInjected();
 
     this.camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
     this.controls = new FirstPersonControls(camera);
@@ -77,7 +78,7 @@ public class ThreeJsFogExample extends Attachable {
     Float32Array vertices = Js.uncheckedCast(
         JsObject.getOwnPropertyDescriptor(geometry.getAttribute("position"), "array").getValue());
     for (int i = 0, j = 0, l = vertices.length; i < l && j < l - 1; i++, j += 3) {
-      vertices.setAt(j + 1,data.getAt(i) * 10);
+      vertices.setAt(j + 1, data.getAt(i) * 10);
     }
 
     CanvasTexture texture = new CanvasTexture(generateTexture(data, worldWidth, worldDepth));
@@ -121,7 +122,9 @@ public class ThreeJsFogExample extends Attachable {
     canvas.width = width;
     canvas.height = height;
     CanvasRenderingContext2D context = Js.uncheckedCast(canvas.getContext("2d"));
-    JsObject.defineProperty(context, "fillStyle", new String("#000"));
+    ObjectPropertyDescriptor fillStyle = ObjectPropertyDescriptor.create();
+    fillStyle.setValue("#000");
+    JsObject.defineProperty(context, "fillStyle", fillStyle);
     context.fillRect(0, 0, width, height);
     ImageData image = context.getImageData(0, 0, canvas.width, canvas.height);
     Uint8ClampedArray imageData = image.data;
@@ -176,7 +179,7 @@ public class ThreeJsFogExample extends Attachable {
 
   @Override
   protected void doAttachInfo() {
-
+    info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml("webgl - geometry - terrain + fog");
   }
 
   private void animate() {

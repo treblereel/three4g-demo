@@ -43,6 +43,9 @@ public abstract class Attachable {
 
     protected abstract void doAttachInfo();
 
+    public void detach() {
+
+    }
 
     public void attach() {
         doAttachScene();
