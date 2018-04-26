@@ -107,10 +107,16 @@
             <version>0.1-SNAPSHOT</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>com.github.bdshadow</groupId>-->
+            <!--<artifactId>aframevr4j</artifactId>-->
+            <!--<version>-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
         <dependency>
-            <groupId>com.github.bdshadow</groupId>
-            <artifactId>aframevr4j</artifactId>
-            <version>-SNAPSHOT</version>
+            <groupId>org.bdshadow</groupId>
+            <artifactId>gwt-aframevr</artifactId>
+            <version>0.1-SNAPSHOT</version>
         </dependency>
 
 <!--        <dependency>

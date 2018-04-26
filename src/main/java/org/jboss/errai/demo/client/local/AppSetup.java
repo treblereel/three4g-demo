@@ -28,7 +28,7 @@ import elemental2.dom.HTMLUListElement;
 import elemental2.dom.Node;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.jboss.errai.demo.client.local.examples.aframe.AframeTest;
+import org.jboss.errai.demo.client.local.examples.aframe.ThreeJsFogExample;
 import org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.jboss.errai.demo.client.local.examples.animation.WebglAnimationScene;
 import org.jboss.errai.demo.client.local.examples.camera.WebGlCamera;
@@ -105,7 +105,7 @@ public class AppSetup {
         //addListElement("geometry / parametric geometry", ParametricGeometryExample.class);
         addListElement("geometry / parametric geometry", WebglGeometriesParametric.class);
         addListElement("WebglGpgpuBirds", WebglGpgpuBirds.class);
-        addListElement("AframeTest", AframeTest.class);
+        addListElement("ThreeJsFogExample", ThreeJsFogExample.class);
 
 /*        GUIProperty property = new GUIProperty();
         property.autoPlace = false;
