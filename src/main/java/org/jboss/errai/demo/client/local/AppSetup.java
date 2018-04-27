@@ -28,7 +28,9 @@ import elemental2.dom.HTMLUListElement;
 import elemental2.dom.Node;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.jboss.errai.demo.client.local.examples.aframe.AframeTest;
+import org.jboss.errai.demo.client.local.examples.aframe.AframeThreejsFogExample;
+import org.jboss.errai.demo.client.local.examples.aframe.PureAframeFogExample;
+import org.jboss.errai.demo.client.local.examples.geometry.ThreeJsFogExample;
 import org.jboss.errai.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.jboss.errai.demo.client.local.examples.animation.WebglAnimationScene;
 import org.jboss.errai.demo.client.local.examples.camera.WebGlCamera;
@@ -50,6 +52,8 @@ import org.treblereel.gwt.datgui4g.GUI;
 @EntryPoint
 @Templated(value = "app.html#root")
 public class AppSetup {
+
+    private Attachable current;
 
     @Inject
     @DataField
@@ -105,7 +109,9 @@ public class AppSetup {
         //addListElement("geometry / parametric geometry", ParametricGeometryExample.class);
         addListElement("geometry / parametric geometry", WebglGeometriesParametric.class);
         addListElement("WebglGpgpuBirds", WebglGpgpuBirds.class);
-        addListElement("AframeTest", AframeTest.class);
+        addListElement("ThreeJsFogExample", ThreeJsFogExample.class);
+        addListElement("AframeThreejsFogExample", AframeThreejsFogExample.class);
+        addListElement("PureAframeFogExample", PureAframeFogExample.class);
 
 /*        GUIProperty property = new GUIProperty();
         property.autoPlace = false;
@@ -196,7 +202,11 @@ public class AppSetup {
         elm.addEventListener("click", evt -> {
             IOC.getAsyncBeanManager().lookupBean(clazz).getInstance(o -> {
                 clearAndSetSelected(elm);
-                ((Attachable)o).attach();
+                if (current != null) {
+                    current.detach();
+                }
+                current = ((Attachable)o);
+                current.attach();
             });
         });
         root.appendChild(elm);

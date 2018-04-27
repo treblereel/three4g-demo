@@ -30,4 +30,7 @@ public interface JavascriptTextResource extends ClientBundle {
 
     @Source("js/birdGeometry.js")
     TextResource getBirdGeometry();
+
+    @Source("js/ImprovedNoise.js")
+    TextResource getImprovedNoise();
 }

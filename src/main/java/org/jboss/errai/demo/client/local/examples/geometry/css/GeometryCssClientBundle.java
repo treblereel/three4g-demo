@@ -17,4 +17,7 @@ public interface GeometryCssClientBundle extends ClientBundle {
     @Source("geometryCssClientBundle.css")
     StyleWebglAnimationScene webglAnimationScene();
 
+    @Source("fogCssClientBundle.css")
+    StyleWebglAnimationScene fogAnimationScene();
+
 }
