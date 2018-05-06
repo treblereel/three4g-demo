@@ -18,7 +18,7 @@ package org.jboss.errai.demo.client.local;
 
 import static elemental2.dom.DomGlobal.document;
 import static org.treblereel.gwt.datgui4g.DatGUIEntryPoint.loadDatGUIJS;
-import static org.treblereel.gwt.three4g.Three.loadThreeJS;
+import static org.treblereel.gwt.three4g.Three4G.loadThreeJS;
 
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAnchorElement;

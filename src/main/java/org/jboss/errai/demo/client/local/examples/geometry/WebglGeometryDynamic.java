@@ -6,14 +6,16 @@ import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
 import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.treblereel.gwt.three4g.Constants;
+import org.slf4j.Logger;
+import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.Color;
+import org.treblereel.gwt.three4g.core.Geometry;
 import org.treblereel.gwt.three4g.geometries.PlaneGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
-import org.treblereel.gwt.three4g.materials.MeshBasicMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.FogExp2;
@@ -22,6 +24,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -67,13 +70,12 @@ public class WebglGeometryDynamic extends Attachable {
         }
         Texture texture = new TextureLoader().load("img/water.jpg");
 
-        texture.wrapS = texture.wrapT = Constants.RepeatWrapping;
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(5, 5);
 
         MeshBasicMaterialParameters meshBasicMaterialParameters = new MeshBasicMaterialParameters();
 
         meshBasicMaterialParameters.color = new Color(0x0044ff);
-        //meshBasicMaterialParameters.color = new Color("red");
         meshBasicMaterialParameters.map = texture;
 
         MeshBasicMaterial material = new MeshBasicMaterial(meshBasicMaterialParameters);
@@ -82,8 +84,6 @@ public class WebglGeometryDynamic extends Attachable {
         webGLRenderer = new WebGLRenderer();
         setupWebGLRenderer(webGLRenderer);
         window.addEventListener("resize", evt -> onWindowResize(), false);
-
-
     }
 
     private void render() {
@@ -93,7 +93,7 @@ public class WebglGeometryDynamic extends Attachable {
         for (int i = 0, l = geometry.vertices.length; i < l; i++) {
             geometry.vertices[i].y = new Float(35 * Math.sin(i / 5 + (time + i) / 7));
         }
-        mesh.geometry.verticesNeedUpdate = true;
+        ((Geometry)mesh.geometry).verticesNeedUpdate = true;
         controls.update(delta);
         webGLRenderer.render(scene, camera);
     }

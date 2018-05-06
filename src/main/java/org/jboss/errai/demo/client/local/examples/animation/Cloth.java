@@ -1,11 +1,6 @@
 package org.jboss.errai.demo.client.local.examples.animation;
 
-import jsinterop.annotations.JsFunction;
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import org.treblereel.gwt.three4g.geometries.ParametricGeometry;
-import org.treblereel.gwt.three4g.geometries.ParametricGeometryFunction;
 import org.treblereel.gwt.three4g.math.Vector3;
 
 /**

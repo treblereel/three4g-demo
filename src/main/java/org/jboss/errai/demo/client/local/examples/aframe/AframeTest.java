@@ -31,8 +31,8 @@ public class AframeTest extends Attachable {
         org.bdshadow.gwt.aframevr.AframeScene scene = new org.bdshadow.gwt.aframevr.AframeScene(root);
         org.bdshadow.gwt.aframevr.AframeBox box = new org.bdshadow.gwt.aframevr.AframeBox();
 
-        scene.setWidth(400);
-        scene.setHeight(400);
+        //scene.setWidth(400);
+        //scene.setHeight(400);
 
         box.setColor("#bc2929");
         box.setPosition("-1 0.5 -3");

@@ -21,12 +21,12 @@
         <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
     </properties>
 
-    <repositories>
+<!--    <repositories>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-    </repositories>
+    </repositories>-->
 
     <dependencyManagement>
         <dependencies>
@@ -102,28 +102,34 @@
         </dependency>
 
         <dependency>
-            <groupId>org.treblereel</groupId>
-            <artifactId>gwt-three</artifactId>
+            <groupId>org.treblereel.gwt</groupId>
+            <artifactId>three4g</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>com.github.bdshadow</groupId>
-            <artifactId>aframevr4j</artifactId>
-            <version>-SNAPSHOT</version>
+            <groupId>org.bdshadow</groupId>
+            <artifactId>gwt-aframevr</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.treblereel</groupId>
+            <artifactId>datgui4g</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.intel.analytics.bigdl.core.native.opencv</groupId>
+            <artifactId>opencv-java-x86_64-linux</artifactId>
+            <version>0.5.0</version>
         </dependency>
 
 <!--        <dependency>
-            <groupId>org.treblereel</groupId>
-            <artifactId>datgui4g</artifactId>
-            <version>0.1-SNAPSHOT</version>
-        </dependency>-->
-
-        <dependency>
             <groupId>com.github.treblereel</groupId>
             <artifactId>datgui4g</artifactId>
             <version>0.1</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

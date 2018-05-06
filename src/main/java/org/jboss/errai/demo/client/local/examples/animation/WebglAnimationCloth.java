@@ -4,40 +4,16 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.inject.Inject;
-import org.jboss.errai.demo.client.api.OrbitControls;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.slf4j.Logger;
-import org.treblereel.gwt.three4g.Constants;
-import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
-import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Color;
-import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.ParametricGeometry;
-import org.treblereel.gwt.three4g.geometries.ParametricGeometryFunction;
-import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
-import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
-import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
-import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.Material;
-import org.treblereel.gwt.three4g.materials.MeshDepthMaterial;
-import org.treblereel.gwt.three4g.materials.MeshDepthMaterialParameters;
-import org.treblereel.gwt.three4g.materials.MeshLambertMaterial;
-import org.treblereel.gwt.three4g.materials.MeshLambertMaterialParameters;
-import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
-import org.treblereel.gwt.three4g.scenes.Fog;
-import org.treblereel.gwt.three4g.scenes.Scene;
-import org.treblereel.gwt.three4g.textures.Texture;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Date;
-
-import static elemental2.dom.DomGlobal.document;
-import static org.treblereel.gwt.three4g.Constants.DoubleSide;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

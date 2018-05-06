@@ -7,7 +7,7 @@ import org.jboss.errai.demo.client.local.gui.GUIVR;
 import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
+import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
 import javax.annotation.PostConstruct;

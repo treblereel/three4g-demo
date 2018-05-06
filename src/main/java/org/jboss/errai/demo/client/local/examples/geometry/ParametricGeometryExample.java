@@ -3,27 +3,17 @@ package org.jboss.errai.demo.client.local.examples.geometry;
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.inject.Inject;
 import org.jboss.errai.demo.client.api.OrbitControls;
-import org.jboss.errai.demo.client.api.ParametricGeometries;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
 import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Color;
-import org.treblereel.gwt.three4g.core.Geometry;
-import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.geometries.ParametricGeometry;
 import org.treblereel.gwt.three4g.geometries.ParametricGeometryFunction;
-import org.treblereel.gwt.three4g.lights.PointLight;
-import org.treblereel.gwt.three4g.materials.LineBasicMaterial;
-import org.treblereel.gwt.three4g.materials.LineBasicMaterialParameters;
-import org.treblereel.gwt.three4g.materials.Material;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
-import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
-import org.treblereel.gwt.three4g.materials.MeshPhongMaterialParameters;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Matrix4;
 import org.treblereel.gwt.three4g.math.Vector3;
-import org.treblereel.gwt.three4g.objects.LineSegments;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
@@ -32,7 +22,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 
 import static elemental2.dom.DomGlobal.document;
-import static org.treblereel.gwt.three4g.Constants.DoubleSide;
 
 /**
  * Based on example https://codepen.io/znak/pen/OPZwVO

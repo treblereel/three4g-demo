@@ -17,11 +17,12 @@ import org.jboss.errai.demo.client.local.examples.gpgpu.shader.ShaderClientBundl
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
 import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.slf4j.Logger;
-import org.treblereel.gwt.three4g.Constants;
+import org.treblereel.gwt.three4g.THREE;
+
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Color;
 import org.treblereel.gwt.three4g.materials.ShaderMaterial;
-import org.treblereel.gwt.three4g.materials.ShaderMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.ShaderMaterialParameters;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
@@ -162,7 +163,7 @@ public class WebglGpgpuBirds extends Attachable {
 
         shaderMaterialParameters.vertexShader = ShaderClientBundle.IMPL.getBirdVS().getText();
         shaderMaterialParameters.fragmentShader = ShaderClientBundle.IMPL.getBirdFS().getText();
-        shaderMaterialParameters.side = Constants.DoubleSide;
+        shaderMaterialParameters.side = THREE.DoubleSide;
 
         ShaderMaterial material = new ShaderMaterial(shaderMaterialParameters);
         Mesh birdMesh = new Mesh( geometry, material );
@@ -279,11 +280,11 @@ public class WebglGpgpuBirds extends Attachable {
         addToJsPropertyMap(velocityVariableShaderMaterial.uniforms, "predator", new Vector3());
 
         velocityVariableShaderMaterial.defines.set("BOUNDS", BigDecimal.valueOf(BOUNDS).setScale(2, BigDecimal.ROUND_HALF_UP));
-        velocityVariable.set("wrapS",Constants.RepeatWrapping);
-        velocityVariable.set("wrapT",Constants.RepeatWrapping);
+        velocityVariable.set("wrapS",THREE.RepeatWrapping);
+        velocityVariable.set("wrapT",THREE.RepeatWrapping);
 
-        positionVariable.set("wrapS",Constants.RepeatWrapping);
-        positionVariable.set("wrapT",Constants.RepeatWrapping);
+        positionVariable.set("wrapS",THREE.RepeatWrapping);
+        positionVariable.set("wrapT",THREE.RepeatWrapping);
 
 
 

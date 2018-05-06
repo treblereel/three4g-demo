@@ -3,7 +3,6 @@
 
   <scan>
     <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
-    <exclude name = "org.jboss.errai.demo.client.local.AppSetup$1" />
     <exclude name = "org.jboss.errai.demo.client.local.JQueryProducer$JQueryElement" />
     <exclude name = "org.jboss.errai.demo.client.local.gui.GUIVR" />
     <exclude name = "org.jboss.errai.demo.client.local.gui.OnChangeEvent" />

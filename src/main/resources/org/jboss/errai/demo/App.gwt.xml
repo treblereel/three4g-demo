@@ -9,7 +9,7 @@
   <inherits name="org.jboss.errai.common.ErraiCommon" />
   <inherits name="org.jboss.errai.enterprise.CDI" />
   <inherits name="org.jboss.errai.ui.UI"/>
-  <inherits name="org.treblereel.gwt.Three"/>
+  <inherits name="org.treblereel.gwt.Three4G"/>
   <inherits name="org.bdshadow.gwt.Aframevr"/>
 
   <inherits name="org.treblereel.gwt.GUI"/>

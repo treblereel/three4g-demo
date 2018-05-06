@@ -2,14 +2,13 @@ package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.inject.Inject;
-import elemental2.dom.Document;
 import org.jboss.errai.demo.client.api.ParametricGeometries;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.custom.ParametricGeometriesTorusKnotGeometry;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
 import org.jboss.errai.ioc.client.api.LoadAsync;
 import org.slf4j.Logger;
-import org.treblereel.gwt.three4g.Constants;
+import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
@@ -18,10 +17,10 @@ import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
-import org.treblereel.gwt.three4g.materials.MeshPhongMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.MeshPhongMaterialParameters;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
+import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
@@ -59,7 +58,6 @@ public class WebglGeometriesParametric extends Attachable {
         loadJavaScript(JavascriptTextResource.IMPL.getParametricGeometries().getText());
         loadJavaScript(JavascriptTextResource.IMPL.getCurveExtras().getText());
 
-
         camera = new PerspectiveCamera(fov, aspect, near, far);
         camera.position.y = y;
         scene = new Scene();
@@ -73,12 +71,12 @@ public class WebglGeometriesParametric extends Attachable {
         scene.add(camera);
         //
         Texture map = new TextureLoader().load("img/UV_Grid_Sm.jpg");
-        map.wrapS = map.wrapT = Constants.RepeatWrapping;
+        map.wrapS = map.wrapT = THREE.RepeatWrapping;
         map.anisotropy = 16;
 
         MeshPhongMaterialParameters meshPhongMaterialParameters = new MeshPhongMaterialParameters();
         meshPhongMaterialParameters.map = map;
-        meshPhongMaterialParameters.side = Constants.DoubleSide;
+        meshPhongMaterialParameters.side = THREE.DoubleSide;
 
         MeshPhongMaterial material = new MeshPhongMaterial(meshPhongMaterialParameters);
         //
@@ -105,36 +103,6 @@ public class WebglGeometriesParametric extends Attachable {
         object.position.set(ox, oy, oz);
         object.scale.multiplyScalar(multiplyScalar);
         scene.add(object);
-
-
-/*        new GUI()
-
-                .add("near", near).onChange(e -> {
-            camera.near = ((Double) e).floatValue();
-
-        }).done().add("fov", fov).onChange(e -> {
-            camera.fov = ((Double) e).floatValue();
-        }).done().add("far", far).onChange(e -> {
-            camera.far = ((Double)e).floatValue();
-        })
-                .done()
-                .add("camera.position", y).onChange(e -> {
-            camera.position.y =((Double) e).floatValue();
-        }).done()
-                .add("ox", ox).onChange(e -> {
-            object.position.x = ((Double) e).floatValue();
-        }).done()
-                .add("oy", oy).onChange(e -> {
-            object.position.y = ((Double) e).floatValue();
-        }).done()
-                .add("oz", oz).onChange(e -> {
-            object.position.z = ((Double) e).floatValue();
-        }).done()
-
-
-                .finishAndBuild();*/
-
-
 
         org.jboss.errai.demo.client.local.examples.geometry.custom.GrannyKnot grannyKnot = new org.jboss.errai.demo.client.local.examples.geometry.custom.GrannyKnot();
         ParametricGeometriesTorusKnotGeometry torus = new ParametricGeometriesTorusKnotGeometry(50, 10, 50, 20, 2, 3);
