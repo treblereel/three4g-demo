@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.2//EN"
-            "http://google-web-toolkit.googlecode.com/svn/tags/2.8.2/distro-source/core/src/gwt-module.dtd">
-
 <module rename-to="app">
 
-  <inherits name="org.jboss.errai.enterprise.All" />
-  <inherits name="org.jboss.errai.ioc.Container" />
-  <inherits name="org.jboss.errai.common.ErraiCommon" />
-  <inherits name="org.jboss.errai.enterprise.CDI" />
-  <inherits name="org.jboss.errai.ui.UI"/>
-  <inherits name="org.treblereel.gwt.Three4G"/>
-  <inherits name="org.bdshadow.gwt.Aframevr"/>
+    <inherits name='com.google.gwt.user.User' />
+    <inherits name="com.google.gwt.logging.Logging"/>
 
-  <inherits name="org.treblereel.gwt.GUI"/>
+    <inherits name="org.treblereel.gwt.Three4G"/>
+    <inherits name="org.treblereel.gwt.three4g.Examples"/>
 
 
+    <entry-point class='org.jboss.errai.demo.client.local.AppSetup'/>
+    <source path='client' />
+    <source path='shared' />
 
-  <set-property name="gwt.logging.enabled" value="TRUE"/>
-
-  <!-- Uncomment the line below to enable all logging statements (default level is "INFO"). -->
-  <set-property name="gwt.logging.logLevel" value="ALL"/>
-  <add-linker name="xsiframe"/>
-  <set-property name="compiler.useSourceMaps" value="true"/>
-  <set-configuration-property name="includeSourceMapUrl" 
-    value="http://localhost:8080/three4g-demo/src/__HASH___sourceMap__FRAGMENT__.json"/>
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <set-property name="gwt.logging.logLevel" value="ALL"/>
 </module>

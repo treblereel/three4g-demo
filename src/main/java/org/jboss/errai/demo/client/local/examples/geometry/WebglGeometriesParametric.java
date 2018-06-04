@@ -1,13 +1,12 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.inject.Inject;
 import org.jboss.errai.demo.client.api.ParametricGeometries;
+import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.custom.ParametricGeometriesTorusKnotGeometry;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
-import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.slf4j.Logger;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -24,8 +23,6 @@ import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import java.util.Date;
 
 import static elemental2.dom.DomGlobal.document;
@@ -34,8 +31,6 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 4/11/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class WebglGeometriesParametric extends Attachable {
 
     float fov = 45f;
@@ -49,11 +44,9 @@ public class WebglGeometriesParametric extends Attachable {
 
     float multiplyScalar = 30f;
 
-    @Inject
-    Logger logger;
+    public static final String name = "geometries / parametric";
 
-    @PostConstruct
-    public void init() {
+    public WebglGeometriesParametric() {
 
         loadJavaScript(JavascriptTextResource.IMPL.getParametricGeometries().getText());
         loadJavaScript(JavascriptTextResource.IMPL.getCurveExtras().getText());
@@ -122,11 +115,6 @@ public class WebglGeometriesParametric extends Attachable {
         object.scale.multiplyScalar(2);
         scene.add(object);
 
-
-        //
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
         setupWebGLRenderer(webGLRenderer);
 
     }
@@ -151,9 +139,11 @@ public class WebglGeometriesParametric extends Attachable {
     }
 
     private void animate() {
-        render();
+        StatsProducer.getStats().update();
+
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (root.parentNode != null) {
+                render();
                 animate();
             }
         });
@@ -161,13 +151,13 @@ public class WebglGeometriesParametric extends Attachable {
 
     @Override
     public void doAttachScene() {
-        document.body.appendChild(webGLRenderer.domElement);
+        root.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" webgl - parametric geometries");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" webgl - parametric geometries");
     }
 }

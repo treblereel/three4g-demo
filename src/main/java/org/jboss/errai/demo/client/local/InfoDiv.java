@@ -5,11 +5,6 @@ import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 
-import javax.annotation.PostConstruct;
-import javax.ejb.Startup;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Singleton;
-
 import static elemental2.dom.DomGlobal.document;
 
 /**
@@ -17,17 +12,13 @@ import static elemental2.dom.DomGlobal.document;
  * Created by treblereel on 3/20/18.
  */
 
-@Startup
-@Singleton
 public class InfoDiv {
 
     private HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
     private HTMLAnchorElement info = (HTMLAnchorElement) DomGlobal.document.createElement("a");
     private HTMLElement text = (HTMLElement) DomGlobal.document.createElement("span");
 
-
-    @PostConstruct
-    public void init(){
+    public InfoDiv(){
         container.id = "info";
         container.style.display = "none";
         container.appendChild(info);

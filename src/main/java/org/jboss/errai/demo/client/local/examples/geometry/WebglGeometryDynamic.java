@@ -2,11 +2,11 @@ package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.jboss.errai.demo.client.api.FirstPersonControls;
+import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
-import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.slf4j.Logger;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
@@ -22,23 +22,20 @@ import org.treblereel.gwt.three4g.scenes.FogExp2;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import static elemental2.dom.DomGlobal.document;
 
 /**
- * @author Dmitrii Tikhomirov <chani@me.com>
+ * @author Dmitrii Tikhomirov
  * Created by treblereel on 3/8/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class WebglGeometryDynamic extends Attachable {
 
 
     private FirstPersonControls controls;
     private PlaneGeometry geometry;
+
+    public static final String name = "geometry / dynamic";
+
 
     int worldWidth = 128;
     int worldDepth = 128;
@@ -46,8 +43,7 @@ public class WebglGeometryDynamic extends Attachable {
     private Clock clock = new Clock();
 
 
-    @PostConstruct
-    public void init() {
+    public WebglGeometryDynamic() {
         loadJavaScript(JavascriptTextResource.IMPL.getFirstPersonControls().getText());
         GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
 
@@ -81,9 +77,7 @@ public class WebglGeometryDynamic extends Attachable {
         MeshBasicMaterial material = new MeshBasicMaterial(meshBasicMaterialParameters);
         mesh = new Mesh(geometry, material);
         scene.add(mesh);
-        webGLRenderer = new WebGLRenderer();
         setupWebGLRenderer(webGLRenderer);
-        window.addEventListener("resize", evt -> onWindowResize(), false);
     }
 
     private void render() {
@@ -99,9 +93,10 @@ public class WebglGeometryDynamic extends Attachable {
     }
 
     private void animate() {
-        render();
+        StatsProducer.getStats().update();
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (root.parentNode != null) {
+                render();
                 animate();
             }
         });
@@ -109,14 +104,14 @@ public class WebglGeometryDynamic extends Attachable {
 
     @Override
     public void doAttachScene() {
-        document.body.appendChild(webGLRenderer.domElement);
+        root.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - dynamic geometry demo - webgl<br />(left click: forward, right click: backward)");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - dynamic geometry demo - webgl<br />(left click: forward, right click: backward)");
     }
 
 }
