@@ -33,4 +33,10 @@ public interface JavascriptTextResource extends ClientBundle {
 
     @Source("js/RollerCoaster.js")
     TextResource getRollercoaster();
+
+    @Source("js/PaintViveController.js")
+    TextResource getPaintViveController();
+
+    @Source("js/MarchingCubes.js")
+    TextResource getMarchingCubes();
 }

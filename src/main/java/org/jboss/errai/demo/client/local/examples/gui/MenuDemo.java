@@ -88,7 +88,6 @@ public class MenuDemo extends Attachable {
         scene.add(gui);
         scene.add(gui2);
         schedule();
-        window.addEventListener("resize", evt -> onWindowResize(), false);
     }
 
     public void schedule() {

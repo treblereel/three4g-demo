@@ -38,7 +38,7 @@ import java.util.List;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/3/18.
  */
-public class Rollercoaster  extends Attachable {
+public class Rollercoaster extends Attachable {
 
     public static final String name = "rollercoaster";
 
@@ -49,7 +49,6 @@ public class Rollercoaster  extends Attachable {
     private Vector3 tangent = new Vector3();
     private Vector3 lookAt = new Vector3();
     private Vector3 vertex = new Vector3();
-
 
 
     private double velocity = 0;
@@ -215,37 +214,37 @@ public class Rollercoaster  extends Attachable {
         double time = window.performance.now();
         double delta = time - prevTime;
 
-        funfairs.forEach(fun -> fun.rotation.y = (float)(time * 0.0004));
+        funfairs.forEach(fun -> fun.rotation.y = (float) (time * 0.0004));
 
         progress += velocity;
         progress = progress % 1;
-        position.copy( getPointAt( progress ) );
+        position.copy(getPointAt(progress));
         position.y += 0.3;
-        train.position.copy( position );
-        tangent.copy(getTangentAt( progress ) );
+        train.position.copy(position);
+        tangent.copy(getTangentAt(progress));
 
         velocity -= tangent.y * 0.0000001 * delta;
-        velocity = Math.max( 0.00004, Math.min( 0.0002, velocity ) );
-        train.lookAt( lookAt.copy( position ).sub( tangent ) );
+        velocity = Math.max(0.00004, Math.min(0.0002, velocity));
+        train.lookAt(lookAt.copy(position).sub(tangent));
 
-        webGLRenderer.render( scene, camera );
+        webGLRenderer.render(scene, camera);
         prevTime = time;
 
     }
 
-    private Vector3 getPointAt(double t){
+    private Vector3 getPointAt(double t) {
         t = t * PI2;
-        double x = Math.sin( t * 3 ) * Math.cos( t * 4 ) * 50;
-        double y = Math.sin( t * 10 ) * 2 + Math.cos( t * 17 ) * 2 + 5;
-        double z = Math.sin( t ) * Math.sin( t * 4 ) * 50;
-        return new Vector3().set((float) x,(float) y,(float) z ).multiplyScalar( 2 );
+        double x = Math.sin(t * 3) * Math.cos(t * 4) * 50;
+        double y = Math.sin(t * 10) * 2 + Math.cos(t * 17) * 2 + 5;
+        double z = Math.sin(t) * Math.sin(t * 4) * 50;
+        return new Vector3().set((float) x, (float) y, (float) z).multiplyScalar(2);
     }
 
-    private Vector3 getTangentAt(double t){
+    private Vector3 getTangentAt(double t) {
         double delta = 0.0001;
-        double t1 = Math.max( 0, t - delta );
-        double t2 = Math.min( 1, t + delta );
-        return new Vector3().copy(this.getPointAt(t2)).sub( this.getPointAt( t1 ) ).normalize();
+        double t1 = Math.max(0, t - delta);
+        double t2 = Math.min(1, t + delta);
+        return new Vector3().copy(this.getPointAt(t2)).sub(this.getPointAt(t1)).normalize();
     }
 
 }

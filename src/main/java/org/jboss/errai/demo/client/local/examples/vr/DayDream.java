@@ -112,8 +112,6 @@ public class DayDream extends Attachable {
         Line controllerHelper = new Line(bufferGeometry, new LineBasicMaterial(lineBasicMaterial));
         controller.add(controllerHelper);
 
-        window.addEventListener("resize", evt -> onWindowResize(), false);
-
     }
 
 

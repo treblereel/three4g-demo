@@ -39,7 +39,6 @@ public abstract class Attachable {
         doAttachScene();
         doAttachInfo();
         doAttachLink();
-        window.addEventListener("resize", evt -> onWindowResize(), false);
     }
 
     private void doAttachLink() {

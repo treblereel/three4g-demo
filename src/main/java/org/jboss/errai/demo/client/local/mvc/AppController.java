@@ -15,9 +15,17 @@ import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic;
 import org.jboss.errai.demo.client.local.examples.vr.DayDream;
 import org.jboss.errai.demo.client.local.examples.vr.Rollercoaster;
+import org.jboss.errai.demo.client.local.examples.vr.Vive;
+import org.jboss.errai.demo.client.local.examples.vr.ViveDragging;
+import org.jboss.errai.demo.client.local.examples.vr.VivePaint;
+import org.jboss.errai.demo.client.local.examples.vr.ViveSculpt;
 import org.jboss.errai.demo.client.local.mvc.event.DayDreamEvent;
 import org.jboss.errai.demo.client.local.mvc.event.MainEvent;
 import org.jboss.errai.demo.client.local.mvc.event.RollercoasterEvent;
+import org.jboss.errai.demo.client.local.mvc.event.ViveDraggingEvent;
+import org.jboss.errai.demo.client.local.mvc.event.ViveEvent;
+import org.jboss.errai.demo.client.local.mvc.event.VivePaintEvent;
+import org.jboss.errai.demo.client.local.mvc.event.ViveSculptEvent;
 import org.jboss.errai.demo.client.local.mvc.event.WebGlAnimationKeyframesJsonEvent;
 import org.jboss.errai.demo.client.local.mvc.event.WebGlCameraEvent;
 import org.jboss.errai.demo.client.local.mvc.event.WebglAnimationSceneEvent;
@@ -29,6 +37,10 @@ import org.jboss.errai.demo.client.local.mvc.presenter.DayDreamPresenter;
 import org.jboss.errai.demo.client.local.mvc.presenter.MainPresenter;
 import org.jboss.errai.demo.client.local.mvc.presenter.Presenter;
 import org.jboss.errai.demo.client.local.mvc.presenter.RollercoasterPresenter;
+import org.jboss.errai.demo.client.local.mvc.presenter.ViveDraggingPresenter;
+import org.jboss.errai.demo.client.local.mvc.presenter.VivePaintPresenter;
+import org.jboss.errai.demo.client.local.mvc.presenter.VivePresenter;
+import org.jboss.errai.demo.client.local.mvc.presenter.ViveSculptPresenter;
 import org.jboss.errai.demo.client.local.mvc.presenter.WebGlAnimationKeyframesJsonPresenter;
 import org.jboss.errai.demo.client.local.mvc.presenter.WebGlCameraPresenter;
 import org.jboss.errai.demo.client.local.mvc.presenter.WebglAnimationScenePresenter;
@@ -54,6 +66,10 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglGeometryDynamicPresenter webglGeometryDynamicPresenter = GWT.create(WebglGeometryDynamicPresenter.class);
     private DayDreamPresenter dayDreamPresenter = GWT.create(DayDreamPresenter.class);
     private RollercoasterPresenter rollercoasterPresenter = GWT.create(RollercoasterPresenter.class);
+    private VivePresenter vivePresenter = GWT.create(VivePresenter.class);
+    private ViveDraggingPresenter viveDraggingPresenter = GWT.create(ViveDraggingPresenter.class);
+    private VivePaintPresenter vivePaintPresenter = GWT.create(VivePaintPresenter.class);
+    private ViveSculptPresenter viveSculptPresenter = GWT.create(ViveSculptPresenter.class);
 
 
     private HTMLDivElement container;
@@ -75,6 +91,10 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglGeometryDynamicEvent.TYPE, event -> History.newItem(WebglGeometryDynamic.class.getSimpleName()));
         eventBus.addHandler(DayDreamEvent.TYPE, event -> History.newItem(DayDream.class.getSimpleName()));
         eventBus.addHandler(RollercoasterEvent.TYPE, event -> History.newItem(Rollercoaster.class.getSimpleName()));
+        eventBus.addHandler(ViveEvent.TYPE, event -> History.newItem(Vive.class.getSimpleName()));
+        eventBus.addHandler(ViveDraggingEvent.TYPE, event -> History.newItem(ViveDragging.class.getSimpleName()));
+        eventBus.addHandler(VivePaintEvent.TYPE, event -> History.newItem(VivePaint.class.getSimpleName()));
+        eventBus.addHandler(ViveSculptEvent.TYPE, event -> History.newItem(ViveSculpt.class.getSimpleName()));
 
 
     }
@@ -111,6 +131,14 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 dayDreamPresenter.dispatch(container);
             }else if (token.equals(Rollercoaster.class.getSimpleName())) {
                 rollercoasterPresenter.dispatch(container);
+            }else if (token.equals(Vive.class.getSimpleName())) {
+                vivePresenter.dispatch(container);
+            }else if (token.equals(ViveDragging.class.getSimpleName())) {
+                viveDraggingPresenter.dispatch(container);
+            }else if (token.equals(VivePaint.class.getSimpleName())) {
+                vivePaintPresenter.dispatch(container);
+            }else if (token.equals(ViveSculpt.class.getSimpleName())) {
+                viveSculptPresenter.dispatch(container);
             }
         }
     }

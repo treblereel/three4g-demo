@@ -17,6 +17,10 @@ import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.jboss.errai.demo.client.local.examples.geometry.WebglGeometryDynamic;
 import org.jboss.errai.demo.client.local.examples.vr.DayDream;
 import org.jboss.errai.demo.client.local.examples.vr.Rollercoaster;
+import org.jboss.errai.demo.client.local.examples.vr.Vive;
+import org.jboss.errai.demo.client.local.examples.vr.ViveDragging;
+import org.jboss.errai.demo.client.local.examples.vr.VivePaint;
+import org.jboss.errai.demo.client.local.examples.vr.ViveSculpt;
 import org.jboss.errai.demo.client.local.mvc.AppController;
 import org.jboss.errai.demo.client.local.mvc.view.MainView;
 import org.jboss.errai.demo.client.local.mvc.view.RootPanel;
@@ -109,6 +113,10 @@ public class AppSetup implements EntryPoint {
         addTypeElement("VR");
         addListElement(DayDream.name, DayDream.class);
         addListElement(Rollercoaster.name, Rollercoaster.class);
+        addListElement(Vive.name, Vive.class);
+        addListElement(ViveDragging.name, ViveDragging.class);
+        addListElement(VivePaint.name, VivePaint.class);
+        addListElement(ViveSculpt.name, ViveSculpt.class);
 
 
 

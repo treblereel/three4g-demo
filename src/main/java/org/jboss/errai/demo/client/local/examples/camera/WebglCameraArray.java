@@ -80,9 +80,6 @@ public class WebglCameraArray extends Attachable {
         scene.add(mesh);
 
         webGLRenderer.shadowMap.enabled = true;
-        //
-        window.addEventListener("resize", evt -> onWindowResize(), false);
-
     }
 
     private void animate() {
