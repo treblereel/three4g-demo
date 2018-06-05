@@ -11,7 +11,6 @@ import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
-import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.examples.vr.WebVR;

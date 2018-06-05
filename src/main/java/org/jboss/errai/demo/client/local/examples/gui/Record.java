@@ -1,7 +1,5 @@
 package org.jboss.errai.demo.client.local.examples.gui;
 
-import jsinterop.annotations.JsFunction;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 import static jsinterop.annotations.JsPackage.GLOBAL;

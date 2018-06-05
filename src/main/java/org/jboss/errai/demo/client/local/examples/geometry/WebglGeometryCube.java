@@ -1,13 +1,8 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
-import elemental2.dom.DomGlobal;
-import org.jboss.errai.demo.client.api.Stats;
 import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
-import org.jboss.errai.demo.client.local.utils.JSON;
 import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
@@ -15,11 +10,8 @@ import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

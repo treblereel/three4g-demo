@@ -5,14 +5,14 @@ import com.google.gwt.core.client.JsArrayString;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
 import org.jboss.errai.demo.client.local.examples.gui.Utils;
-//import org.jboss.errai.demo.client.local.three.Camera;
-//import org.jboss.errai.demo.client.local.three.Object3D;
 import org.treblereel.gwt.three4g.cameras.Camera;
-//import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.core.Object3D;
 
-
 import java.util.Map;
+
+//import org.jboss.errai.demo.client.local.three.Camera;
+//import org.jboss.errai.demo.client.local.three.Object3D;
+//import org.treblereel.gwt.three4g.cameras.Camera;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

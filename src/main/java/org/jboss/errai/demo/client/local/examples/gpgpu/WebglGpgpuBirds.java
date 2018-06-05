@@ -16,7 +16,6 @@ import org.jboss.errai.demo.client.local.examples.gpgpu.renderer.GPUComputationR
 import org.jboss.errai.demo.client.local.examples.gpgpu.shader.ShaderClientBundle;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.THREE;
-
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.materials.ShaderMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.ShaderMaterialParameters;

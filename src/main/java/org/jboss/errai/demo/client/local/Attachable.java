@@ -3,6 +3,8 @@ package org.jboss.errai.demo.client.local;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import elemental2.dom.DomGlobal;
+import elemental2.dom.Event;
+import elemental2.dom.EventListener;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLIFrameElement;
 import elemental2.dom.Window;
@@ -10,7 +12,6 @@ import org.jboss.errai.demo.client.local.utils.WebGLRendererProducer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
 /**
@@ -39,6 +40,7 @@ public abstract class Attachable {
         doAttachScene();
         doAttachInfo();
         doAttachLink();
+        window.addEventListener("resize", evt -> onWindowResize(), false);
     }
 
     private void doAttachLink() {
@@ -65,8 +67,6 @@ public abstract class Attachable {
             camera.aspect = new Float(getWidth() / getHeight());
             camera.updateProjectionMatrix();
             webGLRenderer.setSize(getWidth(), getHeight());
-
-            GWT.log("onWindowResize " + getWidth() + " " + getHeight());
         }
     }
 
@@ -85,9 +85,12 @@ public abstract class Attachable {
 
     }
 
-    public HTMLDivElement asWidget() {
+    public void attach(HTMLDivElement container) {
+        for (int i = 0; i < container.childElementCount; i++) {
+            container.removeChild(container.childNodes.item(i));
+        }
         attach();
-        return root;
+        container.appendChild(root);
     }
 
 }

@@ -1,7 +1,6 @@
 package org.jboss.errai.demo.client.local.examples.animation;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.ScriptInjector;
 import jsinterop.base.Js;
 import jsinterop.base.JsArrayLike;
 import jsinterop.base.JsPropertyMap;
@@ -16,7 +15,6 @@ import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.resources.ThreeJsExamplesTextResource;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.loaders.ObjectLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;

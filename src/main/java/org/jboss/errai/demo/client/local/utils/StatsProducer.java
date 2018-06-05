@@ -1,7 +1,6 @@
 package org.jboss.errai.demo.client.local.utils;
 
 import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLCanvasElement;
 import elemental2.dom.HTMLDivElement;
 import org.jboss.errai.demo.client.api.Stats;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;

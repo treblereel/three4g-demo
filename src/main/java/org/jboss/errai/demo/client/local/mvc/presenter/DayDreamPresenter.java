@@ -13,10 +13,6 @@ public class DayDreamPresenter implements Presenter{
 
     @Override
     public void dispatch(HTMLDivElement container) {
-
-        for (int i = 0; i < container.childElementCount; i++) {
-            container.removeChild(container.childNodes.item(i));
-        }
-        container.appendChild(((Attachable)GWT.create(DayDream.class)).asWidget());
+        ((Attachable)GWT.create(DayDream.class)).attach(container);
     }
 }

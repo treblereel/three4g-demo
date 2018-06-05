@@ -8,13 +8,9 @@ import org.jboss.errai.demo.client.local.mvc.view.MainView;
 
 public class MainPresenter implements Presenter{
 
-    private Attachable display = GWT.create(MainView.class);
-
     @Override
     public void dispatch(HTMLDivElement container) {
-        for (int i = 0; i < container.childElementCount; i++) {
-            container.removeChild(container.childNodes.item(i));
-        }
-        container.appendChild(display.asWidget());
+        ((Attachable)GWT.create(MainView.class)).attach(container);
+
     }
 }

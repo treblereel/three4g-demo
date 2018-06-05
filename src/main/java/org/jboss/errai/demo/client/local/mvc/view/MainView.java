@@ -2,7 +2,6 @@ package org.jboss.errai.demo.client.local.mvc.view;
 
 import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.jboss.errai.demo.client.local.utils.StatsProducer;
 
 
 /**

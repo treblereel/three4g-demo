@@ -13,10 +13,6 @@ public class VivePresenter implements Presenter{
 
     @Override
     public void dispatch(HTMLDivElement container) {
-
-        for (int i = 0; i < container.childElementCount; i++) {
-            container.removeChild(container.childNodes.item(i));
-        }
-        container.appendChild(((Attachable)GWT.create(Vive.class)).asWidget());
+        ((Attachable)GWT.create(Vive.class)).attach(container);
     }
 }
