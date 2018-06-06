@@ -16,9 +16,6 @@ public interface JavascriptTextResource extends ClientBundle {
     @Source("js/FirstPersonControls.js")
     TextResource getFirstPersonControls();
 
-    @Source("js/OrbitControls.js")
-    TextResource getOrbitControls();
-
     @Source("js/CurveExtras.js")
     TextResource getCurveExtras();
 
@@ -31,6 +28,15 @@ public interface JavascriptTextResource extends ClientBundle {
     @Source("js/birdGeometry.js")
     TextResource getBirdGeometry();
 
-    @Source("js/ImprovedNoise.js")
-    TextResource getImprovedNoise();
+    @Source("js/stats.min.js")
+    TextResource getStatsMin();
+
+    @Source("js/RollerCoaster.js")
+    TextResource getRollercoaster();
+
+    @Source("js/PaintViveController.js")
+    TextResource getPaintViveController();
+
+    @Source("js/MarchingCubes.js")
+    TextResource getMarchingCubes();
 }

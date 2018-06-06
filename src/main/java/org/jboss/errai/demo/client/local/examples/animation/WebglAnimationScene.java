@@ -1,42 +1,35 @@
 package org.jboss.errai.demo.client.local.examples.animation;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import com.google.gwt.core.client.ScriptInjector;
 import jsinterop.base.Js;
 import jsinterop.base.JsArrayLike;
 import jsinterop.base.JsPropertyMap;
-import org.jboss.errai.demo.client.api.OrbitControls;
+import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
-import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
-import org.jboss.errai.ioc.client.api.LoadAsync;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.Color;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
+import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.examples.resources.ThreeJsExamplesTextResource;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.loaders.ObjectLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/9/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class WebglAnimationScene extends Attachable {
 
     private OrbitControls controls;
@@ -45,19 +38,14 @@ public class WebglAnimationScene extends Attachable {
 
     private Clock clock = new Clock();
 
+    public static final String name = "animation / scene";
+
     final static String URL = "json/scene-animation.json";
 
-    @PostConstruct
-    public void init() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getOrbitControls().getText());
+    public WebglAnimationScene() {
 
         GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
-
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
         setupWebGLRenderer(webGLRenderer);
         // Load a scene with objects, lights and camera from a JSON file
         new ObjectLoader().load(URL, new OnLoadCallback<Object>() {
@@ -87,6 +75,7 @@ public class WebglAnimationScene extends Attachable {
                 }
 
                 controls = new OrbitControls(camera);
+
                 PlaneBufferGeometry geometry = new PlaneBufferGeometry(20000, 20000);
                 MeshPhongMaterial material = new MeshPhongMaterial();
                 material.shininess = 0.1f;
@@ -101,37 +90,34 @@ public class WebglAnimationScene extends Attachable {
                 animationClip = array.getAt(0);
                 mixer = new AnimationMixer(scene);
                 mixer.clipAction(animationClip).play();
-                doAttachScene();
-                window.addEventListener("resize", evt -> onWindowResize(), false);
-
             }
         }, (e) -> new IllegalArgumentException(e.responseText), () -> new IllegalArgumentException("OnErrorCallback"));
 
     }
 
     public void doAttachScene() {
-        if(mixer == null){
-            return;
-        }
-        document.body.appendChild(webGLRenderer.domElement);
+        root.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" webgl - scene animation - <a href=\"https://clara.io/view/96106133-2e99-40cf-8abd-64defd153e61\">Three Gears Scene</a> courtesy of David Sarno\n" +
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" webgl - scene animation - <a href=\"https://clara.io/view/96106133-2e99-40cf-8abd-64defd153e61\">Three Gears Scene</a> courtesy of David Sarno\n" +
                 "\t\t<br><br>camera orbit/zoom/pan with left/middle/right mouse button");
     }
 
     private void render() {
-        mixer.update(0.75 * clock.getDelta());
-        webGLRenderer.render(scene, camera);
+        if (mixer != null) {
+            mixer.update(0.75f * clock.getDelta());
+            webGLRenderer.render(scene, camera);
+        }
     }
 
     private void animate() {
+        StatsProducer.getStats().update();
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (root.parentNode != null) {
                 render();
                 animate();
             }

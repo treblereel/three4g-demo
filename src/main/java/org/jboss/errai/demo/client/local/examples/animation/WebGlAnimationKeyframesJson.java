@@ -1,64 +1,46 @@
 package org.jboss.errai.demo.client.local.examples.animation;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.dom.HTMLDivElement;
+import com.google.gwt.core.client.GWT;
 import jsinterop.base.Js;
 import jsinterop.base.JsArrayLike;
 import jsinterop.base.JsPropertyMap;
+import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
-import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.slf4j.Logger;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.Color;
 import org.treblereel.gwt.three4g.helpers.GridHelper;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.ObjectLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
+import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/16/18.
  */
-@LoadAsync
-@ApplicationScoped
+
 public class WebGlAnimationKeyframesJson extends Attachable {
 
-    @Inject
-    HTMLDivElement root;
+    private AnimationMixer mixer;
 
-    AnimationMixer mixer;
+    public static final String name = "animation / keyframes / json";
 
-    @Inject
-    Logger logger;
+    private String json = "json/pump/pump.json";
 
-    String json = "json/pump/pump.json";
+    private Clock clock = new Clock();
 
-    Clock clock = new Clock();
-
-    @PostConstruct
-    public void init() {
-        GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
-
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
+    public WebGlAnimationKeyframesJson() {
         setupWebGLRenderer(webGLRenderer);
 
         scene = new Scene();
@@ -93,26 +75,30 @@ public class WebGlAnimationKeyframesJson extends Attachable {
     }
 
     public void doAttachScene() {
-        document.body.appendChild(webGLRenderer.domElement);
+        root.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setTextToDesc(" webgl - animation - keyframes - json");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setTextToDesc(" webgl - animation - keyframes - json");
     }
+
+
 
     private void render() {
         if (mixer != null) {
             mixer.update(clock.getDelta());
+
             webGLRenderer.render(scene, camera);
         }
     }
 
     private void animate() {
+        StatsProducer.getStats().update();
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement != null) {
+            if (root.parentNode != null) {
                 render();
                 animate();
             }

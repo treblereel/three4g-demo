@@ -2,11 +2,6 @@ package org.jboss.errai.demo.client.local;
 
 import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
-import org.slf4j.Logger;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -14,7 +9,6 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/21/18.
  */
-@ApplicationScoped
 public class ViewSrcButton {
 
     private HTMLDivElement container = (HTMLDivElement) document.createElement("div");
@@ -22,11 +16,8 @@ public class ViewSrcButton {
 
     private static final String REPO_ADDR = "https://github.com/treblereel/three4g-demo/tree/master/src/main/java/";
 
-    @Inject
-    Logger logger;
 
-    @PostConstruct
-    public void ViewSrcButton(){
+    public ViewSrcButton(){
         container.id = "viewSrcButton";
 
         info.href = "http://threejs.org";
