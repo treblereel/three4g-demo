@@ -1,47 +1,39 @@
 package org.jboss.errai.demo.client.local.examples.camera;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.slf4j.Logger;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.cameras.ArrayCamera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Color;
 import org.treblereel.gwt.three4g.geometries.CylinderBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.math.Vector4;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/21/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class WebglCameraArray extends Attachable {
 
-    @Inject
-    Logger logger;
 
     Mesh mesh;
 
-    @PostConstruct
-    public void init() {
+    public static final String name = "camera / array";
+
+    public WebglCameraArray() {
         scene = new Scene();
 
         float AMOUNT = 6;
@@ -87,18 +79,13 @@ public class WebglCameraArray extends Attachable {
         mesh.receiveShadow = true;
         scene.add(mesh);
 
-        webGLRenderer = new WebGLRenderer();
-        setupWebGLRenderer(webGLRenderer);
-        //webGLRenderer.setPixelRatio( window.devicePixelRatio );
         webGLRenderer.shadowMap.enabled = true;
-        //
-        window.addEventListener("resize", evt -> onWindowResize(), false);
-
     }
 
     private void animate() {
+        StatsProducer.getStats().update();
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (root.parentNode != null) {
                 render();
                 animate();
             }
@@ -113,13 +100,13 @@ public class WebglCameraArray extends Attachable {
 
     @Override
     protected void doAttachScene() {
-        document.body.appendChild(webGLRenderer.domElement);
+        root.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-
+        AppSetup.infoDiv.hide();
     }
 }

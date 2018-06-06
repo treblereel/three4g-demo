@@ -1,38 +1,23 @@
 package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.inject.Inject;
-import org.jboss.errai.demo.client.api.OrbitControls;
-import org.jboss.errai.demo.client.api.ParametricGeometries;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
-import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.slf4j.Logger;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Color;
-import org.treblereel.gwt.three4g.core.Geometry;
-import org.treblereel.gwt.three4g.core.Object3D;
+import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.ParametricGeometry;
 import org.treblereel.gwt.three4g.geometries.ParametricGeometryFunction;
-import org.treblereel.gwt.three4g.lights.PointLight;
-import org.treblereel.gwt.three4g.materials.LineBasicMaterial;
-import org.treblereel.gwt.three4g.materials.LineBasicMaterialParameters;
-import org.treblereel.gwt.three4g.materials.Material;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
-import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
-import org.treblereel.gwt.three4g.materials.MeshPhongMaterialParameters;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Matrix4;
 import org.treblereel.gwt.three4g.math.Vector3;
-import org.treblereel.gwt.three4g.objects.LineSegments;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 
 import static elemental2.dom.DomGlobal.document;
-import static org.treblereel.gwt.three4g.Constants.DoubleSide;
 
 /**
  * Based on example https://codepen.io/znak/pen/OPZwVO
@@ -40,8 +25,6 @@ import static org.treblereel.gwt.three4g.Constants.DoubleSide;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/27/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class ParametricGeometryExample extends Attachable {
 
 
@@ -51,114 +34,11 @@ public class ParametricGeometryExample extends Attachable {
     private int d = 16;
     private ParametricGeometryFunction ellipticParaboloid, paramFunc;
 
-    @Inject
-    private Logger logger;
 
-    @PostConstruct
-    public void init() {
+    public ParametricGeometryExample() {
 
-        loadJavaScript(JavascriptTextResource.IMPL.getOrbitControls().getText());
+        //loadJavaScript(JavascriptTextResource.IMPL.getOrbitControls().getText());
         loadJavaScript(JavascriptTextResource.IMPL.getParametricGeometries().getText());
-
-/*        scene = new Scene();
-        scene.background = new Color(0x00ff00);
-        camera = new PerspectiveCamera(175, aspect, 0.1f, 150f);
-        camera.position.z = 30;
-
-        Geometry geometry = new ParametricGeometry(ParametricGeometries.klein, 25, 25 );
-        MeshBasicMaterial material = new MeshBasicMaterial();
-        material.color = new Color(0x00ff00);
-        mesh = new Mesh(geometry, material);
-        scene.add( mesh );*/
-
-
-
-
-/*
-        scene = new Scene();
-        camera = new PerspectiveCamera(75, aspect, 0.1f, 50f);
-        camera.position.z = 30;
-
-        PointLight[] lights = new PointLight[3];
-        lights[0] = new PointLight(0xffffff, 1, 0);
-        lights[1] = new PointLight(0xffffff, 1, 0);
-        lights[2] = new PointLight(0xffffff, 1, 0);
-
-        lights[0].position.set(0, 200, 0);
-        lights[1].position.set(100, 200, 100);
-        lights[2].position.set(-100, -200, -100);
-
-        scene.add(lights[0]);
-        scene.add(lights[1]);
-        scene.add(lights[2]);
-
-        Object3D mesh = new Object3D();
-
-        LineBasicMaterialParameters lineBasicMaterialParameters = new LineBasicMaterialParameters();
-        lineBasicMaterialParameters.color = new Color(0xffffff);
-        lineBasicMaterialParameters.transparent = true;
-        lineBasicMaterialParameters.opacity = 0.5f;
-
-        mesh.add(new LineSegments(
-                new Geometry(),
-                new LineBasicMaterial(lineBasicMaterialParameters)
-
-        ));
-
-        MeshPhongMaterialParameters meshPhongMaterialParameters = new MeshPhongMaterialParameters();
-        meshPhongMaterialParameters.color = new Color(0xffffff);
-        meshPhongMaterialParameters.emissive = new Color(0x072534);
-        meshPhongMaterialParameters.side = DoubleSide;
-        meshPhongMaterialParameters.flatShading = true;
-
-        mesh.add(new Mesh(
-                new Geometry(),
-                new MeshPhongMaterial(meshPhongMaterialParameters)
-        ));
-
-        //var options = chooseFromHash( mesh );
-
-        scene.add(mesh);
-
-        boolean prevFog = false;
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         scene = new Scene();
 
@@ -182,7 +62,6 @@ public class ParametricGeometryExample extends Attachable {
                 double y = b * Math.sqrt( u ) * Math.sin( v );
                 double z = u * h;
 
-                logger.warn("called ellipticParaboloid " + x + " " + y + " " + z);
 
                 return new Vector3((float) x,(float) y,(float) z );
             }
@@ -223,7 +102,6 @@ public class ParametricGeometryExample extends Attachable {
         //webGLRenderer.setClearColor( new Color(0x00ff00), 1 );
         controls = new OrbitControls(camera, webGLRenderer.domElement);
         controls.enableZoom = false;
-        window.addEventListener("resize", evt -> onWindowResize(), false);
     }
 
 /*    private void chooseFromHash(Mesh mesh ) {
@@ -260,15 +138,12 @@ public class ParametricGeometryExample extends Attachable {
     }
 
     private void animate() {
-
-      //  mesh.rotation.x += 0.005;
-      //  mesh.rotation.y += 0.005;
-
+        StatsProducer.getStats().update();
         mesh.rotation.y += 0.002;
         controls.update();
 
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (root.parentNode != null) {
                 render();
                 animate();
             }

@@ -3,28 +3,28 @@ package org.jboss.errai.demo.client.local.examples.camera;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.Event;
 import elemental2.dom.KeyboardEvent;
+import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
-import org.jboss.errai.ioc.client.api.LoadAsync;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Color;
 import org.treblereel.gwt.three4g.core.Geometry;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.helpers.CameraHelper;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
-import org.treblereel.gwt.three4g.materials.MeshBasicMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
 import org.treblereel.gwt.three4g.materials.PointsMaterial;
-import org.treblereel.gwt.three4g.materials.PointsMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.PointsMaterialParameters;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.objects.Points;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
+import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
-import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,8 +35,6 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/18/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class WebGlCamera extends Attachable {
 
     private Camera activeCamera;
@@ -46,10 +44,12 @@ public class WebGlCamera extends Attachable {
     private Group cameraRig;
     private Mesh mesh, mesh2;
 
+    public static final String name = "camera";
+
+
     private int frustumSize = 600;
 
-    //@PostConstruct
-    public void init() {
+    public WebGlCamera() {
 
         scene = new Scene();
 
@@ -121,16 +121,11 @@ public class WebGlCamera extends Attachable {
         Points particles = new Points(geometry, new PointsMaterial(pointsMaterialParameters));
         scene.add(particles);
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        //webGLRenderer.setPixelRatio( window.devicePixelRatio );
         setupWebGLRenderer(webGLRenderer);
         webGLRenderer.autoClear = false;
 
 
         document.addEventListener("keydown", evt -> onKeyDown(evt), false);
-        window.addEventListener("resize", evt -> onWindowResize(), false);
 
     }
 
@@ -170,22 +165,23 @@ public class WebGlCamera extends Attachable {
     }
 
     public void doAttachScene() {
-        init();
-        document.body.appendChild(webGLRenderer.domElement);
+        root.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml("- cameras<br/>\n" +
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml("- cameras<br/>\n" +
                 "\t\t<b>O</b> orthographic <b>P</b> perspective");
 
     }
 
     private void animate() {
+        StatsProducer.getStats().update();
+
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (root.parentNode != null) {
                 render();
                 animate();
             }

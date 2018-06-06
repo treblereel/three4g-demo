@@ -2,40 +2,40 @@ package org.jboss.errai.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.jboss.errai.demo.client.api.FirstPersonControls;
+import org.jboss.errai.demo.client.local.AppSetup;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
-import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.treblereel.gwt.three4g.Constants;
+import org.jboss.errai.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.Color;
+import org.treblereel.gwt.three4g.core.Geometry;
 import org.treblereel.gwt.three4g.geometries.PlaneGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
-import org.treblereel.gwt.three4g.materials.MeshBasicMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.FogExp2;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-
 import static elemental2.dom.DomGlobal.document;
 
 /**
- * @author Dmitrii Tikhomirov <chani@me.com>
+ * @author Dmitrii Tikhomirov
  * Created by treblereel on 3/8/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class WebglGeometryDynamic extends Attachable {
 
 
     private FirstPersonControls controls;
     private PlaneGeometry geometry;
+
+    public static final String name = "geometry / dynamic";
+
 
     int worldWidth = 128;
     int worldDepth = 128;
@@ -43,8 +43,7 @@ public class WebglGeometryDynamic extends Attachable {
     private Clock clock = new Clock();
 
 
-    @PostConstruct
-    public void init() {
+    public WebglGeometryDynamic() {
         loadJavaScript(JavascriptTextResource.IMPL.getFirstPersonControls().getText());
         GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
 
@@ -67,23 +66,18 @@ public class WebglGeometryDynamic extends Attachable {
         }
         Texture texture = new TextureLoader().load("img/water.jpg");
 
-        texture.wrapS = texture.wrapT = Constants.RepeatWrapping;
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(5, 5);
 
         MeshBasicMaterialParameters meshBasicMaterialParameters = new MeshBasicMaterialParameters();
 
         meshBasicMaterialParameters.color = new Color(0x0044ff);
-        //meshBasicMaterialParameters.color = new Color("red");
         meshBasicMaterialParameters.map = texture;
 
         MeshBasicMaterial material = new MeshBasicMaterial(meshBasicMaterialParameters);
         mesh = new Mesh(geometry, material);
         scene.add(mesh);
-        webGLRenderer = new WebGLRenderer();
         setupWebGLRenderer(webGLRenderer);
-        window.addEventListener("resize", evt -> onWindowResize(), false);
-
-
     }
 
     private void render() {
@@ -93,15 +87,16 @@ public class WebglGeometryDynamic extends Attachable {
         for (int i = 0, l = geometry.vertices.length; i < l; i++) {
             geometry.vertices[i].y = new Float(35 * Math.sin(i / 5 + (time + i) / 7));
         }
-        mesh.geometry.verticesNeedUpdate = true;
+        ((Geometry)mesh.geometry).verticesNeedUpdate = true;
         controls.update(delta);
         webGLRenderer.render(scene, camera);
     }
 
     private void animate() {
-        render();
+        StatsProducer.getStats().update();
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (root.parentNode != null) {
+                render();
                 animate();
             }
         });
@@ -109,14 +104,14 @@ public class WebglGeometryDynamic extends Attachable {
 
     @Override
     public void doAttachScene() {
-        document.body.appendChild(webGLRenderer.domElement);
+        root.appendChild(webGLRenderer.domElement);
         onWindowResize();
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-        info.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - dynamic geometry demo - webgl<br />(left click: forward, right click: backward)");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - dynamic geometry demo - webgl<br />(left click: forward, right click: backward)");
     }
 
 }

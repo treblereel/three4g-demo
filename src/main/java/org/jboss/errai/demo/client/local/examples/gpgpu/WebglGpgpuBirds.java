@@ -15,23 +15,18 @@ import org.jboss.errai.demo.client.local.examples.gpgpu.custom.Value;
 import org.jboss.errai.demo.client.local.examples.gpgpu.renderer.GPUComputationRenderer;
 import org.jboss.errai.demo.client.local.examples.gpgpu.shader.ShaderClientBundle;
 import org.jboss.errai.demo.client.local.resources.JavascriptTextResource;
-import org.jboss.errai.ioc.client.api.LoadAsync;
-import org.slf4j.Logger;
-import org.treblereel.gwt.three4g.Constants;
+import org.treblereel.gwt.three4g.THREE;
+
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Color;
 import org.treblereel.gwt.three4g.materials.ShaderMaterial;
-import org.treblereel.gwt.three4g.materials.ShaderMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.ShaderMaterialParameters;
+import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -43,8 +38,6 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 4/12/18.
  */
-@LoadAsync
-@ApplicationScoped
 public class WebglGpgpuBirds extends Attachable {
 
     private GPUComputationRenderer gpuCompute;
@@ -63,8 +56,7 @@ public class WebglGpgpuBirds extends Attachable {
     double windowHalfY = window.innerHeight / 2;
     double BOUNDS = 800, BOUNDS_HALF = BOUNDS / 2;
 
-    @PostConstruct
-    public void init() {
+    public WebglGpgpuBirds() {
 
         ScriptInjector.fromString(JavascriptTextResource.IMPL.getGPUComputationRenderer().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW).inject();
@@ -162,7 +154,7 @@ public class WebglGpgpuBirds extends Attachable {
 
         shaderMaterialParameters.vertexShader = ShaderClientBundle.IMPL.getBirdVS().getText();
         shaderMaterialParameters.fragmentShader = ShaderClientBundle.IMPL.getBirdFS().getText();
-        shaderMaterialParameters.side = Constants.DoubleSide;
+        shaderMaterialParameters.side = THREE.DoubleSide;
 
         ShaderMaterial material = new ShaderMaterial(shaderMaterialParameters);
         Mesh birdMesh = new Mesh( geometry, material );
@@ -192,9 +184,6 @@ public class WebglGpgpuBirds extends Attachable {
 
     double last = new Date().getTime() * 0.0001;
 
-    @Inject
-    Logger logger;
-
     private void render() {
         double now = new Date().getTime() * 0.0001;
         double delta = (now - last) / 1000;
@@ -211,11 +200,9 @@ public class WebglGpgpuBirds extends Attachable {
         birdUniforms.time = new Value(now);
         birdUniforms.delta = new Value(delta);
 
-        logger.warn("predator " + velocityUniforms.predator.getClass().getSimpleName());
 
         velocityUniforms.predator = new Value(new Vector3((float)(0.5 * mouseX / windowHalfX), (float)(- 0.5 * mouseY / windowHalfY), 0));
 
-        logger.warn("predator 2 " + velocityUniforms.predator.get().getClass().getSimpleName());
 
 
         mouseX = 10000;
@@ -279,11 +266,11 @@ public class WebglGpgpuBirds extends Attachable {
         addToJsPropertyMap(velocityVariableShaderMaterial.uniforms, "predator", new Vector3());
 
         velocityVariableShaderMaterial.defines.set("BOUNDS", BigDecimal.valueOf(BOUNDS).setScale(2, BigDecimal.ROUND_HALF_UP));
-        velocityVariable.set("wrapS",Constants.RepeatWrapping);
-        velocityVariable.set("wrapT",Constants.RepeatWrapping);
+        velocityVariable.set("wrapS",THREE.RepeatWrapping);
+        velocityVariable.set("wrapT",THREE.RepeatWrapping);
 
-        positionVariable.set("wrapS",Constants.RepeatWrapping);
-        positionVariable.set("wrapT",Constants.RepeatWrapping);
+        positionVariable.set("wrapS",THREE.RepeatWrapping);
+        positionVariable.set("wrapT",THREE.RepeatWrapping);
 
 
 

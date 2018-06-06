@@ -4,15 +4,11 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import org.jboss.errai.demo.client.local.Attachable;
 import org.jboss.errai.demo.client.local.Click;
 import org.jboss.errai.demo.client.local.gui.GUIVR;
-import org.slf4j.Logger;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.WebGLRendererParameters;
+import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -21,23 +17,21 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 10/2/17.
  */
-@ApplicationScoped
 public class MenuDemo extends Attachable {
 
-    @Inject
-    Logger logger;
-
-    @PostConstruct
-    public void init() {
+    public MenuDemo() {
         WebGLRendererParameters params = new WebGLRendererParameters();
         params.antialias = true;
 
         webGLRenderer = new WebGLRenderer(params);
         setupWebGLRenderer(webGLRenderer);
-        webGLRenderer.setClearColor(0xeebbbb);
+        webGLRenderer.setClearColor(0xeebbbb,1);
         camera = new PerspectiveCamera(70, aspect, 0.1f, 15);
         camera.position.set(0, 0, 1.0f);
         scene = new Scene();
+
+
+
 
         GUIVR gui = GUIVR.create("settings");
         gui.name = "new_name";
@@ -53,7 +47,9 @@ public class MenuDemo extends Attachable {
         record.speed = "a";
 
         gui.addSlider(record, "id");
-        gui.addSlider(record, "date", 10.0, 40.0).name("OLOLO").max(100.0).step(10.0).onChange(() -> logger.warn(" > " + record.date));
+        gui.addSlider(record, "date", 10.0, 40.0).name("OLOLO").max(100.0).step(10.0).onChange(() -> {
+
+        });
 
 
         String[] values = new String[]{"a", "b", "c"};
@@ -92,7 +88,6 @@ public class MenuDemo extends Attachable {
         scene.add(gui);
         scene.add(gui2);
         schedule();
-        window.addEventListener("resize", evt -> onWindowResize(), false);
     }
 
     public void schedule() {
