@@ -89,7 +89,7 @@
                 <configuration>
                     <runTarget>App.html</runTarget>
                     <modules>
-                        <module>org.jboss.errai.demo.App</module>
+                        <module>org.treblereel.gwt.three4g.demo.App</module>
                     </modules>
                     <logLevel>INFO</logLevel>
                     <noServer>false</noServer>
