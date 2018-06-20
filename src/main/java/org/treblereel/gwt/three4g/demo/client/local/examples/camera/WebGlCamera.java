@@ -3,18 +3,18 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.camera;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.Event;
 import elemental2.dom.KeyboardEvent;
-import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Geometry;
+import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
+import org.treblereel.gwt.three4g.demo.client.local.Attachable;
+import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.helpers.CameraHelper;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
-import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
 import org.treblereel.gwt.three4g.materials.PointsMaterial;
+import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
 import org.treblereel.gwt.three4g.materials.parameters.PointsMaterialParameters;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
@@ -23,10 +23,7 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.objects.Points;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import static elemental2.dom.DomGlobal.document;
 

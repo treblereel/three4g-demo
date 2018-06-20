@@ -1,13 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
+import com.google.gwt.core.client.GWT;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.Raycaster;
+import org.treblereel.gwt.three4g.core.events.Event;
 import org.treblereel.gwt.three4g.core.extra.Intersect;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
@@ -58,6 +59,8 @@ public class ViveDragging extends Attachable {
     private boolean ready = false;
 
     public ViveDragging() {
+
+        GWT.log("ViveDragging");
 
         scene = new Scene();
         scene.background = new Color(0x808080);
@@ -139,15 +142,15 @@ public class ViveDragging extends Attachable {
         controller1 = new ViveController(0);
         controller1.standingMatrix = webGLRenderer.vr.getStandingMatrix();
 
-        controller1.addEventListener("triggerdown", (sender, event) -> onTriggerDown(sender, event));
-        controller1.addEventListener("triggerup", (sender, event) -> onTriggerUp(sender, event));
+        controller1.addEventListener("triggerdown", (event) -> onTriggerDown(event));
+        controller1.addEventListener("triggerup", (event) -> onTriggerUp(event));
 
         scene.add(controller1);
         controller2 = new ViveController(1);
 
         controller2.standingMatrix = webGLRenderer.vr.getStandingMatrix();
-        controller2.addEventListener("triggerdown", (sender, event) -> onTriggerDown(sender, event));
-        controller2.addEventListener("triggerup", (sender, event) -> onTriggerUp(sender, event));
+        controller2.addEventListener("triggerdown", (event) -> onTriggerDown(event));
+        controller2.addEventListener("triggerup", (event) -> onTriggerUp(event));
         scene.add(controller2);
 
         OBJLoader loader = new OBJLoader();
@@ -195,10 +198,10 @@ public class ViveDragging extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" <a href=\"http://threejs.org\" target=\"_blank\" rel=\"noopener\">three.js</a> webgl - htc vive");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" webgl - htc vive");
     }
 
-    private void onTriggerDown(JsObject sender, JsObject event) {
+    private void onTriggerDown(Event event) {
         ViveController controller = event.getProperty("target");
 
         Intersect[] intersections = getIntersections(controller);
@@ -215,7 +218,7 @@ public class ViveDragging extends Attachable {
         }
     }
 
-    public void onTriggerUp(JsObject sender, JsObject event) {
+    public void onTriggerUp(Event event) {
         ViveController controller = event.getProperty("target");
 
         if (controller.userData.hasProperty("selected")) {

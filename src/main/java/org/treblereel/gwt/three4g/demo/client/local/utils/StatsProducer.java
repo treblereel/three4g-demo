@@ -1,13 +1,10 @@
 package org.treblereel.gwt.three4g.demo.client.local.utils;
 
 import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLCanvasElement;
 import elemental2.dom.HTMLDivElement;
 import org.treblereel.gwt.three4g.demo.client.api.Stats;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-
-import static org.treblereel.gwt.three4g.demo.client.local.Attachable.loadJavaScript;
+import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

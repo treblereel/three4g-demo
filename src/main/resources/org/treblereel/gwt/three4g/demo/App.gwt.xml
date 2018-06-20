@@ -6,6 +6,7 @@
 
     <inherits name="org.treblereel.gwt.Three4G"/>
     <inherits name="org.treblereel.gwt.three4g.Examples"/>
+    <inherits name="org.treblereel.gwt.DATGUI4G"/>
 
 
     <entry-point class='org.treblereel.gwt.three4g.demo.client.local.AppSetup'/>

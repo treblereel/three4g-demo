@@ -1,19 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
 import com.google.gwt.core.client.ScriptInjector;
-import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLDivElement;
-import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
+import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
+import org.treblereel.gwt.three4g.core.BufferGeometry;
+import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.api.MarchingCubes;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
-import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
-import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.BufferGeometry;
-import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.Object3D;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.examples.vr.WebVR;
 import org.treblereel.gwt.three4g.examples.vr.vive.ViveController;
@@ -24,7 +19,6 @@ import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.helpers.GridHelper;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
-import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
@@ -34,7 +28,6 @@ import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Matrix4;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.renderers.OnAnimate;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
@@ -50,7 +43,6 @@ import java.util.Random;
 public class ViveSculpt extends Attachable {
 
     public static final String name = "vive / sculpt";
-    private HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
 
     private ViveController controller1, controller2;
     private Random rand = new Random();
@@ -128,46 +120,41 @@ public class ViveSculpt extends Attachable {
         controller2.standingMatrix = webGLRenderer.vr.getStandingMatrix();
         scene.add(controller2);
 
-
         OBJLoader loader = new OBJLoader();
         loader.setPath("models/obj/vive-controller/");
-        loader.load("vr_controller_vive_1_5.obj", new OnLoadCallback<Object3D>() {
-            @Override
-            public void onLoad(Object3D object) {
+        loader.load("vr_controller_vive_1_5.obj", object -> {
 
-                TextureLoader textureLoader = new TextureLoader();
-                textureLoader.setPath("models/obj/vive-controller/");
+            TextureLoader textureLoader = new TextureLoader();
+            textureLoader.setPath("models/obj/vive-controller/");
 
+            Object3D controller = object.children[0];
 
-                Object3D controller = object.children[0];
+            MeshPhongMaterial material = controller.getProperty("material");
 
-                MeshPhongMaterial material = controller.getProperty("material");
+            material.map = textureLoader.load("onepointfive_texture.png");
+            material.specularMap = textureLoader.load("onepointfive_spec.png");
+            controller.castShadow = true;
+            controller.receiveShadow = true;
 
-                material.map = textureLoader.load("onepointfive_texture.png");
-                material.specularMap = textureLoader.load("onepointfive_spec.png");
-                controller.castShadow = true;
-                controller.receiveShadow = true;
+            Mesh pivot = new Mesh(new IcosahedronBufferGeometry(0.01f, 2));
+            pivot.name = "pivot";
+            pivot.position.y = -0.016f;
+            pivot.position.z = -0.043f;
+            pivot.rotation.x = (float) (Math.PI / 5.5);
+            controller.add(pivot);
 
-                Mesh pivot = new Mesh(new IcosahedronBufferGeometry(0.01f, 2));
-                pivot.name = "pivot";
-                pivot.position.y = -0.016f;
-                pivot.position.z = -0.043f;
-                pivot.rotation.x = (float) (Math.PI / 5.5);
-                controller.add(pivot);
+            MeshBasicMaterialParameters parameters1 = new MeshBasicMaterialParameters();
+            parameters1.opacity = 0.25f;
+            parameters1.transparent = true;
 
-                MeshBasicMaterialParameters parameters = new MeshBasicMaterialParameters();
-                parameters.opacity = 0.25f;
-                parameters.transparent = true;
+            Mesh range = new Mesh(new IcosahedronGeometry(0.03f, 3), new MeshBasicMaterial(parameters1));
+            pivot.add(range);
+            controller1.add(controller.clone());
+            controller2.add(controller.clone());
 
-                Mesh range = new Mesh(new IcosahedronGeometry(0.03f, 3), new MeshBasicMaterial(parameters));
-                pivot.add(range);
-                controller1.add(controller.clone());
-                controller2.add(controller.clone());
+            initBlob();
+            ready = true;
 
-                initBlob();
-                ready = true;
-
-            }
         });
     }
 
@@ -256,12 +243,9 @@ public class ViveSculpt extends Attachable {
 
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(new OnAnimate() {
-            @Override
-            public void animate() {
-                if (container.parentNode != null && container.parentNode.parentNode != null && ready) {
-                    render();
-                }
+        webGLRenderer.setAnimationLoop(() -> {
+            if (container.parentNode != null && container.parentNode.parentNode != null && ready) {
+                render();
             }
         });
     }

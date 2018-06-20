@@ -1,16 +1,16 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.THREE;
+import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
+import org.treblereel.gwt.three4g.core.Clock;
+import org.treblereel.gwt.three4g.core.Geometry;
 import org.treblereel.gwt.three4g.demo.client.api.FirstPersonControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.THREE;
-import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.Geometry;
 import org.treblereel.gwt.three4g.geometries.PlaneGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
@@ -20,8 +20,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.scenes.FogExp2;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov

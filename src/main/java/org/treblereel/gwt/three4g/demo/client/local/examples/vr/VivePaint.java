@@ -1,13 +1,10 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLDivElement;
 import jsinterop.base.Js;
-import org.treblereel.gwt.three4g.demo.client.api.PaintViveController;
-import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
+import jsinterop.base.JsPropertyMap;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -15,7 +12,11 @@ import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.bufferattributes.Float32BufferAttribute;
+import org.treblereel.gwt.three4g.demo.client.api.PaintViveController;
+import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
+import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
+import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.examples.vr.WebVR;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
@@ -29,17 +30,14 @@ import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
 import org.treblereel.gwt.three4g.materials.MeshStandardMaterial;
+import org.treblereel.gwt.three4g.materials.parameters.MeshStandardMaterialParameters;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Matrix4;
 import org.treblereel.gwt.three4g.math.Vector3;
-import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Dmitrii Tikhomirov
@@ -49,7 +47,6 @@ public class VivePaint extends Attachable {
 
     public static final String name = "vive / paint";
 
-    private HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
     private PaintViveController controller1, controller2;
     private boolean ready = false;
 
@@ -61,7 +58,15 @@ public class VivePaint extends Attachable {
     Vector3 vector3 = new Vector3();
     Vector3 vector4 = new Vector3();
 
+    JsPropertyMap shapes = JsPropertyMap.of();
+
     public VivePaint() {
+
+        GWT.log("VivePaint ");
+
+
+        ScriptInjector.fromString(JavascriptTextResource.IMPL.getPaintViveController().getText())
+                .setWindow(ScriptInjector.TOP_WINDOW).inject();
 
         ScriptInjector.fromString(JavascriptTextResource.IMPL.getPaintViveController().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW).inject();
@@ -130,7 +135,7 @@ public class VivePaint extends Attachable {
         vectors[1] = new Vector3();
 
         controller1.userData.setProperty("points", vectors);
-
+        
         Matrix4[] matrices = new Matrix4[2];
         matrices[0] = new Matrix4();
         matrices[1] = new Matrix4();
@@ -207,6 +212,9 @@ public class VivePaint extends Attachable {
         geometry.addAttribute("color", colors);
         geometry.drawRange.count = 0;
 
+        MeshStandardMaterialParameters params = new MeshStandardMaterialParameters();
+
+
         MeshStandardMaterial material = new MeshStandardMaterial();
         material.roughness = 0.9f;
         material.metalness = 0.0f;
@@ -219,30 +227,51 @@ public class VivePaint extends Attachable {
         line.receiveShadow = true;
         scene.add(line);
         // Shapes
-        //shapes['tube'] = getTubeShapes(1.0f);
+
+        shapes.set("tube", getTubeShapes(1));
+        //shapes["tube"] = getTubeShapes(1.0f);
 
 
     }
 
-    public Vector3[] getTubeShapes(float size) {
+    public Vector3[] getTubeShapes(int size) {
         double PI2 = Math.PI * 2;
         int sides = 10;
-        List<Vector3> array = new ArrayList<>();
+        Vector3[] array = new Vector3[10];
         float radius = 0.01f * size;
 
         for (int i = 0; i < sides; i++) {
             double angle = (i / sides) * PI2;
-            array.add(new Vector3((float) Math.sin(angle) * radius, (float) Math.cos(angle) * radius, 0));
+            array[i] = new Vector3((float) Math.sin(angle) * radius, (float) Math.cos(angle) * radius, 0);
         }
-        return (Vector3[]) array.toArray();
+        return array;
     }
 
-    public void stroke(PaintViveController controller, Vector3 point1, Vector3 point2, Matrix4 matrix1, Matrix4 matrix2) {
-        Color color = controller.getColor();
-        Vector3[] shapes = getTubeShapes(controller.getSize());
+    public void stroke(PaintViveController controller1, Vector3 point1, Vector3 point2, Matrix4 matrix1, Matrix4 matrix2) {
+        //Color color = controller.getColor();
+
+        Color color = new Color();
+        color.setHex(16777215);
+
+
+        DomGlobal.console.log("stroke size " + color.getHex());
+
+        Vector3[] shapes = getTubeShapes(1);
+
+
+        //Vector3[] shapes = getTubeShapes(controller.getSize());
+
+        DomGlobal.console.log("stroke shapes : " + JSON.stringify(shapes));
+
+        //DomGlobal.console.log("stroke line : " + JSON.stringify(line));
+
         BufferGeometry geometry = (BufferGeometry) line.geometry;
+       // DomGlobal.console.log("stroke geometry before : " + JSON.stringify(geometry)); 
 
         int count = geometry.drawRange.count;
+
+       // DomGlobal.console.log("stroke size " + controller.getSize());
+
 
 
         //TODO
@@ -254,6 +283,10 @@ public class VivePaint extends Attachable {
         for (int j = 0, jl = shapes.length; j < jl; j++) {
             Vector3 vertex1 = shapes[j];
             Vector3 vertex2 = shapes[(j + 1) % jl];
+
+            DomGlobal.console.log("stroke %%% " + ((j + 1) % jl));
+
+
             // positions
             vector1.copy(vertex1);
             vector1.applyMatrix4(matrix2);
@@ -301,15 +334,33 @@ public class VivePaint extends Attachable {
             color.toArray(colors, (count + 5) * 3);
             count += 6;
         }
+        //DomGlobal.console.log("stroke geometry after : " + JSON.stringify(geometry)); 
+
+        DomGlobal.console.log("stroke geometry color : " + JSON.stringify(color)); 
+
+        DomGlobal.console.log("stroke geometry vector1 : " + JSON.stringify(vector1)); 
+        DomGlobal.console.log("stroke geometry vector2 : " + JSON.stringify(vector2)); 
+        DomGlobal.console.log("stroke geometry vector3 : " + JSON.stringify(vector3)); 
+        DomGlobal.console.log("stroke geometry vector4 : " + JSON.stringify(vector4)); 
+
         geometry.drawRange.count = count;
     }
 
     public void updateGeometry(int start, int end) {
+
+
+
         if (start == end) return;
+
+        DomGlobal.console.log("updateGeometry " + start + " " + end);
+
 
         int offset = start * 3;
         int count = (end - start) * 3;
         BufferGeometry geometry = (BufferGeometry) line.geometry;
+
+        DomGlobal.console.log("updateGeometry offset " + offset  + "  count " + count);
+
 
         geometry.getAttribute("position").updateRange.offset = offset;
         geometry.getAttribute("position").updateRange.count = count;
@@ -320,24 +371,100 @@ public class VivePaint extends Attachable {
         geometry.getAttribute("color").updateRange.offset = offset;
         geometry.getAttribute("color").updateRange.count = count;
         geometry.getAttribute("color").needsUpdate = true;
+
+
+        DomGlobal.console.log("updateGeometry position " + JSON.stringify(geometry.getAttribute("position").array));
+        DomGlobal.console.log("updateGeometry normal " + JSON.stringify(geometry.getAttribute("normal").array));
+        DomGlobal.console.log("updateGeometry color " + JSON.stringify(geometry.getAttribute("color").array));
+
+
+
+
     }
 
 
     public void handleController(PaintViveController controller) {
+
+    //    DomGlobal.console.log("handleController " + controller.name);
+
+
         controller.update();
         Mesh pivot = (Mesh) controller.getObjectByName("pivot");
+
+        //DomGlobal.console.log("pivot" + JSON.stringify(pivot));
+
         if (pivot != null) {
             ((MeshBasicMaterial) pivot.material).color.copy(controller.getColor());
             pivot.scale.setScalar(controller.getSize());
             Matrix4 matrix = pivot.matrixWorld;
+
+            Matrix4 matrixx = new Matrix4();
+            matrixx.set(0.8263265804321446f,0.0653743223568597f,0.5593840198722803f,0,-0.5623233023666134f,0.15089012244220096f,0.8130342249540927f,0,-0.03125397059645499f,-0.9863865587698832f,0.16144601745571446f,0,-0.2790985798237979f,0.9812008146829518f,1.26712946641552f,1);
+
+
             Vector3 point1 = ((Vector3[]) controller.userData.getProperty("points"))[0];
             Vector3 point2 = ((Vector3[]) controller.userData.getProperty("points"))[1];
             Matrix4 matrix1 = ((Matrix4[]) controller.userData.getProperty("matrices"))[0];
             Matrix4 matrix2 = ((Matrix4[]) controller.userData.getProperty("matrices"))[1];
+
             point1.setFromMatrixPosition(matrix);
             matrix1.lookAt(point2, point1, up);
+
+            //DomGlobal.console.log("getButtonState " + controller.getButtonState("trigger"));
+
+
             if (controller.getButtonState("trigger")) {
-                stroke(controller, point1, point2, matrix1, matrix2);
+
+/*                 DomGlobal.console.log("getButtonState controller.getSize()" + JSON.stringify(controller.getSize()));
+
+                DomGlobal.console.log("getButtonState point1" + JSON.stringify(matrix));
+
+                DomGlobal.console.log("getButtonState point1" + JSON.stringify(point1));
+                DomGlobal.console.log("getButtonState point2" + JSON.stringify(point2));
+
+                DomGlobal.console.log("getButtonState matrix1" + JSON.stringify(matrix1));
+                DomGlobal.console.log("getButtonState matrix2" + JSON.stringify(matrix2)); */
+
+
+                Vector3 point1x = new Vector3(-0.2790985798237979f, 0.9812008146829518f, 1.26712946641552f);
+                Vector3 point2x = new Vector3(-0.27868371624763977f, 0.9809246232932015f, 1.2670630887135546f);
+
+                Matrix4 matrix1x = new Matrix4();
+                matrix1x.set(-0.15798940984523147f,0,-0.9874408065179175f,0,0.5424167929168244f,0.8356148637116435f,-0.08678607207379699f,0,0.825120214961785f,-0.5493157557763763f,-0.13201829917570607f,0,0,0,0,1);   
+                
+                Matrix4 matrix2x = new Matrix4();
+                matrix2x.set(-0.3105378399815054f,0,-0.9505610185251766f,0,0.7785905383552746f,0.5736717733183716f,-0.2543569737227559f,0,0.5453100251446554f,-0.8190852803571523f,-0.1781467933446469f,0,0,0,0,1);
+
+/*                 DomGlobal.console.log("getButtonState controller.getSize()" + JSON.stringify(controller.getSize()));
+
+                DomGlobal.console.log("getButtonState point1" + JSON.stringify(matrix));
+
+                DomGlobal.console.log("getButtonState point1" + JSON.stringify(point1));
+                DomGlobal.console.log("getButtonState point2" + JSON.stringify(point2));
+
+                DomGlobal.console.log("getButtonState matrix1" + JSON.stringify(matrix1));
+                DomGlobal.console.log("getButtonState matrix2" + JSON.stringify(matrix2)); */
+
+
+                DomGlobal.console.log("getButtonState controller.getSize()" + JSON.stringify(controller.getSize()));
+
+                DomGlobal.console.log("getButtonState point1x" + JSON.stringify(point1x));
+                DomGlobal.console.log("getButtonState point2x" + JSON.stringify(point2x));
+
+                DomGlobal.console.log("getButtonState matrix1x" + JSON.stringify(matrix1x));
+                DomGlobal.console.log("getButtonState matrix2x" + JSON.stringify(matrix2x));
+
+//                DomGlobal.console.log("getButtonState point1 after" + JSON.stringify(matrix));
+
+
+                //PaintViveController paintViveController = new PaintViveController(3);
+
+               // DomGlobal.console.log("getButtonState " + controller.getButtonState("trigger"));
+
+
+
+
+                stroke(controller, point1x, point2x, matrix1x, matrix2x);
             }
             point2.copy(point1);
             matrix2.copy(matrix1);
@@ -367,10 +494,10 @@ public class VivePaint extends Attachable {
 
     private void render() {
 
-        int count = ((BufferGeometry)line.geometry).drawRange.count;
+        int count = ((BufferGeometry) line.geometry).drawRange.count;
         handleController(controller1);
         handleController(controller2);
-        updateGeometry(count, ((BufferGeometry)line.geometry).drawRange.count);
+        updateGeometry(count, ((BufferGeometry) line.geometry).drawRange.count);
         webGLRenderer.render(scene, camera);
     }
 }

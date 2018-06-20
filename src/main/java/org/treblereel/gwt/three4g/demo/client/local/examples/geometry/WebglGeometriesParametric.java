@@ -1,19 +1,19 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import org.treblereel.gwt.three4g.demo.client.api.ParametricGeometries;
-import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.ParametricGeometriesTorusKnotGeometry;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
-import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
+import org.treblereel.gwt.three4g.demo.client.api.ParametricGeometries;
+import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
+import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.GrannyKnot;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.ParametricGeometriesTorusKnotGeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.SphereGeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.TubeGeometry;
+import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
+import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.geometries.ParametricBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
@@ -21,14 +21,10 @@ import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.MeshPhongMaterialParameters;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
-import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
 
 import java.util.Date;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

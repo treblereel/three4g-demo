@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.three4g.animation.AnimationAction;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
@@ -11,7 +10,6 @@ import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
 import org.treblereel.gwt.three4g.examples.loaders.ColladaLoader;

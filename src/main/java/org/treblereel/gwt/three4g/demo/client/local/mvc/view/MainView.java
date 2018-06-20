@@ -2,7 +2,6 @@ package org.treblereel.gwt.three4g.demo.client.local.mvc.view;
 
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 
 
 /**

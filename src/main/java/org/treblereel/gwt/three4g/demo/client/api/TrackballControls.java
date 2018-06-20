@@ -23,6 +23,7 @@ public class TrackballControls {
     public float dynamicDampingFactor;
     public float minDistance;
     public float maxDistance;
+    public boolean enabled;
 
     public TrackballControls(Camera camera) {
     }
