@@ -12,15 +12,17 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnim
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
+import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
+import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lensflares.WebglLensflares;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3ds;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBabylon;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderCollada;
-import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderColladaKinematics;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderColladaSkinning;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderDraco;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderFbx;
@@ -36,10 +38,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveDragging;
-import org.treblereel.gwt.three4g.demo.client.local.examples.vr.VivePaint;
-import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveSculpt;
+import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
+import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
-import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
 import static elemental2.dom.DomGlobal.document;
@@ -52,6 +54,7 @@ public class AppSetup implements EntryPoint {
 
     public static ViewSrcButton viewSrcButton = new ViewSrcButton();
     public static InfoDiv infoDiv = new InfoDiv();
+    public static GuiDiv guiDiv = new GuiDiv();
     public static MenuDiv menuDiv = new MenuDiv();
     public static CurrentPageHolder currentPageHolder = new CurrentPageHolder();
 
@@ -105,10 +108,6 @@ public class AppSetup implements EntryPoint {
         }
     }
 
-    /**
-     * The entry point method, called automatically by loading a module that
-     * declares an implementing class as an entry point.
-     */
     @Override
     public void onModuleLoad() {
 
@@ -120,7 +119,7 @@ public class AppSetup implements EntryPoint {
         DomGlobal.document.body.appendChild(rootPanel.asWidget());
 
 
-        addListElement("Intro", MainView.class);
+        //addListElement("Intro", MainView.class);
         addTypeElement("WebGL");
         //animation
         addListElement(WebGlAnimationKeyframesJson.name, WebGlAnimationKeyframesJson.class);
@@ -128,6 +127,8 @@ public class AppSetup implements EntryPoint {
         //camera
         addListElement(WebGlCamera.name, WebGlCamera.class);
         addListElement(WebglCameraArray.name, WebglCameraArray.class);
+        //clipping
+        addListElement(WebglClipping.name, WebglClipping.class);
         //geometry
         addListElement(WebglGeometriesParametric.name, WebglGeometriesParametric.class);
         addListElement(WebglGeometryCube.name, WebglGeometryCube.class);
@@ -153,17 +154,21 @@ public class AppSetup implements EntryPoint {
         //material
         //interactive
         addListElement(WebglInteractiveBuffergeometry.name, WebglInteractiveBuffergeometry.class);
+        addListElement(WebglInteractiveDraggableCubes.name, WebglInteractiveDraggableCubes.class);
         addListElement(WebglInteractivePoints.name, WebglInteractivePoints.class);
+        //Lensflares
+        addListElement(WebglLensflares.name, WebglLensflares.class);
         //vr
         addTypeElement("VR");
         addListElement(DayDream.name, DayDream.class);
+        addListElement(WebVRCubes.name, WebVRCubes.class);
+        addListElement(WebVRPanorama.name, WebVRPanorama.class);
         addListElement(Rollercoaster.name, Rollercoaster.class);
+        addListElement(WebVRSandbox.name, WebVRSandbox.class);
         addListElement(Vive.name, Vive.class);
         addListElement(ViveDragging.name, ViveDragging.class);
-        addListElement(VivePaint.name, VivePaint.class);
-        addListElement(ViveSculpt.name, ViveSculpt.class);
-
-
+        //addListElement(VivePaint.name, VivePaint.class);
+        //addListElement(ViveSculpt.name, ViveSculpt.class);
 
 
         appController.dispatch(rootPanel.asWidget());

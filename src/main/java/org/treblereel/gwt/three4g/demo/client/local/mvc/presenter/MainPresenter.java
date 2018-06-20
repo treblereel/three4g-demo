@@ -4,7 +4,6 @@ import com.google.gwt.core.client.GWT;
 import elemental2.dom.HTMLDivElement;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
-import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
 
 public class MainPresenter implements Presenter{

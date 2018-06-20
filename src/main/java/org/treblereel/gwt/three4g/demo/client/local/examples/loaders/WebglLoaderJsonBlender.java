@@ -1,9 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
-import jsinterop.base.Js;
-import jsinterop.base.JsPropertyMap;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;

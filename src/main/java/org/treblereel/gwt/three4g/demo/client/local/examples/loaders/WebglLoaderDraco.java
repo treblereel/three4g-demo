@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;

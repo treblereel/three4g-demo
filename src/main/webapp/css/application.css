@@ -110,6 +110,16 @@
                 z-index : 100000;
             }
 
+            #gui_holder {
+                position: absolute;
+                width: 100%;
+                padding: 0;
+                margin-left: 85%;
+                z-index : 100001;
+            }
+
+
+
              #menu button:active {
                 color: #000000;
                 background-color: rgba(0,255,255,1);
@@ -147,3 +157,4 @@
                 margin-left: 12px;
                 text-decoration: none;
             }
+

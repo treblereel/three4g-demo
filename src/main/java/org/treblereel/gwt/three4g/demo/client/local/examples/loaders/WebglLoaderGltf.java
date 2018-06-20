@@ -1,40 +1,24 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
-import org.treblereel.gwt.three4g.animation.AnimationClip;
-import org.treblereel.gwt.three4g.animation.AnimationMixer;
-import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.FBXLoader;
 import org.treblereel.gwt.three4g.examples.loaders.GLTFLoader;
-import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
-import org.treblereel.gwt.three4g.helpers.GridHelper;
-import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
 import org.treblereel.gwt.three4g.loaders.CubeTextureLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
-import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
 import org.treblereel.gwt.three4g.materials.MeshStandardMaterial;
-import org.treblereel.gwt.three4g.materials.parameters.MeshPhongMaterialParameters;
-import org.treblereel.gwt.three4g.math.Color;
-import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
-import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.CubeTexture;
-import org.treblereel.gwt.three4g.textures.Texture;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

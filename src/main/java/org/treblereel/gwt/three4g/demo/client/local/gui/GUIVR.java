@@ -4,16 +4,15 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsType;
-import org.treblereel.gwt.three4g.demo.client.local.examples.gui.Utils;
-//import org.treblereel.gwt.three4g.demo.client.local.three.Camera;
-//import org.treblereel.gwt.three4g.demo.client.local.three.Object3D;
 import org.treblereel.gwt.three4g.cameras.Camera;
-//import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.examples.gui.Utils;
 
-
 import java.util.Map;
+
+//import org.treblereel.gwt.three4g.demo.client.local.three.Camera;
+//import org.treblereel.gwt.three4g.demo.client.local.three.Object3D;
+//import org.treblereel.gwt.three4g.cameras.Camera;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

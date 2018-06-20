@@ -1,21 +1,18 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.interactive;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.core.ArrayBuffer;
 import elemental2.core.JsArray;
-import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLDivElement;
 import elemental2.dom.MouseEvent;
 import jsinterop.base.Js;
-import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Raycaster;
 import org.treblereel.gwt.three4g.core.bufferattributes.Float32BufferAttribute;
 import org.treblereel.gwt.three4g.core.extra.Intersect;
+import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
+import org.treblereel.gwt.three4g.demo.client.local.Attachable;
+import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.geometries.BoxGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.ShaderMaterial;
@@ -27,8 +24,6 @@ import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Points;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.List;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

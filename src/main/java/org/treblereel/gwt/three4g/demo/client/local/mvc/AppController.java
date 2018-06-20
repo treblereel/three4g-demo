@@ -11,15 +11,17 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnim
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
+import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
+import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lensflares.WebglLensflares;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3ds;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBabylon;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderCollada;
-import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderColladaKinematics;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderColladaSkinning;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderDraco;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderFbx;
@@ -37,6 +39,9 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveDragging;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.VivePaint;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveSculpt;
+import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
+import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Presenter;
@@ -47,16 +52,21 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.VivePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.ViveSculptPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebGlAnimationKeyframesJsonPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebGlCameraPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRCubesPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRPanoramaPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRSandboxPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglAnimationScenePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCameraArrayPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometriesParametricPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryCubePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryDynamicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveBuffergeometryPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveDraggableCubesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractivePointsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLensflaresPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoader3dsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderBabylonPresenter;
-import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderColladaKinematicsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderColladaPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderColladaSkinningPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderDracoPresenter;
@@ -107,6 +117,12 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglLoaderPdbPresenter webglLoaderPdbPresenter = GWT.create(WebglLoaderPdbPresenter.class);
     private WebglLoaderPrwmPresenter webglLoaderPrwmPresenter = GWT.create(WebglLoaderPrwmPresenter.class);
     private WebglLoaderTextureTgaPresenter webglLoaderTextureTgaPresenter = GWT.create(WebglLoaderTextureTgaPresenter.class);
+    private WebVRCubesPresenter webVRCubesPresenter = GWT.create(WebVRCubesPresenter.class);
+    private WebVRPanoramaPresenter webVRPanoramaPresenter = GWT.create(WebVRPanoramaPresenter.class);
+    private WebVRSandboxPresenter webVRSandboxPresenter = GWT.create(WebVRSandboxPresenter.class);
+    private WebglLensflaresPresenter webglLensflaresPresenter = GWT.create(WebglLensflaresPresenter.class);
+    private WebglInteractiveDraggableCubesPresenter webglInteractiveDraggableCubesPresenter = GWT.create(WebglInteractiveDraggableCubesPresenter.class);
+    private WebglClippingPresenter webglClippingPresenter = GWT.create(WebglClippingPresenter.class);
 
 
     private HTMLDivElement container;
@@ -148,6 +164,12 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglLoaderPdb.TYPE, event -> History.newItem(WebglLoaderPdb.class.getSimpleName()));
         eventBus.addHandler(WebglLoaderPrwm.TYPE, event -> History.newItem(WebglLoaderPrwm.class.getSimpleName()));
         eventBus.addHandler(WebglLoaderTextureTga.TYPE, event -> History.newItem(WebglLoaderTextureTga.class.getSimpleName()));
+        eventBus.addHandler(WebVRCubes.TYPE, event -> History.newItem(WebVRCubes.class.getSimpleName()));
+        eventBus.addHandler(WebVRPanorama.TYPE, event -> History.newItem(WebVRPanorama.class.getSimpleName()));
+        eventBus.addHandler(WebVRSandbox.TYPE, event -> History.newItem(WebVRSandbox.class.getSimpleName()));
+        eventBus.addHandler(WebglLensflares.TYPE, event -> History.newItem(WebglLensflares.class.getSimpleName()));
+        eventBus.addHandler(WebglInteractiveDraggableCubes.TYPE, event -> History.newItem(WebglInteractiveDraggableCubes.class.getSimpleName()));
+        eventBus.addHandler(WebglClipping.TYPE, event -> History.newItem(WebglClipping.class.getSimpleName()));
 
 
     }
@@ -155,7 +177,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     public void dispatch(final HTMLDivElement container) {
         this.container = container;
         if ("".equals(History.getToken())) {
-            History.newItem(MainView.class.getSimpleName());
+            History.newItem(WebGlAnimationKeyframesJson.class.getSimpleName());
         } else {
             History.fireCurrentHistoryState();
         }
@@ -179,58 +201,70 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglAnimationScenePresenter.dispatch(container);
             } else if (token.equals(WebGlCamera.class.getSimpleName())) {
                 webGlCameraPresenter.dispatch(container);
-            }else if (token.equals(WebglCameraArray.class.getSimpleName())) {
+            } else if (token.equals(WebglCameraArray.class.getSimpleName())) {
                 webglCameraArrayPresenter.dispatch(container);
-            }else if (token.equals(WebglGeometriesParametric.class.getSimpleName())) {
+            } else if (token.equals(WebglGeometriesParametric.class.getSimpleName())) {
                 webglGeometriesParametricPresenter.dispatch(container);
-            }else if (token.equals(WebglGeometryCube.class.getSimpleName())) {
+            } else if (token.equals(WebglGeometryCube.class.getSimpleName())) {
                 webglGeometryCubePresenter.dispatch(container);
-            }else if (token.equals(WebglGeometryDynamic.class.getSimpleName())) {
+            } else if (token.equals(WebglGeometryDynamic.class.getSimpleName())) {
                 webglGeometryDynamicPresenter.dispatch(container);
-            }else if (token.equals(DayDream.class.getSimpleName())) {
+            } else if (token.equals(DayDream.class.getSimpleName())) {
                 dayDreamPresenter.dispatch(container);
-            }else if (token.equals(Rollercoaster.class.getSimpleName())) {
+            } else if (token.equals(Rollercoaster.class.getSimpleName())) {
                 rollercoasterPresenter.dispatch(container);
-            }else if (token.equals(Vive.class.getSimpleName())) {
+            } else if (token.equals(Vive.class.getSimpleName())) {
                 vivePresenter.dispatch(container);
-            }else if (token.equals(ViveDragging.class.getSimpleName())) {
+            } else if (token.equals(ViveDragging.class.getSimpleName())) {
                 viveDraggingPresenter.dispatch(container);
-            }else if (token.equals(VivePaint.class.getSimpleName())) {
+            } else if (token.equals(VivePaint.class.getSimpleName())) {
                 vivePaintPresenter.dispatch(container);
-            }else if (token.equals(ViveSculpt.class.getSimpleName())) {
+            } else if (token.equals(ViveSculpt.class.getSimpleName())) {
                 viveSculptPresenter.dispatch(container);
-            }else if (token.equals(WebglInteractivePoints.class.getSimpleName())) {
+            } else if (token.equals(WebglInteractivePoints.class.getSimpleName())) {
                 webglInteractivePointsPresenter.dispatch(container);
-            }else if (token.equals(WebglInteractiveBuffergeometry.class.getSimpleName())) {
+            } else if (token.equals(WebglInteractiveBuffergeometry.class.getSimpleName())) {
                 webglInteractiveBuffergeometryPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderJsonBlender.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderJsonBlender.class.getSimpleName())) {
                 webglLoaderJsonBlenderPresenter.dispatch(container);
-            }else if (token.equals(WebglLoader3ds.class.getSimpleName())) {
+            } else if (token.equals(WebglLoader3ds.class.getSimpleName())) {
                 webglLoader3dsPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderCollada.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderCollada.class.getSimpleName())) {
                 webglLoaderColladaPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderColladaSkinning.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderColladaSkinning.class.getSimpleName())) {
                 webglLoaderColladaSkinningPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderDraco.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderDraco.class.getSimpleName())) {
                 webglLoaderDracoPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderFbx.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderFbx.class.getSimpleName())) {
                 webglLoaderFbxPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderGltf.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderGltf.class.getSimpleName())) {
                 webglLoaderGltfPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderBabylon.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderBabylon.class.getSimpleName())) {
                 webglLoaderBabylonPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderObj.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderObj.class.getSimpleName())) {
                 webglLoaderObjPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderObj2.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderObj2.class.getSimpleName())) {
                 webglLoaderObj2Presenter.dispatch(container);
-            }else if (token.equals(WebglLoaderPcd.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderPcd.class.getSimpleName())) {
                 webglLoaderPcdPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderPdb.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderPdb.class.getSimpleName())) {
                 webglLoaderPdbPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderPrwm.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderPrwm.class.getSimpleName())) {
                 webglLoaderPrwmPresenter.dispatch(container);
-            }else if (token.equals(WebglLoaderTextureTga.class.getSimpleName())) {
+            } else if (token.equals(WebglLoaderTextureTga.class.getSimpleName())) {
                 webglLoaderTextureTgaPresenter.dispatch(container);
+            } else if (token.equals(WebVRCubes.class.getSimpleName())) {
+                webVRCubesPresenter.dispatch(container);
+            } else if (token.equals(WebVRPanorama.class.getSimpleName())) {
+                webVRPanoramaPresenter.dispatch(container);
+            } else if (token.equals(WebVRSandbox.class.getSimpleName())) {
+                webVRSandboxPresenter.dispatch(container);
+            } else if (token.equals(WebglLensflares.class.getSimpleName())) {
+                webglLensflaresPresenter.dispatch(container);
+            } else if (token.equals(WebglInteractiveDraggableCubes.class.getSimpleName())) {
+                webglInteractiveDraggableCubesPresenter.dispatch(container);
+            } else if (token.equals(WebglClipping.class.getSimpleName())) {
+                webglClippingPresenter.dispatch(container);
             }
         }
     }

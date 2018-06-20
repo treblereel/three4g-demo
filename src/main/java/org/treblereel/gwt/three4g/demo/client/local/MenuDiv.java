@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local;
 
 import elemental2.dom.HTMLDivElement;
-import elemental2.dom.HTMLElement;
 
 import static elemental2.dom.DomGlobal.document;
 

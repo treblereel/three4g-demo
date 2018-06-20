@@ -3,7 +3,6 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
@@ -19,7 +18,6 @@ import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
-import org.treblereel.gwt.three4g.textures.Texture;
 
 import java.util.Random;
 

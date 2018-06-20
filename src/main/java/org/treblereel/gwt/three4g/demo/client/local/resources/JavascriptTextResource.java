@@ -45,4 +45,7 @@ public interface JavascriptTextResource extends ClientBundle {
 
     @Source("js/Tween.js")
     TextResource getTWEEN();
+
+    @Source("js/FlyControls.js")
+    TextResource getFlyControls();
 }

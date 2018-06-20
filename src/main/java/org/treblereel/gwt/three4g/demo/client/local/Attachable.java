@@ -67,7 +67,14 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
     public void doDetach() {
         AppSetup.infoDiv.hide();
         AppSetup.menuDiv.hide();
+        clearDiv(AppSetup.guiDiv.get());
         window.removeEventListener("resize", onResize);
+    }
+
+    private void clearDiv(HTMLDivElement element){
+        while (element.hasChildNodes()) {
+            element.removeChild(element.firstChild);
+        }
     }
 
     private void doAttachLink() {

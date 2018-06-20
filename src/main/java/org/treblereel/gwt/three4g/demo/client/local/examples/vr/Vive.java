@@ -1,14 +1,11 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
-import elemental2.dom.DomGlobal;
-import elemental2.dom.HTMLDivElement;
 import jsinterop.base.Js;
-import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
+import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.examples.vr.WebVR;
@@ -27,7 +24,6 @@ import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.renderers.OnAnimate;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
@@ -42,7 +38,6 @@ public class Vive extends Attachable {
 
     public static final String name = "vive";
     private Clock clock = new Clock();
-    private HTMLDivElement container;
 
     private ViveController controller1, controller2;
     private Mesh room;
@@ -51,7 +46,6 @@ public class Vive extends Attachable {
     private boolean ready = false;
 
     public Vive() {
-        container = (HTMLDivElement) DomGlobal.document.createElement("div");
 
         scene = new Scene();
         scene.background = new Color(0x505050);
@@ -180,12 +174,9 @@ public class Vive extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(new OnAnimate() {
-            @Override
-            public void animate() {
-                if (container.parentNode != null && container.parentNode.parentNode != null && ready) {
-                    render();
-                }
+        webGLRenderer.setAnimationLoop(() -> {
+            if (container.parentNode != null && container.parentNode.parentNode != null && ready) {
+                render();
             }
         });
     }
@@ -199,7 +190,7 @@ public class Vive extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" <a href=\"http://threejs.org\" target=\"_blank\" rel=\"noopener\">three.js</a> webgl - htc vive");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml("  webgl - htc vive");
     }
 
     private void render() {

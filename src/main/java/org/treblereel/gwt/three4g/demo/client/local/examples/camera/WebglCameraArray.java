@@ -1,12 +1,12 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.camera;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.cameras.ArrayCamera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
+import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
+import org.treblereel.gwt.three4g.demo.client.local.Attachable;
+import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.geometries.CylinderBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
