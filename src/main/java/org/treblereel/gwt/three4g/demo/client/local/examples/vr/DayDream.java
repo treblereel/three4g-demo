@@ -90,12 +90,12 @@ public class DayDream extends Attachable {
         WebGLRendererParameters parameters = new WebGLRendererParameters();
         parameters.alpha = true;
 
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.vr.enabled = true;
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.vr.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
 
         controller = new DaydreamController();
         controller.position.set(0.3f, 0.75f, 0);
@@ -126,7 +126,7 @@ public class DayDream extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(new OnAnimate() {
+        renderer.setAnimationLoop(new OnAnimate() {
             @Override
             public void animate() {
                 if (container.parentNode != null && container.parentNode.parentNode != null) {
@@ -174,6 +174,6 @@ public class DayDream extends Attachable {
             }
             velocity.y -= 0.00098;
         }
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

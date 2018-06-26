@@ -8,7 +8,8 @@ public class RootPanel extends Attachable {
 
 
     HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
-    public RootPanel(){
+
+    public RootPanel() {
         container.id = "content";
     }
 

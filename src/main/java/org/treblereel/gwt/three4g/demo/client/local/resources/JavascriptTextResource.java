@@ -48,4 +48,22 @@ public interface JavascriptTextResource extends ClientBundle {
 
     @Source("js/FlyControls.js")
     TextResource getFlyControls();
+
+    @Source("js/ShaderSkin.js")
+    TextResource getShaderSkin();
+
+    @Source("js/CopyShader.js")
+    TextResource getCopyShader();
+
+    @Source("js/EffectComposer.js")
+    TextResource getEffectComposer();
+
+    @Source("js/RenderPass.js")
+    TextResource getRenderPass();
+
+    @Source("js/ShaderPass.js")
+    TextResource getShaderPass();
+
+    @Source("js/MaskPass.js")
+    TextResource getMaskPass();
 }

@@ -46,24 +46,17 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 public class VivePaint extends Attachable {
 
     public static final String name = "vive / paint";
-
-    private PaintViveController controller1, controller2;
-    private boolean ready = false;
-
-    private Mesh line;
     Vector3 up = new Vector3(0, 1, 0);
-
     Vector3 vector1 = new Vector3();
     Vector3 vector2 = new Vector3();
     Vector3 vector3 = new Vector3();
     Vector3 vector4 = new Vector3();
-
     JsPropertyMap shapes = JsPropertyMap.of();
+    private PaintViveController controller1, controller2;
+    private boolean ready = false;
+    private Mesh line;
 
     public VivePaint() {
-
-        GWT.log("VivePaint ");
-
 
         ScriptInjector.fromString(JavascriptTextResource.IMPL.getPaintViveController().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW).inject();
@@ -115,27 +108,27 @@ public class VivePaint extends Attachable {
         parameters.alpha = true;
         parameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        webGLRenderer.gammaInput = true;
-        webGLRenderer.gammaOutput = true;
-        webGLRenderer.shadowMap.enabled = true;
-        webGLRenderer.vr.enabled = true;
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        renderer.shadowMap.enabled = true;
+        renderer.vr.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
 
 
         controller1 = new PaintViveController(0);
-        controller1.standingMatrix = webGLRenderer.vr.getStandingMatrix();
+        controller1.standingMatrix = renderer.vr.getStandingMatrix();
 
         Vector3[] vectors = new Vector3[2];
         vectors[0] = new Vector3();
         vectors[1] = new Vector3();
 
         controller1.userData.setProperty("points", vectors);
-        
+
         Matrix4[] matrices = new Matrix4[2];
         matrices[0] = new Matrix4();
         matrices[1] = new Matrix4();
@@ -144,7 +137,7 @@ public class VivePaint extends Attachable {
 
         scene.add(controller1);
         controller2 = new PaintViveController(1);
-        controller2.standingMatrix = webGLRenderer.vr.getStandingMatrix();
+        controller2.standingMatrix = renderer.vr.getStandingMatrix();
 
         vectors = new Vector3[2];
         vectors[0] = new Vector3();
@@ -266,12 +259,11 @@ public class VivePaint extends Attachable {
         //DomGlobal.console.log("stroke line : " + JSON.stringify(line));
 
         BufferGeometry geometry = (BufferGeometry) line.geometry;
-       // DomGlobal.console.log("stroke geometry before : " + JSON.stringify(geometry)); 
+        // DomGlobal.console.log("stroke geometry before : " + JSON.stringify(geometry));
 
         int count = geometry.drawRange.count;
 
-       // DomGlobal.console.log("stroke size " + controller.getSize());
-
+        // DomGlobal.console.log("stroke size " + controller.getSize());
 
 
         //TODO
@@ -336,18 +328,17 @@ public class VivePaint extends Attachable {
         }
         //DomGlobal.console.log("stroke geometry after : " + JSON.stringify(geometry)); 
 
-        DomGlobal.console.log("stroke geometry color : " + JSON.stringify(color)); 
+        DomGlobal.console.log("stroke geometry color : " + JSON.stringify(color));
 
-        DomGlobal.console.log("stroke geometry vector1 : " + JSON.stringify(vector1)); 
-        DomGlobal.console.log("stroke geometry vector2 : " + JSON.stringify(vector2)); 
-        DomGlobal.console.log("stroke geometry vector3 : " + JSON.stringify(vector3)); 
-        DomGlobal.console.log("stroke geometry vector4 : " + JSON.stringify(vector4)); 
+        DomGlobal.console.log("stroke geometry vector1 : " + JSON.stringify(vector1));
+        DomGlobal.console.log("stroke geometry vector2 : " + JSON.stringify(vector2));
+        DomGlobal.console.log("stroke geometry vector3 : " + JSON.stringify(vector3));
+        DomGlobal.console.log("stroke geometry vector4 : " + JSON.stringify(vector4));
 
         geometry.drawRange.count = count;
     }
 
     public void updateGeometry(int start, int end) {
-
 
 
         if (start == end) return;
@@ -359,7 +350,7 @@ public class VivePaint extends Attachable {
         int count = (end - start) * 3;
         BufferGeometry geometry = (BufferGeometry) line.geometry;
 
-        DomGlobal.console.log("updateGeometry offset " + offset  + "  count " + count);
+        DomGlobal.console.log("updateGeometry offset " + offset + "  count " + count);
 
 
         geometry.getAttribute("position").updateRange.offset = offset;
@@ -378,14 +369,12 @@ public class VivePaint extends Attachable {
         DomGlobal.console.log("updateGeometry color " + JSON.stringify(geometry.getAttribute("color").array));
 
 
-
-
     }
 
 
     public void handleController(PaintViveController controller) {
 
-    //    DomGlobal.console.log("handleController " + controller.name);
+        //    DomGlobal.console.log("handleController " + controller.name);
 
 
         controller.update();
@@ -399,7 +388,7 @@ public class VivePaint extends Attachable {
             Matrix4 matrix = pivot.matrixWorld;
 
             Matrix4 matrixx = new Matrix4();
-            matrixx.set(0.8263265804321446f,0.0653743223568597f,0.5593840198722803f,0,-0.5623233023666134f,0.15089012244220096f,0.8130342249540927f,0,-0.03125397059645499f,-0.9863865587698832f,0.16144601745571446f,0,-0.2790985798237979f,0.9812008146829518f,1.26712946641552f,1);
+            matrixx.set(0.8263265804321446f, 0.0653743223568597f, 0.5593840198722803f, 0, -0.5623233023666134f, 0.15089012244220096f, 0.8130342249540927f, 0, -0.03125397059645499f, -0.9863865587698832f, 0.16144601745571446f, 0, -0.2790985798237979f, 0.9812008146829518f, 1.26712946641552f, 1);
 
 
             Vector3 point1 = ((Vector3[]) controller.userData.getProperty("points"))[0];
@@ -430,10 +419,10 @@ public class VivePaint extends Attachable {
                 Vector3 point2x = new Vector3(-0.27868371624763977f, 0.9809246232932015f, 1.2670630887135546f);
 
                 Matrix4 matrix1x = new Matrix4();
-                matrix1x.set(-0.15798940984523147f,0,-0.9874408065179175f,0,0.5424167929168244f,0.8356148637116435f,-0.08678607207379699f,0,0.825120214961785f,-0.5493157557763763f,-0.13201829917570607f,0,0,0,0,1);   
-                
+                matrix1x.set(-0.15798940984523147f, 0, -0.9874408065179175f, 0, 0.5424167929168244f, 0.8356148637116435f, -0.08678607207379699f, 0, 0.825120214961785f, -0.5493157557763763f, -0.13201829917570607f, 0, 0, 0, 0, 1);
+
                 Matrix4 matrix2x = new Matrix4();
-                matrix2x.set(-0.3105378399815054f,0,-0.9505610185251766f,0,0.7785905383552746f,0.5736717733183716f,-0.2543569737227559f,0,0.5453100251446554f,-0.8190852803571523f,-0.1781467933446469f,0,0,0,0,1);
+                matrix2x.set(-0.3105378399815054f, 0, -0.9505610185251766f, 0, 0.7785905383552746f, 0.5736717733183716f, -0.2543569737227559f, 0, 0.5453100251446554f, -0.8190852803571523f, -0.1781467933446469f, 0, 0, 0, 0, 1);
 
 /*                 DomGlobal.console.log("getButtonState controller.getSize()" + JSON.stringify(controller.getSize()));
 
@@ -459,9 +448,7 @@ public class VivePaint extends Attachable {
 
                 //PaintViveController paintViveController = new PaintViveController(3);
 
-               // DomGlobal.console.log("getButtonState " + controller.getButtonState("trigger"));
-
-
+                // DomGlobal.console.log("getButtonState " + controller.getButtonState("trigger"));
 
 
                 stroke(controller, point1x, point2x, matrix1x, matrix2x);
@@ -480,7 +467,7 @@ public class VivePaint extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(() -> {
+        renderer.setAnimationLoop(() -> {
             if (container.parentNode != null && container.parentNode.parentNode != null && ready) {
                 render();
             }
@@ -498,6 +485,6 @@ public class VivePaint extends Attachable {
         handleController(controller1);
         handleController(controller2);
         updateGeometry(count, ((BufferGeometry) line.geometry).drawRange.count);
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

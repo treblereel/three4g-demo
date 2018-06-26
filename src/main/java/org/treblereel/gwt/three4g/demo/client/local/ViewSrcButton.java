@@ -11,17 +11,16 @@ import static elemental2.dom.DomGlobal.document;
  */
 public class ViewSrcButton {
 
+    private static final String REPO_ADDR = "https://github.com/treblereel/three4g-demo/tree/master/src/main/java/";
     private HTMLDivElement container = (HTMLDivElement) document.createElement("div");
     private HTMLAnchorElement info = (HTMLAnchorElement) document.createElement("a");
 
-    private static final String REPO_ADDR = "https://github.com/treblereel/three4g-demo/tree/master/src/main/java/";
 
-
-    public ViewSrcButton(){
+    public ViewSrcButton() {
         container.id = "viewSrcButton";
 
         info.href = "http://threejs.org";
-        info.target= "_blank";
+        info.target = "_blank";
         info.rel = "noopener";
         info.textContent = "View source";
 
@@ -30,8 +29,8 @@ public class ViewSrcButton {
 
     }
 
-    public void setLink(String clazz){
-        info.href = REPO_ADDR+clazz.replaceAll("\\.","/")+".java";
+    public void setLink(String clazz) {
+        info.href = REPO_ADDR + clazz.replaceAll("\\.", "/") + ".java";
     }
 
 

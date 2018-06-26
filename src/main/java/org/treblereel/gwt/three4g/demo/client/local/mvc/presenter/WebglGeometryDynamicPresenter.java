@@ -9,10 +9,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeome
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/1/18.
  */
-public class WebglGeometryDynamicPresenter implements Presenter{
+public class WebglGeometryDynamicPresenter implements Presenter {
 
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(WebglGeometryDynamic.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(WebglGeometryDynamic.class)).asWidget());
     }
 }

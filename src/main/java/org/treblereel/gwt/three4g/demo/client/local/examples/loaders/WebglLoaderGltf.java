@@ -34,10 +34,10 @@ public class WebglLoaderGltf extends Attachable {
     public WebglLoaderGltf() {
 
 
-        camera = new PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25f, 20 );
-        camera.position.set( -1.8f, 0.9f, 2.7f );
-        controls = new OrbitControls( camera );
-        controls.target.set( 0f, -0.2f, -0.2f );
+        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25f, 20);
+        camera.position.set(-1.8f, 0.9f, 2.7f);
+        controls = new OrbitControls(camera);
+        controls.target.set(0f, -0.2f, -0.2f);
         controls.update();
 
         // envmap
@@ -57,44 +57,44 @@ public class WebglLoaderGltf extends Attachable {
         scene = new Scene();
         scene.background = envMap;
 
-        HemisphereLight light = new HemisphereLight( 0xbbbbff, 0x444422 );
-        light.position.set( 0, 1, 0 );
-        scene.add( light );
+        HemisphereLight light = new HemisphereLight(0xbbbbff, 0x444422);
+        light.position.set(0, 1, 0);
+        scene.add(light);
         // model
         GLTFLoader loader = new GLTFLoader();
         loader.load("models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf", new OnLoadCallback<JsObject>() {
-                    @Override
-                    public void onLoad(JsObject object) {
-                        Scene obj = object.getProperty("scene");
+            @Override
+            public void onLoad(JsObject object) {
+                Scene obj = object.getProperty("scene");
 
-                        obj.traverse(new TraverseCallback() {
-                            @Override
-                            public void onEvent(Object3D child) {
-                                if ( child instanceof Mesh ) {
-                                    MeshStandardMaterial material = child.getProperty("material");
-                                    material.envMap = envMap;
-                                }
-                            }
-                        } );
-                        scene.add( obj );
+                obj.traverse(new TraverseCallback() {
+                    @Override
+                    public void onEvent(Object3D child) {
+                        if (child instanceof Mesh) {
+                            MeshStandardMaterial material = child.getProperty("material");
+                            material.envMap = envMap;
+                        }
                     }
                 });
+                scene.add(obj);
+            }
+        });
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.gammaInput = true;
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.gammaInput = true;
         //
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
     }
 
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -111,7 +111,7 @@ public class WebglLoaderGltf extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
 
             }

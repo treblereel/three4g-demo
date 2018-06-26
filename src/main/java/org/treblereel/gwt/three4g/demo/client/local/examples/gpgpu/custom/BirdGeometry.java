@@ -7,7 +7,7 @@ import org.treblereel.gwt.three4g.core.BufferGeometry;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 4/12/18.
  */
-@JsType(isNative = true, namespace = "THREE", name ="BirdGeometry")
+@JsType(isNative = true, namespace = "THREE", name = "BirdGeometry")
 public class BirdGeometry extends BufferGeometry {
 
 }

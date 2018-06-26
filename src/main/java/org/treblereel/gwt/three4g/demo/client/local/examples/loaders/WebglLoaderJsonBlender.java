@@ -82,16 +82,16 @@ public class WebglLoaderJsonBlender extends Attachable {
         pointLight.position.set(5, 0, 0);
         scene.add(pointLight);
         // renderer
-        webGLRenderer = new WebGLRenderer();
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        container.appendChild(webGLRenderer.domElement);
+        renderer = new WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
     }
 
 
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -121,6 +121,6 @@ public class WebglLoaderJsonBlender extends Attachable {
         camera.position.z = (float) Math.sin(timer) * 10;
         mixer.update(clock.getDelta());
         camera.lookAt(scene.position);
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

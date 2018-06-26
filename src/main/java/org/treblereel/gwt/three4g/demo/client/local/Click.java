@@ -4,7 +4,7 @@ import jsinterop.annotations.JsFunction;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
- *         Created by treblereel on 12/8/17.
+ * Created by treblereel on 12/8/17.
  */
 @JsFunction
 @FunctionalInterface

@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
- *         Created by treblereel on 12/14/17.
+ * Created by treblereel on 12/14/17.
  */
 public class Utils {
 

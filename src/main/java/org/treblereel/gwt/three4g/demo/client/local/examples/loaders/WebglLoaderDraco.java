@@ -95,20 +95,20 @@ public class WebglLoaderDraco extends Attachable {
 
         WebGLRendererParameters parameters = new WebGLRendererParameters();
         parameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.gammaInput = true;
-        webGLRenderer.gammaOutput = true;
-        webGLRenderer.shadowMap.enabled = true;
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        renderer.shadowMap.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
     }
 
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -124,10 +124,10 @@ public class WebglLoaderDraco extends Attachable {
                 StatsProducer.getStats().update();
 
                 double timer = new Date().getTime() * 0.0003;
-                camera.position.x = (float)(Math.sin( timer ) * 0.5);
-                camera.position.z = (float)(Math.cos( timer ) * 0.5);
-                camera.lookAt( new Vector3( 0, 0.1f, 0 ) );
-                webGLRenderer.render( scene, camera );
+                camera.position.x = (float) (Math.sin(timer) * 0.5);
+                camera.position.z = (float) (Math.cos(timer) * 0.5);
+                camera.lookAt(new Vector3(0, 0.1f, 0));
+                renderer.render(scene, camera);
             }
             animate();
         });

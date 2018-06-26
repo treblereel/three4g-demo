@@ -115,11 +115,11 @@ public class WebglLoaderPdb extends Attachable {
 
         WebGLRendererParameters parameters = new WebGLRendererParameters();
         parameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
     }
 
     private void createMenu() {
@@ -238,13 +238,13 @@ public class WebglLoaderPdb extends Attachable {
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml("");
+        AppSetup.infoDiv.hide();
     }
 
     private void animate() {
@@ -259,7 +259,7 @@ public class WebglLoaderPdb extends Attachable {
 
                 labelRenderer.setSize(window.innerWidth - panel.offsetWidth, window.innerHeight);
 
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 labelRenderer.render(scene, camera);
             }
             animate();

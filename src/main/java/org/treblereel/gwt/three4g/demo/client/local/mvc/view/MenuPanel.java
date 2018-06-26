@@ -11,7 +11,8 @@ import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 public class MenuPanel extends Attachable {
 
     HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
-    public MenuPanel(){
+
+    public MenuPanel() {
         container.id = "RootPanel";
     }
 

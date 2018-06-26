@@ -13,6 +13,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnim
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
+import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
@@ -34,6 +35,12 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderPdb;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderPrwm;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderTextureTga;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lod.WebglLod;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterials;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBlending;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
@@ -58,11 +65,10 @@ public class AppSetup implements EntryPoint {
     public static MenuDiv menuDiv = new MenuDiv();
     public static CurrentPageHolder currentPageHolder = new CurrentPageHolder();
 
-    private HTMLUListElement list = (HTMLUListElement)DomGlobal.document.createElement("ul");
-    private HTMLDivElement menu = (HTMLDivElement)DomGlobal.document.createElement("div");
+    private HTMLUListElement list = (HTMLUListElement) DomGlobal.document.createElement("ul");
+    private HTMLDivElement menu = (HTMLDivElement) DomGlobal.document.createElement("div");
     private RootPanel rootPanel = new RootPanel();
     private AppController appController = new AppController();
-
 
 
     public AppSetup() {
@@ -75,7 +81,7 @@ public class AppSetup implements EntryPoint {
         elm.classList.add("link");
         elm.addEventListener("click", evt -> {
             clearAndSetSelected(elm);
-            Window.Location.assign("#"+clazz.getSimpleName());
+            Window.Location.assign("#" + clazz.getSimpleName());
         });
         list.appendChild(elm);
     }
@@ -129,6 +135,8 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglCameraArray.name, WebglCameraArray.class);
         //clipping
         addListElement(WebglClipping.name, WebglClipping.class);
+        //decals
+        addListElement(WebglDecals.name, WebglDecals.class);
         //geometry
         addListElement(WebglGeometriesParametric.name, WebglGeometriesParametric.class);
         addListElement(WebglGeometryCube.name, WebglGeometryCube.class);
@@ -148,10 +156,18 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglLoaderPrwm.name, WebglLoaderPrwm.class);
 
         addListElement(WebglLoaderTextureTga.name, WebglLoaderTextureTga.class);
+        //lod
+        addListElement(WebglLod.name, WebglLod.class);
 
         //addListElement(WebglLoaderColladaKinematics.name, WebglLoaderColladaKinematics.class);
         addListElement(WebglLoaderJsonBlender.name, WebglLoaderJsonBlender.class);
         //material
+        addListElement(WebglMaterials.name, WebglMaterials.class);
+        addListElement(WebglMaterialsBlending.name, WebglMaterialsBlending.class);
+        addListElement(WebglMaterialsBumpmap.name, WebglMaterialsBumpmap.class);
+        addListElement(WebglMaterialsBumpmapSkin.name, WebglMaterialsBumpmapSkin.class);
+        addListElement(WebglMaterialsChannels.name, WebglMaterialsChannels.class);
+
         //interactive
         addListElement(WebglInteractiveBuffergeometry.name, WebglInteractiveBuffergeometry.class);
         addListElement(WebglInteractiveDraggableCubes.name, WebglInteractiveDraggableCubes.class);

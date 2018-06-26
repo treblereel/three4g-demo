@@ -1,16 +1,12 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.interactive;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Raycaster;
-import org.treblereel.gwt.three4g.core.extra.Intersect;
 import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
-import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.examples.controls.DragControls;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
@@ -19,9 +15,7 @@ import org.treblereel.gwt.three4g.lights.SpotLight;
 import org.treblereel.gwt.three4g.materials.MeshLambertMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.MeshLambertMaterialParameters;
 import org.treblereel.gwt.three4g.math.Color;
-import org.treblereel.gwt.three4g.math.Vector2;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.objects.Points;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
@@ -38,12 +32,6 @@ public class WebglInteractiveDraggableCubes extends Attachable {
 
     public static final String name = "interactive / draggablecubes";
 
-    private Points particles;
-    private Double PARTICLE_SIZE = 20d;
-    private Raycaster raycaster;
-    private Intersect[] intersects;
-    private Vector2 mouse;
-    private int INTERSECTED = -1;
     private List<Mesh> objects = new ArrayList();
 
     private Random rand = new Random();
@@ -74,8 +62,6 @@ public class WebglInteractiveDraggableCubes extends Attachable {
         light.angle = (float) Math.PI / 9;
         light.castShadow = true;
 
-        GWT.log(JSON.stringify(light.shadow.camera));
-
         ((PerspectiveCamera) light.shadow.camera).near = 1000;
         ((PerspectiveCamera) light.shadow.camera).far = 4000;
         light.shadow.mapSize.width = 1024;
@@ -103,16 +89,16 @@ public class WebglInteractiveDraggableCubes extends Attachable {
             objects.add(object);
         }
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.shadowMap.enabled = true;
-        webGLRenderer.shadowMap.type = THREE.PCFShadowMap;
-        container.appendChild(webGLRenderer.domElement);
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFShadowMap;
+        container.appendChild(renderer.domElement);
 
-        DragControls dragControls = new DragControls(objects.toArray(new Mesh[objects.size()]), camera, webGLRenderer.domElement);
+        DragControls dragControls = new DragControls(objects.toArray(new Mesh[objects.size()]), camera, renderer.domElement);
         dragControls.activate();
 
         dragControls.addEventListener("dragstart", event -> controls.enabled = false);
@@ -123,7 +109,7 @@ public class WebglInteractiveDraggableCubes extends Attachable {
 
     public void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -144,7 +130,7 @@ public class WebglInteractiveDraggableCubes extends Attachable {
 
     private void render() {
         controls.update();
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }
 

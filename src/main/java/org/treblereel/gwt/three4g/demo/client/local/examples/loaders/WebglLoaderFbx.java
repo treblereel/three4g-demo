@@ -102,20 +102,20 @@ public class WebglLoaderFbx extends Attachable {
 
 
         //
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.shadowMap.enabled = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.antialias = true;
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
         //
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
     }
 
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -134,7 +134,7 @@ public class WebglLoaderFbx extends Attachable {
                 if (mixer != null) {
                     mixer.update(clock.getDelta());
                 }
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
 
             }

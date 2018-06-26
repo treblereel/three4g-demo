@@ -6,7 +6,7 @@ import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
 
-public class MainPresenter implements Presenter{
+public class MainPresenter implements Presenter {
 
     private Attachable display = GWT.create(MainView.class);
 

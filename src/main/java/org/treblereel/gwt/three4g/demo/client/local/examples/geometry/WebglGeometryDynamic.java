@@ -28,15 +28,11 @@ import org.treblereel.gwt.three4g.textures.Texture;
 public class WebglGeometryDynamic extends Attachable {
 
 
-    private FirstPersonControls controls;
-    private PlaneGeometry geometry;
-
     public static final String name = "geometry / dynamic";
-
-
     int worldWidth = 128;
     int worldDepth = 128;
-
+    private FirstPersonControls controls;
+    private PlaneGeometry geometry;
     private Clock clock = new Clock();
 
 
@@ -74,7 +70,7 @@ public class WebglGeometryDynamic extends Attachable {
         MeshBasicMaterial material = new MeshBasicMaterial(meshBasicMaterialParameters);
         mesh = new Mesh(geometry, material);
         scene.add(mesh);
-        setupWebGLRenderer(webGLRenderer);
+        setupWebGLRenderer(renderer);
     }
 
     private void render() {
@@ -84,9 +80,9 @@ public class WebglGeometryDynamic extends Attachable {
         for (int i = 0, l = geometry.vertices.length; i < l; i++) {
             geometry.vertices.getAt(i).y = new Float(35 * Math.sin(i / 5 + (time + i) / 7));
         }
-        ((Geometry)mesh.geometry).verticesNeedUpdate = true;
+        ((Geometry) mesh.geometry).verticesNeedUpdate = true;
         controls.update(delta);
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 
     private void animate() {
@@ -102,7 +98,7 @@ public class WebglGeometryDynamic extends Attachable {
 
     @Override
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }

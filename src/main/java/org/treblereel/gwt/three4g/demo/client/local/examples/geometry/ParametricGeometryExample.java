@@ -40,7 +40,7 @@ public class ParametricGeometryExample extends Attachable {
 
         scene = new Scene();
 
-        camera = new PerspectiveCamera( 75f, aspect, 1f, 10000f );
+        camera = new PerspectiveCamera(75f, aspect, 1f, 10000f);
         camera.position.z = 1000f;
 
         controls = new OrbitControls(camera);
@@ -50,18 +50,18 @@ public class ParametricGeometryExample extends Attachable {
             public Vector3 call(float u, float v) {
 
                 u *= 1;
-                v *= (float)(360 * Math.PI / 180);
+                v *= (float) (360 * Math.PI / 180);
 
                 int a = 200; // semimajor axis a
                 int b = 400; // semimajor axis b
                 int h = 350; // height
 
-                double x = a * Math.sqrt( u ) * Math.cos( v );
-                double y = b * Math.sqrt( u ) * Math.sin( v );
+                double x = a * Math.sqrt(u) * Math.cos(v);
+                double y = b * Math.sqrt(u) * Math.sin(v);
                 double z = u * h;
 
 
-                return new Vector3((float) x,(float) y,(float) z );
+                return new Vector3((float) x, (float) y, (float) z);
             }
         };
 
@@ -70,35 +70,35 @@ public class ParametricGeometryExample extends Attachable {
             public Vector3 call(float u, float v) {
 
                 u *= 1;
-                v *= (float)(240 * Math.PI / 180);
+                v *= (float) (240 * Math.PI / 180);
 
                 int a = 300; // semimajor axes
                 int h = 300; // height
-                double m = Math.sin( u * ( 135 * Math.PI / 180 ) ); // mod
+                double m = Math.sin(u * (135 * Math.PI / 180)); // mod
 
-                double x = a * Math.sqrt( u ) * Math.cos( v ) * m;
-                double y = a * Math.sqrt( u ) * Math.sin( v ) * m;
+                double x = a * Math.sqrt(u) * Math.cos(v) * m;
+                double y = a * Math.sqrt(u) * Math.sin(v) * m;
                 double z = u * h;
 
-                return new Vector3((float) x,(float) y,(float) z );
+                return new Vector3((float) x, (float) y, (float) z);
             }
         };
 
-        geometry = new ParametricGeometry( ellipticParaboloid, d/2, d );
+        geometry = new ParametricGeometry(ellipticParaboloid, d / 2, d);
 
         geometry.computeBoundingBox();
-        geometry.applyMatrix( new Matrix4().makeTranslation( -250f, 120f, -250f ) );
+        geometry.applyMatrix(new Matrix4().makeTranslation(-250f, 120f, -250f));
 
         material = new MeshBasicMaterial();
         material.color = new Color(0xffff00);
         material.wireframe = true;
-        mesh = new Mesh( geometry, material );
-        scene.add( mesh );
+        mesh = new Mesh(geometry, material);
+        scene.add(mesh);
 
-        webGLRenderer = new WebGLRenderer();
-        setupWebGLRenderer(webGLRenderer);
-        //webGLRenderer.setClearColor( new Color(0x00ff00), 1 );
-        controls = new OrbitControls(camera, webGLRenderer.domElement);
+        renderer = new WebGLRenderer();
+        setupWebGLRenderer(renderer);
+        //renderer.setClearColor( new Color(0x00ff00), 1 );
+        controls = new OrbitControls(camera, renderer.domElement);
         controls.enableZoom = false;
     }
 
@@ -125,7 +125,7 @@ public class ParametricGeometryExample extends Attachable {
 
     @Override
     protected void doAttachScene() {
-        document.body.appendChild(webGLRenderer.domElement);
+        document.body.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -150,6 +150,6 @@ public class ParametricGeometryExample extends Attachable {
     }
 
     private void render() {
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

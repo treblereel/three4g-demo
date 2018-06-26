@@ -59,17 +59,17 @@ public class WebglLoaderCollada extends Attachable {
         directionalLight.position.set(1, 1, 0).normalize();
         scene.add(directionalLight);
         //
-        webGLRenderer = new WebGLRenderer();
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
     }
 
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -89,7 +89,7 @@ public class WebglLoaderCollada extends Attachable {
                 if (elf != null) {
                     elf.rotation.z += delta * 0.5;
                 }
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
 
             }

@@ -2,6 +2,7 @@ package org.treblereel.gwt.three4g.demo.client.api;
 
 import elemental2.dom.HTMLDivElement;
 import jsinterop.annotations.JsType;
+import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 
 /**
@@ -19,6 +20,9 @@ public class FlyControls {
     public boolean dragToLook;
 
     public FlyControls(PerspectiveCamera camera) {
+    }
+
+    public FlyControls(OrthographicCamera cameraOrtho) {
     }
 
     public native void update(float delta);

@@ -8,7 +8,7 @@ import jsinterop.annotations.JsType;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/1/18.
  */
-@JsType(isNative = true, namespace= JsPackage.GLOBAL)
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
 public class Stats {
 
     public HTMLCanvasElement dom;

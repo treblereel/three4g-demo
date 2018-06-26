@@ -65,7 +65,7 @@ public class WebglLensflares extends Attachable {
         material.shininess = 50;
 
         for (int i = 0; i < 3000; i++) {
-            Mesh  mesh = new Mesh(geometry, material);
+            Mesh mesh = new Mesh(geometry, material);
             mesh.position.x = (float) (8000 * (2.0 * rand.nextDouble() - 1.0));
             mesh.position.y = (float) (8000 * (2.0 * rand.nextDouble() - 1.0));
             mesh.position.z = (float) (8000 * (2.0 * rand.nextDouble() - 1.0));
@@ -90,18 +90,18 @@ public class WebglLensflares extends Attachable {
         addLight(0.08f, 0.8f, 0.5f, 0, 0, -1000);
         addLight(0.995f, 0.5f, 0.9f, 5000, 5000, -1000);
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.alpha = true;
-        webGLRendererParameters.antialias = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.alpha = true;
+        rendererParameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        webGLRenderer.gammaInput = true;
-        webGLRenderer.gammaOutput = true;
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
 
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
     }
 
     private void addLight(float h, float s, float l, float x, float y, float z) {
@@ -122,7 +122,7 @@ public class WebglLensflares extends Attachable {
 
     @Override
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -138,7 +138,7 @@ public class WebglLensflares extends Attachable {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
                 controls.update(clock.getDelta());
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
             }
         });

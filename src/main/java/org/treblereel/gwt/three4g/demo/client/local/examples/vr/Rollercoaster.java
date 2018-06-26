@@ -57,21 +57,6 @@ public class Rollercoaster extends Attachable {
     private double prevTime;
     private double PI2 = Math.PI * 2;
 
-    @JsFunction
-    public interface Calculate {
-        Vector3 calc(double x);
-    }
-
-
-    public Calculate calcGetPointAt() {
-        return (t) -> getPointAt(t);
-    }
-
-    public Calculate calcGetTangentAt() {
-        return (t) -> getTangentAt(t);
-    }
-
-
     public Rollercoaster() {
 
         ScriptInjector.fromString(JavascriptTextResource.IMPL.getRollercoaster().getText())
@@ -82,14 +67,14 @@ public class Rollercoaster extends Attachable {
         parameters.alpha = true;
         parameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.vr.enabled = true;
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.vr.enabled = true;
 
-        webGLRenderer.vr.userHeight = 0; // TOFIX
+        renderer.vr.userHeight = 0; // TOFIX
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
 
 
         scene = new Scene();
@@ -189,6 +174,13 @@ public class Rollercoaster extends Attachable {
         prevTime = window.performance.now();
     }
 
+    public Calculate calcGetPointAt() {
+        return (t) -> getPointAt(t);
+    }
+
+    public Calculate calcGetTangentAt() {
+        return (t) -> getTangentAt(t);
+    }
 
     @Override
     protected void doAttachScene() {
@@ -203,7 +195,7 @@ public class Rollercoaster extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(() -> {
+        renderer.setAnimationLoop(() -> {
             if (container.parentNode != null && container.parentNode.parentNode != null) {
                 render();
             }
@@ -227,7 +219,7 @@ public class Rollercoaster extends Attachable {
         velocity = Math.max(0.00004, Math.min(0.0002, velocity));
         train.lookAt(lookAt.copy(position).sub(tangent));
 
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
         prevTime = time;
 
     }
@@ -245,6 +237,11 @@ public class Rollercoaster extends Attachable {
         double t1 = Math.max(0, t - delta);
         double t2 = Math.min(1, t + delta);
         return new Vector3().copy(this.getPointAt(t2)).sub(this.getPointAt(t1)).normalize();
+    }
+
+    @JsFunction
+    public interface Calculate {
+        Vector3 calc(double x);
     }
 
 }

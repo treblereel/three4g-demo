@@ -14,11 +14,11 @@ import org.treblereel.gwt.three4g.materials.MeshStandardMaterial;
 public class MarchingCubes extends ImmediateRenderObject {
 
 
+    public MeshStandardMaterial material;
+
     public MarchingCubes(int i, Material material, boolean b) {
 
     }
-
-    public MeshStandardMaterial material;
 
     public native void reset();
 

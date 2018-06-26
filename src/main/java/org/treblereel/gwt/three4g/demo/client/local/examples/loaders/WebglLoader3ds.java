@@ -55,19 +55,19 @@ public class WebglLoader3ds extends Attachable {
                 object.traverse(new TraverseCallback() {
                     @Override
                     public void onEvent(Object3D child) {
-                        if ( child instanceof Mesh) {
+                        if (child instanceof Mesh) {
                             Mesh mesh = child.cast();
-                            ((MeshPhongMaterial)mesh.material).normalMap = normal;
+                            ((MeshPhongMaterial) mesh.material).normalMap = normal;
                         }
                     }
                 });
 
-                scene.add( object );
+                scene.add(object);
 
                 // renderer
-                webGLRenderer = new WebGLRenderer();
-                webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-                container.appendChild(webGLRenderer.domElement);
+                renderer = new WebGLRenderer();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                container.appendChild(renderer.domElement);
 
 
             }
@@ -77,7 +77,7 @@ public class WebglLoader3ds extends Attachable {
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -94,7 +94,7 @@ public class WebglLoader3ds extends Attachable {
                 StatsProducer.getStats().update();
 
                 controls.update();
-                webGLRenderer.render( scene, camera );
+                renderer.render(scene, camera);
                 animate();
             }
         });

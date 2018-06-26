@@ -9,10 +9,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnim
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 5/31/18.
  */
-public class WebGlAnimationKeyframesJsonPresenter implements Presenter{
+public class WebGlAnimationKeyframesJsonPresenter implements Presenter {
 
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(WebGlAnimationKeyframesJson.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(WebGlAnimationKeyframesJson.class)).asWidget());
     }
 }

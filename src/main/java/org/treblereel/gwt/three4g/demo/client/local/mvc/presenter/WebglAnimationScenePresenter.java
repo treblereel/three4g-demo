@@ -12,6 +12,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnim
 public class WebglAnimationScenePresenter implements Presenter {
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(WebglAnimationScene.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(WebglAnimationScene.class)).asWidget());
     }
 }

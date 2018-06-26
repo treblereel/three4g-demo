@@ -8,14 +8,14 @@ import jsinterop.base.JsPropertyMap;
  */
 public class Value<T> {
 
-    public Value(T value){
+    JsPropertyMap value;
+
+    public Value(T value) {
         this.value = JsPropertyMap.of("value", value);
 
     }
 
-    public T get(){
-        return (T)value.get("value");
+    public T get() {
+        return (T) value.get("value");
     }
-
-    JsPropertyMap value;
 }

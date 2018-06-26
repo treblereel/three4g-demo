@@ -8,7 +8,7 @@ public class CurrentPageHolder {
 
     private Attachable page;
 
-    CurrentPageHolder(){
+    CurrentPageHolder() {
 
     }
 
@@ -16,7 +16,7 @@ public class CurrentPageHolder {
         return this.page;
     }
 
-    public void setCurrentPage(Attachable page){
+    public void setCurrentPage(Attachable page) {
         this.page = page;
     }
 }

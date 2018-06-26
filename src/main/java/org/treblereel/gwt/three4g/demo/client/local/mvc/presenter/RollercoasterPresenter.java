@@ -9,10 +9,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/4/18.
  */
-public class RollercoasterPresenter implements Presenter{
+public class RollercoasterPresenter implements Presenter {
 
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(Rollercoaster.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(Rollercoaster.class)).asWidget());
     }
 }

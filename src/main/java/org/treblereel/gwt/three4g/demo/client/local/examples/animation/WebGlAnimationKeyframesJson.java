@@ -27,16 +27,14 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 
 public class WebGlAnimationKeyframesJson extends Attachable {
 
-    private AnimationMixer mixer;
-
     public static final String name = "animation / keyframes / json";
-
+    private AnimationMixer mixer;
     private String json = "json/pump/pump.json";
 
     private Clock clock = new Clock();
 
     public WebGlAnimationKeyframesJson() {
-        setupWebGLRenderer(webGLRenderer);
+        setupWebGLRenderer(renderer);
 
         scene = new Scene();
 
@@ -45,7 +43,7 @@ public class WebGlAnimationKeyframesJson extends Attachable {
         scene.add(grid);
 
         camera = new PerspectiveCamera(40f, aspect, 1f, 100f);
-        camera.position.set( -5.00f, 3.43f, 11.31f);
+        camera.position.set(-5.00f, 3.43f, 11.31f);
         camera.lookAt(new Vector3(-1.22f, 2.18f, 4.58f));
         scene.add(new AmbientLight(0x404040));
 
@@ -68,7 +66,7 @@ public class WebGlAnimationKeyframesJson extends Attachable {
     }
 
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -79,12 +77,11 @@ public class WebGlAnimationKeyframesJson extends Attachable {
     }
 
 
-
     private void render() {
         if (mixer != null) {
             mixer.update(clock.getDelta());
 
-            webGLRenderer.render(scene, camera);
+            renderer.render(scene, camera);
         }
     }
 

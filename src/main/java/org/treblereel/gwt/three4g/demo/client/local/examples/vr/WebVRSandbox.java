@@ -84,7 +84,6 @@ public class WebVRSandbox extends Attachable {
         light.position.set(-1, 1.5f, -1.5f);
         light.castShadow = true;
 
-        GWT.log(JSON.stringify(light.shadow.camera));
         ((OrthographicCamera) light.shadow.camera).zoom = 4;
         scene.add(light);
         light.target.position.set(0, 0, -2);
@@ -137,17 +136,17 @@ public class WebVRSandbox extends Attachable {
         mesh1.receiveShadow = true;
         reflector.add(mesh1);
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.alpha = true;
-        webGLRendererParameters.antialias = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.alpha = true;
+        rendererParameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setPixelRatio(devicePixelRatio);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.vr.enabled = true;
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setPixelRatio(devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.vr.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
 
     }
 
@@ -164,7 +163,7 @@ public class WebVRSandbox extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(new OnAnimate() {
+        renderer.setAnimationLoop(new OnAnimate() {
             @Override
             public void animate() {
                 if (container.parentNode != null && container.parentNode.parentNode != null) {
@@ -179,6 +178,6 @@ public class WebVRSandbox extends Attachable {
         Object3D mesh = scene.children[0];
         mesh.rotation.x = time * 2;
         mesh.rotation.y = time * 5;
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

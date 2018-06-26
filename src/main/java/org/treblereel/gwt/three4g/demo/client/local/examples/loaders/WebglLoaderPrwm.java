@@ -39,6 +39,7 @@ public class WebglLoaderPrwm extends Attachable {
     private MeshPhongMaterial material = new MeshPhongMaterial();
     private Mesh mesh;
     private Vector2 mouse = new Vector2();
+    private HTMLDivElement models;
 
     public WebglLoaderPrwm() {
 
@@ -54,16 +55,16 @@ public class WebglLoaderPrwm extends Attachable {
         // model
         loader = new PRWMLoader();
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.antialias = true;
 
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setPixelRatio(1);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.shadowMap.enabled = true;
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setPixelRatio(1);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
         //
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
 
         window.onmousemove = p0 -> {
@@ -82,7 +83,6 @@ public class WebglLoaderPrwm extends Attachable {
             scene.remove(mesh);
             mesh.geometry.dispose();
         }
-        GWT.log("-- Loading" + url);
 
         loader.load(url, new OnLoadCallback<BufferGeometry>() {
             @Override
@@ -91,9 +91,6 @@ public class WebglLoaderPrwm extends Attachable {
                 mesh.scale.set(50, 50, 50);
                 scene.add(mesh);
 
-                //GWT.log( geometry.getProperty("index") ? "indexed geometry" : "non-indexed geometry" );
-                //GWT.log( "# of vertices: " + geometry.attributes.position.count );
-                //GWT.log( "# of polygons: " + ( geometry.index ? geometry.index.count / 3 : geometry.attributes.position.count / 3 ) );
                 busy = false;
             }
         }, request -> {
@@ -114,26 +111,32 @@ public class WebglLoaderPrwm extends Attachable {
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
     @Override
+    public void detach() {
+        super.detach();
+        AppSetup.infoDiv.removeElement(models);
+    }
+
+    @Override
     protected void doAttachInfo() {
-        HTMLDivElement models = (HTMLDivElement)document.createElement("div");
+
+        models = (HTMLDivElement) document.createElement("div");
         models.className = "models";
 
-        models.appendChild(createModel("Faceted Nefertiti","models/prwm/faceted-nefertiti.*.prwm"));
-        models.appendChild(createModel("Smooth Suzanne","models/prwm/smooth-suzanne.*.prwm"));
-        models.appendChild(createModel("Vive Controller","models/prwm/vive-controller.*.prwm"));
+        models.appendChild(createModel("Faceted Nefertiti", "models/prwm/faceted-nefertiti.*.prwm"));
+        models.appendChild(createModel("Smooth Suzanne", "models/prwm/smooth-suzanne.*.prwm"));
+        models.appendChild(createModel("Vive Controller", "models/prwm/vive-controller.*.prwm"));
 
-        AppSetup.infoDiv.show().setTextContentToInfo(" loader prwm").addElement(models);
-
+        AppSetup.infoDiv.setHrefToInfo("http://threejs.org").setTextContentToInfo(" loader prwm").setInnetHtml("").addElement(models).show();
 
     }
 
-    private HTMLAnchorElement createModel(String text, String href){
-        HTMLAnchorElement model =  (HTMLAnchorElement)document.createElement("a");
+    private HTMLAnchorElement createModel(String text, String href) {
+        HTMLAnchorElement model = (HTMLAnchorElement) document.createElement("a");
         model.className = "model";
         model.innerHTML = text;
         model.setAttribute("url", href);
@@ -162,12 +165,12 @@ public class WebglLoaderPrwm extends Attachable {
         camera.position.y += (-mouse.y - camera.position.y) * 0.05;
 
         camera.lookAt(scene.position);
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 
     private void onDocumentMouseMove(MouseEvent event) {
-        mouse.x = (float)(( event.clientX - (window.innerWidth) / 2) / 2);
-        mouse.y = (float)(( event.clientY - (window.innerHeight / 2 )) / 2);
+        mouse.x = (float) ((event.clientX - (window.innerWidth) / 2) / 2);
+        mouse.y = (float) ((event.clientY - (window.innerHeight / 2)) / 2);
     }
 
 }
