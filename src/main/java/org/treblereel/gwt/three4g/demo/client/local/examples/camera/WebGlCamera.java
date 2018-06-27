@@ -52,7 +52,7 @@ public class WebGlCamera extends Attachable {
         cameraPerspectiveHelper = new CameraHelper(cameraPerspective);
         scene.add(cameraPerspectiveHelper);
 
-        cameraOrtho = new OrthographicCamera(0.5 * frustumSize * aspect / -2, 0.5 * frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 150, 1000);
+        cameraOrtho = new OrthographicCamera((float)(0.5 * frustumSize * aspect / -2), (float)(0.5 * frustumSize * aspect / 2), frustumSize / 2, frustumSize / -2, 150, 1000);
         cameraOrthoHelper = new CameraHelper(cameraOrtho);
         scene.add(cameraOrthoHelper);
 

@@ -44,7 +44,7 @@ public class WebglMaterialsChannels extends Attachable {
     private MeshNormalMaterial materialNormal;
     private MeshDepthMaterial materialDepthRGBA, materialDepthBasic;
     private MeshStandardMaterial materialStandard;
-    private OrbitControls controlsPerspective;
+    private OrbitControls controlsPerspective, controlsOrtho;
     private PerspectiveCamera cameraPerspective;
     private OrthographicCamera cameraOrtho;
     private Camera thisCamera;
@@ -73,12 +73,11 @@ public class WebglMaterialsChannels extends Attachable {
         controlsPerspective.enablePan = false;
         controlsPerspective.enableDamping = true;
 
-
-/*        controlsOrtho = new OrbitControls(cameraOrtho, renderer.domElement);
+        controlsOrtho = new OrbitControls(cameraOrtho, container);
         controlsOrtho.minZoom = 0.5f;
         controlsOrtho.maxZoom = 2;
         controlsOrtho.enablePan = false;
-        controlsOrtho.enableDamping = true;*/
+        controlsOrtho.enableDamping = true;
         // lights
 
         ambientLight = new AmbientLight(0xffffff, 0.1f);
@@ -87,13 +86,12 @@ public class WebglMaterialsChannels extends Attachable {
         pointLight.position.z = 2500;
         scene.add(pointLight);
         pointLight2 = new PointLight(0xff6666, 1);
-        cameraPerspective.add(pointLight2);
-        //cameraOrtho.add(pointLight2);
 
         PointLight pointLight3 = new PointLight(0x0000ff, 0.5f);
         pointLight3.position.x = -1000;
         pointLight3.position.z = 1000;
         scene.add(pointLight3);
+
         // textures
         TextureLoader textureLoader = new TextureLoader();
         Texture normalMap = textureLoader.load("models/obj/ninja/normal.jpg");
@@ -181,13 +179,13 @@ public class WebglMaterialsChannels extends Attachable {
             c_material = result.toString();
         });
 
-/*        gui.add("camera", cameras, "perspective").onChange(result -> {
+        gui.add("camera", cameras, "perspective").onChange(result -> {
             if (result.toString().equals("perspective")) {
                 thisCamera = cameraPerspective;
             } else {
                 thisCamera = cameraOrtho;
             }
-        });*/
+        });
 
         gui.add("side", sides, "front").onChange(result -> {
             GWT.log("onChange side " + result.toString());
@@ -212,6 +210,13 @@ public class WebglMaterialsChannels extends Attachable {
             if(thisCamera.getType().equals("PerspectiveCamera")) {
                 ((PerspectiveCamera)thisCamera).aspect = new Float(getWidth() / getHeight());
                 ((PerspectiveCamera)thisCamera).updateProjectionMatrix();
+            }else{
+                OrthographicCamera cam = thisCamera.cast();
+                cam.left = - height * aspect;
+                cam.right = height * aspect;
+                cam.top = height;
+                cam.bottom = - height;
+                cam.updateProjectionMatrix();
             }
             renderer.setSize(getWidth(), getHeight());
         }

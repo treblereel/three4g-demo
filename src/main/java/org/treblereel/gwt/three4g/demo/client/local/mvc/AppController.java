@@ -9,6 +9,7 @@ import elemental2.dom.HTMLDivElement;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
+import org.treblereel.gwt.three4g.demo.client.local.examples.camera.CanvasCameraOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
@@ -49,6 +50,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveSculpt;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.CanvasCameraOrthographicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Presenter;
@@ -144,6 +146,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglMaterialsBumpmapPresenter webglMaterialsBumpmapPresenter = GWT.create(WebglMaterialsBumpmapPresenter.class);
     private WebglMaterialsBumpmapSkinPresenter webglMaterialsBumpmapSkinPresenter = GWT.create(WebglMaterialsBumpmapSkinPresenter.class);
     private WebglMaterialsChannelsPresenter webglMaterialsChannelsPresenter = GWT.create(WebglMaterialsChannelsPresenter.class);
+    private CanvasCameraOrthographicPresenter canvasCameraOrthographicPresenter = GWT.create(CanvasCameraOrthographicPresenter.class);
 
 
     private HTMLDivElement container;
@@ -198,6 +201,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglMaterialsBumpmap.TYPE, event -> History.newItem(WebglMaterialsBumpmap.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsBumpmapSkin.TYPE, event -> History.newItem(WebglMaterialsBumpmapSkin.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsChannels.TYPE, event -> History.newItem(WebglMaterialsChannels.class.getSimpleName()));
+        eventBus.addHandler(CanvasCameraOrthographic.TYPE, event -> History.newItem(CanvasCameraOrthographic.class.getSimpleName()));
 
 
     }
@@ -307,6 +311,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglMaterialsBumpmapSkinPresenter.dispatch(container);
             }else if (token.equals(WebglMaterialsChannels.class.getSimpleName())) {
                 webglMaterialsChannelsPresenter.dispatch(container);
+            }else if (token.equals(CanvasCameraOrthographic.class.getSimpleName())) {
+                canvasCameraOrthographicPresenter.dispatch(container);
             }
         }
     }

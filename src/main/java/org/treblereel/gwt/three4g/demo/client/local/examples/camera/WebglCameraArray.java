@@ -77,6 +77,7 @@ public class WebglCameraArray extends Attachable {
         mesh.receiveShadow = true;
         scene.add(mesh);
 
+        setupWebGLRenderer(renderer);
         renderer.shadowMap.enabled = true;
     }
 
