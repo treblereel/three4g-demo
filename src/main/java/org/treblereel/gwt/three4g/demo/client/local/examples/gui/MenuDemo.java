@@ -22,14 +22,12 @@ public class MenuDemo extends Attachable {
         WebGLRendererParameters params = new WebGLRendererParameters();
         params.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(params);
-        setupWebGLRenderer(webGLRenderer);
-        webGLRenderer.setClearColor(0xeebbbb,1);
+        renderer = new WebGLRenderer(params);
+        setupWebGLRenderer(renderer);
+        renderer.setClearColor(0xeebbbb, 1);
         camera = new PerspectiveCamera(70, aspect, 0.1f, 15);
         camera.position.set(0, 0, 1.0f);
         scene = new Scene();
-
-
 
 
         GUIVR gui = GUIVR.create("settings");
@@ -90,16 +88,16 @@ public class MenuDemo extends Attachable {
     }
 
     public void schedule() {
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (renderer.domElement.parentNode != null) {
                 schedule();
             }
         });
     }
 
-    public void doAttachScene(){
-        document.body.appendChild(webGLRenderer.domElement);
+    public void doAttachScene() {
+        document.body.appendChild(renderer.domElement);
         schedule();
     }
 

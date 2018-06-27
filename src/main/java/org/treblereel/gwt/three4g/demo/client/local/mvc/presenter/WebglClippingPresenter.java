@@ -12,7 +12,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipp
 public class WebglClippingPresenter implements Presenter {
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(WebglClipping.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(WebglClipping.class)).asWidget());
     }
 }
 

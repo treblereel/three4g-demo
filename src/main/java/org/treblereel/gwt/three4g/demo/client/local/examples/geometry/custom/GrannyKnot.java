@@ -7,11 +7,11 @@ import jsinterop.annotations.JsType;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 4/12/18.
  */
-@JsType(isNative = true, namespace = "THREE", name ="Curves.GrannyKnot")
+@JsType(isNative = true, namespace = "THREE", name = "Curves.GrannyKnot")
 public class GrannyKnot {
 
     @JsConstructor
-    public GrannyKnot(){
+    public GrannyKnot() {
 
     }
 }

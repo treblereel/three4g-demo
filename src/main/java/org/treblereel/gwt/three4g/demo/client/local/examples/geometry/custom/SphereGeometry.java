@@ -8,11 +8,11 @@ import org.treblereel.gwt.three4g.core.Geometry;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 4/12/18.
  */
-@JsType(isNative = true, namespace = "THREE", name ="ParametricGeometries.SphereGeometry")
-public class SphereGeometry extends Geometry{
+@JsType(isNative = true, namespace = "THREE", name = "ParametricGeometries.SphereGeometry")
+public class SphereGeometry extends Geometry {
 
     @JsConstructor
-    public SphereGeometry(int size, int u, int v ){
+    public SphereGeometry(int size, int u, int v) {
 
     }
 

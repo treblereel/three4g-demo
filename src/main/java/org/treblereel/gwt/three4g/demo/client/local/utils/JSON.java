@@ -6,9 +6,9 @@ import static jsinterop.annotations.JsPackage.GLOBAL;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
- *         Created by treblereel on 12/7/17.
+ * Created by treblereel on 12/7/17.
  */
-@JsType(isNative=true, namespace=GLOBAL)
+@JsType(isNative = true, namespace = GLOBAL)
 public class JSON {
 
     public native static String stringify(Object obj);

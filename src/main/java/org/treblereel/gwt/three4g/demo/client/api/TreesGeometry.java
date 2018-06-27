@@ -9,7 +9,7 @@ import org.treblereel.gwt.three4g.objects.Mesh;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/4/18.
  */
-@JsType(isNative = true, namespace= JsPackage.GLOBAL)
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
 public class TreesGeometry extends BufferGeometry {
 
     public TreesGeometry(Mesh mesh) {

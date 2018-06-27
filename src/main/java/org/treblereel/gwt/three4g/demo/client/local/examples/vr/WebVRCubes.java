@@ -107,15 +107,15 @@ public class WebVRCubes extends Attachable {
         raycaster = new Raycaster();
 
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.alpha = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.alpha = true;
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.vr.enabled = true;
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.vr.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
 
         window.addEventListener("vrdisplaypointerrestricted", (e) -> onPointerRestricted(), false);
         window.addEventListener("vrdisplaypointerunrestricted", (e) -> onPointerUnrestricted(), false);
@@ -136,7 +136,7 @@ public class WebVRCubes extends Attachable {
 
     private void onPointerUnrestricted() {
         org.treblereel.gwt.three4g.demo.client.api.dom.Document currentPointerLockElement = Js.uncheckedCast(DomGlobal.document);
-        org.treblereel.gwt.three4g.demo.client.api.dom.Document expectedPointerLockElement = Js.uncheckedCast(webGLRenderer.domElement);
+        org.treblereel.gwt.three4g.demo.client.api.dom.Document expectedPointerLockElement = Js.uncheckedCast(renderer.domElement);
 
         if (currentPointerLockElement.pointerLockElement != null && currentPointerLockElement.pointerLockElement.equals(expectedPointerLockElement)) {
             currentPointerLockElement.exitPointerLock();
@@ -146,7 +146,7 @@ public class WebVRCubes extends Attachable {
 
 
     private void onPointerRestricted() {
-        org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement pointerLockElement = (org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement) webGLRenderer.domElement;
+        org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement pointerLockElement = (org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement) renderer.domElement;
         if (pointerLockElement != null)
             pointerLockElement.requestPointerLock();
     }
@@ -165,7 +165,7 @@ public class WebVRCubes extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(new OnAnimate() {
+        renderer.setAnimationLoop(new OnAnimate() {
             @Override
             public void animate() {
                 if (container.parentNode != null && container.parentNode.parentNode != null) {
@@ -236,7 +236,7 @@ public class WebVRCubes extends Attachable {
             cube.rotation.y += velocity.y * 2 * delta;
             cube.rotation.z += velocity.z * 2 * delta;
         }
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
 
     }
 }

@@ -6,7 +6,7 @@ import static jsinterop.annotations.JsPackage.GLOBAL;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
- *         Created by treblereel on 12/7/17.
+ * Created by treblereel on 12/7/17.
  */
 @JsType(isNative = true, namespace = GLOBAL, name = "Object")
 public class Record {

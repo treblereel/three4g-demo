@@ -23,13 +23,13 @@ public class WebglGeometryCube extends Attachable {
 
     public WebglGeometryCube() {
 
-        camera = new PerspectiveCamera( 70f, aspect, 1f, 1000f );
+        camera = new PerspectiveCamera(70f, aspect, 1f, 1000f);
         camera.position.z = 400f;
 
         scene = new Scene();
-        Texture texture = new TextureLoader().load( "https://threejs.org/examples/textures/crate.gif");
+        Texture texture = new TextureLoader().load("https://threejs.org/examples/textures/crate.gif");
 
-        BoxBufferGeometry geometry = new BoxBufferGeometry( 200f, 200f, 200f );
+        BoxBufferGeometry geometry = new BoxBufferGeometry(200f, 200f, 200f);
         MeshBasicMaterialParameters meshBasicMaterialParameters = new MeshBasicMaterialParameters();
         meshBasicMaterialParameters.map = texture;
         MeshBasicMaterial material = new MeshBasicMaterial(meshBasicMaterialParameters);
@@ -37,13 +37,13 @@ public class WebglGeometryCube extends Attachable {
         mesh = new Mesh(geometry, material);
         scene.add(mesh);
 
-        setupWebGLRenderer(webGLRenderer);
+        setupWebGLRenderer(renderer);
     }
 
 
     @Override
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -63,7 +63,7 @@ public class WebglGeometryCube extends Attachable {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
 
-                webGLRenderer.render( scene, camera );
+                renderer.render(scene, camera);
                 animate();
             }
         });

@@ -1,6 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.clipping;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.three4g.THREE;
@@ -105,11 +106,11 @@ public class WebglClipping extends Attachable {
 
         Plane[] globalPlanes = new Plane[]{globalPlane};
 
-        webGLRenderer.clippingPlanes = new Plane[]{};
-        webGLRenderer.localClippingEnabled = true;
-        webGLRenderer.shadowMap.enabled = true;
+        renderer.clippingPlanes = new Plane[]{};
+        renderer.localClippingEnabled = true;
+        renderer.shadowMap.enabled = true;
         // Controls
-        OrbitControls controls = new OrbitControls(camera, webGLRenderer.domElement);
+        OrbitControls controls = new OrbitControls(camera, renderer.domElement);
         controls.target.set(0, 1, 0);
         controls.update();
 
@@ -120,28 +121,29 @@ public class WebglClipping extends Attachable {
 
         GUI localClippingFolder = gui.addFolder("Local Clipping");
         localClippingFolder.add("enabled", true).onChange(result -> {
-            if (result.toString().equals("true")) {
-                webGLRenderer.localClippingEnabled = true;
-            } else {
-                webGLRenderer.localClippingEnabled = false;
-            }
+            renderer.localClippingEnabled = result;
         }).done();
 
         localClippingFolder.add("shadows", true).onChange(result -> {
-            material.clipShadows = Boolean.valueOf(result.toString()).booleanValue();
+            material.clipShadows = result;
         }).done();
         localClippingFolder.add("Plane", 0.8f, 0.3, 1.25).onChange(v -> {
-            localPlane.constant = Float.valueOf(v.toString()).floatValue();
+            localPlane.constant = v.floatValue();
         }).done();
 
 
         GUI globalClippingFolder = gui.addFolder("Global Clipping");
+
         globalClippingFolder.add("enabled", false).onChange(result -> {
-            if (result.toString().equals("true")) {
-                webGLRenderer.clippingPlanes = globalPlanes;
+            if (result) {
+                renderer.clippingPlanes = globalPlanes;
             } else {
-                webGLRenderer.clippingPlanes = new Plane[]{};
+                renderer.clippingPlanes = new Plane[]{};
             }
+        }).done();
+
+        globalClippingFolder.add("Plane", globalPlane.constant, -0.4, 3f).onChange(v -> {
+            globalPlane.constant = v.floatValue();
         }).done();
 
         gui.finishAndBuild();
@@ -151,14 +153,14 @@ public class WebglClipping extends Attachable {
 
         startTime = new Date().getTime();
 
-        setupWebGLRenderer(webGLRenderer);
-        container.appendChild(webGLRenderer.domElement);
+        setupWebGLRenderer(renderer);
+        container.appendChild(renderer.domElement);
     }
 
 
     @Override
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -182,7 +184,7 @@ public class WebglClipping extends Attachable {
                 object.rotation.y = (float) (time * 0.2);
                 object.scale.setScalar((float) (Math.cos(time) * 0.125 + 0.875));
 
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
             }
         });

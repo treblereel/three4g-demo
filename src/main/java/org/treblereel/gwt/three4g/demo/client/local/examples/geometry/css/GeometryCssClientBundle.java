@@ -9,12 +9,12 @@ import com.google.gwt.resources.client.CssResource;
  * Created by treblereel on 3/9/18.
  */
 public interface GeometryCssClientBundle extends ClientBundle {
-    interface StyleWebglAnimationScene extends CssResource {
-    }
-
     GeometryCssClientBundle IMPL = GWT.create(GeometryCssClientBundle.class);
 
     @Source("geometryCssClientBundle.css")
     StyleWebglAnimationScene webglAnimationScene();
+
+    interface StyleWebglAnimationScene extends CssResource {
+    }
 
 }

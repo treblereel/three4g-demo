@@ -69,17 +69,17 @@ public class WebglLoaderBabylon extends Attachable {
 
         });
 
-        webGLRenderer = new WebGLRenderer();
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
     }
 
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -95,7 +95,7 @@ public class WebglLoaderBabylon extends Attachable {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
                 controls.update();
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
 
             }

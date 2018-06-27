@@ -15,12 +15,12 @@ import org.treblereel.gwt.three4g.textures.Texture;
 public class GPUComputationRenderer {
 
     @JsConstructor
-    public GPUComputationRenderer(){
+    public GPUComputationRenderer() {
 
     }
 
     @JsConstructor
-    public GPUComputationRenderer(double width, double width1, WebGLRenderer webGLRenderer) {
+    public GPUComputationRenderer(double width, double width1, WebGLRenderer renderer) {
     }
 
     public native Texture createTexture();

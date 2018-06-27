@@ -4,10 +4,10 @@ import jsinterop.annotations.JsType;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
- *         Created by treblereel on 12/8/17.
+ * Created by treblereel on 12/8/17.
  */
 @JsType(isNative = true, namespace = "dat", name = "Group")
-public class Slider extends Group{
+public class Slider extends Group {
 
     public native Slider listen();
 

@@ -12,6 +12,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeome
 public class WebglGeometriesParametricPresenter implements Presenter {
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(WebglGeometriesParametric.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(WebglGeometriesParametric.class)).asWidget());
     }
 }

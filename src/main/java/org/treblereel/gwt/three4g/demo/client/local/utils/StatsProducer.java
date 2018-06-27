@@ -13,15 +13,15 @@ import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextReso
 public class StatsProducer {
     private static Stats stats;
 
-    private StatsProducer(){
+    private StatsProducer() {
 
     }
 
-    public static Stats getStats(){
-        if(stats == null){
+    public static Stats getStats() {
+        if (stats == null) {
             Attachable.loadJavaScript(JavascriptTextResource.IMPL.getStatsMin().getText());
             stats = new Stats();
-            HTMLDivElement container = (HTMLDivElement)DomGlobal.document.createElement("div");
+            HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
             stats.dom.style.position = "inherit";
             container.style.bottom = "0";
             container.style.right = "0";

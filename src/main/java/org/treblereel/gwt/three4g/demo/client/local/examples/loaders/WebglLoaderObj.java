@@ -100,17 +100,17 @@ public class WebglLoaderObj extends Attachable {
         }, onProgress, onError);
         //
 
-        webGLRenderer = new WebGLRenderer();
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
     }
 
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -125,7 +125,7 @@ public class WebglLoaderObj extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
 
             }

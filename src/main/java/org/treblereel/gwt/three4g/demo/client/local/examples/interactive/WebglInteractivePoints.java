@@ -71,8 +71,8 @@ public class WebglInteractivePoints extends Attachable {
 
         Uniforms uniforms = new Uniforms();
 
-        uniforms.addToUniforms("color", new Color(0xffffff));
-        uniforms.addToUniforms("texture", new TextureLoader().load("textures/sprites/disc.png"));
+        uniforms.set("color", new Color(0xffffff));
+        uniforms.set("texture", new TextureLoader().load("textures/sprites/disc.png"));
         shaderMaterialParameters.uniforms = uniforms;
         shaderMaterialParameters.fragmentShader = ShaderResource.INSTANCE.fragmentshader().getText();
         shaderMaterialParameters.vertexShader = ShaderResource.INSTANCE.vertexshader().getText();
@@ -83,14 +83,14 @@ public class WebglInteractivePoints extends Attachable {
         particles = new Points(geometry, material);
         scene.add(particles);
         //
-        webGLRenderer = new WebGLRenderer();
+        renderer = new WebGLRenderer();
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
         raycaster = new Raycaster();
         mouse = new Vector2();
         //
-        webGLRenderer.domElement.onmousemove = p0 -> {
+        renderer.domElement.onmousemove = p0 -> {
             MouseEvent event = Js.uncheckedCast(p0);
             onDocumentMouseMove(event);
             return null;
@@ -100,7 +100,7 @@ public class WebglInteractivePoints extends Attachable {
 
     public void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -130,7 +130,7 @@ public class WebglInteractivePoints extends Attachable {
         particles.rotation.x += 0.0005;
         particles.rotation.y += 0.001;
         BufferGeometry geometry = (BufferGeometry) particles.geometry;
-        BufferAttribute attribute = geometry.attributes.get("size");
+        BufferAttribute attribute = geometry.getAttribute("size");
 
         raycaster.setFromCamera(mouse, camera);
 
@@ -148,6 +148,6 @@ public class WebglInteractivePoints extends Attachable {
             attribute.needsUpdate = true;
             INTERSECTED = -1;
         }
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

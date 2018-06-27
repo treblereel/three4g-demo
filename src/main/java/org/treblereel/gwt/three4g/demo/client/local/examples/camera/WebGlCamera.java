@@ -33,16 +33,13 @@ import static elemental2.dom.DomGlobal.document;
  */
 public class WebGlCamera extends Attachable {
 
+    public static final String name = "camera";
     private Camera activeCamera;
     private PerspectiveCamera cameraPerspective;
     private OrthographicCamera cameraOrtho;
     private CameraHelper cameraOrthoHelper, cameraPerspectiveHelper, activeHelper;
     private Group cameraRig;
     private Mesh mesh, mesh2;
-
-    public static final String name = "camera";
-
-
     private int frustumSize = 600;
 
     public WebGlCamera() {
@@ -115,8 +112,8 @@ public class WebGlCamera extends Attachable {
         Points particles = new Points(geometry, new PointsMaterial(pointsMaterialParameters));
         scene.add(particles);
 
-        setupWebGLRenderer(webGLRenderer);
-        webGLRenderer.autoClear = false;
+        setupWebGLRenderer(renderer);
+        renderer.autoClear = false;
 
 
         document.addEventListener("keydown", evt -> onKeyDown(evt), false);
@@ -142,16 +139,16 @@ public class WebGlCamera extends Attachable {
 
     @Override
     public void onWindowResize() {
-        if (camera != null && webGLRenderer != null) {
+        if (camera != null && renderer != null) {
             aspect = new Float(getWidth() / getHeight());
 
-            webGLRenderer.setSize(getWidth(), getHeight());
+            renderer.setSize(getWidth(), getHeight());
             camera.aspect = 0.5f * aspect;
             camera.updateProjectionMatrix();
             cameraPerspective.aspect = 0.5f * aspect;
             cameraPerspective.updateProjectionMatrix();
-            cameraOrtho.left =  (float) (-0.5f * frustumSize * (getWidth()/getHeight()) / 2);
-            cameraOrtho.right = (float) ( 0.5f * frustumSize * (getWidth()/getHeight()) / 2);
+            cameraOrtho.left = (float) (-0.5f * frustumSize * (getWidth() / getHeight()) / 2);
+            cameraOrtho.right = (float) (0.5f * frustumSize * (getWidth() / getHeight()) / 2);
             cameraOrtho.top = frustumSize / 2f;
             cameraOrtho.bottom = -frustumSize / 2f;
             cameraOrtho.updateProjectionMatrix();
@@ -159,7 +156,7 @@ public class WebGlCamera extends Attachable {
     }
 
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -185,35 +182,36 @@ public class WebGlCamera extends Attachable {
     private void render() {
 
         double r = new Date().getTime() * 0.0005;
-        mesh.position.x = (float)(700 * Math.cos(r));
-        mesh.position.z = (float)(700 * Math.sin(r));
-        mesh.position.y = (float)(700 * Math.sin(r));
+        mesh.position.x = (float) (700 * Math.cos(r));
+        mesh.position.z = (float) (700 * Math.sin(r));
+        mesh.position.y = (float) (700 * Math.sin(r));
 
         mesh.children[0].position.x = (float) (70 * Math.cos(2 * r));
-        mesh.children[0].position.z = (float)(70 * Math.sin(r));
+        mesh.children[0].position.z = (float) (70 * Math.sin(r));
+
         if (activeCamera instanceof PerspectiveCamera) {
-            cameraPerspective.fov = (float)(35 + 30 * Math.sin(0.5 * r));
+            cameraPerspective.fov = (float) (35 + 30 * Math.sin(0.5 * r));
             cameraPerspective.far = mesh.position.length();
             cameraPerspective.updateProjectionMatrix();
             cameraPerspectiveHelper.update();
             cameraPerspectiveHelper.visible = true;
             cameraOrthoHelper.visible = false;
         } else {
-            cameraOrtho.far = mesh.position.length() +100;
+            cameraOrtho.far = mesh.position.length() + 100;
             cameraOrtho.updateProjectionMatrix();
             cameraOrthoHelper.update();
             cameraOrthoHelper.visible = true;
             cameraPerspectiveHelper.visible = false;
         }
         cameraRig.lookAt(mesh.position);
-        webGLRenderer.clear(true,true, true); //TODO
+        renderer.clear(true, true, true); //TODO
         activeHelper.visible = false;
-        webGLRenderer.setViewport(0, 0, (int) (getWidth() / 2), (int) getHeight());
-        webGLRenderer.render(scene, activeCamera);
+        renderer.setViewport(0, 0, (int) (getWidth() / 2), (int) getHeight());
+        renderer.render(scene, activeCamera);
 
         activeHelper.visible = true;
-        webGLRenderer.setViewport((int) getWidth() / 2, 0, (int) getWidth() / 2, (int) getHeight());
-        webGLRenderer.render(scene, camera);
+        renderer.setViewport((int) getWidth() / 2, 0, (int) getWidth() / 2, (int) getHeight());
+        renderer.render(scene, camera);
 
     }
 }

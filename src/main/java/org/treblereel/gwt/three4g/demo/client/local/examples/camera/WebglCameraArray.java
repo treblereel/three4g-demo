@@ -28,9 +28,8 @@ import java.util.List;
 public class WebglCameraArray extends Attachable {
 
 
-    private Mesh mesh;
-
     public static final String name = "camera / array";
+    private Mesh mesh;
 
     public WebglCameraArray() {
         scene = new Scene();
@@ -78,7 +77,7 @@ public class WebglCameraArray extends Attachable {
         mesh.receiveShadow = true;
         scene.add(mesh);
 
-        webGLRenderer.shadowMap.enabled = true;
+        renderer.shadowMap.enabled = true;
     }
 
     private void animate() {
@@ -94,12 +93,12 @@ public class WebglCameraArray extends Attachable {
     private void render() {
         mesh.rotation.x += 0.005f;
         mesh.rotation.z += 0.01f;
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 
     @Override
     protected void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }

@@ -41,7 +41,7 @@ public class WebglAnimationCloth extends Attachable {
 
 
         ScriptInjector.fromUrl("js/Cloth.js")
-        .setWindow(ScriptInjector.TOP_WINDOW)
+                .setWindow(ScriptInjector.TOP_WINDOW)
                 .setCallback(new Callback<Void, Exception>() {
                     @Override
                     public void onFailure(Exception reason) {
@@ -55,13 +55,12 @@ public class WebglAnimationCloth extends Attachable {
                 }).inject();
 
 
-
     }
 
 
     @Override
     protected void doAttachScene() {
-        //document.body.appendChild(webGLRenderer.domElement);
+        //document.body.appendChild(renderer.domElement);
         //onWindowResize();
         //animate();
     }
@@ -73,7 +72,7 @@ public class WebglAnimationCloth extends Attachable {
 
     private void animate() {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement != null) {
+            if (renderer.domElement != null) {
                 double time = new Date().getTime();
                 double windStrength = Math.cos(time / 7000) * 20 + 40;
 /*
@@ -98,6 +97,6 @@ public class WebglAnimationCloth extends Attachable {
         clothGeometry.computeVertexNormals(true);
         sphere.position.copy(Cloth.ballPosition);*/
 
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

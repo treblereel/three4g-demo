@@ -38,18 +38,29 @@ public class WebglLoaderObj2 extends Attachable {
     private Vector3 cameraTarget = new Vector3(0, 0, 0);
     private TrackballControls controls;
 
+    public WebglLoaderObj2() {
+
+        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
+
+        initGL();
+        initContent();
+
+        container.appendChild(renderer.domElement);
+
+    }
+
     private void initGL() {
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.antialias = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.gammaInput = true;
-        webGLRenderer.autoClear = true;
-        webGLRenderer.setClearColor(new Color(0x050505));
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.gammaInput = true;
+        renderer.autoClear = true;
+        renderer.setClearColor(new Color(0x050505));
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
         scene = new Scene();
         camera = new PerspectiveCamera(45, aspect, 0.1f, 10000);
@@ -69,7 +80,7 @@ public class WebglLoaderObj2 extends Attachable {
         this.scene.add(helper);
     }
 
-    private void initContent(){
+    private void initContent() {
 
         String modelName = "female02";
 
@@ -83,25 +94,18 @@ public class WebglLoaderObj2 extends Attachable {
             }
         };
 
-        OnLoadCallback onLoadMtl = new OnLoadCallback<JsObject>(){
+        OnLoadCallback onLoadMtl = new OnLoadCallback<JsObject>() {
 
             @Override
             public void onLoad(JsObject object) {
-                GWT.log("in array " + JSON.stringify(object));
-
                 Material[] materials = object.cast();
-
-
-                for (int i = 0; i < materials.length; i++) {
-                    GWT.log("? " +materials[i].name + " "  + materials[i].type + " " + materials[i].uuid);
-                }
-
                 objLoader.setModelName(modelName);
                 objLoader.setMaterials(materials);
                 objLoader.setLogging(true, true);
                 objLoader.load("models/obj/female02/female02.obj", callbackOnLoad, null, null, null, false);
-            }};
-        objLoader.loadMtl( "models/obj/female02/female02.mtl", null, onLoadMtl );
+            }
+        };
+        objLoader.loadMtl("models/obj/female02/female02.mtl", null, onLoadMtl);
     }
 
     private void resetCamera() {
@@ -110,30 +114,16 @@ public class WebglLoaderObj2 extends Attachable {
         this.updateCamera();
     }
 
-
-
     private void updateCamera() {
         camera.aspect = aspect;
         camera.lookAt(this.cameraTarget);
         camera.updateProjectionMatrix();
     }
 
-
-    public WebglLoaderObj2() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
-
-        initGL();
-        initContent();
-
-        container.appendChild(webGLRenderer.domElement);
-
-    }
-
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -149,7 +139,7 @@ public class WebglLoaderObj2 extends Attachable {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
                 controls.update();
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 animate();
 
             }

@@ -8,23 +8,23 @@ import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
  * Created by treblereel on 6/1/18.
  */
 public class WebGLRendererProducer {
-    private static WebGLRenderer webGLRenderer;
+    private static WebGLRenderer renderer;
 
     private WebGLRendererProducer() {
 
     }
 
     public static WebGLRenderer getRenderer() {
-        if (webGLRenderer == null) {
-            WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-            webGLRendererParameters.antialias = true;
-            webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        }else{
+        if (renderer == null) {
+            WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+            rendererParameters.antialias = true;
+            renderer = new WebGLRenderer(rendererParameters);
+        } else {
 
-            webGLRenderer.clear();
-          //  webGLRenderer.forceContextLoss();
+            renderer.clear();
+            //  renderer.forceContextLoss();
         }
-        webGLRenderer.autoClear = true;
-        return webGLRenderer;
+        renderer.autoClear = true;
+        return renderer;
     }
 }

@@ -9,10 +9,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/4/18.
  */
-public class VivePresenter implements Presenter{
+public class VivePresenter implements Presenter {
 
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(Vive.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(Vive.class)).asWidget());
     }
 }

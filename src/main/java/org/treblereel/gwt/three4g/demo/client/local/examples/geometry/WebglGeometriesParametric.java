@@ -32,18 +32,15 @@ import java.util.Date;
  */
 public class WebglGeometriesParametric extends Attachable {
 
+    public static final String name = "geometries / parametric";
     float fov = 45f;
     float near = 1f;
     float far = 2000f;
     float y = 400f;
-
     float ox = 200f;
     float oy = 0f;
     float oz = 200f;
-
     float multiplyScalar = 30f;
-
-    public static final String name = "geometries / parametric";
 
     public WebglGeometriesParametric() {
 
@@ -74,7 +71,6 @@ public class WebglGeometriesParametric extends Attachable {
         //
         ParametricBufferGeometry geometry;
         Mesh object;
-
 
 
         geometry = new ParametricBufferGeometry(ParametricGeometries.plane(100, 100), 10, 10);
@@ -114,7 +110,7 @@ public class WebglGeometriesParametric extends Attachable {
         object.scale.multiplyScalar(2f);
         scene.add(object);
 
-        setupWebGLRenderer(webGLRenderer);
+        setupWebGLRenderer(renderer);
 
     }
 
@@ -134,7 +130,7 @@ public class WebglGeometriesParametric extends Attachable {
             }
         });
 
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 
     private void animate() {
@@ -151,7 +147,7 @@ public class WebglGeometriesParametric extends Attachable {
 
     @Override
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }

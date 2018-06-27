@@ -18,13 +18,13 @@ public class InfoDiv {
     private HTMLAnchorElement info = (HTMLAnchorElement) DomGlobal.document.createElement("a");
     private HTMLElement text = (HTMLElement) DomGlobal.document.createElement("span");
 
-    public InfoDiv(){
+    public InfoDiv() {
         container.id = "info";
         container.style.display = "none";
         container.appendChild(info);
 
         info.href = "http://threejs.org";
-        info.target= "_blank";
+        info.target = "_blank";
         info.rel = "noopener";
         info.textContent = "three.js";
 
@@ -32,37 +32,42 @@ public class InfoDiv {
         document.body.appendChild(container);
     }
 
-    public InfoDiv setHrefToInfo(String t){
+    public InfoDiv setHrefToInfo(String t) {
         info.href = t;
         return this;
     }
 
-    public InfoDiv setTextContentToInfo(String t){
+    public InfoDiv setTextContentToInfo(String t) {
         info.textContent = t;
         return this;
     }
 
-    public InfoDiv setTextToDesc(String textContent){
+    public InfoDiv setTextToDesc(String textContent) {
         text.textContent = textContent;
         return this;
     }
 
-    public InfoDiv setInnetHtml(String innerHTML){
+    public InfoDiv setInnetHtml(String innerHTML) {
         text.innerHTML = innerHTML;
         return this;
     }
 
-    public InfoDiv addElement(HTMLElement elm){
+    public InfoDiv addElement(HTMLElement elm) {
         container.appendChild(elm);
         return this;
     }
 
-    public InfoDiv hide(){
+    public InfoDiv removeElement(HTMLElement elm) {
+        container.removeChild(elm);
+        return this;
+    }
+
+    public InfoDiv hide() {
         container.style.display = "none";
         return this;
     }
 
-    public InfoDiv show(){
+    public InfoDiv show() {
         container.style.display = "block";
         return this;
     }

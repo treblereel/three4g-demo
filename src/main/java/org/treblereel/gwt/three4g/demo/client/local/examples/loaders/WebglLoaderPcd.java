@@ -74,13 +74,13 @@ public class WebglLoaderPcd extends Attachable {
 
         WebGLRendererParameters parameters = new WebGLRendererParameters();
         parameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.gammaInput = true;
-        webGLRenderer.gammaOutput = true;
-        webGLRenderer.shadowMap.enabled = true;
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        renderer.shadowMap.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
         document.addEventListener("keydown", evt -> onKeyDown(evt), false);
 
     }
@@ -110,7 +110,7 @@ public class WebglLoaderPcd extends Attachable {
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -128,7 +128,7 @@ public class WebglLoaderPcd extends Attachable {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
                 controls.update();
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
             }
             animate();
         });

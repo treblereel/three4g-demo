@@ -9,12 +9,12 @@ import static elemental2.dom.DomGlobal.document;
  * Created by treblereel on 6/12/18.
  */
 public class MenuDiv {
-    private HTMLDivElement container = (HTMLDivElement)document.createElement("div");
+    private HTMLDivElement container = (HTMLDivElement) document.createElement("div");
     private HTMLDivElement element;
 
     MenuDiv() {
         document.body.appendChild(container);
-        container.id ="menu_holder";
+        container.id = "menu_holder";
     }
 
     public MenuDiv addMenu(HTMLDivElement element) {

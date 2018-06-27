@@ -99,25 +99,25 @@ public class ViveSculpt extends Attachable {
         WebGLRendererParameters parameters = new WebGLRendererParameters();
         parameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.vr.enabled = true;
-        webGLRenderer.gammaInput = true;
-        webGLRenderer.gammaOutput = true;
-        webGLRenderer.shadowMap.enabled = true;
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.vr.enabled = true;
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        renderer.shadowMap.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
         // controllers
 
         controller1 = new ViveController(0);
-        controller1.standingMatrix = webGLRenderer.vr.getStandingMatrix();
+        controller1.standingMatrix = renderer.vr.getStandingMatrix();
         scene.add(controller1);
 
 
         controller2 = new ViveController(1);
 
-        controller2.standingMatrix = webGLRenderer.vr.getStandingMatrix();
+        controller2.standingMatrix = renderer.vr.getStandingMatrix();
         scene.add(controller2);
 
         OBJLoader loader = new OBJLoader();
@@ -168,17 +168,6 @@ public class ViveSculpt extends Attachable {
         blob.position.y = 1;
         scene.add(blob);
         initPoints();
-    }
-
-    class Points {
-        Vector3 position;
-        float strength, subtract;
-
-        Points(Vector3 position, float strength, float subtract) {
-            this.position = position;
-            this.strength = strength;
-            this.subtract = subtract;
-        }
     }
 
     private void initPoints() {
@@ -241,9 +230,8 @@ public class ViveSculpt extends Attachable {
         }
     }
 
-
     private void animate() {
-        webGLRenderer.setAnimationLoop(() -> {
+        renderer.setAnimationLoop(() -> {
             if (container.parentNode != null && container.parentNode.parentNode != null && ready) {
                 render();
             }
@@ -266,6 +254,17 @@ public class ViveSculpt extends Attachable {
         handleController(controller1, 0);
         handleController(controller2, 1);
         updateBlob();
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
+    }
+
+    class Points {
+        Vector3 position;
+        float strength, subtract;
+
+        Points(Vector3 position, float strength, float subtract) {
+            this.position = position;
+            this.strength = strength;
+            this.subtract = subtract;
+        }
     }
 }

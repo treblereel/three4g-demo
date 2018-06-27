@@ -16,7 +16,7 @@ public class FirstPersonControls {
     public double lookSpeed;
 
     @JsConstructor
-    public FirstPersonControls(Camera camera){
+    public FirstPersonControls(Camera camera) {
 
     }
 

@@ -10,14 +10,14 @@ import static elemental2.dom.DomGlobal.document;
  */
 public class GuiDiv {
 
-    private HTMLDivElement container = (HTMLDivElement)document.createElement("div");
+    private HTMLDivElement container = (HTMLDivElement) document.createElement("div");
 
     GuiDiv() {
         document.body.appendChild(container);
-        container.id ="gui_holder";
+        container.id = "gui_holder";
     }
 
-    public HTMLDivElement get(){
+    public HTMLDivElement get() {
         return container;
     }
 

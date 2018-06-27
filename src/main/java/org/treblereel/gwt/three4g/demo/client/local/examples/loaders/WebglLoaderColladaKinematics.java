@@ -68,9 +68,9 @@ public class WebglLoaderColladaKinematics { ///} extends Attachable {
         PointLight pointLight = new PointLight(0xffffff, 0.3f);
         particleLight.add(pointLight);
 
-        webGLRenderer = new WebGLRenderer();
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        container.appendChild(webGLRenderer.domElement);
+        renderer = new WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
 
 
         setupTween();
@@ -186,7 +186,7 @@ public class WebglLoaderColladaKinematics { ///} extends Attachable {
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -212,7 +212,7 @@ public class WebglLoaderColladaKinematics { ///} extends Attachable {
                 particleLight.position.x = ((float) Math.sin(timer * 4) * 3009);
                 particleLight.position.y = ((float) Math.cos(timer * 5) * 4000);
                 particleLight.position.z = ((float) Math.cos(timer * 4) * 3009);
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 kinematicsTween.update();
 
             }

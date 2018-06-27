@@ -59,9 +59,6 @@ public class ViveDragging extends Attachable {
     private boolean ready = false;
 
     public ViveDragging() {
-
-        GWT.log("ViveDragging");
-
         scene = new Scene();
         scene.background = new Color(0x808080);
         camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1f, 10);
@@ -128,19 +125,19 @@ public class ViveDragging extends Attachable {
         parameters.alpha = true;
         parameters.antialias = true;
 
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        webGLRenderer.gammaInput = true;
-        webGLRenderer.gammaOutput = true;
-        webGLRenderer.shadowMap.enabled = true;
-        webGLRenderer.vr.enabled = true;
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        renderer.shadowMap.enabled = true;
+        renderer.vr.enabled = true;
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
 
         controller1 = new ViveController(0);
-        controller1.standingMatrix = webGLRenderer.vr.getStandingMatrix();
+        controller1.standingMatrix = renderer.vr.getStandingMatrix();
 
         controller1.addEventListener("triggerdown", (event) -> onTriggerDown(event));
         controller1.addEventListener("triggerup", (event) -> onTriggerUp(event));
@@ -148,7 +145,7 @@ public class ViveDragging extends Attachable {
         scene.add(controller1);
         controller2 = new ViveController(1);
 
-        controller2.standingMatrix = webGLRenderer.vr.getStandingMatrix();
+        controller2.standingMatrix = renderer.vr.getStandingMatrix();
         controller2.addEventListener("triggerdown", (event) -> onTriggerDown(event));
         controller2.addEventListener("triggerup", (event) -> onTriggerUp(event));
         scene.add(controller2);
@@ -189,7 +186,7 @@ public class ViveDragging extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(() -> {
+        renderer.setAnimationLoop(() -> {
             if (container.parentNode != null && container.parentNode.parentNode != null && ready) {
                 render();
             }
@@ -269,6 +266,6 @@ public class ViveDragging extends Attachable {
         intersectObjects(controller1);
         intersectObjects(controller2);
 
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

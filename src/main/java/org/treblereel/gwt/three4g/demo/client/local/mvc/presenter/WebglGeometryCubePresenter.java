@@ -13,6 +13,6 @@ public class WebglGeometryCubePresenter implements Presenter {
 
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(WebglGeometryCube.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(WebglGeometryCube.class)).asWidget());
     }
 }

@@ -40,21 +40,19 @@ import static elemental2.dom.DomGlobal.document;
  */
 public class WebglGpgpuBirds extends Attachable {
 
+    double width = getWidth();
+    double birds = getWidth() * getWidth();
+    double mouseX = 0, mouseY = 0;
+    double windowHalfX = window.innerWidth / 2;
+    double windowHalfY = window.innerHeight / 2;
+    double BOUNDS = 800, BOUNDS_HALF = BOUNDS / 2;
+    double last = new Date().getTime() * 0.0001;
     private GPUComputationRenderer gpuCompute;
     private JsPropertyMap velocityVariable;
     private JsPropertyMap positionVariable;
     private BirdUniforms positionUniforms;
     private BirdUniforms velocityUniforms;
     private BirdUniforms birdUniforms;
-
-
-    double width = getWidth();
-    double birds = getWidth() * getWidth();
-
-    double mouseX = 0, mouseY = 0;
-    double windowHalfX = window.innerWidth / 2;
-    double windowHalfY = window.innerHeight / 2;
-    double BOUNDS = 800, BOUNDS_HALF = BOUNDS / 2;
 
     public WebglGpgpuBirds() {
 
@@ -70,8 +68,8 @@ public class WebglGpgpuBirds extends Attachable {
         scene = new Scene();
         scene.background = new Color(0xffffff);
         scene.fog = new Fog(0xffffff, 100, 1000);
-        webGLRenderer = new WebGLRenderer();
-        setupWebGLRenderer(webGLRenderer);
+        renderer = new WebGLRenderer();
+        setupWebGLRenderer(renderer);
 
         initComputeRenderer();
 
@@ -139,11 +137,9 @@ public class WebglGpgpuBirds extends Attachable {
         // For Vertex and Fragment
 
         birdUniforms = new BirdUniforms();
-        birdUniforms.color = new Value(new Color( 0xff2200 ));
+        birdUniforms.color = new Value(new Color(0xff2200));
         birdUniforms.time = new Value(1.0);
         birdUniforms.delta = new Value(0.0);
-
-
 
 
         // ShaderMaterial
@@ -157,7 +153,7 @@ public class WebglGpgpuBirds extends Attachable {
         shaderMaterialParameters.side = THREE.DoubleSide;
 
         ShaderMaterial material = new ShaderMaterial(shaderMaterialParameters);
-        Mesh birdMesh = new Mesh( geometry, material );
+        Mesh birdMesh = new Mesh(geometry, material);
         birdMesh.rotation.y = (float) Math.PI / 2;
         birdMesh.matrixAutoUpdate = false;
         birdMesh.updateMatrix();
@@ -167,7 +163,7 @@ public class WebglGpgpuBirds extends Attachable {
 
     @Override
     protected void doAttachScene() {
-        document.body.appendChild(webGLRenderer.domElement);
+        document.body.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -175,14 +171,12 @@ public class WebglGpgpuBirds extends Attachable {
     private void animate() {
         render();
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (webGLRenderer.domElement.parentNode != null) {
+            if (renderer.domElement.parentNode != null) {
                 animate();
             }
         });
 
     }
-
-    double last = new Date().getTime() * 0.0001;
 
     private void render() {
         double now = new Date().getTime() * 0.0001;
@@ -201,8 +195,7 @@ public class WebglGpgpuBirds extends Attachable {
         birdUniforms.delta = new Value(delta);
 
 
-        velocityUniforms.predator = new Value(new Vector3((float)(0.5 * mouseX / windowHalfX), (float)(- 0.5 * mouseY / windowHalfY), 0));
-
+        velocityUniforms.predator = new Value(new Vector3((float) (0.5 * mouseX / windowHalfX), (float) (-0.5 * mouseY / windowHalfY), 0));
 
 
         mouseX = 10000;
@@ -221,11 +214,11 @@ public class WebglGpgpuBirds extends Attachable {
         birdUniforms.textureVelocity = new Value(currentRenderTargetByVelocityVariableJsPropertyMap);
 
 
-        webGLRenderer.render( scene, camera );
+        renderer.render(scene, camera);
     }
 
     private void initComputeRenderer() {
-        gpuCompute = new GPUComputationRenderer(width, width, webGLRenderer);
+        gpuCompute = new GPUComputationRenderer(width, width, renderer);
 
         Texture dtPosition = gpuCompute.createTexture();
         Texture dtVelocity = gpuCompute.createTexture();
@@ -243,7 +236,6 @@ public class WebglGpgpuBirds extends Attachable {
 
         gpuCompute.setVariableDependencies(velocityVariable, array); //TODO ???
         gpuCompute.setVariableDependencies(positionVariable, array);
-
 
 
         ShaderMaterial positionVariableShaderMaterial = Js.cast(positionVariable.get("material"));
@@ -266,12 +258,11 @@ public class WebglGpgpuBirds extends Attachable {
         addToJsPropertyMap(velocityVariableShaderMaterial.uniforms, "predator", new Vector3());
 
         velocityVariableShaderMaterial.defines.setProperty("BOUNDS", BigDecimal.valueOf(BOUNDS).setScale(2, BigDecimal.ROUND_HALF_UP));
-        velocityVariable.set("wrapS",THREE.RepeatWrapping);
-        velocityVariable.set("wrapT",THREE.RepeatWrapping);
+        velocityVariable.set("wrapS", THREE.RepeatWrapping);
+        velocityVariable.set("wrapT", THREE.RepeatWrapping);
 
-        positionVariable.set("wrapS",THREE.RepeatWrapping);
-        positionVariable.set("wrapT",THREE.RepeatWrapping);
-
+        positionVariable.set("wrapS", THREE.RepeatWrapping);
+        positionVariable.set("wrapT", THREE.RepeatWrapping);
 
 
         Object error = gpuCompute.init();
@@ -280,7 +271,7 @@ public class WebglGpgpuBirds extends Attachable {
         }
     }
 
-    private void addToJsPropertyMap(JsObject map, String key, Object value){
+    private void addToJsPropertyMap(JsObject map, String key, Object value) {
         map.setProperty(key, value);
     }
 

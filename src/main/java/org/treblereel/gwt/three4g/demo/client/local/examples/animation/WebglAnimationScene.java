@@ -27,26 +27,23 @@ import org.treblereel.gwt.three4g.scenes.Fog;
  */
 public class WebglAnimationScene extends Attachable {
 
+    public static final String name = "animation / scene";
+    final static String URL = "json/scene-animation.json";
     private OrbitControls controls;
     private AnimationMixer mixer;
-
     private Clock clock = new Clock();
-
-    public static final String name = "animation / scene";
-
-    final static String URL = "json/scene-animation.json";
 
     public WebglAnimationScene() {
 
         GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
 
-        setupWebGLRenderer(webGLRenderer);
+        setupWebGLRenderer(renderer);
         // Load a scene with objects, lights and camera from a JSON file
         new ObjectLoader().load(URL, new OnLoadCallback<JsObject>() {
 
             @Override
             public void onLoad(JsObject object) {
-                scene =  object.cast();
+                scene = object.cast();
                 scene.background = new Color(0xffffff);
 
 
@@ -84,12 +81,13 @@ public class WebglAnimationScene extends Attachable {
                 mixer = new AnimationMixer(scene);
                 mixer.clipAction(clips[0]).play();
             }
-        }, (e) -> {}, (e) -> new IllegalArgumentException("OnErrorCallback"));
+        }, (e) -> {
+        }, (e) -> new IllegalArgumentException("OnErrorCallback"));
 
     }
 
     public void doAttachScene() {
-        root.appendChild(webGLRenderer.domElement);
+        root.appendChild(renderer.domElement);
         onWindowResize();
         animate();
     }
@@ -103,7 +101,7 @@ public class WebglAnimationScene extends Attachable {
     private void render() {
         if (mixer != null) {
             mixer.update(0.75f * clock.getDelta());
-            webGLRenderer.render(scene, camera);
+            renderer.render(scene, camera);
         }
     }
 

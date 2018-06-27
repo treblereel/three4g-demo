@@ -47,9 +47,9 @@ public class WebglLoaderColladaSkinning extends Attachable {
             public void onLoad(JsObject collada) {
                 Object3D avatar = collada.getProperty("scene");
                 AnimationClip[] animations = collada.getProperty("animations");
-                mixer = new AnimationMixer( avatar );
-                AnimationAction action = mixer.clipAction( animations[ 0 ] ).play();
-                scene.add( avatar );
+                mixer = new AnimationMixer(avatar);
+                AnimationAction action = mixer.clipAction(animations[0]).play();
+                scene.add(avatar);
             }
 
         });
@@ -67,13 +67,13 @@ public class WebglLoaderColladaSkinning extends Attachable {
 
         WebGLRendererParameters parameters = new WebGLRendererParameters();
         parameters.antialias = true;
-        webGLRenderer = new WebGLRenderer(parameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
+        renderer = new WebGLRenderer(parameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        container.appendChild(webGLRenderer.domElement);
+        container.appendChild(renderer.domElement);
 
 
-        controls = new OrbitControls(camera, webGLRenderer.domElement);
+        controls = new OrbitControls(camera, renderer.domElement);
         controls.target.set(0, 2, 0);
         controls.update();
 
@@ -82,7 +82,7 @@ public class WebglLoaderColladaSkinning extends Attachable {
     @Override
     protected void doAttachScene() {
         root.appendChild(container);
-        webGLRenderer.setSize(getWidth(), getHeight());
+        renderer.setSize(getWidth(), getHeight());
         animate();
     }
 
@@ -97,7 +97,7 @@ public class WebglLoaderColladaSkinning extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                webGLRenderer.render(scene, camera);
+                renderer.render(scene, camera);
                 float delta = clock.getDelta();
                 if (mixer != null) {
                     mixer.update(delta);

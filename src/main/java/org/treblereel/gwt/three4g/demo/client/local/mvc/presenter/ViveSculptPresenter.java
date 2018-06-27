@@ -9,10 +9,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveSculpt;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/5/18.
  */
-public class ViveSculptPresenter implements Presenter{
+public class ViveSculptPresenter implements Presenter {
 
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(ViveSculpt.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(ViveSculpt.class)).asWidget());
     }
 }

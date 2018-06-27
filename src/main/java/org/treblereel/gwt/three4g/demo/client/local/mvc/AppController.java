@@ -12,6 +12,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnim
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
+import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
@@ -33,6 +34,12 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderPdb;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderPrwm;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderTextureTga;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lod.WebglLod;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterials;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBlending;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
@@ -58,6 +65,7 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRSandboxPr
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglAnimationScenePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCameraArrayPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglDecalsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometriesParametricPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryCubePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryDynamicPresenter;
@@ -79,6 +87,12 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderPcd
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderPdbPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderPrwmPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderTextureTgaPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLodPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsBlendingPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsBumpmapPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsBumpmapSkinPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsChannelsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
 
@@ -123,6 +137,13 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglLensflaresPresenter webglLensflaresPresenter = GWT.create(WebglLensflaresPresenter.class);
     private WebglInteractiveDraggableCubesPresenter webglInteractiveDraggableCubesPresenter = GWT.create(WebglInteractiveDraggableCubesPresenter.class);
     private WebglClippingPresenter webglClippingPresenter = GWT.create(WebglClippingPresenter.class);
+    private WebglDecalsPresenter webglDecalsPresenter = GWT.create(WebglDecalsPresenter.class);
+    private WebglLodPresenter webglLodPresenter = GWT.create(WebglLodPresenter.class);
+    private WebglMaterialsPresenter webglMaterialsPresenter = GWT.create(WebglMaterialsPresenter.class);
+    private WebglMaterialsBlendingPresenter webglMaterialsBlendingPresenter = GWT.create(WebglMaterialsBlendingPresenter.class);
+    private WebglMaterialsBumpmapPresenter webglMaterialsBumpmapPresenter = GWT.create(WebglMaterialsBumpmapPresenter.class);
+    private WebglMaterialsBumpmapSkinPresenter webglMaterialsBumpmapSkinPresenter = GWT.create(WebglMaterialsBumpmapSkinPresenter.class);
+    private WebglMaterialsChannelsPresenter webglMaterialsChannelsPresenter = GWT.create(WebglMaterialsChannelsPresenter.class);
 
 
     private HTMLDivElement container;
@@ -170,6 +191,13 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglLensflares.TYPE, event -> History.newItem(WebglLensflares.class.getSimpleName()));
         eventBus.addHandler(WebglInteractiveDraggableCubes.TYPE, event -> History.newItem(WebglInteractiveDraggableCubes.class.getSimpleName()));
         eventBus.addHandler(WebglClipping.TYPE, event -> History.newItem(WebglClipping.class.getSimpleName()));
+        eventBus.addHandler(WebglDecals.TYPE, event -> History.newItem(WebglDecals.class.getSimpleName()));
+        eventBus.addHandler(WebglLod.TYPE, event -> History.newItem(WebglLod.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterials.TYPE, event -> History.newItem(WebglMaterials.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsBlending.TYPE, event -> History.newItem(WebglMaterialsBlending.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsBumpmap.TYPE, event -> History.newItem(WebglMaterialsBumpmap.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsBumpmapSkin.TYPE, event -> History.newItem(WebglMaterialsBumpmapSkin.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsChannels.TYPE, event -> History.newItem(WebglMaterialsChannels.class.getSimpleName()));
 
 
     }
@@ -265,6 +293,20 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglInteractiveDraggableCubesPresenter.dispatch(container);
             } else if (token.equals(WebglClipping.class.getSimpleName())) {
                 webglClippingPresenter.dispatch(container);
+            } else if (token.equals(WebglDecals.class.getSimpleName())) {
+                webglDecalsPresenter.dispatch(container);
+            } else if (token.equals(WebglLod.class.getSimpleName())) {
+                webglLodPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterials.class.getSimpleName())) {
+                webglMaterialsPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsBlending.class.getSimpleName())) {
+                webglMaterialsBlendingPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsBumpmap.class.getSimpleName())) {
+                webglMaterialsBumpmapPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsBumpmapSkin.class.getSimpleName())) {
+                webglMaterialsBumpmapSkinPresenter.dispatch(container);
+            }else if (token.equals(WebglMaterialsChannels.class.getSimpleName())) {
+                webglMaterialsChannelsPresenter.dispatch(container);
             }
         }
     }

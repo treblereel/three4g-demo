@@ -31,12 +31,9 @@ import java.util.List;
 public class WebVRPanorama extends Attachable {
 
     public static final String name = "panorama";
-
+    public List<Texture> textures = new LinkedList<>();
     private boolean isMouseDown;
 
-    public List<Texture> textures = new LinkedList<>();
-
-  
 
     private WebVRPanorama() {
         getTexturesFromAtlasFile("textures/cube/sun_temple_stripe_stereo.jpg", 12);
@@ -46,7 +43,7 @@ public class WebVRPanorama extends Attachable {
 
 
         for (int i = 0; i < tilesNum; i++) {
-            textures.add( new Texture());
+            textures.add(new Texture());
         }
         ImageLoader loader = new ImageLoader();
         loader.load(atlasImgUrl, new OnLoadCallback<Image>() {
@@ -56,7 +53,7 @@ public class WebVRPanorama extends Attachable {
 
                 HTMLCanvasElement canvas;
                 CanvasRenderingContext2D context;
-                for (int i = 0; i <tilesNum; i++) {
+                for (int i = 0; i < tilesNum; i++) {
 
                     canvas = (HTMLCanvasElement) DomGlobal.document.createElement("canvas");
                     context = Js.uncheckedCast(canvas.getContext("2d"));
@@ -67,33 +64,33 @@ public class WebVRPanorama extends Attachable {
                     textures.get(i).image = Js.uncheckedCast(canvas);
                     textures.get(i).needsUpdate = true;
                 }
-                init();    
+                init();
             }
         });
 
     }
 
-    private void init(){
-       
+    private void init() {
+
         scene = new Scene();
-        camera = new PerspectiveCamera(90, window.innerWidth/ window.innerHeight, 1, 1000);
+        camera = new PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1000);
         camera.layers.enable(1);
         BoxGeometry geometry = new BoxGeometry(100, 100, 100);
         geometry.scale(1, 1, -1);
 
         MeshBasicMaterial[] materials = new MeshBasicMaterial[6];
 
-         for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             MeshBasicMaterialParameters parameters = new MeshBasicMaterialParameters();
             parameters.map = textures.get(i);
             materials[i] = new MeshBasicMaterial(parameters);
-        } 
+        }
 
         Mesh skyBox = new Mesh(geometry, materials);
         skyBox.layers.set(1);
         scene.add(skyBox);
 
-         MeshBasicMaterial[] materialsR = new MeshBasicMaterial[6];
+        MeshBasicMaterial[] materialsR = new MeshBasicMaterial[6];
 
         for (int i = 6; i < 12; i++) {
             MeshBasicMaterialParameters parameters = new MeshBasicMaterialParameters();
@@ -105,16 +102,16 @@ public class WebVRPanorama extends Attachable {
         skyBoxR.layers.set(2);
         scene.add(skyBoxR);
 
-        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
-        webGLRendererParameters.alpha = true;
+        WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
+        rendererParameters.alpha = true;
 
-        webGLRenderer = new WebGLRenderer(webGLRendererParameters);
-        webGLRenderer.setSize(window.innerWidth, window.innerHeight);
-        webGLRenderer.vr.enabled = true;
-        webGLRenderer.vr.userHeight = 0;
+        renderer = new WebGLRenderer(rendererParameters);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.vr.enabled = true;
+        renderer.vr.userHeight = 0;
 
-        container.appendChild(webGLRenderer.domElement);
-        container.appendChild(WebVR.createButton(webGLRenderer));
+        container.appendChild(renderer.domElement);
+        container.appendChild(WebVR.createButton(renderer));
 
         window.addEventListener("vrdisplaypointerrestricted", (e) -> onPointerRestricted(), false);
         window.addEventListener("vrdisplaypointerunrestricted", (e) -> onPointerUnrestricted(), false);
@@ -136,7 +133,7 @@ public class WebVRPanorama extends Attachable {
 
     private void onPointerUnrestricted() {
         org.treblereel.gwt.three4g.demo.client.api.dom.Document currentPointerLockElement = Js.uncheckedCast(DomGlobal.document);
-        org.treblereel.gwt.three4g.demo.client.api.dom.Document expectedPointerLockElement = Js.uncheckedCast(webGLRenderer.domElement);
+        org.treblereel.gwt.three4g.demo.client.api.dom.Document expectedPointerLockElement = Js.uncheckedCast(renderer.domElement);
 
         if (currentPointerLockElement.pointerLockElement != null && currentPointerLockElement.pointerLockElement.equals(expectedPointerLockElement)) {
             currentPointerLockElement.exitPointerLock();
@@ -146,7 +143,7 @@ public class WebVRPanorama extends Attachable {
 
 
     private void onPointerRestricted() {
-        org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement pointerLockElement = (org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement) webGLRenderer.domElement;
+        org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement pointerLockElement = (org.treblereel.gwt.three4g.demo.client.api.dom.HTMLElement) renderer.domElement;
         if (pointerLockElement != null)
             pointerLockElement.requestPointerLock();
     }
@@ -165,7 +162,7 @@ public class WebVRPanorama extends Attachable {
     }
 
     private void animate() {
-        webGLRenderer.setAnimationLoop(new OnAnimate() {
+        renderer.setAnimationLoop(new OnAnimate() {
             @Override
             public void animate() {
                 if (container.parentNode != null && container.parentNode.parentNode != null) {
@@ -176,6 +173,6 @@ public class WebVRPanorama extends Attachable {
     }
 
     private void render() {
-        webGLRenderer.render(scene, camera);
+        renderer.render(scene, camera);
     }
 }

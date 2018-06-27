@@ -12,6 +12,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 public class WebGlCameraPresenter implements Presenter {
     @Override
     public void dispatch(HTMLDivElement container) {
-        container.appendChild(((Attachable)GWT.create(WebGlCamera.class)).asWidget());
+        container.appendChild(((Attachable) GWT.create(WebGlCamera.class)).asWidget());
     }
 }

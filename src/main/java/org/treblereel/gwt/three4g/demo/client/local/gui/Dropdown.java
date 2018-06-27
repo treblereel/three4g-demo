@@ -4,9 +4,9 @@ import jsinterop.annotations.JsType;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
- *         Created by treblereel on 12/13/17.
+ * Created by treblereel on 12/13/17.
  */
 @JsType(isNative = true, namespace = "dat", name = "Group")
-public abstract class Dropdown extends Group{
+public abstract class Dropdown extends Group {
 
 }

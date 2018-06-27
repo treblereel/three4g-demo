@@ -20,6 +20,21 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
 
     public static Type<Attachable.EventHandler> TYPE = new Type<>();
+    protected Window window = DomGlobal.window;
+    protected WebGLRenderer renderer = WebGLRendererProducer.getRenderer();
+    protected Scene scene;
+    protected PerspectiveCamera camera;
+    protected Mesh mesh;
+    protected HTMLDivElement panel = (HTMLDivElement) DomGlobal.document.getElementById("panel");
+    protected HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
+    protected HTMLDivElement root = (HTMLDivElement) DomGlobal.document.createElement("div");
+    protected EventListener onResize = evt -> onWindowResize();
+    protected float aspect = new Float((getWidth() / getHeight()));
+
+    public static void loadJavaScript(String script) {
+        ScriptInjector.fromString(script).setWindow(ScriptInjector.TOP_WINDOW).inject();
+
+    }
 
     @Override
     public Type<Attachable.EventHandler> getAssociatedType() {
@@ -30,24 +45,6 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
     protected void dispatch(Attachable.EventHandler handler) {
         handler.on(this);
     }
-
-    public interface EventHandler extends com.google.gwt.event.shared.EventHandler {
-        void on(Attachable event);
-    }
-
-    protected Window window = DomGlobal.window;
-    protected WebGLRenderer webGLRenderer = WebGLRendererProducer.getRenderer();
-    protected Scene scene;
-    protected PerspectiveCamera camera;
-    protected Mesh mesh;
-
-    protected HTMLDivElement panel = (HTMLDivElement) DomGlobal.document.getElementById("panel");
-    protected HTMLDivElement container = (HTMLDivElement) DomGlobal.document.createElement("div");
-    protected HTMLDivElement root = (HTMLDivElement) DomGlobal.document.createElement("div");
-
-    protected EventListener onResize = evt -> onWindowResize();
-
-    protected float aspect = new Float((getWidth() / getHeight()));
 
     protected abstract void doAttachScene();
 
@@ -71,7 +68,7 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
         window.removeEventListener("resize", onResize);
     }
 
-    private void clearDiv(HTMLDivElement element){
+    private void clearDiv(HTMLDivElement element) {
         while (element.hasChildNodes()) {
             element.removeChild(element.firstChild);
         }
@@ -100,7 +97,7 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
         if (root.parentNode != null && camera != null) {
             camera.aspect = new Float(getWidth() / getHeight());
             camera.updateProjectionMatrix();
-            webGLRenderer.setSize(getWidth(), getHeight());
+            renderer.setSize(getWidth(), getHeight());
         }
     }
 
@@ -109,16 +106,15 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
         webGLRenderer.setSize(getWidth(), getHeight());
     }
 
-    public static void loadJavaScript(String script) {
-        ScriptInjector.fromString(script).setWindow(ScriptInjector.TOP_WINDOW).inject();
-
-    }
-
     public HTMLDivElement asWidget() {
         window.addEventListener("resize", onResize);
         attach();
         AppSetup.currentPageHolder.setCurrentPage(this);
         return root;
+    }
+
+    public interface EventHandler extends com.google.gwt.event.shared.EventHandler {
+        void on(Attachable event);
     }
 
 }
