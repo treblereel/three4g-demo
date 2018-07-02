@@ -15,9 +15,11 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrain;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
@@ -50,6 +52,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
 import static elemental2.dom.DomGlobal.document;
@@ -139,10 +142,13 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglClipping.name, WebglClipping.class);
         //decals
         addListElement(WebglDecals.name, WebglDecals.class);
+        //effects
+        addListElement(WebglFramebufferTexture.name, WebglFramebufferTexture.class);
         //geometry
         addListElement(WebglGeometriesParametric.name, WebglGeometriesParametric.class);
         addListElement(WebglGeometryCube.name, WebglGeometryCube.class);
         addListElement(WebglGeometryDynamic.name, WebglGeometryDynamic.class);
+        addListElement(WebglGeometryTerrain.name, WebglGeometryTerrain.class);
         //loader
         addListElement(WebglLoaderBabylon.name, WebglLoaderBabylon.class);
         addListElement(WebglLoader3ds.name, WebglLoader3ds.class);

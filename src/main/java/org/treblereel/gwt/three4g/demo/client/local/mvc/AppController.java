@@ -14,9 +14,11 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrain;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
@@ -68,9 +70,11 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglAnimation
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCameraArrayPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglDecalsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglFramebufferTexturePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometriesParametricPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryCubePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryDynamicPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveBuffergeometryPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveDraggableCubesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractivePointsPresenter;
@@ -147,6 +151,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglMaterialsBumpmapSkinPresenter webglMaterialsBumpmapSkinPresenter = GWT.create(WebglMaterialsBumpmapSkinPresenter.class);
     private WebglMaterialsChannelsPresenter webglMaterialsChannelsPresenter = GWT.create(WebglMaterialsChannelsPresenter.class);
     private CanvasCameraOrthographicPresenter canvasCameraOrthographicPresenter = GWT.create(CanvasCameraOrthographicPresenter.class);
+    private WebglFramebufferTexturePresenter webglFramebufferTexturePresenter = GWT.create(WebglFramebufferTexturePresenter.class);
+    private WebglGeometryTerrainPresenter webglGeometryTerrainPresenter = GWT.create(WebglGeometryTerrainPresenter.class);
 
 
     private HTMLDivElement container;
@@ -202,6 +208,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglMaterialsBumpmapSkin.TYPE, event -> History.newItem(WebglMaterialsBumpmapSkin.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsChannels.TYPE, event -> History.newItem(WebglMaterialsChannels.class.getSimpleName()));
         eventBus.addHandler(CanvasCameraOrthographic.TYPE, event -> History.newItem(CanvasCameraOrthographic.class.getSimpleName()));
+        eventBus.addHandler(WebglFramebufferTexture.TYPE, event -> History.newItem(WebglFramebufferTexture.class.getSimpleName()));
+        eventBus.addHandler(WebglGeometryTerrain.TYPE, event -> History.newItem(WebglGeometryTerrain.class.getSimpleName()));
 
 
     }
@@ -313,6 +321,10 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglMaterialsChannelsPresenter.dispatch(container);
             }else if (token.equals(CanvasCameraOrthographic.class.getSimpleName())) {
                 canvasCameraOrthographicPresenter.dispatch(container);
+            }else if (token.equals(WebglFramebufferTexture.class.getSimpleName())) {
+                webglFramebufferTexturePresenter.dispatch(container);
+            }else if (token.equals(WebglGeometryTerrain.class.getSimpleName())) {
+                webglGeometryTerrainPresenter.dispatch(container);
             }
         }
     }
