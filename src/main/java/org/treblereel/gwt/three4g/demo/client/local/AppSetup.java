@@ -20,6 +20,8 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeome
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrain;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainFog;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainRaycast;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
@@ -149,6 +151,8 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglGeometryCube.name, WebglGeometryCube.class);
         addListElement(WebglGeometryDynamic.name, WebglGeometryDynamic.class);
         addListElement(WebglGeometryTerrain.name, WebglGeometryTerrain.class);
+        addListElement(WebglGeometryTerrainFog.name, WebglGeometryTerrainFog.class);
+        addListElement(WebglGeometryTerrainRaycast.name, WebglGeometryTerrainRaycast.class);
         //loader
         addListElement(WebglLoaderBabylon.name, WebglLoaderBabylon.class);
         addListElement(WebglLoader3ds.name, WebglLoader3ds.class);
