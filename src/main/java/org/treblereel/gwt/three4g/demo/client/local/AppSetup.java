@@ -10,13 +10,18 @@ import elemental2.dom.HTMLUListElement;
 import elemental2.dom.Node;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
+import org.treblereel.gwt.three4g.demo.client.local.examples.camera.CanvasCameraOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrain;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainFog;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainRaycast;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
@@ -49,6 +54,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
 import static elemental2.dom.DomGlobal.document;
@@ -133,14 +139,20 @@ public class AppSetup implements EntryPoint {
         //camera
         addListElement(WebGlCamera.name, WebGlCamera.class);
         addListElement(WebglCameraArray.name, WebglCameraArray.class);
+        addListElement(CanvasCameraOrthographic.name, CanvasCameraOrthographic.class);
         //clipping
         addListElement(WebglClipping.name, WebglClipping.class);
         //decals
         addListElement(WebglDecals.name, WebglDecals.class);
+        //effects
+        addListElement(WebglFramebufferTexture.name, WebglFramebufferTexture.class);
         //geometry
         addListElement(WebglGeometriesParametric.name, WebglGeometriesParametric.class);
         addListElement(WebglGeometryCube.name, WebglGeometryCube.class);
         addListElement(WebglGeometryDynamic.name, WebglGeometryDynamic.class);
+        addListElement(WebglGeometryTerrain.name, WebglGeometryTerrain.class);
+        addListElement(WebglGeometryTerrainFog.name, WebglGeometryTerrainFog.class);
+        addListElement(WebglGeometryTerrainRaycast.name, WebglGeometryTerrainRaycast.class);
         //loader
         addListElement(WebglLoaderBabylon.name, WebglLoaderBabylon.class);
         addListElement(WebglLoader3ds.name, WebglLoader3ds.class);

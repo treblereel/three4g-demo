@@ -66,4 +66,8 @@ public interface JavascriptTextResource extends ClientBundle {
 
     @Source("js/MaskPass.js")
     TextResource getMaskPass();
+
+    @Source("js/ImprovedNoise.js")
+    TextResource getImprovedNoise();
+
 }

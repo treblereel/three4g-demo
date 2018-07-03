@@ -30,6 +30,8 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
     protected HTMLDivElement root = (HTMLDivElement) DomGlobal.document.createElement("div");
     protected EventListener onResize = evt -> onWindowResize();
     protected float aspect = new Float((getWidth() / getHeight()));
+    protected double devicePixelRatio = ((org.treblereel.gwt.three4g.demo.client.api.dom.Window) DomGlobal.window).devicePixelRatio;
+
 
     public static void loadJavaScript(String script) {
         ScriptInjector.fromString(script).setWindow(ScriptInjector.TOP_WINDOW).inject();
