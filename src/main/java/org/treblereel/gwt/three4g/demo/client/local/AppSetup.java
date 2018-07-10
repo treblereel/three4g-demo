@@ -54,6 +54,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveDragging;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
+import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
@@ -200,6 +201,10 @@ public class AppSetup implements EntryPoint {
         addListElement(ViveDragging.name, ViveDragging.class);
         //addListElement(VivePaint.name, VivePaint.class);
         //addListElement(ViveSculpt.name, ViveSculpt.class);
+
+        //webaudio
+        addTypeElement("Web audio");
+        addListElement(WebAudioOrientation.name, WebAudioOrientation.class);
 
 
         appController.dispatch(rootPanel.asWidget());

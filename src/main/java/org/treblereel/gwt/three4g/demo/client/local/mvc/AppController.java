@@ -55,6 +55,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveSculpt;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
+import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.CanvasCameraOrthographicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MainPresenter;
@@ -64,6 +65,7 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.ViveDraggingPr
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.VivePaintPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.VivePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.ViveSculptPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebAudioOrientationPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebGlAnimationKeyframesJsonPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebGlCameraPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRCubesPresenter;
@@ -162,6 +164,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglGeometryTerrainFogPresenter webglGeometryTerrainFogPresenter = GWT.create(WebglGeometryTerrainFogPresenter.class);
     private WebglGeometryTerrainRaycastPresenter webglGeometryTerrainRaycastPresenter = GWT.create(WebglGeometryTerrainRaycastPresenter.class);
     private WebglPerformancePresenter webglPerformancePresenter = GWT.create(WebglPerformancePresenter.class);
+    private WebAudioOrientationPresenter webAudioOrientationPresenter = GWT.create(WebAudioOrientationPresenter.class);
 
 
     private HTMLDivElement container;
@@ -222,6 +225,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglGeometryTerrainFog.TYPE, event -> History.newItem(WebglGeometryTerrainFog.class.getSimpleName()));
         eventBus.addHandler(WebglGeometryTerrainRaycast.TYPE, event -> History.newItem(WebglGeometryTerrainRaycast.class.getSimpleName()));
         eventBus.addHandler(WebglPerformance.TYPE, event -> History.newItem(WebglPerformance.class.getSimpleName()));
+        eventBus.addHandler(WebAudioOrientation.TYPE, event -> History.newItem(WebAudioOrientation.class.getSimpleName()));
 
 
     }
@@ -343,6 +347,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglGeometryTerrainRaycastPresenter.dispatch(container);
             } else if (token.equals(WebglPerformance.class.getSimpleName())) {
                 webglPerformancePresenter.dispatch(container);
+            } else if (token.equals(WebAudioOrientation.class.getSimpleName())) {
+                webAudioOrientationPresenter.dispatch(container);
             }
         }
     }
