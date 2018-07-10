@@ -46,6 +46,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
@@ -180,6 +181,8 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglMaterialsBumpmapSkin.name, WebglMaterialsBumpmapSkin.class);
         addListElement(WebglMaterialsChannels.name, WebglMaterialsChannels.class);
 
+        //performance
+        addListElement(WebglPerformance.name, WebglPerformance.class);
         //interactive
         addListElement(WebglInteractiveBuffergeometry.name, WebglInteractiveBuffergeometry.class);
         addListElement(WebglInteractiveDraggableCubes.name, WebglInteractiveDraggableCubes.class);

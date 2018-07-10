@@ -45,6 +45,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
@@ -103,6 +104,7 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterials
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsBumpmapSkinPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsChannelsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglPerformancePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
 
@@ -159,6 +161,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglGeometryTerrainPresenter webglGeometryTerrainPresenter = GWT.create(WebglGeometryTerrainPresenter.class);
     private WebglGeometryTerrainFogPresenter webglGeometryTerrainFogPresenter = GWT.create(WebglGeometryTerrainFogPresenter.class);
     private WebglGeometryTerrainRaycastPresenter webglGeometryTerrainRaycastPresenter = GWT.create(WebglGeometryTerrainRaycastPresenter.class);
+    private WebglPerformancePresenter webglPerformancePresenter = GWT.create(WebglPerformancePresenter.class);
 
 
     private HTMLDivElement container;
@@ -218,6 +221,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglGeometryTerrain.TYPE, event -> History.newItem(WebglGeometryTerrain.class.getSimpleName()));
         eventBus.addHandler(WebglGeometryTerrainFog.TYPE, event -> History.newItem(WebglGeometryTerrainFog.class.getSimpleName()));
         eventBus.addHandler(WebglGeometryTerrainRaycast.TYPE, event -> History.newItem(WebglGeometryTerrainRaycast.class.getSimpleName()));
+        eventBus.addHandler(WebglPerformance.TYPE, event -> History.newItem(WebglPerformance.class.getSimpleName()));
 
 
     }
@@ -337,6 +341,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglGeometryTerrainFogPresenter.dispatch(container);
             } else if (token.equals(WebglGeometryTerrainRaycast.class.getSimpleName())) {
                 webglGeometryTerrainRaycastPresenter.dispatch(container);
+            } else if (token.equals(WebglPerformance.class.getSimpleName())) {
+                webglPerformancePresenter.dispatch(container);
             }
         }
     }
