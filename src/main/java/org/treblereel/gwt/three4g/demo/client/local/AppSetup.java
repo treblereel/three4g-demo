@@ -46,6 +46,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Vive;
@@ -53,6 +54,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.ViveDragging;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
+import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
@@ -180,6 +182,8 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglMaterialsBumpmapSkin.name, WebglMaterialsBumpmapSkin.class);
         addListElement(WebglMaterialsChannels.name, WebglMaterialsChannels.class);
 
+        //performance
+        addListElement(WebglPerformance.name, WebglPerformance.class);
         //interactive
         addListElement(WebglInteractiveBuffergeometry.name, WebglInteractiveBuffergeometry.class);
         addListElement(WebglInteractiveDraggableCubes.name, WebglInteractiveDraggableCubes.class);
@@ -197,6 +201,10 @@ public class AppSetup implements EntryPoint {
         addListElement(ViveDragging.name, ViveDragging.class);
         //addListElement(VivePaint.name, VivePaint.class);
         //addListElement(ViveSculpt.name, ViveSculpt.class);
+
+        //webaudio
+        addTypeElement("Web audio");
+        addListElement(WebAudioOrientation.name, WebAudioOrientation.class);
 
 
         appController.dispatch(rootPanel.asWidget());
