@@ -13,6 +13,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.CanvasCamera
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
+import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClippingIntersection;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
@@ -73,6 +74,7 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRPanoramaP
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRSandboxPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglAnimationScenePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCameraArrayPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingIntersectionPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglDecalsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglFramebufferTexturePresenter;
@@ -165,6 +167,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglGeometryTerrainRaycastPresenter webglGeometryTerrainRaycastPresenter = GWT.create(WebglGeometryTerrainRaycastPresenter.class);
     private WebglPerformancePresenter webglPerformancePresenter = GWT.create(WebglPerformancePresenter.class);
     private WebAudioOrientationPresenter webAudioOrientationPresenter = GWT.create(WebAudioOrientationPresenter.class);
+    private WebglClippingIntersectionPresenter webglClippingIntersectionPresenter = GWT.create(WebglClippingIntersectionPresenter.class);
 
 
     private HTMLDivElement container;
@@ -226,6 +229,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglGeometryTerrainRaycast.TYPE, event -> History.newItem(WebglGeometryTerrainRaycast.class.getSimpleName()));
         eventBus.addHandler(WebglPerformance.TYPE, event -> History.newItem(WebglPerformance.class.getSimpleName()));
         eventBus.addHandler(WebAudioOrientation.TYPE, event -> History.newItem(WebAudioOrientation.class.getSimpleName()));
+        eventBus.addHandler(WebglClippingIntersection.TYPE, event -> History.newItem(WebglClippingIntersection.class.getSimpleName()));
 
 
     }
@@ -349,6 +353,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglPerformancePresenter.dispatch(container);
             } else if (token.equals(WebAudioOrientation.class.getSimpleName())) {
                 webAudioOrientationPresenter.dispatch(container);
+            } else if (token.equals(WebglClippingIntersection.class.getSimpleName())) {
+                webglClippingIntersectionPresenter.dispatch(container);
             }
         }
     }
