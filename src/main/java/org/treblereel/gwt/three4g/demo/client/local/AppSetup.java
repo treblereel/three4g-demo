@@ -16,6 +16,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraA
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClippingIntersection;
 import org.treblereel.gwt.three4g.demo.client.local.examples.css2d.Css2dLabel;
+import org.treblereel.gwt.three4g.demo.client.local.examples.css3d.Css3dOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
@@ -212,6 +213,10 @@ public class AppSetup implements EntryPoint {
         //css2d
         addTypeElement("css2d");
         addListElement(Css2dLabel.name, Css2dLabel.class);
+
+        //css3d
+        addTypeElement("css3d");
+        addListElement(Css3dOrthographic.name, Css3dOrthographic.class);
 
 
         appController.dispatch(rootPanel.asWidget());
