@@ -106,7 +106,7 @@ public class Css2dLabel extends Attachable {
     @Override
     public void detach() {
         super.detach();
-        DomGlobal.document.body.removeChild(labelRenderer.domElement);
+        root.removeChild(labelRenderer.domElement);
     }
 
     @Override
