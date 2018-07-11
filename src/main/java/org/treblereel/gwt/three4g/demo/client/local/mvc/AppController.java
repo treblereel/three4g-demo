@@ -14,6 +14,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClippingIntersection;
+import org.treblereel.gwt.three4g.demo.client.local.examples.css2d.Css2dLabel;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
@@ -58,6 +59,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.CanvasCameraOrthographicPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Css2dLabelPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Presenter;
@@ -168,6 +170,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglPerformancePresenter webglPerformancePresenter = GWT.create(WebglPerformancePresenter.class);
     private WebAudioOrientationPresenter webAudioOrientationPresenter = GWT.create(WebAudioOrientationPresenter.class);
     private WebglClippingIntersectionPresenter webglClippingIntersectionPresenter = GWT.create(WebglClippingIntersectionPresenter.class);
+    private Css2dLabelPresenter css2dLabelPresenter = GWT.create(Css2dLabelPresenter.class);
 
 
     private HTMLDivElement container;
@@ -230,6 +233,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglPerformance.TYPE, event -> History.newItem(WebglPerformance.class.getSimpleName()));
         eventBus.addHandler(WebAudioOrientation.TYPE, event -> History.newItem(WebAudioOrientation.class.getSimpleName()));
         eventBus.addHandler(WebglClippingIntersection.TYPE, event -> History.newItem(WebglClippingIntersection.class.getSimpleName()));
+        eventBus.addHandler(Css2dLabel.TYPE, event -> History.newItem(Css2dLabel.class.getSimpleName()));
 
 
     }
@@ -355,6 +359,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webAudioOrientationPresenter.dispatch(container);
             } else if (token.equals(WebglClippingIntersection.class.getSimpleName())) {
                 webglClippingIntersectionPresenter.dispatch(container);
+            } else if (token.equals(Css2dLabel.class.getSimpleName())) {
+                css2dLabelPresenter.dispatch(container);
             }
         }
     }
