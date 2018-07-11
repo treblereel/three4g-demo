@@ -49,6 +49,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -59,7 +60,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
-import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
 import static elemental2.dom.DomGlobal.document;
@@ -209,6 +209,10 @@ public class AppSetup implements EntryPoint {
         //webaudio
         addTypeElement("Web audio");
         addListElement(WebAudioOrientation.name, WebAudioOrientation.class);
+
+        //misc
+        addTypeElement("misc");
+        addListElement(MiscAnimationGroups.name, MiscAnimationGroups.class);
 
         //css2d
         addTypeElement("css2d");

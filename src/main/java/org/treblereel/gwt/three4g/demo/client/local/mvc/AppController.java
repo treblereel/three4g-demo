@@ -48,6 +48,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -64,6 +65,7 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Css2dLabelPres
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Css3dOrthographicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MainPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MiscAnimationGroupsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Presenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.RollercoasterPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.ViveDraggingPresenter;
@@ -174,6 +176,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglClippingIntersectionPresenter webglClippingIntersectionPresenter = GWT.create(WebglClippingIntersectionPresenter.class);
     private Css2dLabelPresenter css2dLabelPresenter = GWT.create(Css2dLabelPresenter.class);
     private Css3dOrthographicPresenter css3dOrthographicPresenter = GWT.create(Css3dOrthographicPresenter.class);
+    private MiscAnimationGroupsPresenter miscAnimationGroupsPresenter = GWT.create(MiscAnimationGroupsPresenter.class);
 
 
     private HTMLDivElement container;
@@ -238,6 +241,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglClippingIntersection.TYPE, event -> History.newItem(WebglClippingIntersection.class.getSimpleName()));
         eventBus.addHandler(Css2dLabel.TYPE, event -> History.newItem(Css2dLabel.class.getSimpleName()));
         eventBus.addHandler(Css3dOrthographic.TYPE, event -> History.newItem(Css3dOrthographic.class.getSimpleName()));
+        eventBus.addHandler(MiscAnimationGroups.TYPE, event -> History.newItem(MiscAnimationGroups.class.getSimpleName()));
 
 
     }
@@ -367,6 +371,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 css2dLabelPresenter.dispatch(container);
             } else if (token.equals(Css3dOrthographic.class.getSimpleName())) {
                 css3dOrthographicPresenter.dispatch(container);
+            } else if (token.equals(MiscAnimationGroups.class.getSimpleName())) {
+                miscAnimationGroupsPresenter.dispatch(container);
             }
         }
     }
