@@ -70,4 +70,7 @@ public interface JavascriptTextResource extends ClientBundle {
     @Source("js/ImprovedNoise.js")
     TextResource getImprovedNoise();
 
+    @Source("js/TeapotBufferGeometry.js")
+    TextResource getTeapotBufferGeometry();
+
 }

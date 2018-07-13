@@ -164,7 +164,7 @@ public class ViveDragging extends Attachable {
                 controller1.add(object.clone());
                 controller2.add(object.clone());
 
-                BufferGeometry geometry = new BufferGeometry().setFromPoints(new Vector3(0, 0, 0), new Vector3(0, 0, -1));
+                BufferGeometry geometry = new BufferGeometry().setFromPoints(new Vector3[]{new Vector3(0, 0, 0), new Vector3(0, 0, -1)});
                 Line line = new Line(geometry);
                 line.name = "line";
                 line.scale.z = 5;

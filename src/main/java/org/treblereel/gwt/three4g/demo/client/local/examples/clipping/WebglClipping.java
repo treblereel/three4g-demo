@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.clipping;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.three4g.THREE;
