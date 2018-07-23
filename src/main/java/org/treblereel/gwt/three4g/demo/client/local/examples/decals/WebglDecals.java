@@ -126,7 +126,7 @@ public class WebglDecals extends Attachable {
         scene.add(light1);
 
         BufferGeometry geometry = new BufferGeometry();
-        geometry.setFromPoints(new Vector3(), new Vector3());
+        geometry.setFromPoints(new Vector3[]{new Vector3(), new Vector3()});
 
         LineBasicMaterialParameters lineBasicMaterialParameters = new LineBasicMaterialParameters();
         lineBasicMaterialParameters.linewidth = 4;

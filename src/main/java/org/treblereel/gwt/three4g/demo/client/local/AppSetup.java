@@ -20,12 +20,19 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.css3d.Css3dOrthogra
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryColors;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryColorsJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryNormals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryShapes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTeapot;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrain;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainFog;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainRaycast;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
+import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveCubes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveCubesGpu;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
 import org.treblereel.gwt.three4g.demo.client.local.examples.lensflares.WebglLensflares;
@@ -49,6 +56,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -59,7 +67,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
-import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
 import static elemental2.dom.DomGlobal.document;
@@ -154,8 +161,13 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglFramebufferTexture.name, WebglFramebufferTexture.class);
         //geometry
         addListElement(WebglGeometriesParametric.name, WebglGeometriesParametric.class);
+        addListElement(WebglGeometryColors.name, WebglGeometryColors.class);
+        addListElement(WebglGeometryColorsJson.name, WebglGeometryColorsJson.class);
         addListElement(WebglGeometryCube.name, WebglGeometryCube.class);
         addListElement(WebglGeometryDynamic.name, WebglGeometryDynamic.class);
+        addListElement(WebglGeometryNormals.name, WebglGeometryNormals.class);
+        addListElement(WebglGeometryShapes.name, WebglGeometryShapes.class);
+        addListElement(WebglGeometryTeapot.name, WebglGeometryTeapot.class);
         addListElement(WebglGeometryTerrain.name, WebglGeometryTerrain.class);
         addListElement(WebglGeometryTerrainFog.name, WebglGeometryTerrainFog.class);
         addListElement(WebglGeometryTerrainRaycast.name, WebglGeometryTerrainRaycast.class);
@@ -190,6 +202,8 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglPerformance.name, WebglPerformance.class);
         //interactive
         addListElement(WebglInteractiveBuffergeometry.name, WebglInteractiveBuffergeometry.class);
+        addListElement(WebglInteractiveCubes.name, WebglInteractiveCubes.class);
+        addListElement(WebglInteractiveCubesGpu.name, WebglInteractiveCubesGpu.class);
         addListElement(WebglInteractiveDraggableCubes.name, WebglInteractiveDraggableCubes.class);
         addListElement(WebglInteractivePoints.name, WebglInteractivePoints.class);
         //Lensflares
@@ -209,6 +223,10 @@ public class AppSetup implements EntryPoint {
         //webaudio
         addTypeElement("Web audio");
         addListElement(WebAudioOrientation.name, WebAudioOrientation.class);
+
+        //misc
+        addTypeElement("misc");
+        addListElement(MiscAnimationGroups.name, MiscAnimationGroups.class);
 
         //css2d
         addTypeElement("css2d");
