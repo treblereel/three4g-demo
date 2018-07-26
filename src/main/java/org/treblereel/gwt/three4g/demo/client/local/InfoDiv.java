@@ -22,11 +22,14 @@ public class InfoDiv {
         container.id = "info";
         container.style.display = "none";
         container.appendChild(info);
+        container.style.color = "white";
+
 
         info.href = "http://threejs.org";
         info.target = "_blank";
         info.rel = "noopener";
         info.textContent = "three.js";
+        info.style.color = "blue";
 
         container.appendChild(text);
         document.body.appendChild(container);

@@ -34,7 +34,6 @@ public class WebglLensflares extends Attachable {
     public static final String name = "lensflares";
 
     private Clock clock = new Clock();
-    private FlyControls controls;
     private Random rand = new Random();
     private Texture textureFlare0, textureFlare3;
 
@@ -45,11 +44,12 @@ public class WebglLensflares extends Attachable {
 
         camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 15000);
         camera.position.z = 250;
-        controls = new FlyControls(camera);
-        controls.movementSpeed = 2500f;
-        controls.rollSpeed = (float) Math.PI / 6;
-        controls.autoForward = false;
-        controls.dragToLook = false;
+
+        flyControls = new FlyControls(camera);
+        flyControls.movementSpeed = 2500f;
+        flyControls.rollSpeed = (float) Math.PI / 6;
+        flyControls.autoForward = false;
+        flyControls.dragToLook = false;
 
         // scene
         scene = new Scene();
@@ -137,7 +137,7 @@ public class WebglLensflares extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                controls.update(clock.getDelta());
+                flyControls.update(clock.getDelta());
                 renderer.render(scene, camera);
                 animate();
             }

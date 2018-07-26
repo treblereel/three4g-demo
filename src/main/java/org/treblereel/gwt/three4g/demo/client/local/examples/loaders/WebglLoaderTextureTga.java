@@ -29,7 +29,6 @@ public class WebglLoaderTextureTga extends Attachable {
     public static final String name = "loader / texture / tga";
 
     private Clock clock = new Clock();
-    private OrbitControls controls;
 
     public WebglLoaderTextureTga() {
 
@@ -64,7 +63,7 @@ public class WebglLoaderTextureTga extends Attachable {
         light.position.set(1, 1, 1);
         scene.add(light);
         //
-        controls = new OrbitControls(camera);
+        orbitControls = new OrbitControls(camera);
 
 
         //

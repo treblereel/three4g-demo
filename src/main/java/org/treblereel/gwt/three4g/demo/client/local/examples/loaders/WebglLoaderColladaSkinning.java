@@ -30,7 +30,6 @@ public class WebglLoaderColladaSkinning extends Attachable {
     public static final String name = "loader / collada / skinning";
 
     private Clock clock = new Clock();
-    private OrbitControls controls;
     private AnimationMixer mixer;
 
 
@@ -73,9 +72,9 @@ public class WebglLoaderColladaSkinning extends Attachable {
         container.appendChild(renderer.domElement);
 
 
-        controls = new OrbitControls(camera, renderer.domElement);
-        controls.target.set(0, 2, 0);
-        controls.update();
+        orbitControls = new OrbitControls(camera, renderer.domElement);
+        orbitControls.target.set(0, 2, 0);
+        orbitControls.update();
 
     }
 

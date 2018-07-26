@@ -28,7 +28,6 @@ public class WebglLoaderGltf extends Attachable {
 
     public static final String name = "loader / gltf";
 
-    private OrbitControls controls;
     private CubeTexture envMap;
 
     public WebglLoaderGltf() {
@@ -36,9 +35,9 @@ public class WebglLoaderGltf extends Attachable {
 
         camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25f, 20);
         camera.position.set(-1.8f, 0.9f, 2.7f);
-        controls = new OrbitControls(camera);
-        controls.target.set(0f, -0.2f, -0.2f);
-        controls.update();
+        orbitControls = new OrbitControls(camera);
+        orbitControls.target.set(0f, -0.2f, -0.2f);
+        orbitControls.update();
 
         // envmap
         String path = "textures/cube/Bridge2/";

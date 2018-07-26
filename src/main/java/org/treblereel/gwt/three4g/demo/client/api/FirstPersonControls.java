@@ -1,6 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.api;
 
-import jsinterop.annotations.JsConstructor;
+import elemental2.dom.HTMLElement;
 import jsinterop.annotations.JsType;
 import org.treblereel.gwt.three4g.cameras.Camera;
 
@@ -15,10 +15,15 @@ public class FirstPersonControls {
     public double movementSpeed;
     public double lookSpeed;
 
-    @JsConstructor
     public FirstPersonControls(Camera camera) {
 
     }
+
+    public FirstPersonControls(Camera camera, HTMLElement domElement) {
+
+    }
+
+    public native void dispose();
 
     public native void update(float delta);
 }

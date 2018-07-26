@@ -28,7 +28,6 @@ import java.util.Random;
 public class WebglLoaderBabylon extends Attachable {
 
     public static final String name = "loader / babylon";
-    private TrackballControls controls;
 
     public WebglLoaderBabylon() {
 
@@ -36,7 +35,7 @@ public class WebglLoaderBabylon extends Attachable {
 
         camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
         camera.position.z = 100;
-        controls = new TrackballControls(camera);
+        trackballControls = new TrackballControls(camera);
         // scene
         scene = new Scene();
         // texture
@@ -94,7 +93,7 @@ public class WebglLoaderBabylon extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                controls.update();
+                trackballControls.update();
                 renderer.render(scene, camera);
                 animate();
 

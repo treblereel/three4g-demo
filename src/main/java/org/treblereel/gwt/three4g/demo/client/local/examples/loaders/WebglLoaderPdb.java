@@ -48,7 +48,6 @@ public class WebglLoaderPdb extends Attachable {
 
     public static final String name = "loader / pdb";
 
-    private TrackballControls controls;
     private Map<String, String> moleculas = new HashMap<>();
 
     private PDBLoader loader = new PDBLoader();
@@ -101,9 +100,9 @@ public class WebglLoaderPdb extends Attachable {
         labelRenderer.domElement.style.pointerEvents = "none";
         container.appendChild(labelRenderer.domElement);
         //
-        controls = new TrackballControls(camera);
-        controls.minDistance = 500;
-        controls.maxDistance = 2000;
+        trackballControls = new TrackballControls(camera);
+        trackballControls.minDistance = 500;
+        trackballControls.maxDistance = 2000;
         //
         loadMolecule("models/molecules/caffeine.pdb");
         createMenu();
@@ -251,7 +250,7 @@ public class WebglLoaderPdb extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                controls.update();
+                trackballControls.update();
 
                 float timer = new Date().getTime() * 0.0004f;
                 group.rotation.x = timer;

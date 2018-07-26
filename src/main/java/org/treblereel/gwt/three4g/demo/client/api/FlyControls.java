@@ -26,4 +26,6 @@ public class FlyControls {
     }
 
     public native void update(float delta);
+
+    public native void dispose();
 }

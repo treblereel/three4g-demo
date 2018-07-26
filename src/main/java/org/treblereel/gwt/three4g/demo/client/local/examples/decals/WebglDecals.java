@@ -52,7 +52,6 @@ public class WebglDecals extends Attachable {
 
     public static final String name = "decals";
 
-    private OrbitControls controls;
     private Line line;
     private Raycaster raycaster;
     private Mesh mouseHelper;
@@ -113,9 +112,9 @@ public class WebglDecals extends Attachable {
         camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
         camera.position.z = 120;
 
-        controls = new OrbitControls(camera);
-        controls.minDistance = 50;
-        controls.maxDistance = 200;
+        orbitControls = new OrbitControls(camera);
+        orbitControls.minDistance = 50;
+        orbitControls.maxDistance = 200;
 
         scene.add(new AmbientLight(0x443333));
         DirectionalLight light = new DirectionalLight(0xffddcc, 1);
@@ -143,7 +142,7 @@ public class WebglDecals extends Attachable {
 
         scene.add(aim);
 
-        controls.addEventListener("change", event -> moved = true);
+        orbitControls.addEventListener("change", event -> moved = true);
         window.addEventListener("mousedown", onMousedown, false);
         window.addEventListener("mouseup", onMouseUp, false);
         window.addEventListener("touchstart", touchstart, false);

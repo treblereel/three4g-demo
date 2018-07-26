@@ -31,5 +31,7 @@ public class TrackballControls {
     public TrackballControls(PerspectiveCamera camera, HTMLElement domElement) {
     }
 
+    public native void dispose();
+
     public native void update();
 }

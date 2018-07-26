@@ -18,11 +18,16 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.css2d.Css2dLabel;
 import org.treblereel.gwt.three4g.demo.client.local.examples.css3d.Css3dOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometries;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryColors;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryColorsJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryExtrudeShapes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryExtrudeSplines;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryHierarchy;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryHierarchy2;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryNormals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryShapes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTeapot;
@@ -92,10 +97,15 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingP
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglDecalsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglFramebufferTexturePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometriesParametricPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometriesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryColorsJsonPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryColorsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryCubePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryDynamicPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryExtrudeShapesPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryExtrudeSplinesPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryHierarchy2Presenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryHierarchyPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryNormalsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryShapesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTeapotPresenter;
@@ -198,6 +208,11 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglGeometryTeapotPresenter webglGeometryTeapotPresenter = GWT.create(WebglGeometryTeapotPresenter.class);
     private WebglInteractiveCubesPresenter webglInteractiveCubesPresenter = GWT.create(WebglInteractiveCubesPresenter.class);
     private WebglInteractiveCubesGpuPresenter webglInteractiveCubesGpuPresenter = GWT.create(WebglInteractiveCubesGpuPresenter.class);
+    private WebglGeometryExtrudeShapesPresenter webglGeometryExtrudeShapesPresenter = GWT.create(WebglGeometryExtrudeShapesPresenter.class);
+    private WebglGeometryExtrudeSplinesPresenter webglGeometryExtrudeSplinesPresenter = GWT.create(WebglGeometryExtrudeSplinesPresenter.class);
+    private WebglGeometriesPresenter webglGeometriesPresenter = GWT.create(WebglGeometriesPresenter.class);
+    private WebglGeometryHierarchyPresenter webglGeometryHierarchyPresenter = GWT.create(WebglGeometryHierarchyPresenter.class);
+    private WebglGeometryHierarchy2Presenter webglGeometryHierarchy2Presenter = GWT.create(WebglGeometryHierarchy2Presenter.class);
 
 
     private HTMLDivElement container;
@@ -270,6 +285,11 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglGeometryTeapot.TYPE, event -> History.newItem(WebglGeometryTeapot.class.getSimpleName()));
         eventBus.addHandler(WebglInteractiveCubes.TYPE, event -> History.newItem(WebglInteractiveCubes.class.getSimpleName()));
         eventBus.addHandler(WebglInteractiveCubesGpu.TYPE, event -> History.newItem(WebglInteractiveCubesGpu.class.getSimpleName()));
+        eventBus.addHandler(WebglGeometryExtrudeShapes.TYPE, event -> History.newItem(WebglGeometryExtrudeShapes.class.getSimpleName()));
+        eventBus.addHandler(WebglGeometryExtrudeSplines.TYPE, event -> History.newItem(WebglGeometryExtrudeSplines.class.getSimpleName()));
+        eventBus.addHandler(WebglGeometries.TYPE, event -> History.newItem(WebglGeometries.class.getSimpleName()));
+        eventBus.addHandler(WebglGeometryHierarchy.TYPE, event -> History.newItem(WebglGeometryHierarchy.class.getSimpleName()));
+        eventBus.addHandler(WebglGeometryHierarchy2.TYPE, event -> History.newItem(WebglGeometryHierarchy2.class.getSimpleName()));
 
 
     }
@@ -405,16 +425,26 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglGeometryNormalsPresenter.dispatch(container);
             } else if (token.equals(WebglGeometryShapes.class.getSimpleName())) {
                 webglGeometryShapesPresenter.dispatch(container);
-            }else if (token.equals(WebglGeometryColors.class.getSimpleName())) {
+            } else if (token.equals(WebglGeometryColors.class.getSimpleName())) {
                 webglGeometryColorsPresenter.dispatch(container);
-            }else if (token.equals(WebglGeometryColorsJson.class.getSimpleName())) {
+            } else if (token.equals(WebglGeometryColorsJson.class.getSimpleName())) {
                 webglGeometryColorsJsonPresenter.dispatch(container);
-            }else if (token.equals(WebglGeometryTeapot.class.getSimpleName())) {
+            } else if (token.equals(WebglGeometryTeapot.class.getSimpleName())) {
                 webglGeometryTeapotPresenter.dispatch(container);
-            }else if (token.equals(WebglInteractiveCubes.class.getSimpleName())) {
+            } else if (token.equals(WebglInteractiveCubes.class.getSimpleName())) {
                 webglInteractiveCubesPresenter.dispatch(container);
-            }else if (token.equals(WebglInteractiveCubesGpu.class.getSimpleName())) {
+            } else if (token.equals(WebglInteractiveCubesGpu.class.getSimpleName())) {
                 webglInteractiveCubesGpuPresenter.dispatch(container);
+            } else if (token.equals(WebglGeometryExtrudeShapes.class.getSimpleName())) {
+                webglGeometryExtrudeShapesPresenter.dispatch(container);
+            } else if (token.equals(WebglGeometryExtrudeSplines.class.getSimpleName())) {
+                webglGeometryExtrudeSplinesPresenter.dispatch(container);
+            } else if (token.equals(WebglGeometries.class.getSimpleName())) {
+                webglGeometriesPresenter.dispatch(container);
+            } else if (token.equals(WebglGeometryHierarchy.class.getSimpleName())) {
+                webglGeometryHierarchyPresenter.dispatch(container);
+            } else if (token.equals(WebglGeometryHierarchy2.class.getSimpleName())) {
+                webglGeometryHierarchy2Presenter.dispatch(container);
             }
         }
     }

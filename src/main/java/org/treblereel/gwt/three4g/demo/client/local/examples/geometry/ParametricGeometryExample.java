@@ -27,7 +27,6 @@ import static elemental2.dom.DomGlobal.document;
 public class ParametricGeometryExample extends Attachable {
 
 
-    private OrbitControls controls;
     private ParametricGeometry geometry;
     private MeshBasicMaterial material;
     private int d = 16;
@@ -42,8 +41,6 @@ public class ParametricGeometryExample extends Attachable {
 
         camera = new PerspectiveCamera(75f, aspect, 1f, 10000f);
         camera.position.z = 1000f;
-
-        controls = new OrbitControls(camera);
 
         ellipticParaboloid = new ParametricGeometryFunction() {
             @Override
@@ -97,31 +94,11 @@ public class ParametricGeometryExample extends Attachable {
 
         renderer = new WebGLRenderer();
         setupWebGLRenderer(renderer);
-        //renderer.setClearColor( new Color(0x00ff00), 1 );
-        controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableZoom = false;
+
+        orbitControls = new OrbitControls(camera, renderer.domElement);
+        orbitControls.enableZoom = false;
     }
 
-/*    private void chooseFromHash(Mesh mesh ) {
-
-        var selectedGeometry = window.location.hash.substring( 1 ) || "TorusGeometry";
-
-        if ( guis[ selectedGeometry ] !== undefined ) {
-
-            guis[ selectedGeometry ]( mesh );
-
-        }
-
-        if ( selectedGeometry === 'TextGeometry' || selectedGeometry === 'TextBufferGeometry' ) {
-
-            return { fixed: true };
-
-        }
-
-        //No configuration options
-        return {};
-
-    }*/
 
     @Override
     protected void doAttachScene() {
@@ -137,7 +114,7 @@ public class ParametricGeometryExample extends Attachable {
 
     private void animate() {
         mesh.rotation.y += 0.002f;
-        controls.update();
+        orbitControls.update();
 
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {

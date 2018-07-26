@@ -28,8 +28,6 @@ public class WebglLoader3ds extends Attachable {
 
     public static final String name = "loader / 3ds";
 
-    private TrackballControls controls;
-
     public WebglLoader3ds() {
 
         loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
@@ -37,7 +35,7 @@ public class WebglLoader3ds extends Attachable {
 
         camera = new PerspectiveCamera(60, aspect, 0.1f, 10);
         camera.position.z = 2;
-        controls = new TrackballControls(camera);
+        trackballControls = new TrackballControls(camera);
         scene = new Scene();
         scene.add(new HemisphereLight());
         DirectionalLight directionalLight = new DirectionalLight(0xffeedd);
@@ -92,8 +90,7 @@ public class WebglLoader3ds extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-
-                controls.update();
+                trackballControls.update();
                 renderer.render(scene, camera);
                 animate();
             }

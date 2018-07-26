@@ -29,7 +29,6 @@ public class WebglAnimationScene extends Attachable {
 
     public static final String name = "animation / scene";
     final static String URL = "json/scene-animation.json";
-    private OrbitControls controls;
     private AnimationMixer mixer;
     private Clock clock = new Clock();
 
@@ -65,7 +64,7 @@ public class WebglAnimationScene extends Attachable {
                     camera.position.set(-200f, 0f, 200f);
                 }
 
-                controls = new OrbitControls(camera);
+                orbitControls = new OrbitControls(camera, container);
 
                 PlaneBufferGeometry geometry = new PlaneBufferGeometry(20000f, 20000f);
                 MeshPhongMaterial material = new MeshPhongMaterial();

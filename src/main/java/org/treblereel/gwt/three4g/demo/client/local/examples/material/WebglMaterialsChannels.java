@@ -169,7 +169,7 @@ public class WebglMaterialsChannels extends Attachable {
     public void initGui() {
         GUIProperty guiProperty = new GUIProperty();
         guiProperty.autoPlace = false;
-        GUI gui = new GUI(guiProperty);
+        gui = new GUI(guiProperty);
         String[] materials = new String[]{"standard", "normal", "depthBasic", "depthRGBA"};
         String[] cameras = new String[]{"perspective", "ortho"};
         String[] sides = new String[]{"front", "back", "double"};

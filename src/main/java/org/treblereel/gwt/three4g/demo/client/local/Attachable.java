@@ -7,8 +7,13 @@ import elemental2.dom.EventListener;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLIFrameElement;
 import elemental2.dom.Window;
+import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
+import org.treblereel.gwt.three4g.demo.client.api.FirstPersonControls;
+import org.treblereel.gwt.three4g.demo.client.api.FlyControls;
+import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.utils.WebGLRendererProducer;
+import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
@@ -31,6 +36,12 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
     protected EventListener onResize = evt -> onWindowResize();
     protected float aspect = new Float((getWidth() / getHeight()));
     protected double devicePixelRatio = ((org.treblereel.gwt.three4g.demo.client.api.dom.Window) DomGlobal.window).devicePixelRatio;
+    protected GUI gui;
+    protected OrbitControls orbitControls;
+    protected FirstPersonControls firstPersonControls;
+    protected TrackballControls trackballControls;
+    protected FlyControls flyControls;
+
 
 
     public static void loadJavaScript(String script) {
@@ -66,8 +77,32 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
     public void doDetach() {
         AppSetup.infoDiv.hide();
         AppSetup.menuDiv.hide();
-        clearDiv(AppSetup.guiDiv.get());
+        detachControls();
+        detachGui();
+
         window.removeEventListener("resize", onResize);
+    }
+
+    private void detachControls() {
+        if (orbitControls != null) {
+            orbitControls.dispose();
+        }
+        if (firstPersonControls != null) {
+            firstPersonControls.dispose();
+        }
+        if (trackballControls != null) {
+            trackballControls.dispose();
+        }
+        if (flyControls != null) {
+            flyControls.dispose();
+        }
+    }
+
+    private void detachGui() {
+        if (gui != null) {
+            gui.getDomElement().parentNode.removeChild(gui.getDomElement());
+            gui = null;
+        }
     }
 
     private void clearDiv(HTMLDivElement element) {
@@ -105,7 +140,7 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
 
     public void setupWebGLRenderer(WebGLRenderer webGLRenderer) {
         webGLRenderer.domElement.id = "viewer";
-        renderer.setPixelRatio(devicePixelRatio );
+        renderer.setPixelRatio(devicePixelRatio);
         webGLRenderer.setSize(getWidth(), getHeight());
     }
 

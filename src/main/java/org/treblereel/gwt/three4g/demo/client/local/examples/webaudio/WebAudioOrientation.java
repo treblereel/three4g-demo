@@ -47,8 +47,6 @@ public class WebAudioOrientation extends Attachable {
 
     private HTMLAudioElement audio;
     private HTMLDivElement overlay;
-    private OrbitControls controls;
-
 
     public WebAudioOrientation() {
         audio = (HTMLAudioElement) DomGlobal.document.createElement("audio");
@@ -181,12 +179,12 @@ public class WebAudioOrientation extends Attachable {
         container.appendChild(renderer.domElement);
         renderer.gammaOutput = true;
         //
-        controls = new OrbitControls(camera, renderer.domElement);
-        controls.target.set(0, 0.1f, 0);
-        controls.update();
-        controls.minDistance = 0.5f;
-        controls.maxDistance = 10;
-        controls.maxPolarAngle = 0.5f * (float) Math.PI;
+        orbitControls = new OrbitControls(camera, renderer.domElement);
+        orbitControls.target.set(0, 0.1f, 0);
+        orbitControls.update();
+        orbitControls.minDistance = 0.5f;
+        orbitControls.maxDistance = 10;
+        orbitControls.maxPolarAngle = 0.5f * (float) Math.PI;
 
         root.appendChild(renderer.domElement);
         animate();
