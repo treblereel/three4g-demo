@@ -43,7 +43,6 @@ public class WebglGeometryTerrainRaycast extends Attachable {
 
 
     public static final String name = "geometry / terrain / raycasting";
-    private OrbitControls controls;
     private Clock clock = new Clock();
     private CanvasTexture texture;
     private Vector2 mouse = new Vector2();
@@ -61,15 +60,15 @@ public class WebglGeometryTerrainRaycast extends Attachable {
         scene = new Scene();
         scene.background = new Color(0xbfd1e5);
 
-        controls = new OrbitControls(camera);
-        controls.target.set(0.0f, 100.0f, 0.0f);
-        controls.panSpeed = 100f;
+        orbitControls = new OrbitControls(camera, root);
+        orbitControls.target.set(0.0f, 100.0f, 0.0f);
+        orbitControls.panSpeed = 100f;
 
 
         Uint8Array data = generateHeight(worldWidth, worldDepth);
 
         camera.position.y = (float) (data.getAt(worldHalfWidth + worldHalfDepth * worldWidth) + 500);
-        camera.position.y = controls.target.y + 2000;
+        camera.position.y = orbitControls.target.y + 2000;
         camera.position.x = 2000;
 
 
@@ -214,7 +213,7 @@ public class WebglGeometryTerrainRaycast extends Attachable {
     }
 
     private void render() {
-        controls.update();
+        orbitControls.update();
         renderer.render(scene, camera);
     }
 

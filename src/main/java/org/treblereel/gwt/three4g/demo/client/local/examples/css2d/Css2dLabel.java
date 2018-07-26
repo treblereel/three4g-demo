@@ -45,7 +45,7 @@ public class Css2dLabel extends Attachable {
 
         camera = new PerspectiveCamera(45, aspect, 1, 1000);
         camera.position.set(10, 5, 20);
-        controls = new OrbitControls(camera);
+        orbitControls = new OrbitControls(camera);
         scene = new Scene();
         scene2 = new Scene();
         DirectionalLight dirLight = new DirectionalLight(0xffffff);

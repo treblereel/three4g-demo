@@ -106,7 +106,6 @@ public class WebglGeometryShapes extends Attachable {
         californiaPts.push(new Vector2(610, 320));
 
         for (int i = 0; i < californiaPts.length; i++) {
-            GWT.log(i + "");
             californiaPts.getAt(i).multiplyScalar(0.25f);
         }
         Shape californiaShape = new Shape(Js.uncheckedCast(californiaPts));

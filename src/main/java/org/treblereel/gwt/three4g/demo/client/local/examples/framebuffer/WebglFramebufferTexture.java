@@ -36,8 +36,6 @@ public class WebglFramebufferTexture extends Attachable {
 
     public static final String name = "framebuffer / texture";
 
-    private OrbitControls controls;
-    private AnimationMixer mixer;
     private OrthographicCamera cameraOrtho;
     private Scene sceneOrtho;
     private Sprite sprite;
@@ -96,8 +94,8 @@ public class WebglFramebufferTexture extends Attachable {
         //
 
         //
-        OrbitControls controls = new OrbitControls(camera, overlay);
-        controls.enablePan = false;
+        orbitControls = new OrbitControls(camera, overlay);
+        orbitControls.enablePan = false;
         //
         WebGLRendererParameters rendererParameters = new WebGLRendererParameters();
         rendererParameters.antialias = true;
@@ -149,7 +147,7 @@ public class WebglFramebufferTexture extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("js").setInnetHtml(" framebuffer to texture <br/>\n" +
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setInnetHtml(" framebuffer to texture <br/>\n" +
                 "\t\t\tThe area of the white square is copied from the framebuffer to a texture (shown in the top-left corner).");
     }
 

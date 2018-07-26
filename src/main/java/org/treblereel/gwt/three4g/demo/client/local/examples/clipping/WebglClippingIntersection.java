@@ -32,7 +32,6 @@ import org.treblereel.gwt.three4g.scenes.Scene;
 public class WebglClippingIntersection extends Attachable {
 
     public static final String name = "clipping / intersection";
-    private OrbitControls controls;
     private Plane[] clipPlanes = new Plane[3];
     private boolean clipIntersection = true;
 
@@ -46,10 +45,10 @@ public class WebglClippingIntersection extends Attachable {
         camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 200);
         camera.position.set(-20, 30, 40);
 
-        controls = new OrbitControls(camera, root);
-        controls.minDistance = 10;
-        controls.maxDistance = 100;
-        controls.enablePan = false;
+        orbitControls = new OrbitControls(camera, root);
+        orbitControls.minDistance = 10;
+        orbitControls.maxDistance = 100;
+        orbitControls.enablePan = false;
 
         HemisphereLight light = new HemisphereLight(0xffffff, 0x080808, 1);
         scene.add(light);
@@ -77,7 +76,7 @@ public class WebglClippingIntersection extends Attachable {
 
         GUIProperty guiProperty = new GUIProperty();
         guiProperty.autoPlace = false;
-        GUI gui = new GUI(guiProperty);
+        gui = new GUI(guiProperty);
 
         gui.add("clip Intersection", true).onChange(result -> {
             Object3D[] children = group.children;

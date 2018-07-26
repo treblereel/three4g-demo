@@ -30,7 +30,6 @@ public class Css3dOrthographic extends Attachable {
 
     public static final String name = "orthographic";
 
-    private OrbitControls controls;
     private Scene scene2;
     private OrthographicCamera camera;
     private CSS3DRenderer renderer2;
@@ -42,7 +41,7 @@ public class Css3dOrthographic extends Attachable {
         camera = new OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 1, 1000);
         camera.position.set(-200, 200, 200);
 
-        controls = new OrbitControls(camera);
+        orbitControls = new OrbitControls(camera);
 
         scene = new Scene();
         scene.background = new Color(0xf0f0f0);

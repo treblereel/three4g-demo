@@ -34,7 +34,6 @@ public class WebglClipping extends Attachable {
     public static final String name = "clipping";
     private double startTime;
     private Mesh object;
-    //private Plane[] globalPlanes;
 
     public WebglClipping() {
 
@@ -109,14 +108,14 @@ public class WebglClipping extends Attachable {
         renderer.localClippingEnabled = true;
         renderer.shadowMap.enabled = true;
         // Controls
-        OrbitControls controls = new OrbitControls(camera, renderer.domElement);
-        controls.target.set(0, 1, 0);
-        controls.update();
+        orbitControls = new OrbitControls(camera, renderer.domElement);
+        orbitControls.target.set(0, 1, 0);
+        orbitControls.update();
 
         GUIProperty guiProperty = new GUIProperty();
         guiProperty.autoPlace = false;
 
-        GUI gui = new GUI(guiProperty);
+        gui = new GUI(guiProperty);
 
         GUI localClippingFolder = gui.addFolder("Local Clipping");
         localClippingFolder.add("enabled", true).onChange(result -> {

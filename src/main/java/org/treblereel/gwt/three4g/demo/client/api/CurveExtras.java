@@ -8,4 +8,6 @@ import jsinterop.annotations.JsType;
  */
 @JsType(isNative = true, namespace = "THREE")
 public class CurveExtras {
+
+
 }

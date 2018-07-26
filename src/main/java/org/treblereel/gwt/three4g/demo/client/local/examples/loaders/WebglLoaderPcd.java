@@ -32,8 +32,6 @@ public class WebglLoaderPcd extends Attachable {
 
     public static final String name = "loader / pcd";
 
-    private TrackballControls controls;
-
     public WebglLoaderPcd() {
 
         loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
@@ -44,18 +42,18 @@ public class WebglLoaderPcd extends Attachable {
         camera.position.x = 0.4f;
         camera.position.z = -2;
         camera.up.set(0, 0, 1);
-        controls = new TrackballControls(camera);
-        controls.rotateSpeed = 2.0f;
-        controls.zoomSpeed = 0.3f;
-        controls.panSpeed = 0.2f;
-        controls.noZoom = false;
-        controls.noPan = false;
-        controls.staticMoving = true;
-        controls.dynamicDampingFactor = 0.3f;
-        controls.minDistance = 0.3f;
-        controls.maxDistance = 0.3f * 100f;
-        scene.add(camera);
 
+        trackballControls = new TrackballControls(camera);
+        trackballControls.rotateSpeed = 2.0f;
+        trackballControls.zoomSpeed = 0.3f;
+        trackballControls.panSpeed = 0.2f;
+        trackballControls.noZoom = false;
+        trackballControls.noPan = false;
+        trackballControls.staticMoving = true;
+        trackballControls.dynamicDampingFactor = 0.3f;
+        trackballControls.minDistance = 0.3f;
+        trackballControls.maxDistance = 0.3f * 100f;
+        scene.add(camera);
 
         PCDLoader loader = new PCDLoader();
         loader.load("./models/pcd/binary/Zaghetto.pcd", new OnLoadCallback<Object3D>() {
@@ -67,8 +65,8 @@ public class WebglLoaderPcd extends Attachable {
 
                 Vector3 center = bufferGeometry.boundingSphere.center;
                 scene.add(object);
-                controls.target.set(center.x, center.y, center.z);
-                controls.update();
+                trackballControls.target.set(center.x, center.y, center.z);
+                trackballControls.update();
             }
         });
 
@@ -127,7 +125,7 @@ public class WebglLoaderPcd extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                controls.update();
+                trackballControls.update();
                 renderer.render(scene, camera);
             }
             animate();

@@ -34,7 +34,6 @@ public class WebglLod extends Attachable {
     public static final String name = "lod";
     private Random rand = new Random();
 
-    private FlyControls controls;
     private Clock clock = new Clock();
 
     public WebglLod() {
@@ -44,9 +43,10 @@ public class WebglLod extends Attachable {
 
         camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 15000);
         camera.position.z = 1000;
-        controls = new FlyControls(camera);
-        controls.movementSpeed = 1000;
-        controls.rollSpeed = (float) Math.PI / 10;
+
+        flyControls = new FlyControls(camera);
+        flyControls.movementSpeed = 1000;
+        flyControls.rollSpeed = (float) Math.PI / 10;
 
         scene = new Scene();
         scene.fog = new Fog(0x000000, 1, 15000);
@@ -122,7 +122,7 @@ public class WebglLod extends Attachable {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
 
-                controls.update(clock.getDelta());
+                flyControls.update(clock.getDelta());
                 scene.updateMatrixWorld();
                 scene.traverse(new TraverseCallback() {
                     @Override

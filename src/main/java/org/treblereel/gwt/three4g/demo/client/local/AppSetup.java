@@ -19,11 +19,16 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.css2d.Css2dLabel;
 import org.treblereel.gwt.three4g.demo.client.local.examples.css3d.Css3dOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.framebuffer.WebglFramebufferTexture;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometries;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometriesParametric;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryColors;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryColorsJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryExtrudeShapes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryExtrudeSplines;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryHierarchy;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryHierarchy2;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryNormals;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryShapes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTeapot;
@@ -67,6 +72,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryHierarchyPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
 import static elemental2.dom.DomGlobal.document;
@@ -160,11 +166,16 @@ public class AppSetup implements EntryPoint {
         //effects
         addListElement(WebglFramebufferTexture.name, WebglFramebufferTexture.class);
         //geometry
+        addListElement(WebglGeometries.name, WebglGeometries.class);
         addListElement(WebglGeometriesParametric.name, WebglGeometriesParametric.class);
         addListElement(WebglGeometryColors.name, WebglGeometryColors.class);
         addListElement(WebglGeometryColorsJson.name, WebglGeometryColorsJson.class);
         addListElement(WebglGeometryCube.name, WebglGeometryCube.class);
         addListElement(WebglGeometryDynamic.name, WebglGeometryDynamic.class);
+        addListElement(WebglGeometryExtrudeShapes.name, WebglGeometryExtrudeShapes.class);
+        //addListElement(WebglGeometryExtrudeSplines.name, WebglGeometryExtrudeSplines.class); //TODO
+        addListElement(WebglGeometryHierarchy.name, WebglGeometryHierarchy.class);
+        addListElement(WebglGeometryHierarchy2.name, WebglGeometryHierarchy2.class);
         addListElement(WebglGeometryNormals.name, WebglGeometryNormals.class);
         addListElement(WebglGeometryShapes.name, WebglGeometryShapes.class);
         addListElement(WebglGeometryTeapot.name, WebglGeometryTeapot.class);

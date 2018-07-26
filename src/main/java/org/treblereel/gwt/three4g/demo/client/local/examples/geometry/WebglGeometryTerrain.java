@@ -27,6 +27,8 @@ import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParamete
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
+import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
+import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.CanvasTexture;
 
@@ -38,7 +40,6 @@ public class WebglGeometryTerrain extends Attachable {
 
 
     public static final String name = "geometry / terrain";
-    private FirstPersonControls controls;
     private Clock clock = new Clock();
     private CanvasTexture texture;
 
@@ -52,9 +53,11 @@ public class WebglGeometryTerrain extends Attachable {
         camera = new PerspectiveCamera(60, aspect, 1, 20000);
         scene = new Scene();
         scene.background = new Color(0xbfd1e5);
-        controls = new FirstPersonControls(camera);
-        controls.movementSpeed = 1000;
-        controls.lookSpeed = 0.1;
+
+        firstPersonControls = new FirstPersonControls(camera, root);
+        firstPersonControls.movementSpeed = 1000;
+        firstPersonControls.lookSpeed = 0.1;
+
         Uint8Array data = generateHeight(worldWidth, worldDepth);
         camera.position.y = (float) (data.getAt(worldHalfWidth + worldHalfDepth * worldWidth) * 10 + 500);
 
@@ -69,14 +72,14 @@ public class WebglGeometryTerrain extends Attachable {
         texture.wrapS = THREE.ClampToEdgeWrapping;
         texture.wrapT = THREE.ClampToEdgeWrapping;
 
-        GWT.log("ClampToEdgeWrapping " + THREE.ClampToEdgeWrapping);
-
         MeshBasicMaterialParameters parameters = new MeshBasicMaterialParameters();
         parameters.map = texture;
         mesh = new Mesh(geometry, new MeshBasicMaterial(parameters));
         scene.add(mesh);
 
-
+        WebGLRendererParameters webGLRendererParameters = new WebGLRendererParameters();
+        webGLRendererParameters.antialias = true;
+        renderer = new WebGLRenderer(webGLRendererParameters);
         setupWebGLRenderer(renderer);
     }
 
@@ -169,7 +172,7 @@ public class WebglGeometryTerrain extends Attachable {
     }
 
     private void render() {
-        controls.update(clock.getDelta());
+        firstPersonControls.update(clock.getDelta());
         renderer.render(scene, camera);
     }
 

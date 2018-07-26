@@ -36,8 +36,6 @@ public class WebglInteractiveDraggableCubes extends Attachable {
 
     private Random rand = new Random();
 
-    private TrackballControls controls;
-
     public WebglInteractiveDraggableCubes() {
 
         loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
@@ -45,14 +43,14 @@ public class WebglInteractiveDraggableCubes extends Attachable {
         camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 5000);
         camera.position.z = 1000;
 
-        controls = new TrackballControls(camera);
-        controls.rotateSpeed = 1.0f;
-        controls.zoomSpeed = 1.2f;
-        controls.panSpeed = 0.8f;
-        controls.noZoom = false;
-        controls.noPan = false;
-        controls.staticMoving = true;
-        controls.dynamicDampingFactor = 0.3f;
+        trackballControls = new TrackballControls(camera);
+        trackballControls.rotateSpeed = 1.0f;
+        trackballControls.zoomSpeed = 1.2f;
+        trackballControls.panSpeed = 0.8f;
+        trackballControls.noZoom = false;
+        trackballControls.noPan = false;
+        trackballControls.staticMoving = true;
+        trackballControls.dynamicDampingFactor = 0.3f;
 
         scene = new Scene();
         scene.background = new Color(0xf0f0f0);
@@ -101,9 +99,9 @@ public class WebglInteractiveDraggableCubes extends Attachable {
         DragControls dragControls = new DragControls(objects.toArray(new Mesh[objects.size()]), camera, renderer.domElement);
         dragControls.activate();
 
-        dragControls.addEventListener("dragstart", event -> controls.enabled = false);
+        dragControls.addEventListener("dragstart", event -> trackballControls.enabled = false);
 
-        dragControls.addEventListener("dragend", event -> controls.enabled = true);
+        dragControls.addEventListener("dragend", event -> trackballControls.enabled = true);
 
     }
 
@@ -129,7 +127,7 @@ public class WebglInteractiveDraggableCubes extends Attachable {
     }
 
     private void render() {
-        controls.update();
+        trackballControls.update();
         renderer.render(scene, camera);
     }
 }

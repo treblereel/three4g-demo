@@ -36,7 +36,6 @@ public class WebglGeometryTeapot extends Attachable {
 
 
     public static final String name = "geometry / teapot";
-    private OrbitControls controls;
     int teapotSize = 400;
     AmbientLight ambientLight;
     DirectionalLight light;
@@ -103,8 +102,8 @@ public class WebglGeometryTeapot extends Attachable {
         renderer.gammaOutput = true;
         // EVENTS
         // CONTROLS
-        controls = new OrbitControls(camera, root);
-        controls.addEventListener("change", new EventListener() {
+        orbitControls = new OrbitControls(camera, root);
+        orbitControls.addEventListener("change", new EventListener() {
             @Override
             public void call(Event event) {
                 render();
@@ -166,14 +165,13 @@ public class WebglGeometryTeapot extends Attachable {
 
 
         //
-        controls = new OrbitControls(camera, root);
     }
 
     private void setupGui() {
         GUIProperty guiProperty = new GUIProperty();
         guiProperty.autoPlace = false;
 
-        GUI gui = new GUI(guiProperty);
+        gui = new GUI(guiProperty);
 
         gui.addFolder("Material control").add("shininess", shininess, 1.0, 400.0).setStep(1.0).onChange(new OnChange<Number>() {
             @Override

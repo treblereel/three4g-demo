@@ -31,7 +31,6 @@ public class WebglGeometryDynamic extends Attachable {
     public static final String name = "geometry / dynamic";
     int worldWidth = 128;
     int worldDepth = 128;
-    private FirstPersonControls controls;
     private PlaneGeometry geometry;
     private Clock clock = new Clock();
 
@@ -43,9 +42,9 @@ public class WebglGeometryDynamic extends Attachable {
         camera = new PerspectiveCamera(60f, aspect, 1f, 20000f);
         camera.position.y = 200f;
 
-        controls = new FirstPersonControls(camera);
-        controls.movementSpeed = 500;
-        controls.lookSpeed = 0.1;
+        firstPersonControls = new FirstPersonControls(camera, root);
+        firstPersonControls.movementSpeed = 500;
+        firstPersonControls.lookSpeed = 0.1;
 
         scene = new Scene();
         scene.background = new Color(0xaaccff);
@@ -81,7 +80,7 @@ public class WebglGeometryDynamic extends Attachable {
             geometry.vertices.getAt(i).y = new Float(35 * Math.sin(i / 5 + (time + i) / 7));
         }
         ((Geometry) mesh.geometry).verticesNeedUpdate = true;
-        controls.update(delta);
+        firstPersonControls.update(delta);
         renderer.render(scene, camera);
     }
 

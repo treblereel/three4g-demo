@@ -39,7 +39,6 @@ public class WebglGeometryTerrainFog extends Attachable {
 
 
     public static final String name = "geometry / terrain / fog";
-    private FirstPersonControls controls;
     private Clock clock = new Clock();
     private CanvasTexture texture;
 
@@ -55,9 +54,9 @@ public class WebglGeometryTerrainFog extends Attachable {
         scene.background = new Color(0xefd1b5);
         scene.fog = new FogExp2( new Color(0xefd1b5), 0.0025f );
 
-        controls = new FirstPersonControls(camera);
-        controls.movementSpeed = 150;
-        controls.lookSpeed = 0.1;
+        firstPersonControls = new FirstPersonControls(camera, root);
+        firstPersonControls.movementSpeed = 150;
+        firstPersonControls.lookSpeed = 0.1;
 
 
         Uint8Array data = generateHeight(worldWidth, worldDepth);
@@ -175,7 +174,7 @@ public class WebglGeometryTerrainFog extends Attachable {
     }
 
     private void render() {
-        controls.update(clock.getDelta());
+        firstPersonControls.update(clock.getDelta());
         renderer.render(scene, camera);
     }
 

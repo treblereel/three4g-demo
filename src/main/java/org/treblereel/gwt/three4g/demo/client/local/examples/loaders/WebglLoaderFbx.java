@@ -37,7 +37,6 @@ public class WebglLoaderFbx extends Attachable {
     public static final String name = "loader / fbx";
 
     private Clock clock = new Clock();
-    private OrbitControls controls;
     private AnimationMixer mixer;
 
     public WebglLoaderFbx() {
@@ -45,12 +44,15 @@ public class WebglLoaderFbx extends Attachable {
 
         camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
         camera.position.set(100, 200, 300);
-        controls = new OrbitControls(camera);
-        controls.target.set(0, 100, 0);
-        controls.update();
+
+        orbitControls = new OrbitControls(camera, root);
+        orbitControls.target.set(0, 100, 0);
+        orbitControls.update();
+
         scene = new Scene();
         scene.background = new Color(0xa0a0a0);
         scene.fog = new Fog(0xa0a0a0, 200, 1000);
+
         HemisphereLight hemisphereLight = new HemisphereLight(0xffffff, 0x444444);
         hemisphereLight.position.set(0, 200, 0);
         scene.add(hemisphereLight);

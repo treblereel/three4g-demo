@@ -48,7 +48,7 @@ import java.util.Random;
  */
 public class WebglInteractiveCubesGpu extends Attachable {
 
-    public static final String name = "interactive / draggablecubes / gpu";
+    public static final String name = "interactive / cubes / gpu";
 
     private List<Mesh> objects = new ArrayList();
 
@@ -60,9 +60,6 @@ public class WebglInteractiveCubesGpu extends Attachable {
     private Vector2 mouse = new Vector2();
     private Vector3 offset = new Vector3(10, 10, 10);
 
-
-    private TrackballControls controls;
-
     public WebglInteractiveCubesGpu() {
 
         loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
@@ -70,25 +67,14 @@ public class WebglInteractiveCubesGpu extends Attachable {
         camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 5000);
         camera.position.z = 1000;
 
-        controls = new TrackballControls(camera);
-        controls.rotateSpeed = 1.0f;
-        controls.zoomSpeed = 1.2f;
-        controls.panSpeed = 0.8f;
-        controls.noZoom = false;
-        controls.noPan = false;
-        controls.staticMoving = true;
-        controls.dynamicDampingFactor = 0.3f;
-
-        camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
-        camera.position.z = 1000;
-        controls = new TrackballControls(camera);
-        controls.rotateSpeed = 1.0f;
-        controls.zoomSpeed = 1.2f;
-        controls.panSpeed = 0.8f;
-        controls.noZoom = false;
-        controls.noPan = false;
-        controls.staticMoving = true;
-        controls.dynamicDampingFactor = 0.3f;
+        trackballControls = new TrackballControls(camera);
+        trackballControls.rotateSpeed = 1.0f;
+        trackballControls.zoomSpeed = 1.2f;
+        trackballControls.panSpeed = 0.8f;
+        trackballControls.noZoom = false;
+        trackballControls.noPan = false;
+        trackballControls.staticMoving = true;
+        trackballControls.dynamicDampingFactor = 0.3f;
 
         scene = new Scene();
         scene.background = new Color(0xffffff);
@@ -241,7 +227,7 @@ public class WebglInteractiveCubesGpu extends Attachable {
     }
 
     private void render() {
-        controls.update();
+        trackballControls.update();
         pick();
         renderer.render(scene, camera);
     }

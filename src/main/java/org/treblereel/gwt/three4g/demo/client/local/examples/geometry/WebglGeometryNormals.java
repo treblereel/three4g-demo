@@ -38,7 +38,6 @@ public class WebglGeometryNormals extends Attachable {
 
 
     public static final String name = "geometry / normals";
-    private OrbitControls controls;
     private Mesh mesh;
     private BufferGeometry geometry;
     private MeshBasicMaterial material;
@@ -72,7 +71,7 @@ public class WebglGeometryNormals extends Attachable {
         GUIProperty guiProperty = new GUIProperty();
         guiProperty.autoPlace = false;
 
-        GUI gui = new GUI(guiProperty);
+        gui = new GUI(guiProperty);
 
         gui.add("enabled", geometries.keySet().toArray(new String[geometries.size()]), "BoxBufferGeometry").onChange(result -> {
             activeGeometry = result.toString();
@@ -85,7 +84,7 @@ public class WebglGeometryNormals extends Attachable {
 
 
         //
-        controls = new OrbitControls(camera, root);
+        orbitControls = new OrbitControls(camera, root);
 
         WebGLRendererParameters parameters = new WebGLRendererParameters();
         parameters.antialias = true;

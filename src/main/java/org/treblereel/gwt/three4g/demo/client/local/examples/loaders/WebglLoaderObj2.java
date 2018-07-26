@@ -36,7 +36,6 @@ public class WebglLoaderObj2 extends Attachable {
     private Vector2 mouse = new Vector2();
     private HTMLDivElement panel = (HTMLDivElement) DomGlobal.document.getElementById("panel");
     private Vector3 cameraTarget = new Vector3(0, 0, 0);
-    private TrackballControls controls;
 
     public WebglLoaderObj2() {
 
@@ -67,7 +66,7 @@ public class WebglLoaderObj2 extends Attachable {
 
         this.resetCamera();
 
-        controls = new TrackballControls(camera);
+        trackballControls = new TrackballControls(camera);
         AmbientLight ambientLight = new AmbientLight(0x404040);
         DirectionalLight directionalLight1 = new DirectionalLight(0xC0C090);
         DirectionalLight directionalLight2 = new DirectionalLight(0xC0C090);
@@ -138,7 +137,7 @@ public class WebglLoaderObj2 extends Attachable {
         AnimationScheduler.get().requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 StatsProducer.getStats().update();
-                controls.update();
+                trackballControls.update();
                 renderer.render(scene, camera);
                 animate();
 
