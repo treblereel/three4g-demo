@@ -20,6 +20,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.gpgpu.shader.Shader
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.materials.ShaderMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.ShaderMaterialParameters;
+import org.treblereel.gwt.three4g.materials.parameters.Uniforms;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
@@ -271,8 +272,8 @@ public class WebglGpgpuBirds extends Attachable {
         }
     }
 
-    private void addToJsPropertyMap(JsObject map, String key, Object value) {
-        map.setProperty(key, value);
+    private void addToJsPropertyMap(Uniforms map, String key, Object value) {
+        map.set(key, value);
     }
 
 

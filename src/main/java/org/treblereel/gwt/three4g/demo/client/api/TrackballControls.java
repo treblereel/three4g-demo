@@ -34,4 +34,6 @@ public class TrackballControls {
     public native void dispose();
 
     public native void update();
+
+    public native void update(double delta);
 }

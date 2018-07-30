@@ -26,7 +26,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeome
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryCube;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryDynamic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryExtrudeShapes;
-import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryExtrudeSplines;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryHierarchy;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryHierarchy2;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryNormals;
@@ -35,12 +34,19 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeome
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrain;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainFog;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainRaycast;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTextShapes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.hdr.WebglHdr;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveCubesGpu;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
 import org.treblereel.gwt.three4g.demo.client.local.examples.lensflares.WebglLensflares;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsHemisphere;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsPhysical;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsPointlights;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsPointlights2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsSpotlight;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3ds;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBabylon;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderCollada;
@@ -61,6 +67,16 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapBallsReflection;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapBallsRefraction;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapDynamic2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapRefraction;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsDisplacementmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsEnvmaps;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsGrass;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsLightmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureAnisotropy;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
@@ -72,7 +88,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
-import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryHierarchyPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
 import static elemental2.dom.DomGlobal.document;
@@ -182,7 +197,12 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglGeometryTerrain.name, WebglGeometryTerrain.class);
         addListElement(WebglGeometryTerrainFog.name, WebglGeometryTerrainFog.class);
         addListElement(WebglGeometryTerrainRaycast.name, WebglGeometryTerrainRaycast.class);
+        addListElement(WebglGeometryTextShapes.name, WebglGeometryTextShapes.class);
+        //hdr
+        addTypeElement("HDR");
+        addListElement(WebglHdr.name, WebglHdr.class);
         //loader
+        addTypeElement("Loaders");
         addListElement(WebglLoaderBabylon.name, WebglLoaderBabylon.class);
         addListElement(WebglLoader3ds.name, WebglLoader3ds.class);
         addListElement(WebglLoaderCollada.name, WebglLoaderCollada.class);
@@ -195,23 +215,43 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglLoaderPcd.name, WebglLoaderPcd.class);
         addListElement(WebglLoaderPdb.name, WebglLoaderPdb.class);
         addListElement(WebglLoaderPrwm.name, WebglLoaderPrwm.class);
-
         addListElement(WebglLoaderTextureTga.name, WebglLoaderTextureTga.class);
-        //lod
-        addListElement(WebglLod.name, WebglLod.class);
-
-        //addListElement(WebglLoaderColladaKinematics.name, WebglLoaderColladaKinematics.class);
         addListElement(WebglLoaderJsonBlender.name, WebglLoaderJsonBlender.class);
-        //material
+        //addListElement(WebglLoaderColladaKinematics.name, WebglLoaderColladaKinematics.class);
+
+
+        //lights
+        addTypeElement("LIGHTS");
+        addListElement(WebglLightsHemisphere.name, WebglLightsHemisphere.class);
+        addListElement(WebglLightsPhysical.name, WebglLightsPhysical.class);
+        addListElement(WebglLightsPointlights.name, WebglLightsPointlights.class);
+        addListElement(WebglLightsPointlights2.name, WebglLightsPointlights2.class);
+        addListElement(WebglLightsSpotlight.name, WebglLightsSpotlight.class);
+        //addListElement(WebglLightsSpotlights.name, WebglLightsSpotlights.class); //TODO
+
+        //lod
+        addTypeElement("LOD");
+        addListElement(WebglLod.name, WebglLod.class);
+        addTypeElement("MATERIALS");
         addListElement(WebglMaterials.name, WebglMaterials.class);
         addListElement(WebglMaterialsBlending.name, WebglMaterialsBlending.class);
         addListElement(WebglMaterialsBumpmap.name, WebglMaterialsBumpmap.class);
         addListElement(WebglMaterialsBumpmapSkin.name, WebglMaterialsBumpmapSkin.class);
         addListElement(WebglMaterialsChannels.name, WebglMaterialsChannels.class);
+        addListElement(WebglMaterialsCubemap.name, WebglMaterialsCubemap.class);
+        addListElement(WebglMaterialsCubemapBallsReflection.name, WebglMaterialsCubemapBallsReflection.class);
+        addListElement(WebglMaterialsCubemapBallsRefraction.name, WebglMaterialsCubemapBallsRefraction.class);
+        addListElement(WebglMaterialsCubemapDynamic2.name, WebglMaterialsCubemapDynamic2.class);
+        addListElement(WebglMaterialsCubemapRefraction.name, WebglMaterialsCubemapRefraction.class);
+        addListElement(WebglMaterialsDisplacementmap.name, WebglMaterialsDisplacementmap.class);
+        addListElement(WebglMaterialsEnvmaps.name, WebglMaterialsEnvmaps.class);
+        addListElement(WebglMaterialsGrass.name, WebglMaterialsGrass.class);
+        addListElement(WebglMaterialsLightmap.name, WebglMaterialsLightmap.class);
+        addListElement(WebglMaterialsTextureAnisotropy.name, WebglMaterialsTextureAnisotropy.class);
 
-        //performance
+        addTypeElement("PERFORMANCE");
         addListElement(WebglPerformance.name, WebglPerformance.class);
-        //interactive
+        addTypeElement("INTERACTIVE");
         addListElement(WebglInteractiveBuffergeometry.name, WebglInteractiveBuffergeometry.class);
         addListElement(WebglInteractiveCubes.name, WebglInteractiveCubes.class);
         addListElement(WebglInteractiveCubesGpu.name, WebglInteractiveCubesGpu.class);
