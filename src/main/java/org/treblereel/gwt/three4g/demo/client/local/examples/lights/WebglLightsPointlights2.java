@@ -23,6 +23,7 @@ import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParamete
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
+import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
@@ -40,8 +41,6 @@ public class WebglLightsPointlights2 extends Attachable {
 
     public Clock clock = new Clock();
     private Random random = new Random();
-    private Object3D object;
-
     private PointLight light1, light2, light3, light4, light5, light6;
 
 
@@ -144,6 +143,7 @@ public class WebglLightsPointlights2 extends Attachable {
         dlight.position.set(0.5f, 1, 0).normalize();
         scene.add(dlight);
 
+        renderer = new WebGLRenderer();
         setupWebGLRenderer(renderer);
 
         renderer.gammaInput = true;

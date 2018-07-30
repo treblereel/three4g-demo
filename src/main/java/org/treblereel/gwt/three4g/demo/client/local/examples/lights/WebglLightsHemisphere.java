@@ -197,13 +197,12 @@ public class WebglLightsHemisphere extends Attachable {
     }
 
     private void onKeyDown(KeyboardEvent evt) {
-        GWT.log("evt " + evt.code);
         switch (evt.code) {
             case "KeyH":
                 hemiLight.visible = !hemiLight.visible;
                 hemiLightHelper.visible = !hemiLightHelper.visible;
                 break;
-            case "KeyP":
+            case "KeyD":
                 dirLight.visible = !dirLight.visible;
                 dirLightHeper.visible = !dirLightHeper.visible;
                 break;

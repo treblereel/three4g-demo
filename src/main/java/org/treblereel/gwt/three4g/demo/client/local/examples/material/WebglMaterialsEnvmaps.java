@@ -3,7 +3,6 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
-import org.treblereel.gwt.datgui4g.OnClick;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;

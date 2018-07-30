@@ -20,6 +20,7 @@ import org.treblereel.gwt.three4g.lights.SpotLight;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
+import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
 
 /**
@@ -94,8 +95,9 @@ public class WebglLightsSpotlight extends Attachable {
 
         orbitControls.target.copy(mesh.position);
         orbitControls.update();
-        setupWebGLRenderer(renderer);
 
+        renderer = new WebGLRenderer();
+        setupWebGLRenderer(renderer);
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
