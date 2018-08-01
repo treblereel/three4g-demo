@@ -224,7 +224,7 @@ public class WebglMaterialsChannels extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http=//threejs.org").setTextContentToInfo("js").setInnetHtml(" - <span id=\"description\">Normal; Depth; DepthRGBA; DepthRGBAUnpacked; Materials</span> by <a href=\"https=//Clara.io\">Ben Houston</a>.<br />\n" +
+        AppSetup.infoDiv.show().setHrefToInfo("http=//threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - <span id=\"description\">Normal; Depth; DepthRGBA; DepthRGBAUnpacked; Materials</span> by <a href=\"https=//Clara.io\">Ben Houston</a>.<br />\n" +
                 "\t\t\tninja head from <a href=\"http=//developer.amd.com/tools-and-sdks/archive/legacy-cpu-gpu-tools/amd-gpu-meshmapper/\" target=\"_blank\" rel=\"noopener\">AMD GPU MeshMapper</a>\n" +
                 "\n" +
                 "\t\t\t<div id=\"vt\">displacement mapping requires vertex textures</div>");

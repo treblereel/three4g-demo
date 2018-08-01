@@ -36,53 +36,51 @@ public class WebglGeometryTeapot extends Attachable {
 
 
     public static final String name = "geometry / teapot";
-    int teapotSize = 400;
-    AmbientLight ambientLight;
-    DirectionalLight light;
-    double tess = -1;    // force initialization
-    boolean bBottom;
-    boolean bLid;
-    boolean bBody;
-    boolean bFitLid;
-    boolean bNonBlinn;
-    //String shading;
+    private int teapotSize = 400;
+    private AmbientLight ambientLight;
+    private DirectionalLight light;
+    private double tess = -1;    // force initialization
+    private boolean bBottom;
+    private boolean bLid;
+    private boolean bBody;
+    private boolean bFitLid;
+    private boolean bNonBlinn;
 
     private float shininess = 40.0f;
-    float ka = 0.17f;
-    float kd = 0.51f;
-    float ks = 0.2f;
-    boolean metallic = true;
-    float hue = 0.121f;
-    float saturation = 0.73f;
-    float lightness = 0.66f;
-    float lhue = 0.04f;
-    float lsaturation = 0.01f;    // non-zero so that fractions will be shown
-    float llightness = 1.0f;
+    private float ka = 0.17f;
+    private float kd = 0.51f;
+    private float ks = 0.2f;
+    private boolean metallic = true;
+    private float hue = 0.121f;
+    private float saturation = 0.73f;
+    private float lightness = 0.66f;
+    private float lhue = 0.04f;
+    private float lsaturation = 0.01f;    // non-zero so that fractions will be shown
+    private float llightness = 1.0f;
     // bizarrely, if you initialize these with negative numbers, the sliders
     // will not show any decimal places.
-    float lx = 0.32f;
-    float ly = 0.39f;
-    float lz = 0.7f;
-    double newTess = 15;
-    boolean bottom = true;
-    boolean lid = true;
-    boolean body = true;
-    boolean fitLid = false;
-    boolean nonblinn = false;
-    String shading, newShading = "glossy";
+    private float lx = 0.32f;
+    private float ly = 0.39f;
+    private float lz = 0.7f;
+    private double newTess = 15;
+    private boolean bottom = true;
+    private boolean lid = true;
+    private boolean body = true;
+    private boolean fitLid = false;
+    private boolean nonblinn = false;
+    private String shading, newShading = "glossy";
 
+    private MeshBasicMaterial wireMaterial;
+    private MeshPhongMaterial flatMaterial;
+    private MeshLambertMaterial gouraudMaterial;
+    private MeshPhongMaterial phongMaterial;
+    private MeshPhongMaterial texturedMaterial;
 
-    MeshBasicMaterial wireMaterial;
-    MeshPhongMaterial flatMaterial;
-    MeshLambertMaterial gouraudMaterial;
-    MeshPhongMaterial phongMaterial;
-    MeshPhongMaterial texturedMaterial;
-
-    MeshPhongMaterial reflectiveMaterial;
-    Mesh teapot, textureCube;
+    private MeshPhongMaterial reflectiveMaterial;
+    private Mesh teapot, textureCube;
     // allocate these just once
-    Color diffuseColor = new Color();
-    Color specularColor = new Color();
+    private Color diffuseColor = new Color();
+    private Color specularColor = new Color();
 
     public WebglGeometryTeapot() {
         loadJavaScript(JavascriptTextResource.IMPL.getTeapotBufferGeometry().getText());

@@ -34,12 +34,20 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeome
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrain;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainFog;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTerrainRaycast;
+import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.WebglGeometryTextShapes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.hdr.WebglHdr;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveBuffergeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveCubesGpu;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractiveDraggableCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.interactive.WebglInteractivePoints;
 import org.treblereel.gwt.three4g.demo.client.local.examples.lensflares.WebglLensflares;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsHemisphere;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsPhysical;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsPointlights;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsPointlights2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsSpotlight;
+import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsSpotlights;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3ds;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBabylon;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderCollada;
@@ -60,6 +68,16 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBumpmapSkin;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsChannels;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapBallsReflection;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapBallsRefraction;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapDynamic2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsCubemapRefraction;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsDisplacementmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsEnvmaps;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsGrass;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsLightmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureAnisotropy;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
@@ -112,12 +130,20 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryT
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainFogPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTerrainRaycastPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometryTextShapesPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglHdrPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveBuffergeometryPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveCubesGpuPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveCubesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractiveDraggableCubesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglInteractivePointsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLensflaresPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsHemispherePresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsPhysicalPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsPointlightsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsPointlightsPresenter2;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsSpotlightPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsSpotlightsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoader3dsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderBabylonPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderColladaPresenter;
@@ -137,7 +163,17 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterials
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsBumpmapPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsBumpmapSkinPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsChannelsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsCubemapBallsReflectionPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsCubemapBallsRefractionPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsCubemapDynamic2Presenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsCubemapPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsCubemapRefractionPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsDisplacementmapPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsEnvmapsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsGrassPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsLightmapPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureAnisotropyPresent;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglPerformancePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
@@ -213,6 +249,24 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglGeometriesPresenter webglGeometriesPresenter = GWT.create(WebglGeometriesPresenter.class);
     private WebglGeometryHierarchyPresenter webglGeometryHierarchyPresenter = GWT.create(WebglGeometryHierarchyPresenter.class);
     private WebglGeometryHierarchy2Presenter webglGeometryHierarchy2Presenter = GWT.create(WebglGeometryHierarchy2Presenter.class);
+    private WebglGeometryTextShapesPresenter webglGeometryTextShapesPresenter = GWT.create(WebglGeometryTextShapesPresenter.class);
+    private WebglHdrPresenter webglHdrPresenter = GWT.create(WebglHdrPresenter.class);
+    private WebglLightsHemispherePresenter webglLightsHemispherePresenter = GWT.create(WebglLightsHemispherePresenter.class);
+    private WebglLightsPhysicalPresenter webglLightsPhysicalPresenter = GWT.create(WebglLightsPhysicalPresenter.class);
+    private WebglLightsPointlightsPresenter webglLightsPointlightsPresenter = GWT.create(WebglLightsPointlightsPresenter.class);
+    private WebglLightsPointlightsPresenter2 webglLightsPointlightsPresenter2 = GWT.create(WebglLightsPointlightsPresenter2.class);
+    private WebglLightsSpotlightPresenter webglLightsSpotlightPresenter = GWT.create(WebglLightsSpotlightPresenter.class);
+    private WebglLightsSpotlightsPresenter webglLightsSpotlightsPresenter = GWT.create(WebglLightsSpotlightsPresenter.class);
+    private WebglMaterialsCubemapPresenter webglMaterialsCubemapPresenter = GWT.create(WebglMaterialsCubemapPresenter.class);
+    private WebglMaterialsCubemapBallsReflectionPresenter webglMaterialsCubemapBallsReflectionPresenter = GWT.create(WebglMaterialsCubemapBallsReflectionPresenter.class);
+    private WebglMaterialsCubemapBallsRefractionPresenter webglMaterialsCubemapBallsRefractionPresenter = GWT.create(WebglMaterialsCubemapBallsRefractionPresenter.class);
+    private WebglMaterialsCubemapDynamic2Presenter webglMaterialsCubemapDynamic2Presenter = GWT.create(WebglMaterialsCubemapDynamic2Presenter.class);
+    private WebglMaterialsCubemapRefractionPresenter webglMaterialsCubemapRefractionPresenter = GWT.create(WebglMaterialsCubemapRefractionPresenter.class);
+    private WebglMaterialsDisplacementmapPresenter webglMaterialsDisplacementmapPresenter = GWT.create(WebglMaterialsDisplacementmapPresenter.class);
+    private WebglMaterialsEnvmapsPresenter webglMaterialsEnvmapsPresenter = GWT.create(WebglMaterialsEnvmapsPresenter.class);
+    private WebglMaterialsGrassPresenter webglMaterialsGrassPresenter = GWT.create(WebglMaterialsGrassPresenter.class);
+    private WebglMaterialsLightmapPresenter webglMaterialsLightmapPresenter = GWT.create(WebglMaterialsLightmapPresenter.class);
+    private WebglMaterialsTextureAnisotropyPresent webglMaterialsTextureAnisotropyPresent = GWT.create(WebglMaterialsTextureAnisotropyPresent.class);
 
 
     private HTMLDivElement container;
@@ -290,6 +344,24 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglGeometries.TYPE, event -> History.newItem(WebglGeometries.class.getSimpleName()));
         eventBus.addHandler(WebglGeometryHierarchy.TYPE, event -> History.newItem(WebglGeometryHierarchy.class.getSimpleName()));
         eventBus.addHandler(WebglGeometryHierarchy2.TYPE, event -> History.newItem(WebglGeometryHierarchy2.class.getSimpleName()));
+        eventBus.addHandler(WebglGeometryTextShapes.TYPE, event -> History.newItem(WebglGeometryTextShapes.class.getSimpleName()));
+        eventBus.addHandler(WebglHdr.TYPE, event -> History.newItem(WebglHdr.class.getSimpleName()));
+        eventBus.addHandler(WebglLightsHemisphere.TYPE, event -> History.newItem(WebglLightsHemisphere.class.getSimpleName()));
+        eventBus.addHandler(WebglLightsPhysical.TYPE, event -> History.newItem(WebglLightsPhysical.class.getSimpleName()));
+        eventBus.addHandler(WebglLightsPointlights.TYPE, event -> History.newItem(WebglLightsPointlights.class.getSimpleName()));
+        eventBus.addHandler(WebglLightsPointlights2.TYPE, event -> History.newItem(WebglLightsPointlights2.class.getSimpleName()));
+        eventBus.addHandler(WebglLightsSpotlight.TYPE, event -> History.newItem(WebglLightsSpotlight.class.getSimpleName()));
+        eventBus.addHandler(WebglLightsSpotlights.TYPE, event -> History.newItem(WebglLightsSpotlights.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsCubemap.TYPE, event -> History.newItem(WebglMaterialsCubemap.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsCubemapBallsReflection.TYPE, event -> History.newItem(WebglMaterialsCubemapBallsReflection.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsCubemapBallsRefraction.TYPE, event -> History.newItem(WebglMaterialsCubemapBallsRefraction.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsCubemapDynamic2.TYPE, event -> History.newItem(WebglMaterialsCubemapDynamic2.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsCubemapRefraction.TYPE, event -> History.newItem(WebglMaterialsCubemapRefraction.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsDisplacementmap.TYPE, event -> History.newItem(WebglMaterialsDisplacementmap.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsEnvmaps.TYPE, event -> History.newItem(WebglMaterialsEnvmaps.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsGrass.TYPE, event -> History.newItem(WebglMaterialsGrass.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsLightmap.TYPE, event -> History.newItem(WebglMaterialsLightmap.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsTextureAnisotropy.TYPE, event -> History.newItem(WebglMaterialsTextureAnisotropy.class.getSimpleName()));
 
 
     }
@@ -445,6 +517,42 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglGeometryHierarchyPresenter.dispatch(container);
             } else if (token.equals(WebglGeometryHierarchy2.class.getSimpleName())) {
                 webglGeometryHierarchy2Presenter.dispatch(container);
+            } else if (token.equals(WebglGeometryTextShapes.class.getSimpleName())) {
+                webglGeometryTextShapesPresenter.dispatch(container);
+            } else if (token.equals(WebglHdr.class.getSimpleName())) {
+                webglHdrPresenter.dispatch(container);
+            } else if (token.equals(WebglLightsHemisphere.class.getSimpleName())) {
+                webglLightsHemispherePresenter.dispatch(container);
+            } else if (token.equals(WebglLightsPhysical.class.getSimpleName())) {
+                webglLightsPhysicalPresenter.dispatch(container);
+            } else if (token.equals(WebglLightsPointlights.class.getSimpleName())) {
+                webglLightsPointlightsPresenter.dispatch(container);
+            } else if (token.equals(WebglLightsPointlights2.class.getSimpleName())) {
+                webglLightsPointlightsPresenter2.dispatch(container);
+            } else if (token.equals(WebglLightsSpotlight.class.getSimpleName())) {
+                webglLightsSpotlightPresenter.dispatch(container);
+            } else if (token.equals(WebglLightsSpotlights.class.getSimpleName())) {
+                webglLightsSpotlightsPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsCubemap.class.getSimpleName())) {
+                webglMaterialsCubemapPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsCubemapBallsReflection.class.getSimpleName())) {
+                webglMaterialsCubemapBallsReflectionPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsCubemapBallsRefraction.class.getSimpleName())) {
+                webglMaterialsCubemapBallsRefractionPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsCubemapDynamic2.class.getSimpleName())) {
+                webglMaterialsCubemapDynamic2Presenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsCubemapRefraction.class.getSimpleName())) {
+                webglMaterialsCubemapRefractionPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsDisplacementmap.class.getSimpleName())) {
+                webglMaterialsDisplacementmapPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsEnvmaps.class.getSimpleName())) {
+                webglMaterialsEnvmapsPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsGrass.class.getSimpleName())) {
+                webglMaterialsGrassPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsLightmap.class.getSimpleName())) {
+                webglMaterialsLightmapPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsTextureAnisotropy.class.getSimpleName())) {
+                webglMaterialsTextureAnisotropyPresent.dispatch(container);
             }
         }
     }
