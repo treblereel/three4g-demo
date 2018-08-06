@@ -43,10 +43,8 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
     protected FlyControls flyControls;
 
 
-
     public static void loadJavaScript(String script) {
         ScriptInjector.fromString(script).setWindow(ScriptInjector.TOP_WINDOW).inject();
-
     }
 
     @Override

@@ -78,6 +78,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsGrass;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsLightmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureAnisotropy;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureCanvas;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureFilters;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureManualmipmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTexturePartialupdate;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
@@ -174,6 +178,10 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterials
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsLightmapPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureAnisotropyPresent;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureCanvasPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureFiltersPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureManualmipmapPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTexturePartialupdatePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglPerformancePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
@@ -267,7 +275,10 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglMaterialsGrassPresenter webglMaterialsGrassPresenter = GWT.create(WebglMaterialsGrassPresenter.class);
     private WebglMaterialsLightmapPresenter webglMaterialsLightmapPresenter = GWT.create(WebglMaterialsLightmapPresenter.class);
     private WebglMaterialsTextureAnisotropyPresent webglMaterialsTextureAnisotropyPresent = GWT.create(WebglMaterialsTextureAnisotropyPresent.class);
-
+    private WebglMaterialsTextureCanvasPresenter webglMaterialsTextureCanvasPresenter = GWT.create(WebglMaterialsTextureCanvasPresenter.class);
+    private WebglMaterialsTextureFiltersPresenter webglMaterialsTextureFiltersPresenter = GWT.create(WebglMaterialsTextureFiltersPresenter.class);
+    private WebglMaterialsTextureManualmipmapPresenter webglMaterialsTextureManualmipmapPresenter = GWT.create(WebglMaterialsTextureManualmipmapPresenter.class);
+    private WebglMaterialsTexturePartialupdatePresenter webglMaterialsTexturePartialupdatePresenter = GWT.create(WebglMaterialsTexturePartialupdatePresenter.class);
 
     private HTMLDivElement container;
 
@@ -362,6 +373,10 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglMaterialsGrass.TYPE, event -> History.newItem(WebglMaterialsGrass.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsLightmap.TYPE, event -> History.newItem(WebglMaterialsLightmap.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsTextureAnisotropy.TYPE, event -> History.newItem(WebglMaterialsTextureAnisotropy.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsTextureCanvas.TYPE, event -> History.newItem(WebglMaterialsTextureCanvas.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsTextureFilters.TYPE, event -> History.newItem(WebglMaterialsTextureFilters.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsTextureManualmipmap.TYPE, event -> History.newItem(WebglMaterialsTextureManualmipmap.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsTexturePartialupdate.TYPE, event -> History.newItem(WebglMaterialsTexturePartialupdate.class.getSimpleName()));
 
 
     }
@@ -553,6 +568,14 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglMaterialsLightmapPresenter.dispatch(container);
             } else if (token.equals(WebglMaterialsTextureAnisotropy.class.getSimpleName())) {
                 webglMaterialsTextureAnisotropyPresent.dispatch(container);
+            } else if (token.equals(WebglMaterialsTextureCanvas.class.getSimpleName())) {
+                webglMaterialsTextureCanvasPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsTextureFilters.class.getSimpleName())) {
+                webglMaterialsTextureFiltersPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsTextureManualmipmap.class.getSimpleName())) {
+                webglMaterialsTextureManualmipmapPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsTexturePartialupdate.class.getSimpleName())) {
+                webglMaterialsTexturePartialupdatePresenter.dispatch(container);
             }
         }
     }

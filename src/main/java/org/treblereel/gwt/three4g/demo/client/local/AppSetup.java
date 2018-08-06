@@ -77,6 +77,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsGrass;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsLightmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureAnisotropy;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureCanvas;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureFilters;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureManualmipmap;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTexturePartialupdate;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
@@ -248,6 +252,10 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglMaterialsGrass.name, WebglMaterialsGrass.class);
         addListElement(WebglMaterialsLightmap.name, WebglMaterialsLightmap.class);
         addListElement(WebglMaterialsTextureAnisotropy.name, WebglMaterialsTextureAnisotropy.class);
+        addListElement(WebglMaterialsTextureCanvas.name, WebglMaterialsTextureCanvas.class);
+        addListElement(WebglMaterialsTextureFilters.name, WebglMaterialsTextureFilters.class);
+        addListElement(WebglMaterialsTextureManualmipmap.name, WebglMaterialsTextureManualmipmap.class);
+        addListElement(WebglMaterialsTexturePartialupdate.name, WebglMaterialsTexturePartialupdate.class);
 
         addTypeElement("PERFORMANCE");
         addListElement(WebglPerformance.name, WebglPerformance.class);

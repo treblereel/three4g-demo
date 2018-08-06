@@ -1,12 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.lensflares;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.demo.client.api.FlyControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
+import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.examples.objects.Lensflare;
 import org.treblereel.gwt.three4g.examples.objects.LensflareElement;
@@ -50,12 +52,10 @@ public class WebglLensflares extends Attachable {
         flyControls.rollSpeed = (float) Math.PI / 6;
         flyControls.autoForward = false;
         flyControls.dragToLook = false;
-
         // scene
         scene = new Scene();
         scene.background = new Color().setHSL(0.51f, 0.4f, 0.01f);
-
-        scene.fog = new Fog(scene.background.cast(), 3500, 15000);
+        scene.fog = new Fog(((Color)scene.background).getHex(), 3500, 15000);
         // world
         float s = 250f;
         BoxBufferGeometry geometry = new BoxBufferGeometry(s, s, s);
