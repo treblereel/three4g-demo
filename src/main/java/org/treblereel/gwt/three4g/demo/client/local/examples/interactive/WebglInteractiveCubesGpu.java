@@ -209,7 +209,7 @@ public class WebglInteractiveCubesGpu extends Attachable {
         //create buffer for reading single pixel
         Uint8Array pixelBuffer = new Uint8Array(4);
         //read the pixel under the mouse from the texture
-        renderer.readRenderTargetPixels(pickingTexture, mouse.x, pickingTexture.height.floatValue() - mouse.y, 1, 1, pixelBuffer);
+        renderer.readRenderTargetPixels(pickingTexture, mouse.x, (float)pickingTexture.height - mouse.y, 1, 1, pixelBuffer);
         //interpret the pixel as an ID
         int id = (pixelBuffer.getAt(0).intValue() << 16) | (pixelBuffer.getAt(1).intValue() << 8) | (pixelBuffer.getAt(2).intValue());
         JsPropertyMap<Object3D> data = pickingData.getAt(id);

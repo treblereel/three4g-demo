@@ -82,7 +82,18 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureFilters;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureManualmipmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTexturePartialupdate;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureRotation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTransparency;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsBasic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsLambert;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsPhong;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsPhysical;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsStandard;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsToon;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsWireframe;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
+import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierSimplifier;
+import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierTessellation;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -182,6 +193,17 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterials
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureFiltersPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureManualmipmapPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTexturePartialupdatePresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTextureRotationPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsTransparencyPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsVariationsBasicPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsVariationsLambertPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsVariationsPhongPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsVariationsPhysicalPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsVariationsStandardPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsVariationsToonPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsWireframePresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglModifierSimplifierPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglModifierTessellationPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglPerformancePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
@@ -279,6 +301,17 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglMaterialsTextureFiltersPresenter webglMaterialsTextureFiltersPresenter = GWT.create(WebglMaterialsTextureFiltersPresenter.class);
     private WebglMaterialsTextureManualmipmapPresenter webglMaterialsTextureManualmipmapPresenter = GWT.create(WebglMaterialsTextureManualmipmapPresenter.class);
     private WebglMaterialsTexturePartialupdatePresenter webglMaterialsTexturePartialupdatePresenter = GWT.create(WebglMaterialsTexturePartialupdatePresenter.class);
+    private WebglMaterialsTextureRotationPresenter webglMaterialsTextureRotationPresenter = GWT.create(WebglMaterialsTextureRotationPresenter.class);
+    private WebglMaterialsTransparencyPresenter webglMaterialsTransparencyPresenter = GWT.create(WebglMaterialsTransparencyPresenter.class);
+    private WebglMaterialsVariationsBasicPresenter webglMaterialsVariationsBasicPresenter = GWT.create(WebglMaterialsVariationsBasicPresenter.class);
+    private WebglMaterialsVariationsLambertPresenter webglMaterialsVariationsLambertPresenter = GWT.create(WebglMaterialsVariationsLambertPresenter.class);
+    private WebglMaterialsVariationsPhongPresenter webglMaterialsVariationsPhongPresenter = GWT.create(WebglMaterialsVariationsPhongPresenter.class);
+    private WebglMaterialsVariationsStandardPresenter webglMaterialsVariationsStandardPresenter = GWT.create(WebglMaterialsVariationsStandardPresenter.class);
+    private WebglMaterialsVariationsPhysicalPresenter webglMaterialsVariationsPhysicalPresenter = GWT.create(WebglMaterialsVariationsPhysicalPresenter.class);
+    private WebglMaterialsVariationsToonPresenter webglMaterialsVariationsToonPresenter = GWT.create(WebglMaterialsVariationsToonPresenter.class);
+    private WebglMaterialsWireframePresenter webglMaterialsWireframePresenter = GWT.create(WebglMaterialsWireframePresenter.class);
+    private WebglModifierSimplifierPresenter webglModifierSimplifierPresenter = GWT.create(WebglModifierSimplifierPresenter.class);
+    private WebglModifierTessellationPresenter webglModifierTessellationPresenter = GWT.create(WebglModifierTessellationPresenter.class);
 
     private HTMLDivElement container;
 
@@ -377,6 +410,17 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglMaterialsTextureFilters.TYPE, event -> History.newItem(WebglMaterialsTextureFilters.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsTextureManualmipmap.TYPE, event -> History.newItem(WebglMaterialsTextureManualmipmap.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsTexturePartialupdate.TYPE, event -> History.newItem(WebglMaterialsTexturePartialupdate.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsTextureRotation.TYPE, event -> History.newItem(WebglMaterialsTextureRotation.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsTransparency.TYPE, event -> History.newItem(WebglMaterialsTransparency.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsVariationsBasic.TYPE, event -> History.newItem(WebglMaterialsVariationsBasic.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsVariationsLambert.TYPE, event -> History.newItem(WebglMaterialsVariationsLambert.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsVariationsPhong.TYPE, event -> History.newItem(WebglMaterialsVariationsPhong.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsVariationsStandard.TYPE, event -> History.newItem(WebglMaterialsVariationsStandard.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsVariationsPhysical.TYPE, event -> History.newItem(WebglMaterialsVariationsPhysical.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsVariationsToon.TYPE, event -> History.newItem(WebglMaterialsVariationsToon.class.getSimpleName()));
+        eventBus.addHandler(WebglMaterialsWireframe.TYPE, event -> History.newItem(WebglMaterialsWireframe.class.getSimpleName()));
+        eventBus.addHandler(WebglModifierSimplifier.TYPE, event -> History.newItem(WebglModifierSimplifier.class.getSimpleName()));
+        eventBus.addHandler(WebglModifierTessellation.TYPE, event -> History.newItem(WebglModifierTessellation.class.getSimpleName()));
 
 
     }
@@ -576,6 +620,28 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglMaterialsTextureManualmipmapPresenter.dispatch(container);
             } else if (token.equals(WebglMaterialsTexturePartialupdate.class.getSimpleName())) {
                 webglMaterialsTexturePartialupdatePresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsTextureRotation.class.getSimpleName())) {
+                webglMaterialsTextureRotationPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsTransparency.class.getSimpleName())) {
+                webglMaterialsTransparencyPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsVariationsBasic.class.getSimpleName())) {
+                webglMaterialsVariationsBasicPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsVariationsLambert.class.getSimpleName())) {
+                webglMaterialsVariationsLambertPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsVariationsPhong.class.getSimpleName())) {
+                webglMaterialsVariationsPhongPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsVariationsStandard.class.getSimpleName())) {
+                webglMaterialsVariationsStandardPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsVariationsPhysical.class.getSimpleName())) {
+                webglMaterialsVariationsPhysicalPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsVariationsToon.class.getSimpleName())) {
+                webglMaterialsVariationsToonPresenter.dispatch(container);
+            } else if (token.equals(WebglMaterialsWireframe.class.getSimpleName())) {
+                webglMaterialsWireframePresenter.dispatch(container);
+            } else if (token.equals(WebglModifierSimplifier.class.getSimpleName())) {
+                webglModifierSimplifierPresenter.dispatch(container);
+            }else if (token.equals(WebglModifierTessellation.class.getSimpleName())) {
+                webglModifierTessellationPresenter.dispatch(container);
             }
         }
     }

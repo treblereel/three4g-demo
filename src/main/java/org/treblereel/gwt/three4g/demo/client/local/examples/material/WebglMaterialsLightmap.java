@@ -87,8 +87,6 @@ public class WebglMaterialsLightmap extends Attachable {
         Uniforms uniforms = new Uniforms();
         setUniforms(uniforms);
 
-        GWT.log("? " + JSON.stringify(uniforms));
-
         Color color = Js.uncheckedCast(uniforms.get("topColor"));
         color.copy(light.color);
 
