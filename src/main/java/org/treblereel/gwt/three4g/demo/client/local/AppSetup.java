@@ -81,7 +81,18 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureFilters;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureManualmipmap;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTexturePartialupdate;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTextureRotation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsTransparency;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsBasic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsLambert;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsPhong;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsPhysical;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsStandard;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsToon;
+import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsWireframe;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
+import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierSimplifier;
+import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierTessellation;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -256,6 +267,19 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglMaterialsTextureFilters.name, WebglMaterialsTextureFilters.class);
         addListElement(WebglMaterialsTextureManualmipmap.name, WebglMaterialsTextureManualmipmap.class);
         addListElement(WebglMaterialsTexturePartialupdate.name, WebglMaterialsTexturePartialupdate.class);
+        addListElement(WebglMaterialsTextureRotation.name, WebglMaterialsTextureRotation.class);
+        addListElement(WebglMaterialsTransparency.name, WebglMaterialsTransparency.class);
+        addListElement(WebglMaterialsVariationsBasic.name, WebglMaterialsVariationsBasic.class);
+        addListElement(WebglMaterialsVariationsLambert.name, WebglMaterialsVariationsLambert.class);
+        addListElement(WebglMaterialsVariationsPhong.name, WebglMaterialsVariationsPhong.class);
+        addListElement(WebglMaterialsVariationsStandard.name, WebglMaterialsVariationsStandard.class);
+        addListElement(WebglMaterialsVariationsPhysical.name, WebglMaterialsVariationsPhysical.class);
+        addListElement(WebglMaterialsVariationsToon.name, WebglMaterialsVariationsToon.class);
+        addListElement(WebglMaterialsWireframe.name, WebglMaterialsWireframe.class);
+
+        addTypeElement("MODIFIERS");
+        addListElement(WebglModifierSimplifier.name, WebglModifierSimplifier.class);
+        addListElement(WebglModifierTessellation.name, WebglModifierTessellation.class);
 
         addTypeElement("PERFORMANCE");
         addListElement(WebglPerformance.name, WebglPerformance.class);
