@@ -94,6 +94,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierSimplifier;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierTessellation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphNormals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphTargets;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsHorse;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsSphere;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -204,6 +208,10 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterials
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsWireframePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglModifierSimplifierPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglModifierTessellationPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphNormalsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphTargetsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphtargetsHorsePresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphtargetsSpherePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglPerformancePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
@@ -312,6 +320,10 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglMaterialsWireframePresenter webglMaterialsWireframePresenter = GWT.create(WebglMaterialsWireframePresenter.class);
     private WebglModifierSimplifierPresenter webglModifierSimplifierPresenter = GWT.create(WebglModifierSimplifierPresenter.class);
     private WebglModifierTessellationPresenter webglModifierTessellationPresenter = GWT.create(WebglModifierTessellationPresenter.class);
+    private WebglMorphNormalsPresenter webglMorphNormalsPresenter = GWT.create(WebglMorphNormalsPresenter.class);
+    private WebglMorphTargetsPresenter webglMorphTargetsPresenter = GWT.create(WebglMorphTargetsPresenter.class);
+    private WebglMorphtargetsHorsePresenter webglMorphtargetsHorsePresenter = GWT.create(WebglMorphtargetsHorsePresenter.class);
+    private WebglMorphtargetsSpherePresenter webglMorphtargetsSpherePresenter = GWT.create(WebglMorphtargetsSpherePresenter.class);
 
     private HTMLDivElement container;
 
@@ -421,6 +433,10 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglMaterialsWireframe.TYPE, event -> History.newItem(WebglMaterialsWireframe.class.getSimpleName()));
         eventBus.addHandler(WebglModifierSimplifier.TYPE, event -> History.newItem(WebglModifierSimplifier.class.getSimpleName()));
         eventBus.addHandler(WebglModifierTessellation.TYPE, event -> History.newItem(WebglModifierTessellation.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphNormals.TYPE, event -> History.newItem(WebglMorphNormals.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphTargets.TYPE, event -> History.newItem(WebglMorphTargets.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphtargetsHorse.TYPE, event -> History.newItem(WebglMorphtargetsHorse.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphtargetsSphere.TYPE, event -> History.newItem(WebglMorphtargetsSphere.class.getSimpleName()));
 
 
     }
@@ -642,6 +658,14 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglModifierSimplifierPresenter.dispatch(container);
             }else if (token.equals(WebglModifierTessellation.class.getSimpleName())) {
                 webglModifierTessellationPresenter.dispatch(container);
+            }else if (token.equals(WebglMorphNormals.class.getSimpleName())) {
+                webglMorphNormalsPresenter.dispatch(container);
+            }else if (token.equals(WebglMorphTargets.class.getSimpleName())) {
+                webglMorphTargetsPresenter.dispatch(container);
+            }else if (token.equals(WebglMorphtargetsHorse.class.getSimpleName())) {
+                webglMorphtargetsHorsePresenter.dispatch(container);
+            }else if (token.equals(WebglMorphtargetsSphere.class.getSimpleName())) {
+                webglMorphtargetsSpherePresenter.dispatch(container);
             }
         }
     }

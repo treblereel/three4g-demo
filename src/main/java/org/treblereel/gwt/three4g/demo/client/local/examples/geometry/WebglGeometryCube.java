@@ -23,13 +23,13 @@ public class WebglGeometryCube extends Attachable {
 
     public WebglGeometryCube() {
 
-        camera = new PerspectiveCamera(70f, aspect, 1f, 1000f);
-        camera.position.z = 400f;
+        camera = new PerspectiveCamera(70, aspect, 1, 1000);
+        camera.position.z = 400;
 
         scene = new Scene();
         Texture texture = new TextureLoader().load("https://threejs.org/examples/textures/crate.gif");
 
-        BoxBufferGeometry geometry = new BoxBufferGeometry(200f, 200f, 200f);
+        BoxBufferGeometry geometry = new BoxBufferGeometry(200, 200, 200);
         MeshBasicMaterialParameters meshBasicMaterialParameters = new MeshBasicMaterialParameters();
         meshBasicMaterialParameters.map = texture;
         MeshBasicMaterial material = new MeshBasicMaterial(meshBasicMaterialParameters);

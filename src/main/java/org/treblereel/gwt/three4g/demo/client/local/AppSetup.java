@@ -93,6 +93,10 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierSimplifier;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierTessellation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphNormals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphTargets;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsHorse;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsSphere;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -280,6 +284,12 @@ public class AppSetup implements EntryPoint {
         addTypeElement("MODIFIERS");
         addListElement(WebglModifierSimplifier.name, WebglModifierSimplifier.class);
         addListElement(WebglModifierTessellation.name, WebglModifierTessellation.class);
+
+        addTypeElement("MORPH");
+        addListElement(WebglMorphNormals.name, WebglMorphNormals.class);
+        addListElement(WebglMorphTargets.name, WebglMorphTargets.class);
+        addListElement(WebglMorphtargetsHorse.name, WebglMorphtargetsHorse.class);
+        addListElement(WebglMorphtargetsSphere.name, WebglMorphtargetsSphere.class);
 
         addTypeElement("PERFORMANCE");
         addListElement(WebglPerformance.name, WebglPerformance.class);
