@@ -32,7 +32,7 @@ public class WebglGeometryColorsJson extends Attachable {
 
     public WebglGeometryColorsJson() {
 
-        camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 10000);
+        camera = new PerspectiveCamera(40, aspect, 1, 10000);
         camera.position.z = 1800;
         scene = new Scene();
         light = new DirectionalLight(0xffffff);

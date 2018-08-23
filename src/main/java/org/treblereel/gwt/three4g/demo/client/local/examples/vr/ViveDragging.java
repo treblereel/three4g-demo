@@ -61,7 +61,7 @@ public class ViveDragging extends Attachable {
     public ViveDragging() {
         scene = new Scene();
         scene.background = new Color(0x808080);
-        camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1f, 10);
+        camera = new PerspectiveCamera(70, aspect, 0.1f, 10);
         PlaneBufferGeometry planeBufferGeometry = new PlaneBufferGeometry(4, 4);
         MeshStandardMaterialParameters meshStandardMaterialParameters = new MeshStandardMaterialParameters();
         meshStandardMaterialParameters.color = new Color(0xeeeeee);

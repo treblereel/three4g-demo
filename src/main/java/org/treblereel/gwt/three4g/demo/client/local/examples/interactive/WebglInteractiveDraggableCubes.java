@@ -40,7 +40,7 @@ public class WebglInteractiveDraggableCubes extends Attachable {
 
         loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
-        camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 5000);
+        camera = new PerspectiveCamera(70, aspect, 1, 5000);
         camera.position.z = 1000;
 
         trackballControls = new TrackballControls(camera);

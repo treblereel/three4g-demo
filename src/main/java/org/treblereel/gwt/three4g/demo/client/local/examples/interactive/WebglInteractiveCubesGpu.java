@@ -64,7 +64,7 @@ public class WebglInteractiveCubesGpu extends Attachable {
 
         loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
-        camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 5000);
+        camera = new PerspectiveCamera(70, aspect, 1, 5000);
         camera.position.z = 1000;
 
         trackballControls = new TrackballControls(camera);
@@ -179,7 +179,7 @@ public class WebglInteractiveCubesGpu extends Attachable {
         for (int i = 0; i < position.count; i++) {
             colors.push(color.r, color.g, color.b);
         }
-        geometry.addAttribute("color", new Float32BufferAttribute(Js.uncheckedCast(colors), 3));
+        geometry.addAttribute("color", new Float32BufferAttribute(colors, 3));
     }
 
     public void doAttachScene() {

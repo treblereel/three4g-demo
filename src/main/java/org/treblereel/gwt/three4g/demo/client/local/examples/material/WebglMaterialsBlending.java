@@ -45,7 +45,7 @@ public class WebglMaterialsBlending extends Attachable {
 
     public WebglMaterialsBlending() {
 
-        camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+        camera = new PerspectiveCamera(70, aspect, 1, 1000);
         camera.position.z = 600;
         // SCENE
         scene = new Scene();

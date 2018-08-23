@@ -46,7 +46,7 @@ public class WebglMaterialsEnvmaps extends Attachable {
 
         camera = new PerspectiveCamera(70, aspect, 1, 100000);
         camera.position.set(0, 0, 1000);
-        cameraCube = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 100000);
+        cameraCube = new PerspectiveCamera(70, aspect, 1, 100000);
         orbitControls = new OrbitControls(camera, root);
         orbitControls.minDistance = 500;
         orbitControls.maxDistance = 2500;

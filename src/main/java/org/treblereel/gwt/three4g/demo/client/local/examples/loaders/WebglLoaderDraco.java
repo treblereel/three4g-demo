@@ -42,7 +42,7 @@ public class WebglLoaderDraco extends Attachable {
     public WebglLoaderDraco() {
 
 
-        camera = new PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1f, 15);
+        camera = new PerspectiveCamera(35, aspect, 0.1f, 15);
         camera.position.set(3, 0.25f, 3);
         scene = new Scene();
         scene.background = new Color(0x443333);

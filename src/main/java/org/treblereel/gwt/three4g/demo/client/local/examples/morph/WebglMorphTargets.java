@@ -8,12 +8,12 @@ import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Clock;
+import org.treblereel.gwt.three4g.core.MorphTarget;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.BoxGeometry;
-import org.treblereel.gwt.three4g.geometries.parameters.MorphTarget;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.materials.MeshLambertMaterial;
@@ -41,7 +41,7 @@ public class WebglMorphTargets extends Attachable {
 
     public WebglMorphTargets() {
 
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        camera = new PerspectiveCamera(45, aspect, 1, 2000);
         camera.position.z = 500;
         scene = new Scene();
         scene.background = new Color(0x222222);

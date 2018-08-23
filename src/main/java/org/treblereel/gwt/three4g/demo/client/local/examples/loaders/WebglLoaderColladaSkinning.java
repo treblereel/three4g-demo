@@ -35,7 +35,7 @@ public class WebglLoaderColladaSkinning extends Attachable {
 
     public WebglLoaderColladaSkinning() {
 
-        camera = new PerspectiveCamera(25, window.innerWidth / window.innerHeight, 1, 10000);
+        camera = new PerspectiveCamera(25, aspect, 1, 10000);
         camera.position.set(15, 10, -15);
         scene = new Scene();
         clock = new Clock();

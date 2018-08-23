@@ -33,7 +33,7 @@ public class WebglPerformance extends Attachable {
 
     public WebglPerformance() {
 
-        camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
+        camera = new PerspectiveCamera(60, aspect, 1, 10000);
         camera.position.z = 3200;
         scene = new Scene();
         scene.background = new Color(0xffffff);
@@ -77,7 +77,7 @@ public class WebglPerformance extends Attachable {
         if (camera != null && renderer != null) {
             windowHalfX = window.innerWidth / 2;
             windowHalfY = window.innerHeight / 2;
-            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.aspect = aspect;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         }

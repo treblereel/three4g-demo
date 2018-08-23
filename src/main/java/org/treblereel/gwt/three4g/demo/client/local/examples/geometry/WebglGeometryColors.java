@@ -39,7 +39,7 @@ public class WebglGeometryColors extends Attachable {
 
     public WebglGeometryColors() {
 
-        camera = new PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 10000);
+        camera = new PerspectiveCamera(20, aspect, 1, 10000);
         camera.position.z = 1800;
         scene = new Scene();
         scene.background = new Color(0xffffff);

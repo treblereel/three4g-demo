@@ -33,7 +33,7 @@ public class WebglLoaderGltf extends Attachable {
     public WebglLoaderGltf() {
 
 
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25f, 20);
+        camera = new PerspectiveCamera(45, aspect, 0.25f, 20);
         camera.position.set(-1.8f, 0.9f, 2.7f);
         orbitControls = new OrbitControls(camera);
         orbitControls.target.set(0f, -0.2f, -0.2f);

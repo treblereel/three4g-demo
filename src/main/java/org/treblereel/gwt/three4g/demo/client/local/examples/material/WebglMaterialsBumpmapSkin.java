@@ -57,7 +57,7 @@ public class WebglMaterialsBumpmapSkin extends Attachable {
         loadJavaScript(JavascriptTextResource.IMPL.getShaderPass().getText());
 
 
-        camera = new PerspectiveCamera(27, window.innerWidth / window.innerHeight, 1, 10000);
+        camera = new PerspectiveCamera(27, aspect, 1, 10000);
         camera.position.z = 1200;
         scene = new Scene();
         scene.background = new Color(0x242a34);

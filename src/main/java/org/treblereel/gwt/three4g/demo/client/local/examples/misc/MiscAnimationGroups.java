@@ -40,7 +40,7 @@ public class MiscAnimationGroups extends Attachable {
 
         scene = new Scene();
         //
-        camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+        camera = new PerspectiveCamera(40, aspect, 1, 1000);
         camera.position.set(50, 50, 100);
         camera.lookAt(scene.position);
         // all objects of this animation group share a common animation state

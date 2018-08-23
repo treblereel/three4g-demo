@@ -43,7 +43,7 @@ public class WebglLoaderPrwm extends Attachable {
 
     public WebglLoaderPrwm() {
 
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        camera = new PerspectiveCamera(45, aspect, 1, 2000);
         camera.position.z = 250;
         // scene
         scene = new Scene();

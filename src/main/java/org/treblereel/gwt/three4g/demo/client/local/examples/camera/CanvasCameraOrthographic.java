@@ -1,6 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.camera;
 
-import com.google.gwt.animation.client.AnimationScheduler;
+import elemental2.dom.DomGlobal;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
@@ -91,9 +91,8 @@ public class CanvasCameraOrthographic extends Attachable {
 
     @Override
     public void onWindowResize() {
-        double aspect = window.innerWidth / window.innerHeight;
-        orthographicCamera.left = (float) (-frustumSize * aspect / 2);
-        orthographicCamera.right = (float) (frustumSize * aspect / 2);
+        orthographicCamera.left = -frustumSize * aspect / 2;
+        orthographicCamera.right = frustumSize * aspect / 2;
         orthographicCamera.top = frustumSize / 2;
         orthographicCamera.bottom = -frustumSize / 2;
         orthographicCamera.updateProjectionMatrix();
@@ -108,13 +107,13 @@ public class CanvasCameraOrthographic extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("threejs - orthographic view");//.setInnetHtml(" - orthographic view");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("threejs - orthographic view").setInnetHtml("");
 
     }
 
     private void animate() {
         StatsProducer.getStats().update();
-        AnimationScheduler.get().requestAnimationFrame(timestamp -> {
+        DomGlobal.requestAnimationFrame(timestamp -> {
             if (root.parentNode != null) {
                 render();
                 animate();

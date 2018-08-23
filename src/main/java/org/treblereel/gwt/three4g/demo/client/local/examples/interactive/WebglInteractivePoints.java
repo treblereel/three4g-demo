@@ -42,7 +42,7 @@ public class WebglInteractivePoints extends Attachable {
 
     public WebglInteractivePoints() {
         scene = new Scene();
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+        camera = new PerspectiveCamera(45, aspect, 1, 10000);
         camera.position.z = 250;
         //
 

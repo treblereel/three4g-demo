@@ -87,7 +87,7 @@ public class WebglLightsHemisphere extends Attachable {
         vertexShaderElm.textContent = vertexShader;
         root.appendChild(vertexShaderElm);
 
-        camera = new PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 5000);
+        camera = new PerspectiveCamera(30, aspect, 1, 5000);
         camera.position.set(0, 0, 250);
         scene = new Scene();
         scene.background = new Color().setHSL(0.6f, 0, 1);

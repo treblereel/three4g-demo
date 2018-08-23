@@ -1,6 +1,5 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
-import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.datgui4g.OnChange;
@@ -85,7 +84,7 @@ public class WebglGeometryTeapot extends Attachable {
     public WebglGeometryTeapot() {
         loadJavaScript(JavascriptTextResource.IMPL.getTeapotBufferGeometry().getText());
 
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 80000);
+        camera = new PerspectiveCamera(45, aspect, 1, 80000);
         camera.position.set(-600, 550, 1300);
         // LIGHTS
         ambientLight = new AmbientLight(0x333333);
@@ -327,8 +326,6 @@ public class WebglGeometryTeapot extends Attachable {
         gui.add("Shading", new String[]{"wireframe", "flat", "smooth", "glossy", "textured", "reflective"}, "glossy").onChange(new OnChange() {
             @Override
             public void onChange(Object result) {
-
-                GWT.log(result.toString());
                 newShading = result.toString();
                 render();
             }

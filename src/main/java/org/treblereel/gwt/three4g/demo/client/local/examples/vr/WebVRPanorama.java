@@ -73,7 +73,7 @@ public class WebVRPanorama extends Attachable {
     private void init() {
 
         scene = new Scene();
-        camera = new PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1000);
+        camera = new PerspectiveCamera(90, aspect, 1, 1000);
         camera.layers.enable(1);
         BoxGeometry geometry = new BoxGeometry(100, 100, 100);
         geometry.scale(1, 1, -1);

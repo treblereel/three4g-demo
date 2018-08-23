@@ -44,7 +44,7 @@ public class WebglLensflares extends Attachable {
 
         loadJavaScript(JavascriptTextResource.IMPL.getFlyControls().getText());
 
-        camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 15000);
+        camera = new PerspectiveCamera(40, aspect, 1, 15000);
         camera.position.z = 250;
 
         flyControls = new FlyControls(camera);

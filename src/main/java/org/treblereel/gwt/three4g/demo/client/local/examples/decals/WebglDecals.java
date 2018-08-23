@@ -109,7 +109,7 @@ public class WebglDecals extends Attachable {
 
     private void init() {
         scene = new Scene();
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+        camera = new PerspectiveCamera(45, aspect, 1, 1000);
         camera.position.z = 120;
 
         orbitControls = new OrbitControls(camera);
