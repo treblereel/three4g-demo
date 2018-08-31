@@ -41,7 +41,7 @@ public class WebglGeometryHierarchy2 extends Attachable {
     public WebglGeometryHierarchy2() {
         onDocumentMouseMove = evt -> onDocumentMouseMove(Js.uncheckedCast(evt));
 
-        camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 15000);
+        camera = new PerspectiveCamera(60, aspect, 1, 15000);
         camera.position.z = 500;
         scene = new Scene();
         scene.background = new Color(0xffffff);

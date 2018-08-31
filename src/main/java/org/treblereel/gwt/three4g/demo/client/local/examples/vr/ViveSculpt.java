@@ -58,7 +58,7 @@ public class ViveSculpt extends Attachable {
 
         scene = new Scene();
         scene.background = new Color(0x222222);
-        camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1f, 10);
+        camera = new PerspectiveCamera(70, aspect, 0.1f, 10);
 
         BoxBufferGeometry geometry = new BoxBufferGeometry(0.5f, 0.8f, 0.5f);
         MeshStandardMaterial meshStandardMaterial = new MeshStandardMaterial();

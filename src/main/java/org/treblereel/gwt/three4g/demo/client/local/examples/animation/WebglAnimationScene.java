@@ -64,7 +64,7 @@ public class WebglAnimationScene extends Attachable {
                     camera.position.set(-200f, 0f, 200f);
                 }
 
-                orbitControls = new OrbitControls(camera, container);
+                orbitControls = new OrbitControls(camera, root);
 
                 PlaneBufferGeometry geometry = new PlaneBufferGeometry(20000f, 20000f);
                 MeshPhongMaterial material = new MeshPhongMaterial();
@@ -93,8 +93,8 @@ public class WebglAnimationScene extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" webgl - scene animation - <a href=\"https://clara.io/view/96106133-2e99-40cf-8abd-64defd153e61\">Three Gears Scene</a> courtesy of David Sarno\n" +
-                "\t\t<br><br>camera orbit/zoom/pan with left/middle/right mouse button");
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" <p style='color:black;' >webgl - scene animation - <a href=\"https://clara.io/view/96106133-2e99-40cf-8abd-64defd153e61\">Three Gears Scene</a> courtesy of David Sarno\n" +
+                "\t\t<br><br>camera orbit/zoom/pan with left/middle/right mouse button</p>");
     }
 
     private void render() {

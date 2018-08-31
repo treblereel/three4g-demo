@@ -58,7 +58,7 @@ public class WebglMaterials extends Attachable {
 
     public WebglMaterials() {
 
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        camera = new PerspectiveCamera(45, aspect, 1, 2000);
         camera.position.set(0, 200, 800);
         scene = new Scene();
         // Grid

@@ -8,6 +8,26 @@ import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.HTMLUListElement;
 import elemental2.dom.Node;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometry;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryConstructedFromGeometry;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryCustomAttributesParticles;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryDrawcalls;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryIndexed;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancing;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancing2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancingBillboards;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancingDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancingInterleavedDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryLines;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryPoints;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryPointsInterleaved;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryRawshader;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryUint;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesLines;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints3;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.CanvasCameraOrthographic;
@@ -91,8 +111,14 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsToon;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsWireframe;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
+import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscControlsOrbit;
+import org.treblereel.gwt.three4g.demo.client.local.examples.misc.WebglNearestneighbour;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierSimplifier;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierTessellation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphNormals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphTargets;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsHorse;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsSphere;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -102,6 +128,8 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebaudioTiming;
+import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebaudioVisualizer;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.AppController;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.RootPanel;
 
@@ -281,6 +309,12 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglModifierSimplifier.name, WebglModifierSimplifier.class);
         addListElement(WebglModifierTessellation.name, WebglModifierTessellation.class);
 
+        addTypeElement("MORPH");
+        addListElement(WebglMorphNormals.name, WebglMorphNormals.class);
+        addListElement(WebglMorphTargets.name, WebglMorphTargets.class);
+        addListElement(WebglMorphtargetsHorse.name, WebglMorphtargetsHorse.class);
+        addListElement(WebglMorphtargetsSphere.name, WebglMorphtargetsSphere.class);
+
         addTypeElement("PERFORMANCE");
         addListElement(WebglPerformance.name, WebglPerformance.class);
         addTypeElement("INTERACTIVE");
@@ -306,10 +340,38 @@ public class AppSetup implements EntryPoint {
         //webaudio
         addTypeElement("Web audio");
         addListElement(WebAudioOrientation.name, WebAudioOrientation.class);
+        addListElement(WebaudioTiming.name, WebaudioTiming.class);
+        addListElement(WebaudioVisualizer.name, WebaudioVisualizer.class);
 
         //misc
         addTypeElement("misc");
         addListElement(MiscAnimationGroups.name, MiscAnimationGroups.class);
+        addListElement(WebglNearestneighbour.name, WebglNearestneighbour.class);
+        addListElement(MiscControlsOrbit.name, MiscControlsOrbit.class);
+
+        addTypeElement("webgl / advanced");
+        addListElement(WebglBuffergeometry.name, WebglBuffergeometry.class);
+        addListElement(WebglBuffergeometryConstructedFromGeometry.name, WebglBuffergeometryConstructedFromGeometry.class);
+        addListElement(WebglBuffergeometryCustomAttributesParticles.name, WebglBuffergeometryCustomAttributesParticles.class);
+        addListElement(WebglBuffergeometryDrawcalls.name, WebglBuffergeometryDrawcalls.class);
+        addListElement(WebglBuffergeometryIndexed.name, WebglBuffergeometryIndexed.class);
+        addListElement(WebglBuffergeometryInstancing.name, WebglBuffergeometryInstancing.class);
+        addListElement(WebglBuffergeometryInstancing2.name, WebglBuffergeometryInstancing2.class);
+        addListElement(WebglBuffergeometryInstancingBillboards.name, WebglBuffergeometryInstancingBillboards.class);
+        addListElement(WebglBuffergeometryInstancingDynamic.name, WebglBuffergeometryInstancingDynamic.class);
+        addListElement(WebglBuffergeometryInstancingInterleavedDynamic.name, WebglBuffergeometryInstancingInterleavedDynamic.class);
+        //addListElement(WebglBuffergeometryInstancingLambert.name, WebglBuffergeometryInstancingLambert.class);
+        addListElement(WebglBuffergeometryLines.name, WebglBuffergeometryLines.class);
+        //addListElement(WebglBuffergeometryLinesIndexed.name, WebglBuffergeometryLinesIndexed.class); //TODO
+        addListElement(WebglBuffergeometryPoints.name, WebglBuffergeometryPoints.class);
+        addListElement(WebglBuffergeometryPointsInterleaved.name, WebglBuffergeometryPointsInterleaved.class);
+        addListElement(WebglBuffergeometryRawshader.name, WebglBuffergeometryRawshader.class);
+        addListElement(WebglBuffergeometryUint.name, WebglBuffergeometryUint.class);
+        addListElement(WebglCustomAttributes.name, WebglCustomAttributes.class);
+        addListElement(WebglCustomAttributesLines.name, WebglCustomAttributesLines.class);
+        addListElement(WebglCustomAttributesPoints.name, WebglCustomAttributesPoints.class);
+        addListElement(WebglCustomAttributesPoints2.name, WebglCustomAttributesPoints2.class);
+        addListElement(WebglCustomAttributesPoints3.name, WebglCustomAttributesPoints3.class);
 
         //css2d
         addTypeElement("css2d");

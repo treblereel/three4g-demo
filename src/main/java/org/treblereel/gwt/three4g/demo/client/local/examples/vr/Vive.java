@@ -49,7 +49,7 @@ public class Vive extends Attachable {
 
         scene = new Scene();
         scene.background = new Color(0x505050);
-        camera = new PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1f, 10);
+        camera = new PerspectiveCamera(70, aspect, 0.1f, 10);
         MeshBasicMaterialParameters meshBasicMaterialParameters = new MeshBasicMaterialParameters();
         meshBasicMaterialParameters.color = new Color(0x404040);
         meshBasicMaterialParameters.wireframe = true;

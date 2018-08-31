@@ -174,8 +174,7 @@ public class WebAudioOrientation extends Attachable {
         WebGLRendererParameters parameters1 = new WebGLRendererParameters();
         parameters1.antialias = true;
         renderer = new WebGLRenderer(parameters1);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(devicePixelRatio);
+        setupWebGLRenderer(renderer);
         container.appendChild(renderer.domElement);
         renderer.gammaOutput = true;
         //

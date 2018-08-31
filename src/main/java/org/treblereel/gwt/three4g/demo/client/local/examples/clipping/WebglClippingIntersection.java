@@ -42,7 +42,7 @@ public class WebglClippingIntersection extends Attachable {
         clipPlanes[2] = new Plane(new Vector3(0, 0, -1), 0);
 
         scene = new Scene();
-        camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 200);
+        camera = new PerspectiveCamera(40, aspect, 1, 200);
         camera.position.set(-20, 30, 40);
 
         orbitControls = new OrbitControls(camera, root);

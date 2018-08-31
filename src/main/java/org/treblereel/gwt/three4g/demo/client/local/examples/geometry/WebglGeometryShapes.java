@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import elemental2.core.JsArray;
 import elemental2.dom.Event;
 import elemental2.dom.EventListener;
@@ -253,6 +252,15 @@ public class WebglGeometryShapes extends Attachable {
         setupWebGLRenderer(renderer);
     }
 
+    @Override
+    public void detach() {
+        super.detach();
+        document.removeEventListener("mousedown", onDocumentMouseDown);
+        document.removeEventListener("touchstart", onDocumentTouchStart);
+        document.removeEventListener("touchmove", onDocumentTouchMove);
+
+    }
+
     public void roundedRect(Shape ctx, float x, float y, float width, float height, float radius) {
         ctx.moveTo(x, y + radius);
         ctx.lineTo(x, y + height - radius);
@@ -266,8 +274,6 @@ public class WebglGeometryShapes extends Attachable {
     }
 
     public void onDocumentMouseDown(MouseEvent event) {
-        GWT.log("onDocumentMouseDown");
-
         //event.preventDefault();
         document.addEventListener("mousemove", onDocumentMouseMove, false);
         document.addEventListener("mouseup", onDocumentMouseUp, false);

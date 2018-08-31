@@ -41,7 +41,7 @@ public class WebglLod extends Attachable {
 
         loadJavaScript(JavascriptTextResource.IMPL.getFlyControls().getText());
 
-        camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 15000);
+        camera = new PerspectiveCamera(45, aspect, 1, 15000);
         camera.position.z = 1000;
 
         flyControls = new FlyControls(camera);

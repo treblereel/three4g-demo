@@ -3,7 +3,6 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.Float32Array;
 import elemental2.dom.HTMLScriptElement;
-import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
@@ -150,7 +149,7 @@ public class WebglMaterialsWireframe extends Attachable {
         BufferAttribute position = geometry.attributes.position;
         Float32Array centers = new Float32Array(position.count * 3);
         for (int i = 0, l = position.count; i < l; i++) {
-            vectors[i % 3].toArray(Js.uncheckedCast(centers), i * 3);
+            vectors[i % 3].toArray(centers, i * 3);
         }
         geometry.addAttribute("center", new BufferAttribute(centers, 3));
     }

@@ -77,7 +77,7 @@ public class WebglHdr extends Attachable {
         vs_hdrElm.textContent = vs_hdr;
         root.appendChild(vs_hdrElm);
 
-        camera = new PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
+        camera = new PerspectiveCamera(50, aspect, 1, 10000);
         camera.position.z = 900;
         scene = new Scene();
 

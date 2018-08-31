@@ -138,7 +138,7 @@ public abstract class Attachable extends GwtEvent<Attachable.EventHandler> {
 
     public void setupWebGLRenderer(WebGLRenderer webGLRenderer) {
         webGLRenderer.domElement.id = "viewer";
-        renderer.setPixelRatio(devicePixelRatio);
+        webGLRenderer.setPixelRatio(devicePixelRatio);
         webGLRenderer.setSize(getWidth(), getHeight());
     }
 

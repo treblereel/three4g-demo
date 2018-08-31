@@ -36,7 +36,7 @@ public class WebglMaterialsTextureCanvas extends Attachable {
     private MeshBasicMaterial material;
 
     public WebglMaterialsTextureCanvas() {
-        camera = new PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 2000);
+        camera = new PerspectiveCamera(50, aspect, 1, 2000);
         camera.position.z = 500;
         scene = new Scene();
         material = new MeshBasicMaterial();

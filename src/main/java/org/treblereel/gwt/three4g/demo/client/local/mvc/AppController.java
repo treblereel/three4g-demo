@@ -7,6 +7,28 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.History;
 import elemental2.dom.HTMLDivElement;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometry;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryConstructedFromGeometry;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryCustomAttributesParticles;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryDrawcalls;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryIndexed;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancing;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancing2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancingBillboards;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancingDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancingInterleavedDynamic;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryInstancingLambert;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryLines;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryLinesIndexed;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryPoints;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryPointsInterleaved;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryRawshader;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglBuffergeometryUint;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributes;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesLines;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints2;
+import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints3;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.CanvasCameraOrthographic;
@@ -92,8 +114,14 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMater
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsVariationsToon;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsWireframe;
 import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscAnimationGroups;
+import org.treblereel.gwt.three4g.demo.client.local.examples.misc.MiscControlsOrbit;
+import org.treblereel.gwt.three4g.demo.client.local.examples.misc.WebglNearestneighbour;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierSimplifier;
 import org.treblereel.gwt.three4g.demo.client.local.examples.modifiers.WebglModifierTessellation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphNormals;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphTargets;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsHorse;
+import org.treblereel.gwt.three4g.demo.client.local.examples.morph.WebglMorphtargetsSphere;
 import org.treblereel.gwt.three4g.demo.client.local.examples.performance.WebglPerformance;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.DayDream;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.Rollercoaster;
@@ -105,12 +133,15 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRCubes;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRPanorama;
 import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
+import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebaudioTiming;
+import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebaudioVisualizer;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.CanvasCameraOrthographicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Css2dLabelPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Css3dOrthographicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MiscAnimationGroupsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MiscControlsOrbitPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Presenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.RollercoasterPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.ViveDraggingPresenter;
@@ -123,10 +154,34 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebGlCameraPre
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRCubesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRPanoramaPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebVRSandboxPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebaudioTimingPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebaudioVisualizerPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglAnimationScenePresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryConstructedFromGeometryPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryCustomAttributesParticlesPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryDrawcallsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryIndexedPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryInstancing2Presenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryInstancingBillboardsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryInstancingDynamicPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryInstancingInterleavedDynamicPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryInstancingLambertPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryInstancingPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryLinesIndexedPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryLinesPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryPointsInterleavedPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryPointsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryRawshaderPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglBuffergeometryUintPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCameraArrayPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingIntersectionPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglClippingPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCustomAttributesLinesPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCustomAttributesPoints2Presenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCustomAttributesPoints3Presenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCustomAttributesPointsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglCustomAttributesPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglDecalsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglFramebufferTexturePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglGeometriesParametricPresenter;
@@ -204,6 +259,11 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterials
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMaterialsWireframePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglModifierSimplifierPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglModifierTessellationPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphNormalsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphTargetsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphtargetsHorsePresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglMorphtargetsSpherePresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglNearestneighbourPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglPerformancePresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.view.MainView;
 
@@ -312,6 +372,36 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglMaterialsWireframePresenter webglMaterialsWireframePresenter = GWT.create(WebglMaterialsWireframePresenter.class);
     private WebglModifierSimplifierPresenter webglModifierSimplifierPresenter = GWT.create(WebglModifierSimplifierPresenter.class);
     private WebglModifierTessellationPresenter webglModifierTessellationPresenter = GWT.create(WebglModifierTessellationPresenter.class);
+    private WebglMorphNormalsPresenter webglMorphNormalsPresenter = GWT.create(WebglMorphNormalsPresenter.class);
+    private WebglMorphTargetsPresenter webglMorphTargetsPresenter = GWT.create(WebglMorphTargetsPresenter.class);
+    private WebglMorphtargetsHorsePresenter webglMorphtargetsHorsePresenter = GWT.create(WebglMorphtargetsHorsePresenter.class);
+    private WebglMorphtargetsSpherePresenter webglMorphtargetsSpherePresenter = GWT.create(WebglMorphtargetsSpherePresenter.class);
+    private WebglNearestneighbourPresenter webglNearestneighbourPresenter = GWT.create(WebglNearestneighbourPresenter.class);
+    private WebglBuffergeometryPresenter webglBuffergeometryPresenter = GWT.create(WebglBuffergeometryPresenter.class);
+    private WebglBuffergeometryConstructedFromGeometryPresenter webglBuffergeometryConstructedFromGeometryPresenter = GWT.create(WebglBuffergeometryConstructedFromGeometryPresenter.class);
+    private WebglBuffergeometryCustomAttributesParticlesPresenter webglBuffergeometryCustomAttributesParticlesPresenter = GWT.create(WebglBuffergeometryCustomAttributesParticlesPresenter.class);
+    private WebglBuffergeometryDrawcallsPresenter webglBuffergeometryDrawcallsPresenter = GWT.create(WebglBuffergeometryDrawcallsPresenter.class);
+    private WebglBuffergeometryIndexedPresenter webglBuffergeometryIndexedPresenter = GWT.create(WebglBuffergeometryIndexedPresenter.class);
+    private WebglBuffergeometryInstancingPresenter webglBuffergeometryInstancingPresenter = GWT.create(WebglBuffergeometryInstancingPresenter.class);
+    private WebglBuffergeometryInstancing2Presenter webglBuffergeometryInstancing2Presenter = GWT.create(WebglBuffergeometryInstancing2Presenter.class);
+    private WebglBuffergeometryInstancingBillboardsPresenter webglBuffergeometryInstancingBillboardsPresenter = GWT.create(WebglBuffergeometryInstancingBillboardsPresenter.class);
+    private WebglBuffergeometryInstancingDynamicPresenter webglBuffergeometryInstancingDynamicPresenter = GWT.create(WebglBuffergeometryInstancingDynamicPresenter.class);
+    private WebglBuffergeometryInstancingInterleavedDynamicPresenter webglBuffergeometryInstancingInterleavedDynamicPresenter = GWT.create(WebglBuffergeometryInstancingInterleavedDynamicPresenter.class);
+    private WebglBuffergeometryInstancingLambertPresenter webglBuffergeometryInstancingLambertPresenter = GWT.create(WebglBuffergeometryInstancingLambertPresenter.class);
+    private WebglBuffergeometryLinesPresenter webglBuffergeometryLinesPresenter = GWT.create(WebglBuffergeometryLinesPresenter.class);
+    private WebglBuffergeometryLinesIndexedPresenter webglBuffergeometryLinesIndexedPresenter = GWT.create(WebglBuffergeometryLinesIndexedPresenter.class);
+    private WebglBuffergeometryPointsPresenter webglBuffergeometryPointsPresenter = GWT.create(WebglBuffergeometryPointsPresenter.class);
+    private WebglBuffergeometryPointsInterleavedPresenter webglBuffergeometryPointsInterleavedPresenter = GWT.create(WebglBuffergeometryPointsInterleavedPresenter.class);
+    private WebglBuffergeometryRawshaderPresenter webglBuffergeometryRawshaderPresenter = GWT.create(WebglBuffergeometryRawshaderPresenter.class);
+    private WebglBuffergeometryUintPresenter webglBuffergeometryUintPresenter = GWT.create(WebglBuffergeometryUintPresenter.class);
+    private WebglCustomAttributesPresenter webglCustomAttributesPresenter = GWT.create(WebglCustomAttributesPresenter.class);
+    private WebglCustomAttributesLinesPresenter webglCustomAttributesLinesPresenter = GWT.create(WebglCustomAttributesLinesPresenter.class);
+    private WebglCustomAttributesPointsPresenter webglCustomAttributesPointsPresenter = GWT.create(WebglCustomAttributesPointsPresenter.class);
+    private WebglCustomAttributesPoints2Presenter webglCustomAttributesPoints2Presenter = GWT.create(WebglCustomAttributesPoints2Presenter.class);
+    private WebglCustomAttributesPoints3Presenter webglCustomAttributesPoints3Presenter = GWT.create(WebglCustomAttributesPoints3Presenter.class);
+    private WebaudioTimingPresenter webaudioTimingPresenter = GWT.create(WebaudioTimingPresenter.class);
+    private WebaudioVisualizerPresenter webaudioVisualizerPresenter = GWT.create(WebaudioVisualizerPresenter.class);
+    private MiscControlsOrbitPresenter miscControlsOrbitPresenter = GWT.create(MiscControlsOrbitPresenter.class);
 
     private HTMLDivElement container;
 
@@ -421,6 +511,35 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglMaterialsWireframe.TYPE, event -> History.newItem(WebglMaterialsWireframe.class.getSimpleName()));
         eventBus.addHandler(WebglModifierSimplifier.TYPE, event -> History.newItem(WebglModifierSimplifier.class.getSimpleName()));
         eventBus.addHandler(WebglModifierTessellation.TYPE, event -> History.newItem(WebglModifierTessellation.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphNormals.TYPE, event -> History.newItem(WebglMorphNormals.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphTargets.TYPE, event -> History.newItem(WebglMorphTargets.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphtargetsHorse.TYPE, event -> History.newItem(WebglMorphtargetsHorse.class.getSimpleName()));
+        eventBus.addHandler(WebglMorphtargetsSphere.TYPE, event -> History.newItem(WebglMorphtargetsSphere.class.getSimpleName()));
+        eventBus.addHandler(WebglNearestneighbour.TYPE, event -> History.newItem(WebglNearestneighbour.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometry.TYPE, event -> History.newItem(WebglBuffergeometry.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryConstructedFromGeometry.TYPE, event -> History.newItem(WebglBuffergeometryConstructedFromGeometry.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryCustomAttributesParticles.TYPE, event -> History.newItem(WebglBuffergeometryCustomAttributesParticles.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryDrawcalls.TYPE, event -> History.newItem(WebglBuffergeometryDrawcalls.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryIndexed.TYPE, event -> History.newItem(WebglBuffergeometryIndexed.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryInstancing.TYPE, event -> History.newItem(WebglBuffergeometryInstancing.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryInstancing2.TYPE, event -> History.newItem(WebglBuffergeometryInstancing2.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryInstancingBillboards.TYPE, event -> History.newItem(WebglBuffergeometryInstancingBillboards.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryInstancingDynamic.TYPE, event -> History.newItem(WebglBuffergeometryInstancingDynamic.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryInstancingInterleavedDynamic.TYPE, event -> History.newItem(WebglBuffergeometryInstancingInterleavedDynamic.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryInstancingLambert.TYPE, event -> History.newItem(WebglBuffergeometryInstancingLambert.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryLines.TYPE, event -> History.newItem(WebglBuffergeometryLines.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryLinesIndexed.TYPE, event -> History.newItem(WebglBuffergeometryLinesIndexed.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryPoints.TYPE, event -> History.newItem(WebglBuffergeometryPoints.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryPointsInterleaved.TYPE, event -> History.newItem(WebglBuffergeometryPointsInterleaved.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryRawshader.TYPE, event -> History.newItem(WebglBuffergeometryRawshader.class.getSimpleName()));
+        eventBus.addHandler(WebglBuffergeometryUint.TYPE, event -> History.newItem(WebglBuffergeometryUint.class.getSimpleName()));
+        eventBus.addHandler(WebglCustomAttributes.TYPE, event -> History.newItem(WebglCustomAttributes.class.getSimpleName()));
+        eventBus.addHandler(WebglCustomAttributesLines.TYPE, event -> History.newItem(WebglCustomAttributesLines.class.getSimpleName()));
+        eventBus.addHandler(WebglCustomAttributesPoints.TYPE, event -> History.newItem(WebglCustomAttributesPoints.class.getSimpleName()));
+        eventBus.addHandler(WebglCustomAttributesPoints2.TYPE, event -> History.newItem(WebglCustomAttributesPoints2.class.getSimpleName()));
+        eventBus.addHandler(WebglCustomAttributesPoints3.TYPE, event -> History.newItem(WebglCustomAttributesPoints3.class.getSimpleName()));
+        eventBus.addHandler(WebaudioTiming.TYPE, event -> History.newItem(WebaudioTiming.class.getSimpleName()));
+        eventBus.addHandler(MiscControlsOrbit.TYPE, event -> History.newItem(MiscControlsOrbit.class.getSimpleName()));
 
 
     }
@@ -640,8 +759,68 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglMaterialsWireframePresenter.dispatch(container);
             } else if (token.equals(WebglModifierSimplifier.class.getSimpleName())) {
                 webglModifierSimplifierPresenter.dispatch(container);
-            }else if (token.equals(WebglModifierTessellation.class.getSimpleName())) {
+            } else if (token.equals(WebglModifierTessellation.class.getSimpleName())) {
                 webglModifierTessellationPresenter.dispatch(container);
+            } else if (token.equals(WebglMorphNormals.class.getSimpleName())) {
+                webglMorphNormalsPresenter.dispatch(container);
+            } else if (token.equals(WebglMorphTargets.class.getSimpleName())) {
+                webglMorphTargetsPresenter.dispatch(container);
+            } else if (token.equals(WebglMorphtargetsHorse.class.getSimpleName())) {
+                webglMorphtargetsHorsePresenter.dispatch(container);
+            } else if (token.equals(WebglMorphtargetsSphere.class.getSimpleName())) {
+                webglMorphtargetsSpherePresenter.dispatch(container);
+            } else if (token.equals(WebglNearestneighbour.class.getSimpleName())) {
+                webglNearestneighbourPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometry.class.getSimpleName())) {
+                webglBuffergeometryPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryConstructedFromGeometry.class.getSimpleName())) {
+                webglBuffergeometryConstructedFromGeometryPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryCustomAttributesParticles.class.getSimpleName())) {
+                webglBuffergeometryCustomAttributesParticlesPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryDrawcalls.class.getSimpleName())) {
+                webglBuffergeometryDrawcallsPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryIndexed.class.getSimpleName())) {
+                webglBuffergeometryIndexedPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryInstancing.class.getSimpleName())) {
+                webglBuffergeometryInstancingPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryInstancing2.class.getSimpleName())) {
+                webglBuffergeometryInstancing2Presenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryInstancingBillboards.class.getSimpleName())) {
+                webglBuffergeometryInstancingBillboardsPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryInstancingDynamic.class.getSimpleName())) {
+                webglBuffergeometryInstancingDynamicPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryInstancingInterleavedDynamic.class.getSimpleName())) {
+                webglBuffergeometryInstancingInterleavedDynamicPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryInstancingLambert.class.getSimpleName())) {
+                webglBuffergeometryInstancingLambertPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryLines.class.getSimpleName())) {
+                webglBuffergeometryLinesPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryLinesIndexed.class.getSimpleName())) {
+                webglBuffergeometryLinesIndexedPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryPoints.class.getSimpleName())) {
+                webglBuffergeometryPointsPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryPointsInterleaved.class.getSimpleName())) {
+                webglBuffergeometryPointsInterleavedPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryRawshader.class.getSimpleName())) {
+                webglBuffergeometryRawshaderPresenter.dispatch(container);
+            } else if (token.equals(WebglBuffergeometryUint.class.getSimpleName())) {
+                webglBuffergeometryUintPresenter.dispatch(container);
+            } else if (token.equals(WebglCustomAttributes.class.getSimpleName())) {
+                webglCustomAttributesPresenter.dispatch(container);
+            } else if (token.equals(WebglCustomAttributesLines.class.getSimpleName())) {
+                webglCustomAttributesLinesPresenter.dispatch(container);
+            } else if (token.equals(WebglCustomAttributesPoints.class.getSimpleName())) {
+                webglCustomAttributesPointsPresenter.dispatch(container);
+            } else if (token.equals(WebglCustomAttributesPoints2.class.getSimpleName())) {
+                webglCustomAttributesPoints2Presenter.dispatch(container);
+            } else if (token.equals(WebglCustomAttributesPoints3.class.getSimpleName())) {
+                webglCustomAttributesPoints3Presenter.dispatch(container);
+            } else if (token.equals(WebaudioTiming.class.getSimpleName())) {
+                webaudioTimingPresenter.dispatch(container);
+            } else if (token.equals(WebaudioVisualizer.class.getSimpleName())) {
+                webaudioVisualizerPresenter.dispatch(container);
+            } else if (token.equals(MiscControlsOrbit.class.getSimpleName())) {
+                miscControlsOrbitPresenter.dispatch(container);
             }
         }
     }
