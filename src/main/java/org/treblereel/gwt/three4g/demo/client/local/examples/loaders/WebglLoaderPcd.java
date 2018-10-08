@@ -3,15 +3,15 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.Event;
 import elemental2.dom.KeyboardEvent;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Object3D;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.loaders.PCDLoader;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
+import org.treblereel.gwt.three4g.extensions.loaders.PCDLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
 import org.treblereel.gwt.three4g.materials.PointsMaterial;
 import org.treblereel.gwt.three4g.math.Color;
@@ -28,13 +28,12 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/10/18.
  */
+@InjectJavaScriptFor(elements = {TrackballControls.class, PCDLoader.class})
 public class WebglLoaderPcd extends Attachable {
 
     public static final String name = "loader / pcd";
 
     public WebglLoaderPcd() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         scene = new Scene();
         scene.background = new Color(0x000000);

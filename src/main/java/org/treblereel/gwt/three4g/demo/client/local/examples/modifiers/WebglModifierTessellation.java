@@ -3,15 +3,15 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.modifiers;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.Float32Array;
 import elemental2.dom.HTMLScriptElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.modifers.TessellateModifier;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
+import org.treblereel.gwt.three4g.extensions.modifers.TessellateModifier;
 import org.treblereel.gwt.three4g.extras.core.Font;
 import org.treblereel.gwt.three4g.geometries.TextGeometry;
 import org.treblereel.gwt.three4g.geometries.parameters.TextGeometryParameters;
@@ -34,6 +34,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/8/18.
  */
+@InjectJavaScriptFor(elements = {TrackballControls.class, TessellateModifier.class})
 public class WebglModifierTessellation extends Attachable {
 
     public static final String name = "modifier / tessellation";
@@ -65,8 +66,6 @@ public class WebglModifierTessellation extends Attachable {
             "\t\t\t\tgl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );}";
 
     public WebglModifierTessellation() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         fragmentShaderElm = (HTMLScriptElement) document.createElement("script");
         fragmentShaderElm.type = "x-shader/x-fragment";

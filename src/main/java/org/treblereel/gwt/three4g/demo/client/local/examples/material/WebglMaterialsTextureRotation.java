@@ -2,13 +2,14 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.events.Event;
 import org.treblereel.gwt.three4g.core.events.EventListener;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
@@ -23,6 +24,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/7/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglMaterialsTextureRotation extends Attachable {
 
     public static final String name = "materials / texture / rotation";

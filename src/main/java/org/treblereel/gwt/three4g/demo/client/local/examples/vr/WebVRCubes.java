@@ -3,6 +3,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -10,7 +11,7 @@ import org.treblereel.gwt.three4g.core.Raycaster;
 import org.treblereel.gwt.three4g.core.extra.Intersect;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.RingBufferGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -33,6 +34,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/14/18.
  */
+@InjectJavaScriptFor(elements = WebVR.class)
 public class WebVRCubes extends Attachable {
 
     public static final String name = "cubes";

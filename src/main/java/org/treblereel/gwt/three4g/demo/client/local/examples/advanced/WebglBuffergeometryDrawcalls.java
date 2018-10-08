@@ -5,6 +5,7 @@ import elemental2.core.Float32Array;
 import elemental2.core.JsArray;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
@@ -13,7 +14,7 @@ import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.Pair;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.helpers.BoxHelper;
 import org.treblereel.gwt.three4g.materials.LineBasicMaterial;
@@ -37,6 +38,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/21/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglBuffergeometryDrawcalls extends Attachable {
 
     public static final String name = "buffergeometry / drawcalls";

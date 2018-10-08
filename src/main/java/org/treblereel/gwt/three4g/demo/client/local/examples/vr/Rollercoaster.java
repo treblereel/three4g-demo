@@ -6,6 +6,7 @@ import elemental2.dom.HTMLDivElement;
 import jsinterop.annotations.JsFunction;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -17,7 +18,7 @@ import org.treblereel.gwt.three4g.demo.client.api.TreesGeometry;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
 import org.treblereel.gwt.three4g.geometries.CylinderBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
@@ -38,6 +39,7 @@ import java.util.List;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/3/18.
  */
+@InjectJavaScriptFor(elements = {WebVR.class})
 public class Rollercoaster extends Attachable {
 
     public static final String name = "rollercoaster";
@@ -71,7 +73,7 @@ public class Rollercoaster extends Attachable {
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.vr.enabled = true;
 
-        renderer.vr.userHeight = 0; // TOFIX
+        //renderer.vr.userHeight = 0; // TOFIX
 
         container.appendChild(renderer.domElement);
         container.appendChild(WebVR.createButton(renderer));

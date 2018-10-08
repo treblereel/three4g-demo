@@ -1,10 +1,10 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import elemental2.dom.DomGlobal;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -17,8 +17,8 @@ import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.IcosahedronBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
@@ -43,6 +43,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov
  * Created by treblereel on 6/5/18.
  */
+@InjectJavaScriptFor(elements = {WebVR.class, OBJLoader.class})
 public class VivePaint extends Attachable {
 
     public static final String name = "vive / paint";

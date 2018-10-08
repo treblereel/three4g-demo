@@ -1,13 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.morph;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.GLTFLoader;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.loaders.GLTFLoader;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
@@ -24,6 +25,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/9/18.
  */
+@InjectJavaScriptFor(elements = GLTFLoader.class)
 public class WebglMorphtargetsSphere extends Attachable {
 
     public static final String name = "morphtargets / sphere";

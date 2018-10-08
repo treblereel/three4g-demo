@@ -1,19 +1,17 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
-import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader2;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader2;
 import org.treblereel.gwt.three4g.helpers.GridHelper;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -30,6 +28,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov
  * Created by treblereel on 6/10/18.
  */
+@InjectJavaScriptFor(elements = {TrackballControls.class, OBJLoader2.class})
 public class WebglLoaderObj2 extends Attachable {
 
     public static final String name = "loader / obj2";
@@ -38,8 +37,6 @@ public class WebglLoaderObj2 extends Attachable {
     private Vector3 cameraTarget = new Vector3(0, 0, 0);
 
     public WebglLoaderObj2() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         initGL();
         initContent();

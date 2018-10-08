@@ -12,10 +12,6 @@ public interface JavascriptTextResource extends ClientBundle {
 
     JavascriptTextResource IMPL = GWT.create(JavascriptTextResource.class);
 
-
-    @Source("js/FirstPersonControls.js")
-    TextResource getFirstPersonControls();
-
     @Source("js/CurveExtras.js")
     TextResource getCurveExtras();
 
@@ -40,14 +36,8 @@ public interface JavascriptTextResource extends ClientBundle {
     @Source("js/MarchingCubes.js")
     TextResource getMarchingCubes();
 
-    @Source("js/TrackballControls.js")
-    TextResource getTrackballControls();
-
     @Source("js/Tween.js")
     TextResource getTWEEN();
-
-    @Source("js/FlyControls.js")
-    TextResource getFlyControls();
 
     @Source("js/ShaderSkin.js")
     TextResource getShaderSkin();

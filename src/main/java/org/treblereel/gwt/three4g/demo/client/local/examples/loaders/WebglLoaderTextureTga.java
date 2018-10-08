@@ -1,13 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.TGALoader;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.loaders.TGALoader;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -24,6 +25,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/12/18.
  */
+@InjectJavaScriptFor(elements = {TGALoader.class, OrbitControls.class})
 public class WebglLoaderTextureTga extends Attachable {
 
     public static final String name = "loader / texture / tga";

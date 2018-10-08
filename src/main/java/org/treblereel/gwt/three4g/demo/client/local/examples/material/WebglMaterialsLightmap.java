@@ -1,9 +1,9 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import elemental2.dom.HTMLScriptElement;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Geometry;
@@ -11,7 +11,7 @@ import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.loaders.JSONLoader;
@@ -26,7 +26,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-import org.treblereel.gwt.three4g.utils.JSON;
 
 import static elemental2.dom.DomGlobal.document;
 
@@ -34,6 +33,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/1/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglMaterialsLightmap extends Attachable {
 
     public static final String name = "materials / lightmap";

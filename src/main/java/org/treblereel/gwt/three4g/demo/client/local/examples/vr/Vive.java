@@ -1,15 +1,16 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
-import org.treblereel.gwt.three4g.examples.vr.vive.ViveController;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.vr.vive.ViveController;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
@@ -34,6 +35,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/4/18.
  */
+@InjectJavaScriptFor(elements = {ViveController.class, OBJLoader.class})
 public class Vive extends Attachable {
 
     public static final String name = "vive";

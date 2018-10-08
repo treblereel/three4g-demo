@@ -1,7 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.api;
 
 import jsinterop.annotations.JsType;
-import org.treblereel.gwt.three4g.examples.vr.vive.ViveController;
+import org.treblereel.gwt.three4g.extensions.vr.vive.ViveController;
 import org.treblereel.gwt.three4g.math.Color;
 
 /**

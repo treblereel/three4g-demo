@@ -4,14 +4,15 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.CSSProperties;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.renderers.CSS3DObject;
-import org.treblereel.gwt.three4g.examples.renderers.CSS3DRenderer;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.renderers.CSS3DObject;
+import org.treblereel.gwt.three4g.extensions.renderers.CSS3DRenderer;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
@@ -26,6 +27,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/11/18.
  */
+@InjectJavaScriptFor(elements = {OrbitControls.class, CSS3DRenderer.class})
 public class Css3dOrthographic extends Attachable {
 
     public static final String name = "orthographic";

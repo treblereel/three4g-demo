@@ -1,6 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.animation.AnimationAction;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
@@ -11,8 +12,8 @@ import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.ColladaLoader;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.loaders.ColladaLoader;
 import org.treblereel.gwt.three4g.helpers.GridHelper;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -25,6 +26,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/9/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglLoaderColladaSkinning extends Attachable {
 
     public static final String name = "loader / collada / skinning";

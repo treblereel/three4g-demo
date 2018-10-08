@@ -5,7 +5,6 @@
     <inherits name="com.google.gwt.logging.Logging"/>
 
     <inherits name="org.treblereel.gwt.Three4G"/>
-    <inherits name="org.treblereel.gwt.three4g.Examples"/>
     <inherits name="org.treblereel.gwt.DATGUI4G"/>
 
 

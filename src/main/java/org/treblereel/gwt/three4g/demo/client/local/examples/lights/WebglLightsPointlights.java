@@ -1,13 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.lights;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
@@ -25,6 +26,7 @@ import java.util.Date;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/30/18.
  */
+@InjectJavaScriptFor(elements = OBJLoader.class)
 public class WebglLightsPointlights extends Attachable {
 
     public static final String name = "lights / pointlights";

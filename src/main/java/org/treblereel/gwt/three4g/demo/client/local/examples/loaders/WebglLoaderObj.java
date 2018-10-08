@@ -4,6 +4,7 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.GWT;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -11,7 +12,7 @@ import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.OnErrorCallback;
@@ -32,6 +33,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/10/18.
  */
+@InjectJavaScriptFor(elements = OBJLoader.class)
 public class WebglLoaderObj extends Attachable {
 
     public static final String name = "loader / obj";

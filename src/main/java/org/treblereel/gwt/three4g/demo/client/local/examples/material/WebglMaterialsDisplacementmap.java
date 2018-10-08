@@ -3,6 +3,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
@@ -10,8 +11,8 @@ import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.CubeTextureLoader;
@@ -30,6 +31,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/31/18.
  */
+@InjectJavaScriptFor(elements = {OrbitControls.class, OBJLoader.class})
 public class WebglMaterialsDisplacementmap extends Attachable {
 
     public static final String name = "materials / displacementmap";

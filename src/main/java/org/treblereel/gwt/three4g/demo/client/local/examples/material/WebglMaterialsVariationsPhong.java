@@ -1,12 +1,13 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.extras.core.Font;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.TextBufferGeometry;
@@ -36,6 +37,7 @@ import java.util.Date;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/7/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglMaterialsVariationsPhong extends Attachable {
 
     public static final String name = "materials / variations / phong";

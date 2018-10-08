@@ -3,6 +3,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.datgui4g.OnChange;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.events.Event;
@@ -10,7 +11,7 @@ import org.treblereel.gwt.three4g.core.events.EventListener;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.loaders.CubeTextureLoader;
@@ -31,6 +32,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/12/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglGeometryTeapot extends Attachable {
 
 

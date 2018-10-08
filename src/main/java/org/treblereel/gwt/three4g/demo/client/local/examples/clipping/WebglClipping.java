@@ -3,13 +3,14 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.clipping;
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.TorusKnotBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
@@ -29,6 +30,7 @@ import java.util.Date;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/20/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglClipping extends Attachable {
 
     public static final String name = "clipping";

@@ -4,14 +4,14 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.Uint8Array;
 import elemental2.dom.CSSProperties;
 import elemental2.dom.HTMLDivElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
-import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.TorusKnotBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
@@ -32,6 +32,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/28/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglFramebufferTexture extends Attachable {
 
     public static final String name = "framebuffer / texture";

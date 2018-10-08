@@ -1,15 +1,15 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.loaders.TDSLoader;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
+import org.treblereel.gwt.three4g.extensions.loaders.TDSLoader;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
@@ -24,14 +24,12 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/8/18.
  */
+@InjectJavaScriptFor(elements = {TrackballControls.class, TDSLoader.class})
 public class WebglLoader3ds extends Attachable {
 
     public static final String name = "loader / 3ds";
 
     public WebglLoader3ds() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
-
 
         camera = new PerspectiveCamera(60, aspect, 0.1f, 10);
         camera.position.z = 2;

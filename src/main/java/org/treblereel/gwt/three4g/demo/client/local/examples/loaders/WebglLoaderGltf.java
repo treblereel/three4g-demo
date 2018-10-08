@@ -1,6 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -8,8 +9,8 @@ import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.GLTFLoader;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.loaders.GLTFLoader;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
 import org.treblereel.gwt.three4g.loaders.CubeTextureLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
@@ -24,6 +25,7 @@ import org.treblereel.gwt.three4g.textures.CubeTexture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/10/18.
  */
+@InjectJavaScriptFor(elements = GLTFLoader.class)
 public class WebglLoaderGltf extends Attachable {
 
     public static final String name = "loader / gltf";

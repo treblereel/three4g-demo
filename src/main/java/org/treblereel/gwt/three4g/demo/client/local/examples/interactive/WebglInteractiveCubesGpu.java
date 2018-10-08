@@ -6,18 +6,18 @@ import elemental2.core.Uint8Array;
 import elemental2.dom.MouseEvent;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.bufferattributes.Float32BufferAttribute;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.utils.BufferGeometryUtils;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
+import org.treblereel.gwt.three4g.extensions.utils.BufferGeometryUtils;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.SpotLight;
@@ -46,6 +46,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/13/18.
  */
+@InjectJavaScriptFor(elements = {TrackballControls.class, BufferGeometryUtils.class})
 public class WebglInteractiveCubesGpu extends Attachable {
 
     public static final String name = "interactive / cubes / gpu";
@@ -61,8 +62,6 @@ public class WebglInteractiveCubesGpu extends Attachable {
     private Vector3 offset = new Vector3(10, 10, 10);
 
     public WebglInteractiveCubesGpu() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         camera = new PerspectiveCamera(70, aspect, 1, 5000);
         camera.position.z = 1000;
@@ -209,7 +208,7 @@ public class WebglInteractiveCubesGpu extends Attachable {
         //create buffer for reading single pixel
         Uint8Array pixelBuffer = new Uint8Array(4);
         //read the pixel under the mouse from the texture
-        renderer.readRenderTargetPixels(pickingTexture, mouse.x, (float)pickingTexture.height - mouse.y, 1, 1, pixelBuffer);
+        renderer.readRenderTargetPixels(pickingTexture, mouse.x, (float) pickingTexture.height - mouse.y, 1, 1, pixelBuffer);
         //interpret the pixel as an ID
         int id = (pixelBuffer.getAt(0).intValue() << 16) | (pixelBuffer.getAt(1).intValue() << 8) | (pixelBuffer.getAt(2).intValue());
         JsPropertyMap<Object3D> data = pickingData.getAt(id);

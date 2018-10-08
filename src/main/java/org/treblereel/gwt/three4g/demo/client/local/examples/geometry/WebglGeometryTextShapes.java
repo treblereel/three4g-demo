@@ -3,6 +3,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.JsArray;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
@@ -10,7 +11,7 @@ import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.extras.core.Font;
 import org.treblereel.gwt.three4g.extras.core.Path;
 import org.treblereel.gwt.three4g.extras.core.Shape;
@@ -37,6 +38,7 @@ import java.util.List;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/27/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglGeometryTextShapes extends Attachable {
 
     public static final String name = "geometry / text / shapes";

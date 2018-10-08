@@ -1,15 +1,15 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.lod;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
-import org.treblereel.gwt.three4g.demo.client.api.FlyControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.extensions.controls.FlyControls;
 import org.treblereel.gwt.three4g.geometries.IcosahedronBufferGeometry;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.materials.MeshLambertMaterial;
@@ -29,6 +29,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/25/18.
  */
+@InjectJavaScriptFor(elements = FlyControls.class)
 public class WebglLod extends Attachable {
 
     public static final String name = "lod";
@@ -37,9 +38,6 @@ public class WebglLod extends Attachable {
     private Clock clock = new Clock();
 
     public WebglLod() {
-
-
-        loadJavaScript(JavascriptTextResource.IMPL.getFlyControls().getText());
 
         camera = new PerspectiveCamera(45, aspect, 1, 15000);
         camera.position.z = 1000;

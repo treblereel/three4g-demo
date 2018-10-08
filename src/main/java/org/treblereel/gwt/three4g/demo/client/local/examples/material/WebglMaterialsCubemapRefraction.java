@@ -3,13 +3,14 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.MouseEvent;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.loaders.PLYLoader;
+import org.treblereel.gwt.three4g.extensions.loaders.PLYLoader;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
@@ -30,6 +31,7 @@ import java.util.Date;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/31/18.
  */
+@InjectJavaScriptFor(elements = PLYLoader.class)
 public class WebglMaterialsCubemapRefraction extends Attachable {
 
     public static final String name = "materials / cubemap / refraction";
@@ -97,8 +99,8 @@ public class WebglMaterialsCubemapRefraction extends Attachable {
     }
 
     private void onDocumentMouseMove(MouseEvent event) {
-        mouse.x = (float) (event.clientX - (window.innerWidth/2) * 4);
-        mouse.y = (float) (event.clientY - (window.innerHeight/2) * 4);
+        mouse.x = (float) (event.clientX - (window.innerWidth / 2) * 4);
+        mouse.y = (float) (event.clientY - (window.innerHeight / 2) * 4);
     }
 
     private void createScene(BufferGeometry geometry, MeshPhongMaterial cubeMaterial1, MeshPhongMaterial cubeMaterial2, MeshPhongMaterial cubeMaterial3) {

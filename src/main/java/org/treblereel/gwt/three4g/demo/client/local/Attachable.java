@@ -9,14 +9,15 @@ import elemental2.dom.HTMLIFrameElement;
 import elemental2.dom.Window;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.demo.client.api.FirstPersonControls;
-import org.treblereel.gwt.three4g.demo.client.api.FlyControls;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.utils.WebGLRendererProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.FirstPersonControls;
+import org.treblereel.gwt.three4g.extensions.controls.FlyControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
+
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

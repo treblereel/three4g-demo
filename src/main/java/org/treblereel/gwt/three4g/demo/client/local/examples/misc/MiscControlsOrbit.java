@@ -1,11 +1,12 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.misc;
 
 import elemental2.dom.DomGlobal;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.CylinderBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -23,6 +24,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/23/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class MiscControlsOrbit extends Attachable {
 
     public static final String name = "controls / orbit";

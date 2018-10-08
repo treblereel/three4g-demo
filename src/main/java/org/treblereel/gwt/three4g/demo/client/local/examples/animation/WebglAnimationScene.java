@@ -1,6 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.animation;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -12,7 +13,7 @@ import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.loaders.ObjectLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
@@ -25,6 +26,7 @@ import org.treblereel.gwt.three4g.scenes.Fog;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 3/9/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglAnimationScene extends Attachable {
 
     public static final String name = "animation / scene";

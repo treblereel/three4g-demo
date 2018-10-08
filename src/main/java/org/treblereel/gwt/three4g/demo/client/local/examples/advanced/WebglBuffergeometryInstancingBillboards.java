@@ -107,7 +107,7 @@ public class WebglBuffergeometryInstancingBillboards extends Attachable {
             translateArray.setAt(i3 + 1, Math.random() * 2 - 1);
             translateArray.setAt(i3 + 2, Math.random() * 2 - 1);
         }
-        geometry.addAttribute("translate", new InstancedBufferAttribute(translateArray, 3, 1));
+        geometry.addAttribute("translate", new InstancedBufferAttribute(translateArray, 3, true));
 
         RawShaderMaterialParameters rawShaderMaterialParameters = new RawShaderMaterialParameters();
         Uniforms uniforms = new Uniforms();

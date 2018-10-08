@@ -1,17 +1,15 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.lensflares;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.demo.client.api.FlyControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
-import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.objects.Lensflare;
-import org.treblereel.gwt.three4g.examples.objects.LensflareElement;
+import org.treblereel.gwt.three4g.extensions.controls.FlyControls;
+import org.treblereel.gwt.three4g.extensions.objects.Lensflare;
+import org.treblereel.gwt.three4g.extensions.objects.LensflareElement;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
@@ -31,6 +29,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/14/18.
  */
+@InjectJavaScriptFor(elements = {FlyControls.class, Lensflare.class, LensflareElement.class})
 public class WebglLensflares extends Attachable {
 
     public static final String name = "lensflares";
@@ -41,8 +40,6 @@ public class WebglLensflares extends Attachable {
 
 
     public WebglLensflares() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getFlyControls().getText());
 
         camera = new PerspectiveCamera(40, aspect, 1, 15000);
         camera.position.z = 250;
@@ -55,7 +52,7 @@ public class WebglLensflares extends Attachable {
         // scene
         scene = new Scene();
         scene.background = new Color().setHSL(0.51f, 0.4f, 0.01f);
-        scene.fog = new Fog(((Color)scene.background).getHex(), 3500, 15000);
+        scene.fog = new Fog(((Color) scene.background).getHex(), 3500, 15000);
         // world
         float s = 250f;
         BoxBufferGeometry geometry = new BoxBufferGeometry(s, s, s);

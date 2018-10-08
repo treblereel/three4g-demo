@@ -5,16 +5,16 @@ import elemental2.core.Float32Array;
 import elemental2.core.JsArray;
 import elemental2.dom.HTMLScriptElement;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.InstancedBufferAttribute;
 import org.treblereel.gwt.three4g.core.InstancedBufferGeometry;
 import org.treblereel.gwt.three4g.core.bufferattributes.Float32BufferAttribute;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
 import org.treblereel.gwt.three4g.geometries.IcosahedronBufferGeometry;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.ShaderMaterial;
@@ -35,6 +35,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/21/18.
  */
+@InjectJavaScriptFor(elements = TrackballControls.class)
 public class WebglBuffergeometryInstancing2 extends Attachable {
 
     public static final String name = "buffergeometry / instancing 2";
@@ -68,9 +69,6 @@ public class WebglBuffergeometryInstancing2 extends Attachable {
             "\t\t}";
 
     public WebglBuffergeometryInstancing2() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
-
 
         fragmentShaderElm = (HTMLScriptElement) document.createElement("script");
         fragmentShaderElm.type = "x-shader/x-fragment";

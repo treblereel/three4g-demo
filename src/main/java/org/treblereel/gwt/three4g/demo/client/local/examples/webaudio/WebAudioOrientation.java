@@ -7,6 +7,7 @@ import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLParagraphElement;
 import elemental2.dom.HTMLSourceElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.audio.AudioListener;
 import org.treblereel.gwt.three4g.audio.PositionalAudio;
@@ -16,8 +17,8 @@ import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.GLTFLoader;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.loaders.GLTFLoader;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.helpers.GridHelper;
@@ -41,6 +42,7 @@ import org.treblereel.gwt.three4g.textures.CubeTexture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/10/18.
  */
+@InjectJavaScriptFor(elements = {GLTFLoader.class, OrbitControls.class})
 public class WebAudioOrientation extends Attachable {
 
     public static final String name = "webaudio / orientation";
