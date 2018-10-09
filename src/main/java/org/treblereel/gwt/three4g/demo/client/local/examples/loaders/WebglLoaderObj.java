@@ -6,8 +6,8 @@ import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
@@ -73,7 +73,7 @@ public class WebglLoaderObj extends Attachable {
 
         OnErrorCallback onError = new OnErrorCallback() {
             @Override
-            public void onError(JsObject err) {
+            public void onError(PropertyHolder err) {
                 GWT.log(" onError ");
             }
         };

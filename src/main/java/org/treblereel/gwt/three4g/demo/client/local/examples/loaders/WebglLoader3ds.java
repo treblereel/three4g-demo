@@ -43,7 +43,7 @@ public class WebglLoader3ds extends Attachable {
         TextureLoader textureLoader = new TextureLoader();
         Texture normal = textureLoader.load("models/3ds/portalgun/textures/normal.jpg");
         TDSLoader loader = new TDSLoader();
-        loader.setPath("models/3ds/portalgun/textures/");
+        loader.setResourcePath("models/3ds/portalgun/textures/");
         loader.load("models/3ds/portalgun/portalgun.3ds", new OnLoadCallback<Object3D>() {
             @Override
             public void onLoad(Object3D object) {

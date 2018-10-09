@@ -5,8 +5,8 @@ import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -81,20 +81,19 @@ public class WebglLoaderObj2 extends Attachable {
         String modelName = "female02";
 
         OBJLoader2 objLoader = new OBJLoader2();
-        OnLoadCallback callbackOnLoad = new OnLoadCallback<JsObject>() {
+        OnLoadCallback callbackOnLoad = new OnLoadCallback<PropertyHolder>() {
             @Override
-            public void onLoad(JsObject event) {
-                JsObject map = event.getProperty("detail");
+            public void onLoad(PropertyHolder event) {
+                PropertyHolder map = event.getProperty("detail");
                 Object3D loaderRootNode = map.getProperty("loaderRootNode");
                 scene.add(loaderRootNode);
             }
         };
 
-        OnLoadCallback onLoadMtl = new OnLoadCallback<JsObject>() {
+        OnLoadCallback onLoadMtl = new OnLoadCallback<Material[]>() {
 
             @Override
-            public void onLoad(JsObject object) {
-                Material[] materials = object.cast();
+            public void onLoad(Material[] materials) {
                 objLoader.setModelName(modelName);
                 objLoader.setMaterials(materials);
                 objLoader.setLogging(true, true);

@@ -6,7 +6,6 @@ import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
@@ -21,6 +20,7 @@ import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.scenes.Fog;
+import org.treblereel.gwt.three4g.scenes.Scene;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
@@ -40,48 +40,41 @@ public class WebglAnimationScene extends Attachable {
 
         setupWebGLRenderer(renderer);
         // Load a scene with objects, lights and camera from a JSON file
-        new ObjectLoader().load(URL, new OnLoadCallback<JsObject>() {
+        new ObjectLoader().load(URL, (OnLoadCallback<Scene>) s -> {
+            scene = s;
+            scene.background = new Color(0xffffff);
+            AnimationClip[] clips = scene.getProperty("animations");
 
-            @Override
-            public void onLoad(JsObject object) {
-                scene = object.cast();
-                scene.background = new Color(0xffffff);
-
-
-                AnimationClip[] clips = object.getProperty("animations");
-
-                // If the loaded file contains a perspective camera, use it with adjusted aspect ratio...
-                scene.traverse(new TraverseCallback() {
-                    @Override
-                    public void onEvent(Object3D object) {
-                        if (object instanceof PerspectiveCamera) {
-                            camera = (PerspectiveCamera) object;
-                            camera.aspect = aspect;
-                            camera.updateProjectionMatrix();
-                        }
+            scene.traverse(new TraverseCallback() {
+                @Override
+                public void onEvent(Object3D object) {
+                    if (object instanceof PerspectiveCamera) {
+                        camera = (PerspectiveCamera) object;
+                        camera.aspect = aspect;
+                        camera.updateProjectionMatrix();
                     }
-                });
-                if (camera == null) {
-                    camera = new PerspectiveCamera(30f, aspect, 1f, 10000f);
-                    camera.position.set(-200f, 0f, 200f);
                 }
-
-                orbitControls = new OrbitControls(camera, root);
-
-                PlaneBufferGeometry geometry = new PlaneBufferGeometry(20000f, 20000f);
-                MeshPhongMaterial material = new MeshPhongMaterial();
-                material.shininess = 0.1f;
-
-                Mesh ground = new Mesh(geometry, material);
-
-                ground.position.set(0f, -250f, 0f);
-                ground.rotation.x = (float) -Math.PI / 2;
-                scene.add(ground);
-                scene.fog = new Fog(0xffffff, 1000f, 10000f);
-
-                mixer = new AnimationMixer(scene);
-                mixer.clipAction(clips[0]).play();
+            });
+            if (camera == null) {
+                camera = new PerspectiveCamera(30f, aspect, 1f, 10000f);
+                camera.position.set(-200f, 0f, 200f);
             }
+
+            orbitControls = new OrbitControls(camera, root);
+
+            PlaneBufferGeometry geometry = new PlaneBufferGeometry(20000f, 20000f);
+            MeshPhongMaterial material = new MeshPhongMaterial();
+            material.shininess = 0.1f;
+
+            Mesh ground = new Mesh(geometry, material);
+
+            ground.position.set(0f, -250f, 0f);
+            ground.rotation.x = (float) -Math.PI / 2;
+            scene.add(ground);
+            scene.fog = new Fog(0xffffff, 1000f, 10000f);
+
+            mixer = new AnimationMixer(scene);
+            mixer.clipAction(clips[0]).play();
         }, (e) -> {
         }, (e) -> new IllegalArgumentException("OnErrorCallback"));
 
@@ -100,7 +93,7 @@ public class WebglAnimationScene extends Attachable {
     }
 
     private void render() {
-        if (mixer != null) {
+        if (mixer != null && renderer != null) {
             mixer.update(0.75f * clock.getDelta());
             renderer.render(scene, camera);
         }

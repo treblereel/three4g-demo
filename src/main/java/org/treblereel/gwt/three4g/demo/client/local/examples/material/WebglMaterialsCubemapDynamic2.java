@@ -15,6 +15,7 @@ import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.IcosahedronBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.TorusKnotBufferGeometry;
+import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
@@ -45,7 +46,7 @@ public class WebglMaterialsCubemapDynamic2 extends Attachable {
     public WebglMaterialsCubemapDynamic2() {
 
         TextureLoader textureLoader = new TextureLoader();
-        textureLoader.load("textures/2294472375_24a3b8ef46_o.jpg", texture -> {
+        textureLoader.load("textures/2294472375_24a3b8ef46_o.jpg", (OnLoadCallback<Texture>) texture -> {
             texture.mapping = THREE.UVMapping;
             init(texture);
         });

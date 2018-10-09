@@ -7,7 +7,7 @@ import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Geometry;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -122,23 +122,23 @@ public class WebglMaterialsLightmap extends Attachable {
 
     //shitty code, sometimes js better whan java :(
     private void setUniforms(Uniforms uniforms) {
-        JsObject topColor = new JsObject();
+        PropertyHolder topColor = new PropertyHolder();
         topColor.setProperty("type", "c");
         topColor.setProperty("value", new Color(0x0077ff));
 
-        JsObject bottomColor = new JsObject();
+        PropertyHolder bottomColor = new PropertyHolder();
         bottomColor.setProperty("type", "c");
         bottomColor.setProperty("value", new Color(0xffffff));
 
-        JsObject offset = new JsObject();
+        PropertyHolder offset = new PropertyHolder();
         offset.setProperty("type", "f");
         offset.setProperty("value", 400);
 
-        JsObject exponent = new JsObject();
+        PropertyHolder exponent = new PropertyHolder();
         exponent.setProperty("type", "f");
         exponent.setProperty("value", 0.6);
 
-        JsObject temp = Js.uncheckedCast(uniforms);
+        PropertyHolder temp = Js.uncheckedCast(uniforms);
         temp.setProperty("topColor", topColor);
         temp.setProperty("bottomColor", bottomColor);
         temp.setProperty("offset", offset);

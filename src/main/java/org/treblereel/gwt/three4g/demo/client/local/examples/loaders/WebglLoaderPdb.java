@@ -9,8 +9,8 @@ import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -152,7 +152,7 @@ public class WebglLoaderPdb extends Attachable {
                 BufferGeometry geometryAtoms = pdb.geometryAtoms;
                 BufferGeometry geometryBonds = pdb.geometryBonds;
 
-                JsObject json = pdb.json;
+                PropertyHolder json = pdb.json;
                 BoxBufferGeometry boxGeometry = new BoxBufferGeometry(1, 1, 1);
                 IcosahedronBufferGeometry sphereGeometry = new IcosahedronBufferGeometry(1, 2);
                 geometryAtoms.computeBoundingBox();
@@ -186,8 +186,8 @@ public class WebglLoaderPdb extends Attachable {
                     object.scale.multiplyScalar(25);
                     group.add(object);
 
-                    JsObject[][][] atoms = json.getProperty("atoms");
-                    JsObject[][] atom = atoms[i];
+                    PropertyHolder[][][] atoms = json.getProperty("atoms");
+                    PropertyHolder[][] atom = atoms[i];
 
                     HTMLDivElement text = (HTMLDivElement) document.createElement("div");
 

@@ -4,6 +4,7 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.MouseEvent;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
+import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;

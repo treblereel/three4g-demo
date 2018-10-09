@@ -6,7 +6,7 @@ import elemental2.dom.HTMLScriptElement;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -145,9 +145,9 @@ public class WebglCustomAttributes extends Attachable {
         }
 
         //Like this shitty code
-        JsObject displacement = ((SphereBufferGeometry) sphere.geometry).attributes.getProperty("displacement");
+        PropertyHolder displacement = ((SphereBufferGeometry) sphere.geometry).attributes.getProperty("displacement");
         displacement.setProperty("needsUpdate", true);
-        renderer.render( scene, camera );
+        renderer.render(scene, camera);
 
     }
 

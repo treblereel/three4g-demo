@@ -6,7 +6,7 @@ import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -75,7 +75,7 @@ public class WebglMaterialsTexturePartialupdate extends Attachable {
 
     private void updateDataTexture(DataTexture texture) {
         int size = texture.image.width * texture.image.height;
-        JsObject image = Js.uncheckedCast(texture.image);
+        PropertyHolder image = Js.uncheckedCast(texture.image);
         Uint8Array data = image.getProperty("data");
         // generate a random color and update texture data
         color.setHex(random.nextInt() * 0xffffff);

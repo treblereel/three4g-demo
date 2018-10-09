@@ -12,7 +12,7 @@ import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -168,7 +168,7 @@ public class WebglNearestneighbour extends Attachable {
         _frustum.setFromMatrix(_projScreenMatrix);
         for (int i = 0, il = imagePositionsInRange.length; i < il; i++) {
             JsArray object = imagePositionsInRange.getAt(i);
-            JsObject object1 = Js.uncheckedCast(object.getAt(0));
+            PropertyHolder object1 = Js.uncheckedCast(object.getAt(0));
             Float32Array array = object1.getProperty("obj");
             Vector3 objectPoint = new Vector3().fromArray(array);
             if (_frustum.containsPoint(objectPoint)) {

@@ -13,7 +13,6 @@ import org.treblereel.gwt.three4g.audio.AudioListener;
 import org.treblereel.gwt.three4g.audio.PositionalAudio;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -25,7 +24,6 @@ import org.treblereel.gwt.three4g.helpers.GridHelper;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
 import org.treblereel.gwt.three4g.loaders.CubeTextureLoader;
-import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
 import org.treblereel.gwt.three4g.materials.MeshStandardMaterial;
@@ -139,28 +137,25 @@ public class WebAudioOrientation extends Attachable {
         positionalAudio.setDirectionalCone(210, 230, 0.1f);
         //
         GLTFLoader gltfLoader = new GLTFLoader();
-        gltfLoader.load("models/gltf/BoomBox/glTF-Binary/BoomBox.glb", new OnLoadCallback<JsObject>() {
-            @Override
-            public void onLoad(JsObject gltf) {
+        gltfLoader.load("models/gltf/BoomBox/glTF-Binary/BoomBox.glb", gltf -> {
 
-                Scene boomBox = gltf.getProperty("scene");
-                boomBox.position.set(0, 0.2f, 0);
-                boomBox.scale.set(20, 20, 20);
-                boomBox.traverse(object -> {
-                    if (object instanceof Mesh) {
-                        Mesh mesh1 = object.cast();
-                        MeshStandardMaterial material = mesh1.material.cast();
-                        material.envMap = reflectionCube;
-                        mesh1.geometry.rotateY((float) -Math.PI);
-                    }
-                });
+            Scene boomBox = gltf.getProperty("scene");
+            boomBox.position.set(0, 0.2f, 0);
+            boomBox.scale.set(20, 20, 20);
+            boomBox.traverse(object -> {
+                if (object instanceof Mesh) {
+                    Mesh mesh1 = object.cast();
+                    MeshStandardMaterial material = mesh1.material.cast();
+                    material.envMap = reflectionCube;
+                    mesh1.geometry.rotateY((float) -Math.PI);
+                }
+            });
 
-                audio.play();
-                boomBox.add(positionalAudio);
-                scene.add(boomBox);
-                animate();
+            audio.play();
+            boomBox.add(positionalAudio);
+            scene.add(boomBox);
+            animate();
 
-            }
         });
 
 

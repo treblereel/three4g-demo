@@ -7,8 +7,8 @@ import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -43,9 +43,9 @@ public class WebglLoaderColladaSkinning extends Attachable {
         clock = new Clock();
         // collada
         ColladaLoader loader = new ColladaLoader();
-        loader.load("models/collada/stormtrooper/stormtrooper.dae", new OnLoadCallback<JsObject>() {
+        loader.load("models/collada/stormtrooper/stormtrooper.dae", new OnLoadCallback<PropertyHolder>() {
             @Override
-            public void onLoad(JsObject collada) {
+            public void onLoad(PropertyHolder collada) {
                 Object3D avatar = collada.getProperty("scene");
                 AnimationClip[] animations = collada.getProperty("animations");
                 mixer = new AnimationMixer(avatar);

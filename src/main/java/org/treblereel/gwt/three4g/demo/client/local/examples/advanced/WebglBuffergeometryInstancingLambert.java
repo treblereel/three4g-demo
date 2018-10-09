@@ -8,7 +8,7 @@ import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.InstancedBufferAttribute;
 import org.treblereel.gwt.three4g.core.InstancedBufferGeometry;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.TorusKnot;
@@ -138,7 +138,7 @@ public class WebglBuffergeometryInstancingLambert extends Attachable {
         Uniforms uniforms = UniformsUtils.clone(shader.uniforms);
 
         ShaderMaterialParameters shaderMaterialParameters = new ShaderMaterialParameters();
-        JsObject defines = new JsObject();
+        PropertyHolder defines = new PropertyHolder();
         defines.setProperty("INSTANCED", "");
         defines.setProperty("DEPTH_PACKING", THREE.RGBADepthPacking);
 

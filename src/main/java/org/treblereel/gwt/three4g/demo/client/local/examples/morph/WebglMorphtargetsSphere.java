@@ -3,7 +3,6 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.morph;
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -11,7 +10,6 @@ import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.extensions.loaders.GLTFLoader;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
-import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshStandardMaterial;
 import org.treblereel.gwt.three4g.materials.PointsMaterial;
@@ -49,7 +47,7 @@ public class WebglMorphtargetsSphere extends Attachable {
         scene.add(ambientLight);
 
         GLTFLoader gltfLoader = new GLTFLoader();
-        gltfLoader.load("models/gltf/AnimatedMorphSphere/glTF/AnimatedMorphSphere.gltf", (OnLoadCallback<JsObject>) gltf -> {
+        gltfLoader.load("models/gltf/AnimatedMorphSphere/glTF/AnimatedMorphSphere.gltf", gltf -> {
             Scene temp = gltf.getProperty("scene");
             temp.traverse(object -> {
                 if (object instanceof Mesh) {

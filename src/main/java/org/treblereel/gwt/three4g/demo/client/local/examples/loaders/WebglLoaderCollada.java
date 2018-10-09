@@ -4,7 +4,7 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -48,12 +48,7 @@ public class WebglLoaderCollada extends Attachable {
 
         // collada
         ColladaLoader loader = new ColladaLoader(loadingManager);
-        loader.load("models/collada/elf/elf.dae", new OnLoadCallback<JsObject>() {
-            @Override
-            public void onLoad(JsObject object) {
-                elf = object.getProperty("scene");
-            }
-        });
+        loader.load("models/collada/elf/elf.dae", object -> elf = object.getProperty("scene"));
 
         AmbientLight ambientLight = new AmbientLight(0xcccccc, 0.4f);
         scene.add(ambientLight);

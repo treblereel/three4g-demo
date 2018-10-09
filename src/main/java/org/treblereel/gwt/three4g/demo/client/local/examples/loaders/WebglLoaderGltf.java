@@ -3,8 +3,8 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.loaders;
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
@@ -63,22 +63,19 @@ public class WebglLoaderGltf extends Attachable {
         scene.add(light);
         // model
         GLTFLoader loader = new GLTFLoader();
-        loader.load("models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf", new OnLoadCallback<JsObject>() {
-            @Override
-            public void onLoad(JsObject object) {
-                Scene obj = object.getProperty("scene");
+        loader.load("models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf", object -> {
+            Scene obj = object.getProperty("scene");
 
-                obj.traverse(new TraverseCallback() {
-                    @Override
-                    public void onEvent(Object3D child) {
-                        if (child instanceof Mesh) {
-                            MeshStandardMaterial material = child.getProperty("material");
-                            material.envMap = envMap;
-                        }
+            obj.traverse(new TraverseCallback() {
+                @Override
+                public void onEvent(Object3D child) {
+                    if (child instanceof Mesh) {
+                        MeshStandardMaterial material = child.getProperty("material");
+                        material.envMap = envMap;
                     }
-                });
-                scene.add(obj);
-            }
+                }
+            });
+            scene.add(obj);
         });
 
         WebGLRendererParameters rendererParameters = new WebGLRendererParameters();

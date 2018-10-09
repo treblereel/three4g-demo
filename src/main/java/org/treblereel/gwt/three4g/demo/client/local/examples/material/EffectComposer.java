@@ -1,7 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import jsinterop.annotations.JsType;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderTarget;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 
@@ -12,7 +12,7 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 @JsType(isNative = true, namespace = "THREE")
 public class EffectComposer {
 
-    public JsObject renderTarget1;
+    public PropertyHolder renderTarget1;
 
     public EffectComposer(WebGLRenderer renderer, WebGLRenderTarget webGLRenderTarget) {
     }
