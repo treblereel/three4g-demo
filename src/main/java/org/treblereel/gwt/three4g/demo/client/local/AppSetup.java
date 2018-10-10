@@ -35,6 +35,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClippingIntersection;
+import org.treblereel.gwt.three4g.demo.client.local.examples.controls.MiscControlsPointerlock;
 import org.treblereel.gwt.three4g.demo.client.local.examples.css2d.Css2dLabel;
 import org.treblereel.gwt.three4g.demo.client.local.examples.css3d.Css3dOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
@@ -350,6 +351,7 @@ public class AppSetup implements EntryPoint {
         addListElement(MiscAnimationGroups.name, MiscAnimationGroups.class);
         addListElement(WebglNearestneighbour.name, WebglNearestneighbour.class);
         addListElement(MiscControlsOrbit.name, MiscControlsOrbit.class);
+        addListElement(MiscControlsPointerlock.name, MiscControlsPointerlock.class);
 
         addTypeElement("webgl / advanced");
         addListElement(WebglBuffergeometry.name, WebglBuffergeometry.class);
