@@ -4,14 +4,15 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.CSSProperties;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.renderers.CSS2DObject;
-import org.treblereel.gwt.three4g.examples.renderers.CSS2DRenderer;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.renderers.CSS2DObject;
+import org.treblereel.gwt.three4g.extensions.renderers.CSS2DRenderer;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.helpers.AxesHelper;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -27,6 +28,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/11/18.
  */
+@InjectJavaScriptFor(elements = {OrbitControls.class, CSS2DRenderer.class})
 public class Css2dLabel extends Attachable {
 
     public static final String name = "label";

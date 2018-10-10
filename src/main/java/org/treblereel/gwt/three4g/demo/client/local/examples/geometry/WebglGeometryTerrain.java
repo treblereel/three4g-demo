@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import elemental2.core.ArrayBuffer;
 import elemental2.core.TypedArray;
 import elemental2.core.Uint8Array;
@@ -12,15 +11,16 @@ import elemental2.dom.HTMLCanvasElement;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.ImageData;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.demo.client.api.FirstPersonControls;
 import org.treblereel.gwt.three4g.demo.client.api.ImprovedNoise;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.extensions.controls.FirstPersonControls;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
@@ -36,6 +36,7 @@ import org.treblereel.gwt.three4g.textures.CanvasTexture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/28/18.
  */
+@InjectJavaScriptFor(elements = FirstPersonControls.class)
 public class WebglGeometryTerrain extends Attachable {
 
 
@@ -48,7 +49,6 @@ public class WebglGeometryTerrain extends Attachable {
 
     public WebglGeometryTerrain() {
         loadJavaScript(JavascriptTextResource.IMPL.getImprovedNoise().getText());
-        loadJavaScript(JavascriptTextResource.IMPL.getFirstPersonControls().getText());
 
         camera = new PerspectiveCamera(60, aspect, 1, 20000);
         scene = new Scene();

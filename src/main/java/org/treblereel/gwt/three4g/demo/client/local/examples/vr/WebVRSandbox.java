@@ -5,18 +5,18 @@ import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
-import org.treblereel.gwt.three4g.examples.objects.Lensflare;
-import org.treblereel.gwt.three4g.examples.objects.LensflareElement;
-import org.treblereel.gwt.three4g.examples.objects.Reflector;
-import org.treblereel.gwt.three4g.examples.objects.parameters.ReflectorParameters;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.objects.Lensflare;
+import org.treblereel.gwt.three4g.extensions.objects.LensflareElement;
+import org.treblereel.gwt.three4g.extensions.objects.Reflector;
+import org.treblereel.gwt.three4g.extensions.objects.parameters.ReflectorParameters;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.TorusKnotBufferGeometry;
@@ -37,6 +37,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/14/18.
  */
+@InjectJavaScriptFor(elements = {WebVR.class, Reflector.class, Lensflare.class, LensflareElement.class})
 public class WebVRSandbox extends Attachable {
 
     public static final String name = "sandbox";

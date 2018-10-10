@@ -1,12 +1,12 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.camera;
 
 import elemental2.dom.DomGlobal;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.renderers.CanvasRenderer;
-import org.treblereel.gwt.three4g.examples.resources.ThreeJsExamplesTextResource;
+import org.treblereel.gwt.three4g.extensions.renderers.CanvasRenderer;
 import org.treblereel.gwt.three4g.geometries.BoxGeometry;
 import org.treblereel.gwt.three4g.helpers.GridHelper;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
@@ -24,6 +24,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov
  * Created by treblereel on 6/27/18.
  */
+@InjectJavaScriptFor(elements = CanvasRenderer.class)
 public class CanvasCameraOrthographic extends Attachable {
 
     public static final String name = "camera / orthographic";
@@ -33,9 +34,6 @@ public class CanvasCameraOrthographic extends Attachable {
     private CanvasRenderer canvasRenderer;
 
     public CanvasCameraOrthographic() {
-
-        loadJavaScript(ThreeJsExamplesTextResource.IMPL.getCanvasRenderer().getText());
-        loadJavaScript(ThreeJsExamplesTextResource.IMPL.getProjector().getText());
 
         orthographicCamera = new OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, (float) (frustumSize / 2), (float) (frustumSize / -2), 1, 2000);
         orthographicCamera.position.y = 400;

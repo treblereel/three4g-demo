@@ -2,15 +2,16 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
-import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
-import org.treblereel.gwt.three4g.demo.client.local.Attachable;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Geometry;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.core.bufferattributes.Float32BufferAttribute;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
-import org.treblereel.gwt.three4g.examples.vr.daydream.DaydreamController;
+import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
+import org.treblereel.gwt.three4g.demo.client.local.Attachable;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.vr.daydream.DaydreamController;
 import org.treblereel.gwt.three4g.geometries.BoxGeometry;
 import org.treblereel.gwt.three4g.geometries.IcosahedronGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -37,6 +38,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov
  * Created by treblereel on 6/3/18.
  */
+@InjectJavaScriptFor(elements = {DaydreamController.class})
 public class DayDream extends Attachable {
 
     public static final String name = "daydream";

@@ -1,10 +1,10 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.ScriptInjector;
 import elemental2.dom.DomGlobal;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -17,8 +17,8 @@ import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.IcosahedronBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
@@ -43,6 +43,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov
  * Created by treblereel on 6/5/18.
  */
+@InjectJavaScriptFor(elements = {WebVR.class, OBJLoader.class})
 public class VivePaint extends Attachable {
 
     public static final String name = "vive / paint";
@@ -155,37 +156,34 @@ public class VivePaint extends Attachable {
 
         OBJLoader loader = new OBJLoader();
 
-        loader.load("models/obj/vive-controller/vr_controller_vive_1_5.obj", new OnLoadCallback<Object3D>() {
-                    @Override
-                    public void onLoad(Object3D object) {
+        loader.load("models/obj/vive-controller/vr_controller_vive_1_5.obj", object -> {
 
-                        TextureLoader loader = new TextureLoader();
-                        loader.setPath("models/obj/vive-controller/");
+            TextureLoader loader1 = new TextureLoader();
+            loader1.setPath("models/obj/vive-controller/");
 
-                        Object3D controller = object.children[0];
+            Object3D controller = object.children[0];
 
-                        MeshPhongMaterial material = Js.uncheckedCast(Js.asPropertyMap(controller).get("material"));
+            MeshPhongMaterial material1 = Js.uncheckedCast(Js.asPropertyMap(controller).get("material"));
 
-                        material.map = loader.load("onepointfive_texture.png");
-                        material.specularMap = loader.load("onepointfive_spec.png");
-                        controller.castShadow = true;
-                        controller.receiveShadow = true;
+            material1.map = loader1.load("onepointfive_texture.png");
+            material1.specularMap = loader1.load("onepointfive_spec.png");
+            controller.castShadow = true;
+            controller.receiveShadow = true;
 
-                        Mesh pivot = new Mesh(new IcosahedronBufferGeometry(0.01f, 2));
-                        pivot.name = "pivot";
-                        pivot.position.y = -0.016f;
-                        pivot.position.z = -0.043f;
-                        pivot.rotation.x = (float) (Math.PI / 5.5);
+            Mesh pivot = new Mesh(new IcosahedronBufferGeometry(0.01f, 2));
+            pivot.name = "pivot";
+            pivot.position.y = -0.016f;
+            pivot.position.z = -0.043f;
+            pivot.rotation.x = (float) (Math.PI / 5.5);
 
-                        controller.add(pivot);
-                        controller1.add(controller.clone());
-                        pivot.material = pivot.material.clone();
-                        controller2.add(controller.clone());
+            controller.add(pivot);
+            controller1.add(controller.clone());
+            pivot.material = pivot.material.clone();
+            controller2.add(controller.clone());
 
-                        initGeometry();
-                        ready = true;
-                    }
-                }
+            initGeometry();
+            ready = true;
+        }
         );
 
 

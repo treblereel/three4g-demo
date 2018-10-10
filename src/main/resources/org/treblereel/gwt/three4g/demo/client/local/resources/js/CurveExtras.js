@@ -364,62 +364,62 @@
 	DecoratedTorusKnot5a.prototype = Object.create( THREE.Curve.prototype );
 	DecoratedTorusKnot5a.prototype.constructor = DecoratedTorusKnot5a;
 
-		DecoratedTorusKnot5a.prototype.getPoint = function ( t, optionalTarget ) {
+	DecoratedTorusKnot5a.prototype.getPoint = function ( t, optionalTarget ) {
 
-    		var point = optionalTarget || new THREE.Vector3();
+		var point = optionalTarget || new THREE.Vector3();
 
-    		var fi = t * Math.PI * 2;
+		var fi = t * Math.PI * 2;
 
-    		var x = Math.cos( 3 * fi ) * ( 1 + 0.3 * Math.cos( 5 * fi ) + 0.5 * Math.cos( 10 * fi ) );
-    		var y = Math.sin( 3 * fi ) * ( 1 + 0.3 * Math.cos( 5 * fi ) + 0.5 * Math.cos( 10 * fi ) );
-    		var z = 0.2 * Math.sin( 20 * fi );
+		var x = Math.cos( 3 * fi ) * ( 1 + 0.3 * Math.cos( 5 * fi ) + 0.5 * Math.cos( 10 * fi ) );
+		var y = Math.sin( 3 * fi ) * ( 1 + 0.3 * Math.cos( 5 * fi ) + 0.5 * Math.cos( 10 * fi ) );
+		var z = 0.2 * Math.sin( 20 * fi );
 
-    		return point.set( x, y, z ).multiplyScalar( this.scale );
+		return point.set( x, y, z ).multiplyScalar( this.scale );
 
-    	};
+	};
 
-    	// DecoratedTorusKnot5c
+	// DecoratedTorusKnot5c
 
-    	function DecoratedTorusKnot5c( scale ) {
+	function DecoratedTorusKnot5c( scale ) {
 
-    		THREE.Curve.call( this );
+		THREE.Curve.call( this );
 
-    		this.scale = ( scale === undefined ) ? 40 : scale;
+		this.scale = ( scale === undefined ) ? 40 : scale;
 
-    	}
+	}
 
-    	DecoratedTorusKnot5c.prototype = Object.create( THREE.Curve.prototype );
-    	DecoratedTorusKnot5c.prototype.constructor = DecoratedTorusKnot5c;
+	DecoratedTorusKnot5c.prototype = Object.create( THREE.Curve.prototype );
+	DecoratedTorusKnot5c.prototype.constructor = DecoratedTorusKnot5c;
 
-    	DecoratedTorusKnot5c.prototype.getPoint = function ( t, optionalTarget ) {
+	DecoratedTorusKnot5c.prototype.getPoint = function ( t, optionalTarget ) {
 
-    		var point = optionalTarget || new THREE.Vector3();
+		var point = optionalTarget || new THREE.Vector3();
 
-    		var fi = t * Math.PI * 2;
+		var fi = t * Math.PI * 2;
 
-    		var x = Math.cos( 4 * fi ) * ( 1 + 0.5 * ( Math.cos( 5 * fi ) + 0.4 * Math.cos( 20 * fi ) ) );
-    		var y = Math.sin( 4 * fi ) * ( 1 + 0.5 * ( Math.cos( 5 * fi ) + 0.4 * Math.cos( 20 * fi ) ) );
-    		var z = 0.35 * Math.sin( 15 * fi );
+		var x = Math.cos( 4 * fi ) * ( 1 + 0.5 * ( Math.cos( 5 * fi ) + 0.4 * Math.cos( 20 * fi ) ) );
+		var y = Math.sin( 4 * fi ) * ( 1 + 0.5 * ( Math.cos( 5 * fi ) + 0.4 * Math.cos( 20 * fi ) ) );
+		var z = 0.35 * Math.sin( 15 * fi );
 
-    		return point.set( x, y, z ).multiplyScalar( this.scale );
+		return point.set( x, y, z ).multiplyScalar( this.scale );
 
-    	};
+	};
 
-    	// export
+	// export
 
-    	Curves.GrannyKnot = GrannyKnot;
-    	Curves.HeartCurve = HeartCurve;
-    	Curves.VivianiCurve = VivianiCurve;
-    	Curves.KnotCurve = KnotCurve;
-    	Curves.HelixCurve = HelixCurve;
-    	Curves.TrefoilKnot = TrefoilKnot;
-    	Curves.TorusKnot = TorusKnot;
-    	Curves.CinquefoilKnot = CinquefoilKnot;
-    	Curves.TrefoilPolynomialKnot = TrefoilPolynomialKnot;
-    	Curves.FigureEightPolynomialKnot = FigureEightPolynomialKnot;
-    	Curves.DecoratedTorusKnot4a = DecoratedTorusKnot4a;
-    	Curves.DecoratedTorusKnot4b = DecoratedTorusKnot4b;
-    	Curves.DecoratedTorusKnot5a = DecoratedTorusKnot5a;
-    	Curves.DecoratedTorusKnot5c = DecoratedTorusKnot5c;
+	Curves.GrannyKnot = GrannyKnot;
+	Curves.HeartCurve = HeartCurve;
+	Curves.VivianiCurve = VivianiCurve;
+	Curves.KnotCurve = KnotCurve;
+	Curves.HelixCurve = HelixCurve;
+	Curves.TrefoilKnot = TrefoilKnot;
+	Curves.TorusKnot = TorusKnot;
+	Curves.CinquefoilKnot = CinquefoilKnot;
+	Curves.TrefoilPolynomialKnot = TrefoilPolynomialKnot;
+	Curves.FigureEightPolynomialKnot = FigureEightPolynomialKnot;
+	Curves.DecoratedTorusKnot4a = DecoratedTorusKnot4a;
+	Curves.DecoratedTorusKnot4b = DecoratedTorusKnot4b;
+	Curves.DecoratedTorusKnot5a = DecoratedTorusKnot5a;
+	Curves.DecoratedTorusKnot5c = DecoratedTorusKnot5c;
 
-    } )( THREE.Curves = THREE.Curves || {} );
+} )( THREE.Curves = THREE.Curves || {} );

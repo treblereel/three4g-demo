@@ -12,6 +12,7 @@ import elemental2.dom.HTMLElement;
 import elemental2.dom.ImageData;
 import elemental2.dom.MouseEvent;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
@@ -22,7 +23,7 @@ import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.ConeBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
@@ -39,6 +40,7 @@ import org.treblereel.gwt.three4g.textures.CanvasTexture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/28/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglGeometryTerrainRaycast extends Attachable {
 
 

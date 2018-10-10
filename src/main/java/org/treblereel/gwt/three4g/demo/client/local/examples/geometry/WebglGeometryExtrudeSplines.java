@@ -1,10 +1,9 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
-import org.treblereel.gwt.datgui4g.OnChange;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
@@ -25,7 +24,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.Tre
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.VivianiCurve;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.extras.core.Curve;
 import org.treblereel.gwt.three4g.extras.curves.CatmullRomCurve3;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
@@ -49,6 +48,7 @@ import java.util.Map;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/25/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglGeometryExtrudeSplines extends Attachable {
 
 

@@ -3,6 +3,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -10,17 +11,20 @@ import org.treblereel.gwt.three4g.core.Raycaster;
 import org.treblereel.gwt.three4g.core.extra.Intersect;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.geometries.BoxLineGeometry;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.RingBufferGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.lights.HemisphereLight;
+import org.treblereel.gwt.three4g.materials.LineBasicMaterial;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
 import org.treblereel.gwt.three4g.materials.MeshLambertMaterial;
 import org.treblereel.gwt.three4g.materials.parameters.MeshBasicMaterialParameters;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector2;
 import org.treblereel.gwt.three4g.math.Vector3;
+import org.treblereel.gwt.three4g.objects.LineSegments;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.OnAnimate;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
@@ -33,13 +37,15 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/14/18.
  */
+@InjectJavaScriptFor(elements = {WebVR.class, BoxLineGeometry.class})
 public class WebVRCubes extends Attachable {
 
     public static final String name = "cubes";
 
     private Clock clock = new Clock();
     private Random rand = new Random();
-    private Mesh crosshair, room;
+    private Mesh crosshair;
+    private LineSegments room;
     private HTMLDivElement container;
     private Raycaster raycaster;
     private boolean isMouseDown;
@@ -65,13 +71,11 @@ public class WebVRCubes extends Attachable {
         crosshair.position.z = -2;
         camera.add(crosshair);
 
-        MeshBasicMaterialParameters meshBasicMaterialParameters = new MeshBasicMaterialParameters();
-        meshBasicMaterialParameters.color = new Color(0x404040);
-        meshBasicMaterialParameters.wireframe = true;
-        room = new Mesh(
-                new BoxBufferGeometry(6, 6, 6, 8, 8, 8),
-                new MeshBasicMaterial(meshBasicMaterialParameters)
+        room = new LineSegments(
+                new BoxLineGeometry(6, 6, 6, 10, 10, 10),
+                new LineBasicMaterial().setColor(0x808080)
         );
+
         room.position.y = 3;
         scene.add(room);
         scene.add(new HemisphereLight(0x606060, 0x404040));

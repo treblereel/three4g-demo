@@ -2,18 +2,19 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.advanced;
 
 import elemental2.core.Float32Array;
 import elemental2.dom.DomGlobal;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.InstancedBufferAttribute;
 import org.treblereel.gwt.three4g.core.InstancedBufferGeometry;
-import org.treblereel.gwt.three4g.core.JsObject;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.custom.TorusKnot;
 import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.TorusBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
@@ -43,6 +44,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/22/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglBuffergeometryInstancingLambert extends Attachable {
 
     public static final String name = "buffergeometry / instancing / lambert";
@@ -136,7 +138,7 @@ public class WebglBuffergeometryInstancingLambert extends Attachable {
         Uniforms uniforms = UniformsUtils.clone(shader.uniforms);
 
         ShaderMaterialParameters shaderMaterialParameters = new ShaderMaterialParameters();
-        JsObject defines = new JsObject();
+        PropertyHolder defines = new PropertyHolder();
         defines.setProperty("INSTANCED", "");
         defines.setProperty("DEPTH_PACKING", THREE.RGBADepthPacking);
 

@@ -3,11 +3,12 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.lights.SpotLight;
@@ -28,6 +29,7 @@ import java.util.Date;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/7/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglMaterialsTransparency extends Attachable {
 
     public static final String name = "materials / transparency";

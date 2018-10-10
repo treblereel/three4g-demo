@@ -5,7 +5,6 @@ import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
@@ -51,13 +50,13 @@ public class WebGlAnimationKeyframesJson extends Attachable {
         pointLight.position.copy(camera.position);
         scene.add(pointLight);
 
-        new ObjectLoader().load(json, new OnLoadCallback<JsObject>() {
+        new ObjectLoader().load(json, new OnLoadCallback<Group>() {
 
             @Override
-            public void onLoad(JsObject object) {
-                scene.add((Group) object);
-                AnimationClip[] clips = object.getProperty("animations");
-                mixer = new AnimationMixer((Group) object);
+            public void onLoad(Group group) {
+                scene.add(group);
+                AnimationClip[] clips = group.getProperty("animations");
+                mixer = new AnimationMixer(group);
                 mixer.clipAction(clips[0]).play();
             }
         });

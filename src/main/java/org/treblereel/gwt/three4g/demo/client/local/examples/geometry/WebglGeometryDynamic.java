@@ -1,16 +1,16 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Geometry;
-import org.treblereel.gwt.three4g.demo.client.api.FirstPersonControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.extensions.controls.FirstPersonControls;
 import org.treblereel.gwt.three4g.geometries.PlaneGeometry;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.MeshBasicMaterial;
@@ -25,6 +25,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov
  * Created by treblereel on 3/8/18.
  */
+@InjectJavaScriptFor(elements = FirstPersonControls.class)
 public class WebglGeometryDynamic extends Attachable {
 
 
@@ -36,7 +37,6 @@ public class WebglGeometryDynamic extends Attachable {
 
 
     public WebglGeometryDynamic() {
-        loadJavaScript(JavascriptTextResource.IMPL.getFirstPersonControls().getText());
         GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
 
         camera = new PerspectiveCamera(60f, aspect, 1f, 20000f);

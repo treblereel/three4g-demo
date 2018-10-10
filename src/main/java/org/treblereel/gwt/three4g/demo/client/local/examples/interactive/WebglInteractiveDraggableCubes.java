@@ -1,14 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.interactive;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.DragControls;
+import org.treblereel.gwt.three4g.extensions.controls.DragControls;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.SpotLight;
@@ -28,6 +28,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/14/18.
  */
+@InjectJavaScriptFor(elements = {TrackballControls.class, DragControls.class})
 public class WebglInteractiveDraggableCubes extends Attachable {
 
     public static final String name = "interactive / draggablecubes";
@@ -37,8 +38,6 @@ public class WebglInteractiveDraggableCubes extends Attachable {
     private Random rand = new Random();
 
     public WebglInteractiveDraggableCubes() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         camera = new PerspectiveCamera(70, aspect, 1, 5000);
         camera.position.z = 1000;

@@ -1,8 +1,8 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
-import com.google.gwt.core.client.GWT;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
@@ -12,9 +12,9 @@ import org.treblereel.gwt.three4g.core.events.Event;
 import org.treblereel.gwt.three4g.core.extra.Intersect;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
-import org.treblereel.gwt.three4g.examples.vr.WebVR;
-import org.treblereel.gwt.three4g.examples.vr.vive.ViveController;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.vr.WebVR;
+import org.treblereel.gwt.three4g.extensions.vr.vive.ViveController;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.ConeBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.CylinderBufferGeometry;
@@ -46,6 +46,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/5/18.
  */
+@InjectJavaScriptFor(elements = {ViveController.class, WebVR.class, OBJLoader.class})
 public class ViveDragging extends Attachable {
 
     public static final String name = "vive / dragging";

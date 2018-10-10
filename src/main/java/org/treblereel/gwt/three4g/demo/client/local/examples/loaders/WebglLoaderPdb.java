@@ -4,21 +4,21 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.EventListener;
 import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.core.Object3D;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.loaders.PDB;
-import org.treblereel.gwt.three4g.examples.loaders.PDBLoader;
-import org.treblereel.gwt.three4g.examples.renderers.CSS2DObject;
-import org.treblereel.gwt.three4g.examples.renderers.CSS2DRenderer;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
+import org.treblereel.gwt.three4g.extensions.loaders.PDB;
+import org.treblereel.gwt.three4g.extensions.loaders.PDBLoader;
+import org.treblereel.gwt.three4g.extensions.renderers.CSS2DObject;
+import org.treblereel.gwt.three4g.extensions.renderers.CSS2DRenderer;
 import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.IcosahedronBufferGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
@@ -44,6 +44,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/10/18.
  */
+@InjectJavaScriptFor(elements = {TrackballControls.class, PDBLoader.class, CSS2DRenderer.class})
 public class WebglLoaderPdb extends Attachable {
 
     public static final String name = "loader / pdb";
@@ -57,9 +58,6 @@ public class WebglLoaderPdb extends Attachable {
 
 
     public WebglLoaderPdb() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
-
 
         moleculas.put("Ethanol", "ethanol.pdb");
         moleculas.put("Aspirin", "aspirin.pdb");
@@ -154,7 +152,7 @@ public class WebglLoaderPdb extends Attachable {
                 BufferGeometry geometryAtoms = pdb.geometryAtoms;
                 BufferGeometry geometryBonds = pdb.geometryBonds;
 
-                JsObject json = pdb.json;
+                PropertyHolder json = pdb.json;
                 BoxBufferGeometry boxGeometry = new BoxBufferGeometry(1, 1, 1);
                 IcosahedronBufferGeometry sphereGeometry = new IcosahedronBufferGeometry(1, 2);
                 geometryAtoms.computeBoundingBox();
@@ -188,8 +186,8 @@ public class WebglLoaderPdb extends Attachable {
                     object.scale.multiplyScalar(25);
                     group.add(object);
 
-                    JsObject[][][] atoms = json.getProperty("atoms");
-                    JsObject[][] atom = atoms[i];
+                    PropertyHolder[][][] atoms = json.getProperty("atoms");
+                    PropertyHolder[][] atom = atoms[i];
 
                     HTMLDivElement text = (HTMLDivElement) document.createElement("div");
 

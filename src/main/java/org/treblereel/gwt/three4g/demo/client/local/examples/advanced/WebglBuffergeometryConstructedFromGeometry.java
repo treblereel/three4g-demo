@@ -2,15 +2,15 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.advanced;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.JsArray;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.bufferattributes.Float32BufferAttribute;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
 import org.treblereel.gwt.three4g.extras.core.Shape;
 import org.treblereel.gwt.three4g.geometries.ExtrudeGeometry;
 import org.treblereel.gwt.three4g.geometries.parameters.ExtrudeGeometryParameters;
@@ -30,12 +30,12 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/17/18.
  */
+@InjectJavaScriptFor(elements = TrackballControls.class)
 public class WebglBuffergeometryConstructedFromGeometry extends Attachable {
 
     public static final String name = "buffergeometry / constructed / from / geometry";
 
     public WebglBuffergeometryConstructedFromGeometry() {
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         scene = new Scene();
         camera = new PerspectiveCamera(45, aspect, 100, 1500);

@@ -1,7 +1,5 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.webaudio;
 
-import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAudioElement;
 import elemental2.dom.HTMLButtonElement;
@@ -9,17 +7,16 @@ import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLParagraphElement;
 import elemental2.dom.HTMLSourceElement;
 import elemental2.media.AudioBuffer;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.audio.Audio;
 import org.treblereel.gwt.three4g.audio.AudioListener;
 import org.treblereel.gwt.three4g.audio.PositionalAudio;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.utils.JSON;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
@@ -37,6 +34,7 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/23/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebaudioTiming extends Attachable {
 
     public static final String name = "webaudio / timing";
@@ -136,7 +134,7 @@ public class WebaudioTiming extends Attachable {
             @Override
             public void onLoad(AudioBuffer buffer) {
                 for (int i = 0; i < count; i++) {
-                    double s = (float)i / count * Math.PI * 2;
+                    double s = (float) i / count * Math.PI * 2;
                     Mesh ball = new Mesh(ballGeometry, ballMaterial);
                     ball.castShadow = true;
                     ball.userData.setProperty("down", "false");

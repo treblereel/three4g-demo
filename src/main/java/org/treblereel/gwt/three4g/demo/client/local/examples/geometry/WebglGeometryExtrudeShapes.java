@@ -1,12 +1,12 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
 import org.treblereel.gwt.three4g.extras.core.Shape;
 import org.treblereel.gwt.three4g.extras.curves.CatmullRomCurve3;
 import org.treblereel.gwt.three4g.geometries.ExtrudeGeometry;
@@ -26,13 +26,13 @@ import org.treblereel.gwt.three4g.scenes.Scene;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/24/18.
  */
+@InjectJavaScriptFor(elements = TrackballControls.class)
 public class WebglGeometryExtrudeShapes extends Attachable {
 
 
     public static final String name = "geometry / extrude / shapes";
 
     public WebglGeometryExtrudeShapes() {
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         scene = new Scene();
         scene.background = new Color(0x222222);

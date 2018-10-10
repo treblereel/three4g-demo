@@ -4,6 +4,7 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
@@ -13,8 +14,8 @@ import org.treblereel.gwt.three4g.core.Object3D;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
-import org.treblereel.gwt.three4g.examples.loaders.OBJLoader;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.loaders.OBJLoader;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
@@ -38,6 +39,7 @@ import org.treblereel.gwt.three4g.textures.Texture;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 6/26/18.
  */
+@InjectJavaScriptFor(elements = {OrbitControls.class, OBJLoader.class})
 public class WebglMaterialsChannels extends Attachable {
 
     public static final String name = "materials / channels";
@@ -207,15 +209,15 @@ public class WebglMaterialsChannels extends Attachable {
     @Override
     public void onWindowResize() {
         if (root.parentNode != null && thisCamera != null) {
-            if(thisCamera.getType().equals("PerspectiveCamera")) {
-                ((PerspectiveCamera)thisCamera).aspect = new Float(getWidth() / getHeight());
-                ((PerspectiveCamera)thisCamera).updateProjectionMatrix();
-            }else{
+            if (thisCamera.getType().equals("PerspectiveCamera")) {
+                ((PerspectiveCamera) thisCamera).aspect = new Float(getWidth() / getHeight());
+                ((PerspectiveCamera) thisCamera).updateProjectionMatrix();
+            } else {
                 OrthographicCamera cam = thisCamera.cast();
-                cam.left = - height * aspect;
+                cam.left = -height * aspect;
                 cam.right = height * aspect;
                 cam.top = height;
-                cam.bottom = - height;
+                cam.bottom = -height;
                 cam.updateProjectionMatrix();
             }
             renderer.setSize(getWidth(), getHeight());

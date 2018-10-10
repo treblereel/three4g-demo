@@ -6,19 +6,19 @@ import elemental2.core.Float32Array;
 import elemental2.core.JsArray;
 import elemental2.dom.HTMLScriptElement;
 import jsinterop.base.Js;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.JsObject;
-import org.treblereel.gwt.three4g.demo.client.api.FirstPersonControls;
+import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.utils.DistanceFunction;
-import org.treblereel.gwt.three4g.examples.utils.TypedArrayUtils;
+import org.treblereel.gwt.three4g.extensions.controls.FirstPersonControls;
+import org.treblereel.gwt.three4g.extensions.utils.DistanceFunction;
+import org.treblereel.gwt.three4g.extensions.utils.TypedArrayUtils;
 import org.treblereel.gwt.three4g.loaders.CubeTextureLoader;
 import org.treblereel.gwt.three4g.loaders.TextureLoader;
 import org.treblereel.gwt.three4g.materials.ShaderMaterial;
@@ -42,6 +42,7 @@ import static elemental2.dom.DomGlobal.document;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/16/18.
  */
+@InjectJavaScriptFor(elements = {FirstPersonControls.class, TypedArrayUtils.class})
 public class WebglNearestneighbour extends Attachable {
 
     public static final String name = "nearest neighbour";
@@ -76,9 +77,6 @@ public class WebglNearestneighbour extends Attachable {
             "\t\t\t}";
 
     public WebglNearestneighbour() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getFirstPersonControls().getText());
-
 
         vertexShaderElm = (HTMLScriptElement) document.createElement("script");
         vertexShaderElm.type = "x-shader/x-vertex";
@@ -170,7 +168,7 @@ public class WebglNearestneighbour extends Attachable {
         _frustum.setFromMatrix(_projScreenMatrix);
         for (int i = 0, il = imagePositionsInRange.length; i < il; i++) {
             JsArray object = imagePositionsInRange.getAt(i);
-            JsObject object1 = Js.uncheckedCast(object.getAt(0));
+            PropertyHolder object1 = Js.uncheckedCast(object.getAt(0));
             Float32Array array = object1.getProperty("obj");
             Vector3 objectPoint = new Vector3().fromArray(array);
             if (_frustum.containsPoint(objectPoint)) {

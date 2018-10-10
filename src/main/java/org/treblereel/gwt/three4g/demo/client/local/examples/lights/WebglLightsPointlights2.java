@@ -1,15 +1,14 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.lights;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
-import org.treblereel.gwt.three4g.core.Object3D;
-import org.treblereel.gwt.three4g.demo.client.api.TrackballControls;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.resources.JavascriptTextResource;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
+import org.treblereel.gwt.three4g.extensions.controls.TrackballControls;
 import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.SphereBufferGeometry;
 import org.treblereel.gwt.three4g.geometries.TorusBufferGeometry;
@@ -35,6 +34,7 @@ import java.util.Random;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 7/30/18.
  */
+@InjectJavaScriptFor(elements = TrackballControls.class)
 public class WebglLightsPointlights2 extends Attachable {
 
     public static final String name = "lights / pointlights2";
@@ -45,8 +45,6 @@ public class WebglLightsPointlights2 extends Attachable {
 
 
     public WebglLightsPointlights2() {
-
-        loadJavaScript(JavascriptTextResource.IMPL.getTrackballControls().getText());
 
         camera = new PerspectiveCamera(50, aspect, 1, 300);
         camera.position.set(0, 15, 150);

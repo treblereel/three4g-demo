@@ -10,7 +10,6 @@ import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.JsObject;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.examples.gpgpu.custom.BirdGeometry;
 import org.treblereel.gwt.three4g.demo.client.local.examples.gpgpu.custom.BirdUniforms;

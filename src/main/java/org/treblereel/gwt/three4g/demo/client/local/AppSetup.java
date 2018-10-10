@@ -81,6 +81,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderPdb;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderPrwm;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderTextureTga;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderVrml;
 import org.treblereel.gwt.three4g.demo.client.local.examples.lod.WebglLod;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterials;
 import org.treblereel.gwt.three4g.demo.client.local.examples.material.WebglMaterialsBlending;
@@ -260,6 +261,7 @@ public class AppSetup implements EntryPoint {
         addListElement(WebglLoaderPrwm.name, WebglLoaderPrwm.class);
         addListElement(WebglLoaderTextureTga.name, WebglLoaderTextureTga.class);
         addListElement(WebglLoaderJsonBlender.name, WebglLoaderJsonBlender.class);
+        addListElement(WebglLoaderVrml.name, WebglLoaderVrml.class);
         //addListElement(WebglLoaderColladaKinematics.name, WebglLoaderColladaKinematics.class);
 
 

@@ -4,6 +4,7 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.JsArray;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
+import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
@@ -12,7 +13,7 @@ import org.treblereel.gwt.three4g.core.MorphTarget;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
-import org.treblereel.gwt.three4g.examples.controls.OrbitControls;
+import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
 import org.treblereel.gwt.three4g.geometries.BoxGeometry;
 import org.treblereel.gwt.three4g.lights.AmbientLight;
 import org.treblereel.gwt.three4g.lights.PointLight;
@@ -32,6 +33,7 @@ import java.util.List;
  * @author Dmitrii Tikhomirov <chani@me.com>
  * Created by treblereel on 8/9/18.
  */
+@InjectJavaScriptFor(elements = OrbitControls.class)
 public class WebglMorphTargets extends Attachable {
 
     public static final String name = "morphtargets";
