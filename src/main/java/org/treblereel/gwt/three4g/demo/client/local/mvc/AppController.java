@@ -36,6 +36,7 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClippingIntersection;
+import org.treblereel.gwt.three4g.demo.client.local.examples.controls.MiscControlsPointerlock;
 import org.treblereel.gwt.three4g.demo.client.local.examples.css2d.Css2dLabel;
 import org.treblereel.gwt.three4g.demo.client.local.examples.css3d.Css3dOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.decals.WebglDecals;
@@ -143,6 +144,7 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresen
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MainPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MiscAnimationGroupsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MiscControlsOrbitPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.MiscControlsPointerlockPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Presenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.RollercoasterPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.ViveDraggingPresenter;
@@ -405,6 +407,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebaudioVisualizerPresenter webaudioVisualizerPresenter = GWT.create(WebaudioVisualizerPresenter.class);
     private MiscControlsOrbitPresenter miscControlsOrbitPresenter = GWT.create(MiscControlsOrbitPresenter.class);
     private WebglLoaderVrmlPresenter webglLoaderVrmlPresenter = GWT.create(WebglLoaderVrmlPresenter.class);
+    private MiscControlsPointerlockPresenter miscControlsPointerlockPresenter = GWT.create(MiscControlsPointerlockPresenter.class);
 
     private HTMLDivElement container;
 
@@ -544,6 +547,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebaudioTiming.TYPE, event -> History.newItem(WebaudioTiming.class.getSimpleName()));
         eventBus.addHandler(MiscControlsOrbit.TYPE, event -> History.newItem(MiscControlsOrbit.class.getSimpleName()));
         eventBus.addHandler(WebglLoaderVrml.TYPE, event -> History.newItem(WebglLoaderVrml.class.getSimpleName()));
+        eventBus.addHandler(MiscControlsPointerlock.TYPE, event -> History.newItem(MiscControlsPointerlock.class.getSimpleName()));
 
 
     }
@@ -827,6 +831,8 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 miscControlsOrbitPresenter.dispatch(container);
             } else if (token.equals(WebglLoaderVrml.class.getSimpleName())) {
                 webglLoaderVrmlPresenter.dispatch(container);
+            } else if (token.equals(MiscControlsPointerlock.class.getSimpleName())) {
+                miscControlsPointerlockPresenter.dispatch(container);
             }
         }
     }
