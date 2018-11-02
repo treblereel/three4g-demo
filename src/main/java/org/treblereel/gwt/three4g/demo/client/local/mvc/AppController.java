@@ -31,7 +31,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCusto
 import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints3;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
-import org.treblereel.gwt.three4g.demo.client.local.examples.camera.CanvasCameraOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
@@ -137,7 +136,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.vr.WebVRSandbox;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebAudioOrientation;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebaudioTiming;
 import org.treblereel.gwt.three4g.demo.client.local.examples.webaudio.WebaudioVisualizer;
-import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.CanvasCameraOrthographicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Css2dLabelPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.Css3dOrthographicPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.DayDreamPresenter;
@@ -320,7 +318,6 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
     private WebglMaterialsBumpmapPresenter webglMaterialsBumpmapPresenter = GWT.create(WebglMaterialsBumpmapPresenter.class);
     private WebglMaterialsBumpmapSkinPresenter webglMaterialsBumpmapSkinPresenter = GWT.create(WebglMaterialsBumpmapSkinPresenter.class);
     private WebglMaterialsChannelsPresenter webglMaterialsChannelsPresenter = GWT.create(WebglMaterialsChannelsPresenter.class);
-    private CanvasCameraOrthographicPresenter canvasCameraOrthographicPresenter = GWT.create(CanvasCameraOrthographicPresenter.class);
     private WebglFramebufferTexturePresenter webglFramebufferTexturePresenter = GWT.create(WebglFramebufferTexturePresenter.class);
     private WebglGeometryTerrainPresenter webglGeometryTerrainPresenter = GWT.create(WebglGeometryTerrainPresenter.class);
     private WebglGeometryTerrainFogPresenter webglGeometryTerrainFogPresenter = GWT.create(WebglGeometryTerrainFogPresenter.class);
@@ -461,7 +458,6 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         eventBus.addHandler(WebglMaterialsBumpmap.TYPE, event -> History.newItem(WebglMaterialsBumpmap.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsBumpmapSkin.TYPE, event -> History.newItem(WebglMaterialsBumpmapSkin.class.getSimpleName()));
         eventBus.addHandler(WebglMaterialsChannels.TYPE, event -> History.newItem(WebglMaterialsChannels.class.getSimpleName()));
-        eventBus.addHandler(CanvasCameraOrthographic.TYPE, event -> History.newItem(CanvasCameraOrthographic.class.getSimpleName()));
         eventBus.addHandler(WebglFramebufferTexture.TYPE, event -> History.newItem(WebglFramebufferTexture.class.getSimpleName()));
         eventBus.addHandler(WebglGeometryTerrain.TYPE, event -> History.newItem(WebglGeometryTerrain.class.getSimpleName()));
         eventBus.addHandler(WebglGeometryTerrainFog.TYPE, event -> History.newItem(WebglGeometryTerrainFog.class.getSimpleName()));
@@ -657,8 +653,6 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 webglMaterialsBumpmapSkinPresenter.dispatch(container);
             } else if (token.equals(WebglMaterialsChannels.class.getSimpleName())) {
                 webglMaterialsChannelsPresenter.dispatch(container);
-            } else if (token.equals(CanvasCameraOrthographic.class.getSimpleName())) {
-                canvasCameraOrthographicPresenter.dispatch(container);
             } else if (token.equals(WebglFramebufferTexture.class.getSimpleName())) {
                 webglFramebufferTexturePresenter.dispatch(container);
             } else if (token.equals(WebglGeometryTerrain.class.getSimpleName())) {
