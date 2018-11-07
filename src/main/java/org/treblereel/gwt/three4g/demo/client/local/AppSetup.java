@@ -30,7 +30,6 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCusto
 import org.treblereel.gwt.three4g.demo.client.local.examples.advanced.WebglCustomAttributesPoints3;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebGlAnimationKeyframesJson;
 import org.treblereel.gwt.three4g.demo.client.local.examples.animation.WebglAnimationScene;
-import org.treblereel.gwt.three4g.demo.client.local.examples.camera.CanvasCameraOrthographic;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebGlCamera;
 import org.treblereel.gwt.three4g.demo.client.local.examples.camera.WebglCameraArray;
 import org.treblereel.gwt.three4g.demo.client.local.examples.clipping.WebglClipping;
@@ -217,7 +216,6 @@ public class AppSetup implements EntryPoint {
         //camera
         addListElement(WebGlCamera.name, WebGlCamera.class);
         addListElement(WebglCameraArray.name, WebglCameraArray.class);
-        addListElement(CanvasCameraOrthographic.name, CanvasCameraOrthographic.class);
         //clipping
         addListElement(WebglClipping.name, WebglClipping.class);
         addListElement(WebglClippingIntersection.name, WebglClippingIntersection.class);

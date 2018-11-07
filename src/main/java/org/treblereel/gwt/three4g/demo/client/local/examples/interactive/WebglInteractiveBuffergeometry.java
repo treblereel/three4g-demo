@@ -171,7 +171,6 @@ public class WebglInteractiveBuffergeometry extends Attachable {
         scene.add(line);
         //
         renderer = new WebGLRenderer();
-        renderer = new WebGLRenderer();
 
         container.appendChild(renderer.domElement);
 
