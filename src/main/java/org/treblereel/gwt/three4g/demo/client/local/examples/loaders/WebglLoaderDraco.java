@@ -73,26 +73,23 @@ public class WebglLoaderDraco extends Attachable {
         spotLight.position.set(-1, 1, 1);
         scene.add(spotLight);
 
-        DRACOLoader.setDecoderPath("js/draco/");
+        DRACOLoader.setDecoderPath("js/libs/draco/");
         DRACOLoaderDecoderConfig config = new DRACOLoaderDecoderConfig();
         config.type = "js";
         DRACOLoader.setDecoderConfig(config);
 
         DRACOLoader dracoLoader = new DRACOLoader();
 
-        dracoLoader.load("models/draco/bunny.drc", new OnLoadCallback<BufferGeometry>() {
-            @Override
-            public void onLoad(BufferGeometry geometry) {
-                geometry.computeVertexNormals();
-                MeshStandardMaterial material = new MeshStandardMaterial();
-                material.vertexColors = THREE.VertexColors;
-                Mesh mesh = new Mesh(geometry, material);
-                mesh.castShadow = true;
-                mesh.receiveShadow = true;
-                scene.add(mesh);
-                // Release decoder resources.
-                DRACOLoader.releaseDecoderModule();
-            }
+        dracoLoader.load("models/draco/bunny.drc", (OnLoadCallback<BufferGeometry>) geometry -> {
+            geometry.computeVertexNormals();
+            MeshStandardMaterial material = new MeshStandardMaterial();
+            material.vertexColors = THREE.VertexColors;
+            Mesh mesh = new Mesh(geometry, material);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            scene.add(mesh);
+            // Release decoder resources.
+            DRACOLoader.releaseDecoderModule();
         });
 
         WebGLRendererParameters parameters = new WebGLRendererParameters();

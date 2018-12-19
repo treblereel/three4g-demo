@@ -166,7 +166,7 @@ public class WebglMaterialsEnvmaps extends Attachable {
 
     @Override
     protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http=//threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - webgl environment mapping example<br/>\n" +
+        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" - webgl environment mapping example<br/>\n" +
                 "\t\t\tEquirectangular Map by <a style='color:orange;' href=\"http://gl.ict.usc.edu/Data/HighResProbes/\">University of Southern California</a><br/>\n" +
                 "\t\t\tSpherical Map by <a style='color:orange;' href=\"http://www.pauldebevec.com/Probes/\">Paul Debevec</a>");
     }
