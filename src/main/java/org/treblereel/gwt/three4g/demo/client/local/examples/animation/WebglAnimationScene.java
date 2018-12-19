@@ -1,112 +1,127 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.animation;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import com.google.gwt.core.client.GWT;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.Object3D;
-import org.treblereel.gwt.three4g.core.TraverseCallback;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
-import org.treblereel.gwt.three4g.demo.client.local.examples.geometry.css.GeometryCssClientBundle;
 import org.treblereel.gwt.three4g.demo.client.local.utils.StatsProducer;
 import org.treblereel.gwt.three4g.extensions.controls.OrbitControls;
-import org.treblereel.gwt.three4g.geometries.PlaneBufferGeometry;
-import org.treblereel.gwt.three4g.loaders.ObjectLoader;
+import org.treblereel.gwt.three4g.extensions.loaders.DRACOLoader;
+import org.treblereel.gwt.three4g.extensions.loaders.GLTFLoader;
+import org.treblereel.gwt.three4g.lights.AmbientLight;
+import org.treblereel.gwt.three4g.lights.PointLight;
+import org.treblereel.gwt.three4g.loaders.CubeTextureLoader;
 import org.treblereel.gwt.three4g.loaders.OnLoadCallback;
-import org.treblereel.gwt.three4g.materials.MeshPhongMaterial;
+import org.treblereel.gwt.three4g.materials.MeshStandardMaterial;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
-import org.treblereel.gwt.three4g.scenes.Fog;
+import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
+import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
+import org.treblereel.gwt.three4g.textures.CubeTexture;
 
 /**
- * @author Dmitrii Tikhomirov <chani@me.com>
- * Created by treblereel on 3/9/18.
+ * @author Dmitrii Tikhomirov <chani@me.com> Created by treblereel on 3/9/18.
  */
-@InjectJavaScriptFor(elements = OrbitControls.class)
+@InjectJavaScriptFor(elements = {OrbitControls.class, DRACOLoader.class, GLTFLoader.class})
 public class WebglAnimationScene extends Attachable {
 
-    public static final String name = "animation / scene";
-    final static String URL = "json/scene-animation.json";
-    private AnimationMixer mixer;
-    private Clock clock = new Clock();
+  public static final String name = "animation / keyframes";
+  private AnimationMixer mixer;
+  private PointLight pointLight;
 
-    public WebglAnimationScene() {
+  private Clock clock = new Clock();
 
-        GeometryCssClientBundle.IMPL.webglAnimationScene().ensureInjected();
+  public WebglAnimationScene() {
 
-        setupWebGLRenderer(renderer);
-        // Load a scene with objects, lights and camera from a JSON file
-        new ObjectLoader().load(URL, (OnLoadCallback<Scene>) s -> {
-            scene = s;
-            scene.background = new Color(0xffffff);
-            AnimationClip[] clips = scene.getProperty("animations");
+    WebGLRendererParameters parameters = new WebGLRendererParameters();
+    parameters.antialias = true;
+    renderer = new WebGLRenderer(parameters);
+    setupWebGLRenderer(renderer);
+    renderer.gammaOutput = true;
+    renderer.gammaFactor = 2.2;
 
-            scene.traverse(new TraverseCallback() {
-                @Override
-                public void onEvent(Object3D object) {
-                    if (object instanceof PerspectiveCamera) {
-                        camera = (PerspectiveCamera) object;
-                        camera.aspect = aspect;
-                        camera.updateProjectionMatrix();
-                    }
-                }
-            });
-            if (camera == null) {
-                camera = new PerspectiveCamera(30f, aspect, 1f, 10000f);
-                camera.position.set(-200f, 0f, 200f);
-            }
+    scene = new Scene();
+    scene.background = new Color(0xbfe3dd);
 
-            orbitControls = new OrbitControls(camera, root);
+    camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 100);
+    camera.position.set(5, 2, 8);
 
-            PlaneBufferGeometry geometry = new PlaneBufferGeometry(20000f, 20000f);
-            MeshPhongMaterial material = new MeshPhongMaterial();
-            material.shininess = 0.1f;
+    orbitControls = new OrbitControls(camera, renderer.domElement);
+    orbitControls.target.set(0, 0.5f, 0);
+    orbitControls.enablePan = false;
 
-            Mesh ground = new Mesh(geometry, material);
+    scene.add(new AmbientLight(0x404040));
 
-            ground.position.set(0f, -250f, 0f);
-            ground.rotation.x = (float) -Math.PI / 2;
-            scene.add(ground);
-            scene.fog = new Fog(0xffffff, 1000f, 10000f);
+    pointLight = new PointLight(0xffffff, 1);
+    pointLight.position.copy(camera.position);
+    scene.add(pointLight);
 
-            mixer = new AnimationMixer(scene);
-            mixer.clipAction(clips[0]).play();
-        }, (e) -> {
-        }, (e) -> new IllegalArgumentException("OnErrorCallback"));
+    // envmap
+    String path = "textures/cube/Park2/";
+    String format = ".jpg";
+    CubeTexture envMap = new CubeTextureLoader().load(new String[]{
+        path + "posx" + format, path + "negx" + format,
+        path + "posy" + format, path + "negy" + format,
+        path + "posz" + format, path + "negz" + format
+    });
 
-    }
-
-    public void doAttachScene() {
-        root.appendChild(renderer.domElement);
-        onWindowResize();
-        animate();
-    }
-
-    @Override
-    protected void doAttachInfo() {
-        AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js").setInnetHtml(" <p style='color:black;' >webgl - scene animation - <a href=\"https://clara.io/view/96106133-2e99-40cf-8abd-64defd153e61\">Three Gears Scene</a> courtesy of David Sarno\n" +
-                "\t\t<br><br>camera orbit/zoom/pan with left/middle/right mouse button</p>");
-    }
-
-    private void render() {
-        if (mixer != null && renderer != null) {
-            mixer.update(0.75f * clock.getDelta());
-            renderer.render(scene, camera);
+    DRACOLoader.setDecoderPath("js/libs/draco/gltf/");
+    GLTFLoader loader = new GLTFLoader();
+    loader.setDRACOLoader(new DRACOLoader());
+    loader.load("models/gltf/LittlestTokyo.glb", (OnLoadCallback<Object3D>) gltf -> {
+      Scene model = gltf.getProperty("scene");
+      model.position.set(1, 1, 0);
+      model.scale.set(0.01f, 0.01f, 0.01f);
+      model.traverse(child -> {
+        if (child instanceof Mesh) {
+          ((MeshStandardMaterial) ((Mesh) child).material).envMap = envMap;
         }
-    }
+      });
 
-    private void animate() {
-        StatsProducer.getStats().update();
-        AnimationScheduler.get().requestAnimationFrame(timestamp -> {
-            if (root.parentNode != null) {
-                render();
-                animate();
-            }
-        });
-    }
+      scene.add(model);
+      mixer = new AnimationMixer(model);
+      AnimationClip[] clips = gltf.getProperty("animations");
+      mixer.clipAction(clips[0]).play();
+    });
+
+  }
+
+  public void doAttachScene() {
+    root.appendChild(renderer.domElement);
+    onWindowResize();
+    animate();
+  }
+
+  @Override
+  protected void doAttachInfo() {
+    AppSetup.infoDiv.show().setHrefToInfo("http://threejs.org").setTextContentToInfo("three.js")
+        .setInnetHtml(
+            " <span style=\"color:black;\"> webgl - animation - keyframes\n</span>"
+                + "\t\t\t<p>\n"
+                + "\t\t\t\t<span style=\"color:black;\">Model: </span><a style='color:black;' href=\"https://www.artstation.com/artwork/1AGwX\" target=\"_blank\" rel=\"noopener\">Littlest Tokyo</a><span style=\"color:black;\"> by\n</span>"
+                + "\t\t\t\t<a href=\"https://www.artstation.com/glenatron\" target=\"_blank\" rel=\"noopener\">Glen Fox</a><span style=\"color:black;\">, CC Attribution.\n</span>"
+                + "\t\t\t</p>");
+  }
+
+  private void animate() {
+    StatsProducer.getStats().update();
+    AnimationScheduler.get().requestAnimationFrame(timestamp -> {
+      if (root.parentNode != null && mixer != null) {
+        double delta = clock.getDelta();
+        mixer.update(delta);
+        orbitControls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+    });
+
+  }
 
 }
