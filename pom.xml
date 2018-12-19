@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.treblereel</groupId>
             <artifactId>datgui4g</artifactId>
-            <version>0.1-beta4-SNAPSHOT</version>
+            <version>0.1-beta4</version>
         </dependency>
 
     </dependencies>
