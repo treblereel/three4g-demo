@@ -2,6 +2,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
+import java.util.Random;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -30,8 +31,6 @@ import org.treblereel.gwt.three4g.renderers.OnAnimate;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.Random;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

@@ -1,8 +1,8 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.gui;
 
-import jsinterop.annotations.JsType;
-
 import static jsinterop.annotations.JsPackage.GLOBAL;
+
+import jsinterop.annotations.JsType;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

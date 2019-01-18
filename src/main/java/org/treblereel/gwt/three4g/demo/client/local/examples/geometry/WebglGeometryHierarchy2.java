@@ -1,8 +1,11 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.EventListener;
 import elemental2.dom.MouseEvent;
+import java.util.Date;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
@@ -12,16 +15,10 @@ import org.treblereel.gwt.three4g.geometries.BoxBufferGeometry;
 import org.treblereel.gwt.three4g.materials.MeshNormalMaterial;
 import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.math.Vector2;
-import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.Date;
-import java.util.Random;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

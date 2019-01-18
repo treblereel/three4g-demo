@@ -3,6 +3,8 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.advanced;
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.Float32Array;
 import elemental2.core.JsArray;
+import java.util.Date;
+import java.util.Random;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
@@ -30,9 +32,6 @@ import org.treblereel.gwt.three4g.objects.Points;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.Date;
-import java.util.Random;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

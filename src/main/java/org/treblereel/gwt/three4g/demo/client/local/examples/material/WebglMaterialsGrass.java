@@ -5,6 +5,7 @@ import elemental2.dom.CanvasRenderingContext2D;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLCanvasElement;
 import elemental2.dom.HTMLElement;
+import java.util.Date;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -17,8 +18,6 @@ import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.CanvasTexture;
-
-import java.util.Date;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

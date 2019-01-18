@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.misc;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import elemental2.core.JsArray;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.animation.AnimationAction;
 import org.treblereel.gwt.three4g.animation.AnimationClip;

@@ -1,6 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import java.util.Date;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Object3D;
@@ -23,8 +24,6 @@ import org.treblereel.gwt.three4g.materials.parameters.MeshPhongMaterialParamete
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import java.util.Date;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

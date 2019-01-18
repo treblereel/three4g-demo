@@ -1,7 +1,6 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import com.google.gwt.core.client.GWT;
 import elemental2.dom.Event;
 import elemental2.dom.EventListener;
 import elemental2.dom.MouseEvent;

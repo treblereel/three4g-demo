@@ -1,6 +1,8 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import java.util.HashMap;
+import java.util.Map;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
@@ -27,9 +29,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

@@ -1,5 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.CanvasGradient;
 import elemental2.dom.CanvasRenderingContext2D;
@@ -24,8 +26,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

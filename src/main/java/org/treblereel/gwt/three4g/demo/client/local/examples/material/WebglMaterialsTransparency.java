@@ -1,6 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import java.util.Date;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
@@ -22,8 +23,6 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import java.util.Date;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

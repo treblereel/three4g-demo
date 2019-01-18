@@ -1,5 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.Float32Array;
 import elemental2.dom.HTMLScriptElement;
@@ -20,8 +22,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

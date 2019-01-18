@@ -1,5 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.gui;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
@@ -8,8 +10,6 @@ import org.treblereel.gwt.three4g.demo.client.local.gui.GUIVR;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import static elemental2.dom.DomGlobal.document;
 
 
 /**

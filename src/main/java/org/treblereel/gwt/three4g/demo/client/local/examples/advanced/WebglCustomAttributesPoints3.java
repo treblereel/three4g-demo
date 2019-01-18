@@ -1,9 +1,13 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.advanced;
 
+import static elemental2.dom.DomGlobal.document;
+
 import elemental2.core.Float32Array;
 import elemental2.core.JsArray;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLScriptElement;
+import java.util.Date;
+import java.util.Random;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferAttribute;
@@ -25,11 +29,6 @@ import org.treblereel.gwt.three4g.objects.Points;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import java.util.Date;
-import java.util.Random;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

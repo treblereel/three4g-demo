@@ -1,11 +1,11 @@
 package org.treblereel.gwt.three4g.demo.client.local;
 
+import static elemental2.dom.DomGlobal.document;
+
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

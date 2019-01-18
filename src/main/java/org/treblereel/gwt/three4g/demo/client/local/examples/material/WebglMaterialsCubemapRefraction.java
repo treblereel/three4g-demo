@@ -2,6 +2,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.MouseEvent;
+import java.util.Date;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
@@ -24,8 +25,6 @@ import org.treblereel.gwt.three4g.math.Vector2;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.CubeTexture;
-
-import java.util.Date;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

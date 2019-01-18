@@ -4,6 +4,9 @@ import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.JsArray;
 import elemental2.core.Uint8Array;
 import elemental2.dom.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
@@ -37,10 +40,6 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderTarget;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

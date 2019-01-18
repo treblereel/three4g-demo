@@ -1,10 +1,13 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.misc;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.GWT;
 import elemental2.core.Float32Array;
 import elemental2.core.JsArray;
 import elemental2.dom.HTMLScriptElement;
+import java.util.Date;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.THREE;
@@ -33,10 +36,6 @@ import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.CubeTexture;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import java.util.Date;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

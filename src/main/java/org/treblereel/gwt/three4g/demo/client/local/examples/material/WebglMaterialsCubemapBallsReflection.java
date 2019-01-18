@@ -2,6 +2,9 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.material;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.MouseEvent;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
@@ -15,10 +18,6 @@ import org.treblereel.gwt.three4g.math.Vector2;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

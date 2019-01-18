@@ -70,9 +70,13 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsP
 import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsSpotlight;
 import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsSpotlights;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3ds;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3mf;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAmf;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAssimp;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAssimp2Json;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAwd;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBabylon;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBvh;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderCollada;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderColladaSkinning;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderDraco;
@@ -214,9 +218,13 @@ import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsPoi
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsSpotlightPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLightsSpotlightsPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoader3dsPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoader3mfPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderAmfPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderAssimp2JsonPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderAssimpPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderAwdPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderBabylonPresenter;
+import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderBvhPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderColladaPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderColladaSkinningPresenter;
 import org.treblereel.gwt.three4g.demo.client.local.mvc.presenter.WebglLoaderDracoPresenter;
@@ -515,6 +523,14 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
       .create(WebglLoaderAssimpPresenter.class);
   private WebglLoaderAssimp2JsonPresenter webglLoaderAssimp2JsonPresenter = GWT
       .create(WebglLoaderAssimp2JsonPresenter.class);
+  private WebglLoader3mfPresenter webglLoader3mfPresenter = GWT
+      .create(WebglLoader3mfPresenter.class);
+  private WebglLoaderAmfPresenter webglLoaderAmfPresenter = GWT
+      .create(WebglLoaderAmfPresenter.class);
+  private WebglLoaderAwdPresenter webglLoaderAwdPresenter = GWT
+      .create(WebglLoaderAwdPresenter.class);
+  private WebglLoaderBvhPresenter webglLoaderBvhPresenter = GWT
+      .create(WebglLoaderBvhPresenter.class);
 
   private HTMLDivElement container;
 
@@ -775,6 +791,14 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         event -> History.newItem(WebglLoaderAssimp.class.getSimpleName()));
     eventBus.addHandler(WebglLoaderAssimp2Json.TYPE,
         event -> History.newItem(WebglLoaderAssimp2Json.class.getSimpleName()));
+    eventBus.addHandler(WebglLoader3mf.TYPE,
+        event -> History.newItem(WebglLoader3mf.class.getSimpleName()));
+    eventBus.addHandler(WebglLoaderAmf.TYPE,
+        event -> History.newItem(WebglLoaderAmf.class.getSimpleName()));
+    eventBus.addHandler(WebglLoaderAwd.TYPE,
+        event -> History.newItem(WebglLoaderAwd.class.getSimpleName()));
+    eventBus.addHandler(WebglLoaderBvh.TYPE,
+        event -> History.newItem(WebglLoaderBvh.class.getSimpleName()));
 
 
   }
@@ -1058,6 +1082,14 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
         webglLoaderAssimpPresenter.dispatch(container);
       } else if (token.equals(WebglLoaderAssimp2Json.class.getSimpleName())) {
         webglLoaderAssimp2JsonPresenter.dispatch(container);
+      } else if (token.equals(WebglLoader3mf.class.getSimpleName())) {
+        webglLoader3mfPresenter.dispatch(container);
+      } else if (token.equals(WebglLoaderAmf.class.getSimpleName())) {
+        webglLoaderAmfPresenter.dispatch(container);
+      } else if (token.equals(WebglLoaderAwd.class.getSimpleName())) {
+        webglLoaderAwdPresenter.dispatch(container);
+      } else if (token.equals(WebglLoaderBvh.class.getSimpleName())) {
+        webglLoaderBvhPresenter.dispatch(container);
       }
     }
   }

@@ -1,6 +1,8 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.camera;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import java.util.ArrayList;
+import java.util.List;
 import org.treblereel.gwt.three4g.cameras.ArrayCamera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -17,9 +19,6 @@ import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.math.Vector4;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

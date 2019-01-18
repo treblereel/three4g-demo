@@ -1,5 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.webaudio;
 
+import static elemental2.dom.DomGlobal.document;
+
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLDivElement;
@@ -23,8 +25,6 @@ import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.DataTexture;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

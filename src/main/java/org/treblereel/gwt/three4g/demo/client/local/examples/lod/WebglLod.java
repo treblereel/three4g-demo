@@ -1,6 +1,9 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.lod;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.Clock;
@@ -20,10 +23,6 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
