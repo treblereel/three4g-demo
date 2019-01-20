@@ -5,6 +5,8 @@ import elemental2.core.Float32Array;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.MouseEvent;
+import java.util.Date;
+import java.util.Random;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -28,9 +30,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.Date;
-import java.util.Random;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

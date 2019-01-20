@@ -1,11 +1,15 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.gpgpu;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.user.client.Window;
 import elemental2.core.Uint8ClampedArray;
 import elemental2.dom.Event;
 import elemental2.dom.EventListener;
+import java.math.BigDecimal;
+import java.util.Date;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
 import org.treblereel.gwt.three4g.THREE;
@@ -27,11 +31,6 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import java.math.BigDecimal;
-import java.util.Date;
-
-import static elemental2.dom.DomGlobal.document;
 
 
 /**

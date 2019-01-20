@@ -8,6 +8,7 @@ import elemental2.dom.Event;
 import elemental2.dom.EventListener;
 import elemental2.dom.HTMLCanvasElement;
 import elemental2.dom.MouseEvent;
+import java.util.concurrent.atomic.AtomicBoolean;
 import jsinterop.base.Js;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
@@ -21,8 +22,6 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.CanvasTexture;
-
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

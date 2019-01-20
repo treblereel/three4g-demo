@@ -69,9 +69,13 @@ import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsP
 import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsPointlights2;
 import org.treblereel.gwt.three4g.demo.client.local.examples.lights.WebglLightsSpotlight;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3ds;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoader3mf;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAmf;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAssimp;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAssimp2Json;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderAwd;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBabylon;
+import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderBvh;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderCollada;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderColladaSkinning;
 import org.treblereel.gwt.three4g.demo.client.local.examples.loaders.WebglLoaderDraco;
@@ -241,9 +245,13 @@ public class AppSetup implements EntryPoint {
     addListElement(WebglHdr.name, WebglHdr.class);
     //loader
     addTypeElement("Loaders");
+    addListElement(WebglLoader3mf.name, WebglLoader3mf.class);
+    addListElement(WebglLoaderAmf.name, WebglLoaderAmf.class);
+    addListElement(WebglLoaderAwd.name, WebglLoaderAwd.class);
     addListElement(WebglLoaderAssimp2Json.name, WebglLoaderAssimp2Json.class);
     addListElement(WebglLoaderAssimp.name, WebglLoaderAssimp.class);
     addListElement(WebglLoaderBabylon.name, WebglLoaderBabylon.class);
+    addListElement(WebglLoaderBvh.name, WebglLoaderBvh.class);
     addListElement(WebglLoader3ds.name, WebglLoader3ds.class);
     addListElement(WebglLoaderCollada.name, WebglLoaderCollada.class);
     addListElement(WebglLoaderColladaSkinning.name, WebglLoaderColladaSkinning.class);

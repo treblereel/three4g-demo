@@ -2,6 +2,8 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.advanced;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.JsArray;
+import java.util.Date;
+import java.util.Random;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
@@ -17,9 +19,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.Date;
-import java.util.Random;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

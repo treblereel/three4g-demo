@@ -2,6 +2,8 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.morph;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.core.JsArray;
+import java.util.ArrayList;
+import java.util.List;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
@@ -25,9 +27,6 @@ import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Fog;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

@@ -1,8 +1,11 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.camera;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import elemental2.dom.Event;
 import elemental2.dom.KeyboardEvent;
+import java.util.Date;
 import org.treblereel.gwt.three4g.cameras.Camera;
 import org.treblereel.gwt.three4g.cameras.OrthographicCamera;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -22,10 +25,6 @@ import org.treblereel.gwt.three4g.objects.Group;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.objects.Points;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.Date;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

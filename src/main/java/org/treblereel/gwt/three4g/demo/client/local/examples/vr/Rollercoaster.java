@@ -3,6 +3,8 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.vr;
 import com.google.gwt.core.client.ScriptInjector;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
+import java.util.ArrayList;
+import java.util.List;
 import jsinterop.annotations.JsFunction;
 import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
@@ -31,9 +33,6 @@ import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.renderers.parameters.WebGLRendererParameters;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

@@ -1,5 +1,7 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.geometry;
 
+import static elemental2.dom.DomGlobal.document;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import org.treblereel.gwt.three4g.InjectJavaScriptFor;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
@@ -16,8 +18,6 @@ import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import static elemental2.dom.DomGlobal.document;
 
 /**
  * Based on example https://codepen.io/znak/pen/OPZwVO

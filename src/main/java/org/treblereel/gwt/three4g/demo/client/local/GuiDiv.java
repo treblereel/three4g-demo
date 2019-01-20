@@ -1,8 +1,8 @@
 package org.treblereel.gwt.three4g.demo.client.local;
 
-import elemental2.dom.HTMLDivElement;
-
 import static elemental2.dom.DomGlobal.document;
+
+import elemental2.dom.HTMLDivElement;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

@@ -1,13 +1,10 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.morph;
 
 import com.google.gwt.animation.client.AnimationScheduler;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import org.treblereel.gwt.three4g.animation.AnimationClip;
 import org.treblereel.gwt.three4g.animation.AnimationMixer;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
-import org.treblereel.gwt.three4g.core.Clock;
 import org.treblereel.gwt.three4g.core.PropertyHolder;
 import org.treblereel.gwt.three4g.demo.client.local.AppSetup;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;

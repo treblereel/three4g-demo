@@ -3,6 +3,7 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.advanced;
 import com.google.gwt.core.client.GWT;
 import elemental2.core.JsArray;
 import elemental2.dom.DomGlobal;
+import java.util.Date;
 import org.treblereel.gwt.three4g.THREE;
 import org.treblereel.gwt.three4g.cameras.PerspectiveCamera;
 import org.treblereel.gwt.three4g.core.BufferGeometry;
@@ -16,8 +17,6 @@ import org.treblereel.gwt.three4g.math.Vector3;
 import org.treblereel.gwt.three4g.objects.LineSegments;
 import org.treblereel.gwt.three4g.renderers.WebGLRenderer;
 import org.treblereel.gwt.three4g.scenes.Scene;
-
-import java.util.Date;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

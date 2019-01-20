@@ -1,6 +1,9 @@
 package org.treblereel.gwt.three4g.demo.client.local.examples.lights;
 
 import com.google.gwt.animation.client.AnimationScheduler;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import org.treblereel.gwt.datgui4g.GUI;
 import org.treblereel.gwt.datgui4g.GUIProperty;
 import org.treblereel.gwt.datgui4g.OnChange;
@@ -25,10 +28,6 @@ import org.treblereel.gwt.three4g.math.Color;
 import org.treblereel.gwt.three4g.objects.Mesh;
 import org.treblereel.gwt.three4g.scenes.Scene;
 import org.treblereel.gwt.three4g.textures.Texture;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>

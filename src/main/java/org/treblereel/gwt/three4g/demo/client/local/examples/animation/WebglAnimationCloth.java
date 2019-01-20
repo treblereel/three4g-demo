@@ -3,13 +3,12 @@ package org.treblereel.gwt.three4g.demo.client.local.examples.animation;
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;
+import java.util.Date;
 import org.treblereel.gwt.three4g.demo.client.local.Attachable;
 import org.treblereel.gwt.three4g.geometries.ParametricGeometry;
 import org.treblereel.gwt.three4g.lights.DirectionalLight;
 import org.treblereel.gwt.three4g.materials.Material;
 import org.treblereel.gwt.three4g.objects.Mesh;
-
-import java.util.Date;
 
 /**
  * @author Dmitrii Tikhomirov <chani@me.com>
