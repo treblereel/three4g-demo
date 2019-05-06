@@ -50,8 +50,6 @@ public class WebglInteractiveCubesGpu extends Attachable {
 
     public static final String name = "interactive / cubes / gpu";
 
-    private List<Mesh> objects = new ArrayList();
-
     private Random rand = new Random();
     private Scene pickingScene;
     private WebGLRenderTarget pickingTexture;
@@ -203,7 +201,8 @@ public class WebglInteractiveCubesGpu extends Attachable {
 
     private void pick() {
         //render the picking scene off-screen
-        renderer.render(pickingScene, camera, pickingTexture);
+        renderer.setRenderTarget( pickingTexture );
+        renderer.render(pickingScene, camera);
         //create buffer for reading single pixel
         Uint8Array pixelBuffer = new Uint8Array(4);
         //read the pixel under the mouse from the texture
@@ -227,6 +226,7 @@ public class WebglInteractiveCubesGpu extends Attachable {
     private void render() {
         trackballControls.update();
         pick();
+        renderer.setRenderTarget(null);
         renderer.render(scene, camera);
     }
 }

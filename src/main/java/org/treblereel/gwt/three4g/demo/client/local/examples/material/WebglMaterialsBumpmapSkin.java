@@ -37,11 +37,10 @@ import org.treblereel.gwt.three4g.textures.Texture;
 public class WebglMaterialsBumpmapSkin extends Attachable {
 
   public static final String name = "materials / bumpmap / skin";
-  EffectComposer composer, composerBeckmann;
+  private EffectComposer composerBeckmann;
   private Vector2 mouse = new Vector2();
   private Mesh mesh;
   private DirectionalLight directionalLight;
-  private Texture mapColor, mapHeight, mapSpecular;
   private boolean firstPass = true;
 
   public WebglMaterialsBumpmapSkin() {
