@@ -201,6 +201,7 @@ public class WebglInteractiveCubesGpu extends Attachable {
 
     private void pick() {
         //render the picking scene off-screen
+        camera.setViewOffset( renderer.domElement.clientWidth, renderer.domElement.clientHeight, (float)(mouse.x * devicePixelRatio), (float)(mouse.y * devicePixelRatio), 1, 1 );
         renderer.setRenderTarget( pickingTexture );
         renderer.render(pickingScene, camera);
         //create buffer for reading single pixel
